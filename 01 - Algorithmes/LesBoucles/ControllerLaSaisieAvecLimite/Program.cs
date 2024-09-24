@@ -13,7 +13,8 @@ do
     Console.WriteLine("Veuillez taper le mot de passe :");
     passwordVerif = Console.ReadLine();
 
-    if(passwordVerif.Equals(PASSWORD)) {
+    if(passwordVerif == PASSWORD) /* ou passwordVerif.Equals(PASSWORD), est-ce comme en java ou comme en php ?? */
+    {
         Console.WriteLine(Environment.NewLine + "Vous êtes connecté !");
         isOk = true;
     }
