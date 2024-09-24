@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntervalleEntre2Nombres", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheDesDiviseurs", "..\LesBoucles\RechercheDesDiviseurs\RechercheDesDiviseurs.csproj", "{9884AF11-2B6B-4BFA-83CF-445CC969FCD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NombrePremier", "..\LesBoucles\NombrePremier\NombrePremier.csproj", "{6443AB1A-4885-4AC5-9A90-E027BD548FF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{9884AF11-2B6B-4BFA-83CF-445CC969FCD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9884AF11-2B6B-4BFA-83CF-445CC969FCD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9884AF11-2B6B-4BFA-83CF-445CC969FCD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6443AB1A-4885-4AC5-9A90-E027BD548FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6443AB1A-4885-4AC5-9A90-E027BD548FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6443AB1A-4885-4AC5-9A90-E027BD548FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6443AB1A-4885-4AC5-9A90-E027BD548FF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
