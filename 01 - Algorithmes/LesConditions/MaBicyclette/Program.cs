@@ -1,5 +1,4 @@
-﻿bool weatherIsGood = true;
-bool bicycleState = new Random().Next(100) <= 50 ? true : false;
+﻿bool bicycleState = new Random().Next(100) <= 50 ? true : false;
 bool fastRepair = new Random().Next(100) <= 50 ? true : false;
 bool bookInLivingroom = new Random().Next(100) <= 50 ? true : false;
 bool bookInLibrary = new Random().Next(100) <= 50 ? true : false;
@@ -8,12 +7,12 @@ string weather;
 
 do
 {
-    Console.WriteLine("Fait-il beau ? (Oui / Non)");
+    Console.WriteLine("Fait-il beau ? Oui (o) / Non (n)");
     weather = Console.ReadLine();
     weather = weather.ToLower();
 } while (weather != "oui" && weather != "o" && weather != "non" && weather != "n");
 
-weatherIsGood = weather == "oui" || weather == "o";
+bool weatherIsGood = weather == "oui" || weather == "o";
 
 
 
