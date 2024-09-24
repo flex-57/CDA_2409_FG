@@ -3,16 +3,19 @@ bool bicycleState = new Random().Next(100) <= 50 ? true : false;
 bool fastRepair = new Random().Next(100) <= 50 ? true : false;
 bool bookInLivingroom = new Random().Next(100) <= 50 ? true : false;
 bool bookInLibrary = new Random().Next(100) <= 50 ? true : false;
+string weather;
 
-Console.WriteLine("Fait-il beau ?");
-string weather = Console.ReadLine();
-weather = weather.ToLower();
 
-if(weather != null)
+do
 {
-    if(weather == "oui" ||  weather == "o") weatherIsGood = true;
-    if (weather == "non" || weather == "n") weatherIsGood = false;
-}
+    Console.WriteLine("Fait-il beau ? (Oui / Non)");
+    weather = Console.ReadLine();
+    weather = weather.ToLower();
+} while (weather != "oui" && weather != "o" && weather != "non" && weather != "n");
+
+weatherIsGood = (weather == "oui" || weather == "o");
+
+
 
 if(weatherIsGood)
 {
@@ -22,7 +25,7 @@ if(weatherIsGood)
     {
         Console.WriteLine("Ma bicyclette ne fonctionne pas correctement, je dois passer chez le garagiste.");
 
-        if (!fastRepair) Console.WriteLine("Je renonce à ma ballade en vélo et je vais à pied jusqu'à l'étang pour cueillir les joncs.");
+        if (!fastRepair) { Console.WriteLine("Je renonce à ma ballade en vélo et je vais à pied jusqu'à l'étang pour cueillir les joncs."); }
     }
 
     else Console.WriteLine("Je vais y aller à bicyclette.");
