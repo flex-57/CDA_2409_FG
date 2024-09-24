@@ -2,13 +2,13 @@
 int B;
 bool isNumOk;
 
-int readAndParse(string cw)
+int readAndParse(string text)
 {
     do
     {
         isNumOk = true;
 
-        Console.WriteLine(Environment.NewLine + cw);
+        Console.WriteLine(Environment.NewLine + text);
         string inputA = Console.ReadLine();
 
         if (!int.TryParse(inputA, out A))
