@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EsTuMajeur", "..\LesConditi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaRetraite", "..\LesConditions\MaRetraite\MaRetraite.csproj", "{E5E39168-535B-49B4-B854-D4AD4C0CFB74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TriDeNombre", "..\LesConditions\TriDeNombre\TriDeNombre.csproj", "{2242E093-403D-46DF-B9A9-ABBCE80B71D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TriDeNombre", "..\TriDeNombre\TriDeNombre.csproj", "{AF4A2C5B-A8AE-4911-AD80-D9E4FC6BFD15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{E5E39168-535B-49B4-B854-D4AD4C0CFB74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5E39168-535B-49B4-B854-D4AD4C0CFB74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5E39168-535B-49B4-B854-D4AD4C0CFB74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2242E093-403D-46DF-B9A9-ABBCE80B71D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2242E093-403D-46DF-B9A9-ABBCE80B71D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2242E093-403D-46DF-B9A9-ABBCE80B71D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2242E093-403D-46DF-B9A9-ABBCE80B71D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF4A2C5B-A8AE-4911-AD80-D9E4FC6BFD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4A2C5B-A8AE-4911-AD80-D9E4FC6BFD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4A2C5B-A8AE-4911-AD80-D9E4FC6BFD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4A2C5B-A8AE-4911-AD80-D9E4FC6BFD15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
