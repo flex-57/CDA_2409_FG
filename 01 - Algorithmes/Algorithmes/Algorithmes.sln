@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriDeNombre++", "..\LesCond
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaBicyclette", "..\LesConditions\MaBicyclette\MaBicyclette.csproj", "{9FEFA7BE-AE60-4A2E-9A02-C218511FD70A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlerLaSaisie", "..\LesBoucles\ControlerLaSaisie\ControlerLaSaisie.csproj", "{4233EB4D-CF16-4ADE-BF8B-136D8825033D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9FEFA7BE-AE60-4A2E-9A02-C218511FD70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FEFA7BE-AE60-4A2E-9A02-C218511FD70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FEFA7BE-AE60-4A2E-9A02-C218511FD70A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4233EB4D-CF16-4ADE-BF8B-136D8825033D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4233EB4D-CF16-4ADE-BF8B-136D8825033D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4233EB4D-CF16-4ADE-BF8B-136D8825033D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4233EB4D-CF16-4ADE-BF8B-136D8825033D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
