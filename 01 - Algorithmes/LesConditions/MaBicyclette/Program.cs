@@ -13,7 +13,7 @@ do
     weather = weather.ToLower();
 } while (weather != "oui" && weather != "o" && weather != "non" && weather != "n");
 
-weatherIsGood = (weather == "oui" || weather == "o");
+weatherIsGood = weather == "oui" || weather == "o";
 
 
 
@@ -25,10 +25,16 @@ if(weatherIsGood)
     {
         Console.WriteLine("Ma bicyclette ne fonctionne pas correctement, je dois passer chez le garagiste.");
 
-        if (!fastRepair) { Console.WriteLine("Je renonce à ma ballade en vélo et je vais à pied jusqu'à l'étang pour cueillir les joncs."); }
+        if (!fastRepair) 
+        { 
+            Console.WriteLine("Je renonce à ma ballade en vélo et je vais à pied jusqu'à l'étang pour cueillir les joncs."); 
+        }
     }
 
-    else Console.WriteLine("Je vais y aller à bicyclette.");
+    else 
+    { 
+        Console.WriteLine("Je vais y aller à bicyclette."); 
+    }
 }
 
 else
@@ -39,8 +45,15 @@ else
     {
         Console.Write("Je passe à la bibliothèque emprunter ");
 
-        if(!bookInLibrary) Console.WriteLine("un roman policier, ");
-        else Console.WriteLine("le 1er tome de GOT, ");
+        if (!bookInLibrary)
+        {
+            Console.WriteLine("un roman policier, ");
+        }
+
+        else
+        {
+            Console.WriteLine("le 1er tome de GOT, ");
+        }
 
         Console.WriteLine("puis je rentre à la maison.");
     }
