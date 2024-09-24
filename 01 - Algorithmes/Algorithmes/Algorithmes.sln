@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaRetraite", "..\LesConditi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TriDeNombre", "..\TriDeNombre\TriDeNombre.csproj", "{AF4A2C5B-A8AE-4911-AD80-D9E4FC6BFD15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriDeNombre++", "..\LesConditions\TriDeNombre++\TriDeNombre++.csproj", "{0C795D8C-A1CC-4D30-902A-F019D3BC36B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TriDeNombre++", "..\LesConditions\TriDeNombre++\TriDeNombre++.csproj", "{0C795D8C-A1CC-4D30-902A-F019D3BC36B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaBicyclette", "..\LesConditions\MaBicyclette\MaBicyclette.csproj", "{9FEFA7BE-AE60-4A2E-9A02-C218511FD70A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaBicyclette", "..\LesConditions\MaBicyclette\MaBicyclette.csproj", "{9FEFA7BE-AE60-4A2E-9A02-C218511FD70A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlerLaSaisie", "..\LesBoucles\ControlerLaSaisie\ControlerLaSaisie.csproj", "{4233EB4D-CF16-4ADE-BF8B-136D8825033D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlerLaSaisie", "..\LesBoucles\ControlerLaSaisie\ControlerLaSaisie.csproj", "{4233EB4D-CF16-4ADE-BF8B-136D8825033D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerLaSaisieAvecLimite", "..\LesBoucles\ControllerLaSaisieAvecLimite\ControllerLaSaisieAvecLimite.csproj", "{AE1EC9C7-7DDD-4F99-BE6F-ED81BB62692C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4233EB4D-CF16-4ADE-BF8B-136D8825033D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4233EB4D-CF16-4ADE-BF8B-136D8825033D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4233EB4D-CF16-4ADE-BF8B-136D8825033D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE1EC9C7-7DDD-4F99-BE6F-ED81BB62692C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE1EC9C7-7DDD-4F99-BE6F-ED81BB62692C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE1EC9C7-7DDD-4F99-BE6F-ED81BB62692C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE1EC9C7-7DDD-4F99-BE6F-ED81BB62692C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
