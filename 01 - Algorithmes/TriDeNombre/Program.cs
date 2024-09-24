@@ -14,8 +14,12 @@ int[] arrayNum = new int[]
 
 Array.Sort(arrayNum);
 
+Console.WriteLine("\nValeurs triées dans l'ordre croissant :");
+
 foreach (int i in arrayNum)
 {
     Console.WriteLine(i);
 }
+
+Console.WriteLine("\nAppuyez sur entrée pour continuer.");
 Console.ReadLine();
