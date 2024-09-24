@@ -15,7 +15,7 @@ do
 
     if(passwordVerif == PASSWORD) /* ou passwordVerif.Equals(PASSWORD), est-ce comme en java ou comme en php ?? */
     {
-        Console.WriteLine(Environment.NewLine + "Vous êtes connecté !");
+        Console.WriteLine(Environment.NewLine + "Vous êtes connecté !"); 
         isOk = true;
     }
 
