@@ -1,47 +1,49 @@
 ﻿int mysteriousNumber = new Random().Next(100);
 int number;
-int forkMax = 100;
-int forkMin = 0;
+int valMax = 100;
+int valMin = 0;
 int count = 1;
 bool isOk;
 
 do
 {
-    Console.WriteLine($"Veuillez entrer un nombre entier positif entre {forkMin} et {forkMax}");
+    Console.WriteLine($"Veuillez entrer un nombre entier positif entre {valMin} et {valMax}");
     isOk = int.TryParse(Console.ReadLine(), out number);
 
-    if(!isOk)
+    if (!isOk)
     {
         Console.WriteLine("Ce n'est pas un nombre !");
     }
 
-    else if(number < forkMin || number > forkMax)
-    {
-        Console.WriteLine($"Le nombre doit être un entier positif entre {forkMin} et {forkMax} !");
-        isOk = false;
-    }
-
-    else if (mysteriousNumber < number)
-    {
-        forkMax = number;
-        Console.WriteLine("Trop grand !");
-        isOk = false;
-        count++;
-    }
-
-    else if (mysteriousNumber > number)
-    {
-        forkMin = number;
-        Console.WriteLine($"Trop petit !");
-        isOk = false;
-        count++;
-    }
-
     else
     {
-        Console.WriteLine($"Bien joué ! Vous avez trouvé le nombre mystère en {count} fois !");
-        isOk = true;
+        if (number < valMin || number > valMax)
+        {
+            Console.WriteLine($"Le nombre doit être un entier positif entre {valMin} et {valMax} !");
+            isOk = false;
+        }
+
+        count++;
+
+        if (mysteriousNumber < number)
+        {
+            valMax = number;
+            Console.WriteLine("Trop grand !");
+            isOk = false;
+        }
+
+        else if (mysteriousNumber > number)
+        {
+            valMin = number;
+            Console.WriteLine("Trop petit !");
+            isOk = false;
+        }
+
+        else
+        {
+            Console.WriteLine($"Bien joué ! Vous avez trouvé le nombre mystère en {count} tentatives !");
+            isOk = true;
+        }
     }
 }
 while (!isOk);
-

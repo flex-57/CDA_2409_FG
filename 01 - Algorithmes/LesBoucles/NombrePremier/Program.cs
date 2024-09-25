@@ -5,7 +5,7 @@ bool isPrime = true;
 do
 {
     Console.WriteLine("Veuillez entrer un nombre :");
-    isOk = int.TryParse(Console.ReadLine(), out number ) || number >= 1;
+    isOk = int.TryParse(Console.ReadLine(), out number) || number >= 1;
 
     if (!isOk)
     {

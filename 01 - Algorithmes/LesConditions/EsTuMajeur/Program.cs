@@ -4,7 +4,7 @@ int age = int.Parse(Console.ReadLine());
 Console.WriteLine("Réponse :");
 if (age > 0)
 {
-    if(age < 18) Console.WriteLine("Vous êtes mineur !");
+    if (age < 18) Console.WriteLine("Vous êtes mineur !");
     else Console.WriteLine("Vous êtes majeur !");
 }
 else
