@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NombrePremier", "..\LesBouc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeuDeLaFourchette", "..\LesBoucles\JeuDeLaFourchette\JeuDeLaFourchette.csproj", "{16728654-3A67-47C9-B1F2-3DCA417F2EBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarnabéFaitSesCourses", "..\LesBoucles\BarnabéFaitSesCourses\BarnabéFaitSesCourses.csproj", "{839C1761-3FFD-4C0D-A68B-DCD87A7E93D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{16728654-3A67-47C9-B1F2-3DCA417F2EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16728654-3A67-47C9-B1F2-3DCA417F2EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16728654-3A67-47C9-B1F2-3DCA417F2EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{839C1761-3FFD-4C0D-A68B-DCD87A7E93D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839C1761-3FFD-4C0D-A68B-DCD87A7E93D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839C1761-3FFD-4C0D-A68B-DCD87A7E93D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{839C1761-3FFD-4C0D-A68B-DCD87A7E93D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
