@@ -31,15 +31,15 @@ B = readAndParse("Veuillez entrer un deuxième nombre :");
 
 Console.WriteLine(Environment.NewLine + "Résultat :" + Environment.NewLine);
 
-if(A < B)
+if (A < B)
 {
-    for(int i = A + 1;  i < B; i++)
+    for (int i = A + 1; i < B; i++)
     {
         Console.Write(i + " ");
     }
 }
 
-else if(A > B)
+else if (A > B)
 {
     for (int i = A - 1; i > B; i--)
     {

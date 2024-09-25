@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-Console.WriteLine("Veuillez entrer un premier nombre :");
+﻿Console.WriteLine("Veuillez entrer un premier nombre :");
 int A = int.Parse(Console.ReadLine());
 Console.WriteLine("Veuillez entrer un deuxième nombre :");
 int B = int.Parse(Console.ReadLine());

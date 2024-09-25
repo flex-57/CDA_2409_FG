@@ -14,25 +14,23 @@ do
 
 bool weatherIsGood = weather == "oui" || weather == "o";
 
-
-
-if(weatherIsGood)
+if (weatherIsGood)
 {
     Console.WriteLine("Il fait beau, je vais me ballader !");
 
-    if(!bicycleState)
+    if (!bicycleState)
     {
         Console.WriteLine("Ma bicyclette ne fonctionne pas correctement, je dois passer chez le garagiste.");
 
-        if (!fastRepair) 
-        { 
-            Console.WriteLine("Je renonce à ma ballade en vélo et je vais à pied jusqu'à l'étang pour cueillir les joncs."); 
+        if (!fastRepair)
+        {
+            Console.WriteLine("Je renonce à ma ballade en vélo et je vais à pied jusqu'à l'étang pour cueillir les joncs.");
         }
     }
 
-    else 
-    { 
-        Console.WriteLine("Je vais y aller à bicyclette."); 
+    else
+    {
+        Console.WriteLine("Je vais y aller à bicyclette.");
     }
 }
 
@@ -40,7 +38,7 @@ else
 {
     Console.WriteLine("Il ne fait pas beau, je vais passer ma journée à lire.");
 
-    if(!bookInLivingroom)
+    if (!bookInLivingroom)
     {
         Console.Write("Je passe à la bibliothèque emprunter ");
 

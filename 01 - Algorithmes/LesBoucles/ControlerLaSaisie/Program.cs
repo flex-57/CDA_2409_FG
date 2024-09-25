@@ -9,15 +9,15 @@ do
 
     Console.WriteLine("Comment vous appelez-vous?");
     userName = Console.ReadLine();
-    
-    if(userName.Length < 2)
+
+    if (userName.Length < 2)
     {
         Console.WriteLine(Environment.NewLine + "Le prénom doit contenir au moins 2 caractères !");
 
         isOk = false;
     }
 
-    if(!userName.All(char.IsLetter))
+    if (!userName.All(char.IsLetter))
     {
         Console.WriteLine(Environment.NewLine + "Le prénom ne doit contenir que des caractères alphabétiques !");
 
