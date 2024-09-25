@@ -15,13 +15,13 @@ do
         Console.WriteLine("Ce n'est pas un nombre !");
     }
 
-    else if(number < 0 || number > 100)
+    else if(number < forkMin || number > forkMax)
     {
         Console.WriteLine($"Le nombre doit être un entier positif entre {forkMin} et {forkMax} !");
         isOk = false;
     }
 
-    if (mysteriousNumber < number)
+    else if (mysteriousNumber < number)
     {
         forkMax = number;
         Console.WriteLine("Trop grand !");
