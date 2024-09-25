@@ -15,13 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaBicyclette", "..\LesCondi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlerLaSaisie", "..\LesBoucles\ControlerLaSaisie\ControlerLaSaisie.csproj", "{4233EB4D-CF16-4ADE-BF8B-136D8825033D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerLaSaisieAvecLimite", "..\LesBoucles\ControllerLaSaisieAvecLimite\ControllerLaSaisieAvecLimite.csproj", "{AE1EC9C7-7DDD-4F99-BE6F-ED81BB62692C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControllerLaSaisieAvecLimite", "..\LesBoucles\ControllerLaSaisieAvecLimite\ControllerLaSaisieAvecLimite.csproj", "{AE1EC9C7-7DDD-4F99-BE6F-ED81BB62692C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntervalleEntre2Nombres", "..\LesBoucles\IntervalleEntre2Nombres\IntervalleEntre2Nombres.csproj", "{607853A5-2519-4F2B-AECC-D0F0E2A4ED16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntervalleEntre2Nombres", "..\LesBoucles\IntervalleEntre2Nombres\IntervalleEntre2Nombres.csproj", "{607853A5-2519-4F2B-AECC-D0F0E2A4ED16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheDesDiviseurs", "..\LesBoucles\RechercheDesDiviseurs\RechercheDesDiviseurs.csproj", "{9884AF11-2B6B-4BFA-83CF-445CC969FCD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RechercheDesDiviseurs", "..\LesBoucles\RechercheDesDiviseurs\RechercheDesDiviseurs.csproj", "{9884AF11-2B6B-4BFA-83CF-445CC969FCD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NombrePremier", "..\LesBoucles\NombrePremier\NombrePremier.csproj", "{6443AB1A-4885-4AC5-9A90-E027BD548FF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NombrePremier", "..\LesBoucles\NombrePremier\NombrePremier.csproj", "{6443AB1A-4885-4AC5-9A90-E027BD548FF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeuDeLaFourchette", "..\LesBoucles\JeuDeLaFourchette\JeuDeLaFourchette.csproj", "{16728654-3A67-47C9-B1F2-3DCA417F2EBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{6443AB1A-4885-4AC5-9A90-E027BD548FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6443AB1A-4885-4AC5-9A90-E027BD548FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6443AB1A-4885-4AC5-9A90-E027BD548FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16728654-3A67-47C9-B1F2-3DCA417F2EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16728654-3A67-47C9-B1F2-3DCA417F2EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16728654-3A67-47C9-B1F2-3DCA417F2EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16728654-3A67-47C9-B1F2-3DCA417F2EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
