@@ -4,14 +4,16 @@ bool isNumOk;
 
 int readAndParse(string text)
 {
+    int i = 0;
+
     do
     {
         isNumOk = true;
 
         Console.WriteLine(Environment.NewLine + text);
-        string inputA = Console.ReadLine();
+        string input = Console.ReadLine();
 
-        if (!int.TryParse(inputA, out A))
+        if (!int.TryParse(input, out i))
         {
             Console.WriteLine(Environment.NewLine + "Ce n'est pas un nombre !");
 
@@ -20,7 +22,7 @@ int readAndParse(string text)
     }
     while (!isNumOk);
 
-    return A;
+    return i;
 }
 
 
@@ -31,23 +33,19 @@ B = readAndParse("Veuillez entrer un deuxième nombre :");
 
 Console.WriteLine(Environment.NewLine + "Résultat :" + Environment.NewLine);
 
-if (A < B)
+while (A < B - 1)
 {
-    for (int i = A + 1; i < B; i++)
-    {
-        Console.Write(i + " ");
-    }
+    A++;
+    Console.Write(A + " ");
 }
 
-else if (A > B)
+while (A > B + 1)
 {
-    for (int i = A - 1; i > B; i--)
-    {
-        Console.Write(i + " ");
-    }
+    A--;
+    Console.Write(A + " ");
 }
 
-else
+if(A == B)
 {
     Console.WriteLine("Les deux nombres ont la même valeur !");
 }
