@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarnabéFaitSesCourses", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheNombreDansTableau", "..\LesTableaux\RechercheNombreDansTableau\RechercheNombreDansTableau.csproj", "{174A76DA-A8A2-498F-B54A-C18069666C3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheNombreOccurencesLettreDansPhrase", "..\LesTableaux\RechercheNombreOccurencesLettreDansPhrase\RechercheNombreOccurencesLettreDansPhrase.csproj", "{526E1E20-FB80-453A-97FF-6A0CD2F061B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{174A76DA-A8A2-498F-B54A-C18069666C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{174A76DA-A8A2-498F-B54A-C18069666C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{174A76DA-A8A2-498F-B54A-C18069666C3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526E1E20-FB80-453A-97FF-6A0CD2F061B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526E1E20-FB80-453A-97FF-6A0CD2F061B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526E1E20-FB80-453A-97FF-6A0CD2F061B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526E1E20-FB80-453A-97FF-6A0CD2F061B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
