@@ -34,28 +34,31 @@
 
             return again == "oui" || again == "o";
         }
+        static void Count() 
+        {
+            int amount = SetAmount();
+            int spent;
+            int countStore = 0;
 
+            while (amount > 0)
+            {
+                spent = amount / 2 + 1;
+                amount = amount - spent;
+
+                countStore++;
+
+                string ord = countStore == 1 ? "er" : "e";
+
+                Console.WriteLine($"Argent dépensé dans le {countStore}{ord} magasin : {spent}. Restant : {amount}");
+            }
+
+            Console.WriteLine($"Barnabé à visité {countStore} magasins et à dépensé tout son argent !");
+        }
         static void Main(string[] args)
         {
             do
             {
-                int amount = SetAmount();
-                int spent;
-                int countStore = 0;
-                
-                while (amount > 0)
-                {
-                    spent = amount / 2 + 1;
-                    amount = amount - spent;
-
-                    countStore++;
-
-                    string ord = countStore == 1 ? "er" : "e";
-
-                    Console.WriteLine($"Argent dépensé dans le {countStore}{ord} magasin : {spent}. Restant : {amount}");
-                }
-
-                Console.WriteLine($"Barnabé à visité {countStore} magasins et à dépensé tout son argent !");
+                Count();
             }
             while (TryAgain());
         }
