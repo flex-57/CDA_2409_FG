@@ -29,9 +29,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RechercheNombreDansTableau"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RechercheNombreOccurencesLettreDansPhrase", "..\LesTableaux\RechercheNombreOccurencesLettreDansPhrase\RechercheNombreOccurencesLettreDansPhrase.csproj", "{526E1E20-FB80-453A-97FF-6A0CD2F061B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarnabeFaitSesCourses", "..\LesBoucles\BarnabeFaitSesCourses\BarnabeFaitSesCourses.csproj", "{FCDDC86A-C0E6-461C-AD64-2FD001EFB4A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarnabeFaitSesCourses", "..\LesBoucles\BarnabeFaitSesCourses\BarnabeFaitSesCourses.csproj", "{FCDDC86A-C0E6-461C-AD64-2FD001EFB4A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DenombrerLettres", "..\LesTableaux\DenombrerLettres\DenombrerLettres.csproj", "{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DenombrerLettres", "..\LesTableaux\DenombrerLettres\DenombrerLettres.csproj", "{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CA9324BB-F358-4CD2-82F3-00C21D1EA3D9} = {CA9324BB-F358-4CD2-82F3-00C21D1EA3D9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FabriceTools", "..\FabriceTools\FabriceTools.csproj", "{CA9324BB-F358-4CD2-82F3-00C21D1EA3D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +104,10 @@ Global
 		{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA9324BB-F358-4CD2-82F3-00C21D1EA3D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA9324BB-F358-4CD2-82F3-00C21D1EA3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA9324BB-F358-4CD2-82F3-00C21D1EA3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9324BB-F358-4CD2-82F3-00C21D1EA3D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

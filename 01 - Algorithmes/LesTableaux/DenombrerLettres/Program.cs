@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using FabriceTools;
 
 namespace DénombrerLettres
 {
@@ -26,19 +26,7 @@ namespace DénombrerLettres
             }
             return text != " " ? text.ToLower() : " ";
         }
-        static bool TryAgain()
-        {
-            string again;
 
-            do
-            {
-                Console.WriteLine("Recommencer ? (Oui(o) / Non(n)");
-                again = Console.ReadLine();
-                again = again.ToLower();
-            } while (again != "oui" && again != "o" && again != "non" && again != "n");
-
-            return again == "oui" || again == "o";
-        }
         static void Main(string[] args)
         {
             string text;
@@ -68,7 +56,7 @@ namespace DénombrerLettres
                     }
                 }
             }
-            while (TryAgain());
+            while (ConsolePrompt.TryAgain());
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace BarnabeFaitSesCourses
+﻿using FabriceTools;
+
+namespace BarnabeFaitSesCourses
 {
     internal class Program
     {
@@ -21,19 +23,7 @@
 
             return amount;
         }
-        static bool TryAgain()
-        {
-            string again;
-
-            do
-            {
-                Console.WriteLine("Recommencer ? (Oui(o) / Non(n)");
-                again = Console.ReadLine();
-                again = again.ToLower();
-            } while (again != "oui" && again != "o" && again != "non" && again != "n");
-
-            return again == "oui" || again == "o";
-        }
+     
         static void Count() 
         {
             int amount = SetAmount();
@@ -60,7 +50,7 @@
             {
                 Count();
             }
-            while (TryAgain());
+            while (ConsolePrompt.TryAgain());
         }
     }
 }
