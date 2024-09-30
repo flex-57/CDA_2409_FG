@@ -25,11 +25,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NombrePremier", "..\LesBouc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JeuDeLaFourchette", "..\LesBoucles\JeuDeLaFourchette\JeuDeLaFourchette.csproj", "{16728654-3A67-47C9-B1F2-3DCA417F2EBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheNombreDansTableau", "..\LesTableaux\RechercheNombreDansTableau\RechercheNombreDansTableau.csproj", "{174A76DA-A8A2-498F-B54A-C18069666C3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RechercheNombreDansTableau", "..\LesTableaux\RechercheNombreDansTableau\RechercheNombreDansTableau.csproj", "{174A76DA-A8A2-498F-B54A-C18069666C3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RechercheNombreOccurencesLettreDansPhrase", "..\LesTableaux\RechercheNombreOccurencesLettreDansPhrase\RechercheNombreOccurencesLettreDansPhrase.csproj", "{526E1E20-FB80-453A-97FF-6A0CD2F061B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RechercheNombreOccurencesLettreDansPhrase", "..\LesTableaux\RechercheNombreOccurencesLettreDansPhrase\RechercheNombreOccurencesLettreDansPhrase.csproj", "{526E1E20-FB80-453A-97FF-6A0CD2F061B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarnabeFaitSesCourses", "..\LesBoucles\BarnabeFaitSesCourses\BarnabeFaitSesCourses.csproj", "{FCDDC86A-C0E6-461C-AD64-2FD001EFB4A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DenombrerLettres", "..\LesTableaux\DenombrerLettres\DenombrerLettres.csproj", "{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{FCDDC86A-C0E6-461C-AD64-2FD001EFB4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCDDC86A-C0E6-461C-AD64-2FD001EFB4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCDDC86A-C0E6-461C-AD64-2FD001EFB4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E877DC8C-2695-47C4-A8A8-0D85B0EA583D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
