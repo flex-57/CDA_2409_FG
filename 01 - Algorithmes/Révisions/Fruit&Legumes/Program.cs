@@ -1,95 +1,64 @@
-﻿using System.Text.RegularExpressions;
+﻿using FabriceTools;
+using System.Text.RegularExpressions;
 
 namespace Fruit_Legumes
 {
     internal class Program
     {
-        //const string pattern = @"^([a-z -]+) (\d+.?\d*)$";
+        const string pattern = @"^([a-zA-Z\s]+)\s+(\d+(\.\d{1,2})?)$"; 
+
         static void Main(string[] args)
         {
-            string prompt = "";
             string fruitAndPrice = "";
-            string[] fruitsAndPrices;
-            
-            string[] prices;
+            string prompt;
 
             do
             {
-                Console.WriteLine("Veuillez entrer un légume et son prix au kilo :");
-
+                Console.WriteLine("Veuillez entrer un légume et son prix au kilo ou \"go\" pour terminer :");
                 prompt = Console.ReadLine();
-                
-                if (prompt == "")
+
+                if (!string.IsNullOrWhiteSpace(prompt) && prompt != "go")
                 {
-                    Console.WriteLine("Seulement un légume et son prix au kilo !");
-                }
-                
-                if (prompt != "go")
-                {
-                    fruitAndPrice += prompt + ",";
+                    fruitAndPrice += prompt + ","; 
                 }
             }
             while (prompt != "go");
 
-
-
-            fruitsAndPrices = fruitAndPrice.Split(",");
-            
-            string[][] fap = new string[fruitsAndPrices.Length][];
-
-            int i = 0;
-            string[] f;
-            foreach (string items in fruitsAndPrices)
+            if (fruitAndPrice.Length > 0)
             {
-                f= items.Split(" ");
-                fap[i] = new string[f.Length];
-                
-                foreach (string item in fap[i])
-                {
-                  
-                    
-                        Console.WriteLine(item);
-                    
-                }
-                i++;
+                fruitAndPrice = fruitAndPrice.TrimEnd(',');
             }
-            
-            
-        }
-    }
-}
 
+           
+            MatchCollection matches = Regex.Matches(fruitAndPrice, pattern);
 
+ 
+            string[] vegetables = new string[matches.Count];
+            double[] prices = new double[matches.Count];
 
+            for (int i = 0; i < matches.Count; i++)
+            {
+                vegetables[i] = matches[i].Groups[1].Value;
+                prices[i] = double.Parse(matches[i].Groups[2].Value);
+                Console.WriteLine($"Légume: {vegetables[i]}, Prix: {prices[i]} euros");
+            }
 
-                /*
-                string[] fpArray = fruitAndPrice.Split(" ");
-                string[] fruits = new string[fpArray.Length];
-                int[] prices = new int[fpArray.Length];
-                */
-                
+            if (prices.Length > 0)
+            {
+                double minPrice = prices[0];
+                string cheapestVegetable = vegetables[0];
 
-
-
-
-
-
-
-
-                /*
-                try
+                for (int i = 1; i < prices.Length; i++)
                 {
-                    foreach (Match match in Regex.Matches(fruitAndPrice, pattern, RegexOptions.IgnoreCase))
+                    if (prices[i] < minPrice)
                     {
-                        Console.WriteLine("value : {0}; Index: {1}", match.Value, match.Index);
-                        Console.WriteLine("ok");
+                        minPrice = prices[i];
+                        cheapestVegetable = vegetables[i];
                     }
                 }
 
-                catch (RegexMatchTimeoutException)
-                {
-                    Console.WriteLine("Pas ok");
-
-                }
-                */
-            
+                Console.WriteLine($"Légume le moins cher au kilo : {cheapestVegetable} à {minPrice} euros.");
+            }
+        }
+    }
+}
