@@ -8,6 +8,15 @@
             int[] array = [128, 64, 8, 512, 16, 32, 256];
             int index = 0;
 
+            Console.WriteLine("Voici le tableau non-trié :");
+
+            foreach (int i in array)
+            {
+                Console.Write($"{i} ");
+            }
+
+            Console.WriteLine(Environment.NewLine);
+
             for (int j = 0; j < array.Length - 1; j++)
             {
                 index = j;
@@ -24,8 +33,13 @@
                 array[j] = tempo;
                 tempo = 0;
             }
-            Console.WriteLine(tempo);
 
+            Console.WriteLine("Voici le tableau trié :");
+            
+            foreach (int i in array)
+            {
+                Console.Write($"{i} ");
+            }
         }   
         
     }
