@@ -1,5 +1,5 @@
 ﻿// Variables
-string userName;
+string ?userName;
 bool isOk;
 
 // Affiche le form tant que le prénom n'est pas correct (2 caractères alphabétiques minimum)
