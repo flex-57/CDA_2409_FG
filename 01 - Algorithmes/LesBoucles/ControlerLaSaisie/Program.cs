@@ -1,30 +1,38 @@
-﻿// Variables
+﻿using FabriceTools;
+
+// Variables
 string ?userName;
 bool isOk;
 
-// Affiche le form tant que le prénom n'est pas correct (2 caractères alphabétiques minimum)
+// 
 do
 {
-    isOk = true;
-
-    Console.WriteLine("Comment vous appelez-vous?");
-    userName = Console.ReadLine();
-
-    if (userName.Length < 2)
+    // Affiche le form tant que le prénom n'est pas correct (2 caractères alphabétiques minimum)
+    do
     {
-        Console.WriteLine(Environment.NewLine + "Le prénom doit contenir au moins 2 caractères !");
+        isOk = true;
 
-        isOk = false;
+        Console.WriteLine("Comment vous appelez-vous?");
+        userName = Console.ReadLine();
+
+        if (userName.Length < 2)
+        {
+            Console.WriteLine(Environment.NewLine + "Le prénom doit contenir au moins 2 caractères !");
+
+            isOk = false;
+        }
+
+        if (!userName.All(char.IsLetter))
+        {
+            Console.WriteLine(Environment.NewLine + "Le prénom ne doit contenir que des caractères alphabétiques !");
+
+            isOk = false;
+        }
     }
+    while (!isOk);
 
-    if (!userName.All(char.IsLetter))
-    {
-        Console.WriteLine(Environment.NewLine + "Le prénom ne doit contenir que des caractères alphabétiques !");
-
-        isOk = false;
-    }
+    // Affichage final
+    Console.WriteLine(Environment.NewLine + "Bonjour " + userName);
 }
-while (!isOk);
+while (ConsolePrompt.TryAgain());
 
-// Affichage final
-Console.WriteLine(Environment.NewLine + "Bonjour " + userName);

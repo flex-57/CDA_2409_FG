@@ -4,16 +4,13 @@
     {
         public static bool TryAgain()
         {
-            string again;
+            Console.WriteLine("Recommencer ? (Oui(o) / Non(n)");
 
-            do
-            {
-                Console.WriteLine("Recommencer ? (Oui(o) / Non(n)");
-                again = Console.ReadLine();
-                again = again.ToLower();
-            } while (again != "oui" && again != "o" && again != "non" && again != "n");
+            // Attendre que l'utilisateur appuie sur une touche
+            ConsoleKeyInfo key = Console.ReadKey();
 
-            return again == "oui" || again == "o";
+            // Vérifie si l'utilisateur a appuyé sur 'o' ou 'n'
+            return key.KeyChar == 'o' || key.KeyChar == 'O';
         }
     }
 }

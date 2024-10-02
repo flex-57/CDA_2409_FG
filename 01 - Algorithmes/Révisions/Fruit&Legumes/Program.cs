@@ -42,7 +42,7 @@ namespace Fruit_Legumes
                 {
                     vegetables[i] = matches[i].Groups[1].Value;
                     prices[i] = double.Parse(matches[i].Groups[2].Value);
-                    Console.WriteLine($"Légume: {vegetables[i]}, Prix: {prices[i]} euros");
+                    Console.WriteLine($"Légume: {vegetables[i]}, Prix: {prices[i]} €");
                 }
 
                 if (prices.Length > 0)
