@@ -3,18 +3,18 @@
     private static void Main(string[] args)
     {
         const string PASSWORD = "formation";
-        const int MAX_ATTEMPS = 3;
+        const int MAX_ATTEMPTS = 3;
 
         string? passwordVerif;
-        int remainingAttemps;
+        int remainingAttempts;
         int counter = 1;
         bool isOk;
 
         do
         {
-            remainingAttemps = MAX_ATTEMPS - counter;
+            remainingAttempts = MAX_ATTEMPTS - counter;
 
-            Console.WriteLine("Veuillez taper le mot de passe :");
+            Console.WriteLine("Tapez votre mot de passe :");
             passwordVerif = Console.ReadLine();
 
             if (passwordVerif.Equals(PASSWORD))
@@ -25,14 +25,14 @@
 
             else
             {
-                if (remainingAttemps == 0)
+                if (remainingAttempts == 0)
                 {
                     Console.WriteLine($"{Environment.NewLine}Votre compte est bloqué !");
                 }
 
                 else
                 {
-                    Console.WriteLine($"{Environment.NewLine}Mot de passe incorrect! Il vous reste {remainingAttemps} tentatives...");
+                    Console.WriteLine($"{Environment.NewLine}Mot de passe incorrect! Il vous reste {remainingAttempts} tentatives...");
                 }
 
                 Console.WriteLine(Environment.NewLine);
@@ -40,6 +40,6 @@
                 isOk = false;
             }
         }
-        while (remainingAttemps > 0 && !isOk);
+        while (remainingAttempts > 0 && !isOk);
     }
 }
