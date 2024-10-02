@@ -40,9 +40,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabriceTools", "..\FabriceT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TriTableau", "..\LesTableaux\TriTableau\TriTableau.csproj", "{13A36F74-23E1-4789-B68A-B80155D80354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Palindrome", "..\LesTableaux\Palindrome\Palindrome.csproj", "{C59DADCA-4EF2-4B6D-B41E-B4B6BCC78B41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Palindrome", "..\LesTableaux\Palindrome\Palindrome.csproj", "{C59DADCA-4EF2-4B6D-B41E-B4B6BCC78B41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fruit&Legumes", "..\Révisions\Fruit&Legumes\Fruit&Legumes.csproj", "{1C7FB72C-CCA0-415E-B335-95B1522296C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fruit&Legumes", "..\Révisions\Fruit&Legumes\Fruit&Legumes.csproj", "{1C7FB72C-CCA0-415E-B335-95B1522296C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeu2_0", "..\Révisions\Jeu2_0\Jeu2_0.csproj", "{EFB630FA-FF13-49EB-9324-1EC48F21E58B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -126,6 +128,10 @@ Global
 		{1C7FB72C-CCA0-415E-B335-95B1522296C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7FB72C-CCA0-415E-B335-95B1522296C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7FB72C-CCA0-415E-B335-95B1522296C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB630FA-FF13-49EB-9324-1EC48F21E58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB630FA-FF13-49EB-9324-1EC48F21E58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB630FA-FF13-49EB-9324-1EC48F21E58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB630FA-FF13-49EB-9324-1EC48F21E58B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
