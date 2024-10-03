@@ -1,23 +1,28 @@
-﻿Console.WriteLine("Veuillez entrer un premier nombre :");
-int A = int.Parse(Console.ReadLine());
-Console.WriteLine("Veuillez entrer un deuxième nombre :");
-int B = int.Parse(Console.ReadLine());
-Console.WriteLine("Veuillez entrer un troisième nombre :");
-int C = int.Parse(Console.ReadLine());
-
-int[] arrayNum =
-[
-    A, B, C
-];
-
-Array.Sort(arrayNum);
-
-Console.WriteLine(Environment.NewLine + "Valeurs triées dans l'ordre croissant :");
-
-foreach (int i in arrayNum)
+﻿using FabriceTools;
+internal class Program
 {
-    Console.WriteLine(i);
-}
+    private static void Main(string[] args)
+    {
+        do
+        {
+            float A = ConsolePrompt.AskPositiveFloat("Veuillez entrer un premier nombre :");
+            float B = ConsolePrompt.AskPositiveFloat("Veuillez entrer un deuxième nombre :");
+            float C = ConsolePrompt.AskPositiveFloat("Veuillez entrer un troisième nombre :");
 
-Console.WriteLine(Environment.NewLine + "Appuyez sur entrée pour continuer.");
-Console.ReadLine();
+            float[] arrayNum =
+            [
+                A, B, C
+            ];
+
+            Array.Sort(arrayNum);
+
+            Console.WriteLine(Environment.NewLine + "Valeurs triées dans l'ordre croissant :");
+
+            foreach (float i in arrayNum)
+            {
+                Console.WriteLine(i);
+            }
+        }
+        while (ConsolePrompt.TryAgain());
+    }
+}

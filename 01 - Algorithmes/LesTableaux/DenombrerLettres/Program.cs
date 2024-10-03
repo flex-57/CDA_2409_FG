@@ -48,11 +48,15 @@ namespace DénombrerLettres
                     }
                 }
 
+                Console.WriteLine($"Dans ce texte de {text.Length} caractères, ");
+
                 for (int position = 0; position < chars.Length; position++)
                 {
-                    if(counter[position] > 0)
+                    char punctuation = position == chars.Length - 1 ? '.' : ','; //// ne fonctionne pas !!!!!!!!!!!!!!!!
+
+                    if (counter[position] > 0)
                     {
-                        Console.WriteLine($"{chars[position]} : {counter[position]}");
+                        Console.Write($"le \"{chars[position]}\" apparait {counter[position]} fois{punctuation}");
                     }
                 }
             }

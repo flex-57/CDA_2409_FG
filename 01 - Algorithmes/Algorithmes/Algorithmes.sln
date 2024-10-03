@@ -46,7 +46,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fruit&Legumes", "..\Révisi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jeu2_0", "..\Révisions\Jeu2_0\Jeu2_0.csproj", "{EFB630FA-FF13-49EB-9324-1EC48F21E58B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasseSecure", "..\LesBoucles\PasseSecure\PasseSecure.csproj", "{59E9B2BF-F0F6-441D-9954-13CC20BD8AF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasseSecure", "..\LesBoucles\PasseSecure\PasseSecure.csproj", "{59E9B2BF-F0F6-441D-9954-13CC20BD8AF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexCheck", "..\FabriceTools\RegexCheck\RegexCheck.csproj", "{8B82DF9B-92B2-4FFE-B3C7-FFFF53877BF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,6 +140,10 @@ Global
 		{59E9B2BF-F0F6-441D-9954-13CC20BD8AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E9B2BF-F0F6-441D-9954-13CC20BD8AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E9B2BF-F0F6-441D-9954-13CC20BD8AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B82DF9B-92B2-4FFE-B3C7-FFFF53877BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B82DF9B-92B2-4FFE-B3C7-FFFF53877BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B82DF9B-92B2-4FFE-B3C7-FFFF53877BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B82DF9B-92B2-4FFE-B3C7-FFFF53877BF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
