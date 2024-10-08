@@ -21,7 +21,7 @@ namespace Validations
                 switch(s)
                 {
                     case '1':
-                        ConsolePrompt.CBCheck();
+                        IsValid.ValidCreditCard();
                         break;
                     case '2':
                         ConsolePrompt.telephoneNumberCheck();

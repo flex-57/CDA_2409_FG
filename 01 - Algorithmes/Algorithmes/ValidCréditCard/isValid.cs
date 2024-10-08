@@ -2,30 +2,34 @@
 
 namespace Validations
 {
-    public class isValid
+    public class IsValid
     {
-        static bool ValidCreditCard()
+        public static bool ValidCreditCard()
         {
-            do
-            {
-                Console.WriteLine("Entrez votre numéro de CB :");
-                string inputCB = Console.ReadLine() ?? "";
+            string prompt;
+            bool isOk;
 
-                if (!RegexCheck.creditCard(inputCB))
+
+                Console.WriteLine("Entrez un numéro de CB : ");
+                prompt = Console.ReadLine() ?? "";
+
+                isOk = RegexCheck.creditCard(prompt) && CbCheck.algoLuhn(prompt);
+
+                if (!isOk)
                 {
-                    Console.WriteLine($"\"{inputCB}\" n'est pas un numéro de carte valide !");
+                    Console.WriteLine("Numéro de carte de crédit invalide, recommencez !");
                     return false;
                 }
 
                 else
                 {
-                    Console.WriteLine("C'est bon! Nous espérons que votre CB est pleine !");
+                    Console.WriteLine("Numéro de carte de crédit valide, nous espérons que votre carte est pleine !");
                     return true;
                 }
-            }
-            while (ConsolePrompt.TryAgain());
+            
         }
-        static bool ValidTelephoneNumber()
+
+        public static bool ValidTelephoneNumber()
         {
             do
             {

@@ -59,31 +59,6 @@
             return returnValue;
         }
 
-        public static void CBCheck()
-        {
-            string prompt;
-
-            do
-            {
-                Console.WriteLine("Entrez un numéro de CB : ");
-                prompt = Console.ReadLine() ?? "";
-
-                isOk = RegexCheck.creditCard(prompt);
-
-                Console.WriteLine(CbCheck.algoLuhn(prompt));
-
-                if (!isOk)
-                {
-                    Console.WriteLine("Numéro de carte de crédit invalide, recommencez !");
-                }
-
-                else
-                {
-                    Console.WriteLine("Numéro de carte de crédit valide, merci !");
-                }
-            }
-            while (!isOk);
-        }
 
         public static void telephoneNumberCheck()
         {
