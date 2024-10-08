@@ -33,6 +33,7 @@ namespace DénombrerLettres
 
             char[] chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
             int[] counter = new int[chars.Length];
+            string res = "";
 
             do
             {
@@ -48,17 +49,18 @@ namespace DénombrerLettres
                     }
                 }
 
-                Console.WriteLine($"Dans ce texte de {text.Length} caractères, ");
+                Console.WriteLine($"Dans ce texte de {text.Length} caractères ");
 
                 for (int position = 0; position < chars.Length; position++)
                 {
-                    char punctuation = position == chars.Length - 1 ? '.' : ','; //// ne fonctionne pas !!!!!!!!!!!!!!!!
-
                     if (counter[position] > 0)
                     {
-                        Console.Write($"le \"{chars[position]}\" apparait {counter[position]} fois{punctuation}");
+                        res += $"le \"{chars[position]}\" apparait {counter[position]} fois,{Environment.NewLine}";
                     }
                 }
+                res = res.Substring(0, res.Length - 3) + '.';
+
+                Console.WriteLine(res);
             }
             while (ConsolePrompt.TryAgain());
         }
