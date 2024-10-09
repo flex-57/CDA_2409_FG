@@ -4,51 +4,75 @@ namespace Validations
 {
     public class IsValid
     {
-        public static bool ValidCreditCard()
+        static string prompt;
+        static bool isOk;
+
+        public static void ValidCreditCard()
         {
-            string prompt;
-            bool isOk;
-
-
+            do
+            {
                 Console.WriteLine("Entrez un numéro de CB : ");
                 prompt = Console.ReadLine() ?? "";
 
-                isOk = RegexCheck.creditCard(prompt) && CbCheck.algoLuhn(prompt);
+                isOk = RegexCheck.creditCard(prompt) && CBCheck.algoLuhn(prompt);
 
                 if (!isOk)
                 {
-                    Console.WriteLine("Numéro de carte de crédit invalide, recommencez !");
-                    return false;
+                    Console.WriteLine($"\"{prompt}\" n'est pas un numéro de carte de crédit valide !");
                 }
 
                 else
                 {
-                    Console.WriteLine("Numéro de carte de crédit valide, nous espérons que votre carte est pleine !");
-                    return true;
+                    Console.WriteLine("Numéro de carte de crédit valide, nous espérons que celle-ci est pleine !");
                 }
-            
+            }
+            while (!isOk);
         }
 
-        public static bool ValidTelephoneNumber()
+        public static void ValidTelephoneNumber()
         {
             do
             {
                 Console.WriteLine("Entrez votre numéro de téléphone :");
-                string inputTel = Console.ReadLine() ?? "";
+                prompt = Console.ReadLine() ?? "";
 
-                if (!RegexCheck.telephoneNumber(inputTel))
+                isOk = RegexCheck.telephoneNumber(prompt);
+
+                if (!isOk)
                 {
-                    Console.WriteLine($"\"{inputTel}\" n'est pas un numéro de téléphone valide !");
-                    return false;
+                    Console.WriteLine($"\"{prompt}\" n'est pas un numéro de téléphone valide !");
                 }
 
                 else
                 {
                     Console.WriteLine("C'est bon!");
-                    return true;
                 }
             }
-            while (ConsolePrompt.TryAgain());
+            while (!isOk);
+        }
+
+        public static void ValidPassword()
+        {
+            do
+            {
+                Console.WriteLine("Entrez un mot de passe : ");
+                Console.WriteLine("(12 caractères minimum, au moins une minuscule, une majuscule, un chiffre et un caractère spécial ou ");
+                Console.WriteLine("20 caractères minimum, au moins une minuscule, une majuscule et un chiffre)");
+                prompt = Console.ReadLine() ?? "";
+
+                isOk = RegexCheck.password(prompt);
+
+                if (!isOk)
+                {
+                    Console.WriteLine($"Le mot de passe \"{prompt}\" n'est pas valide !");
+                }
+
+                else
+                {
+                    Console.WriteLine("C'est bon!");
+                }
+            }
+            while (!isOk);
         }
     }
 }

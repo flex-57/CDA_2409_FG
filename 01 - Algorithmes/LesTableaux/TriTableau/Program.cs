@@ -4,43 +4,42 @@
     {
         static void Main(string[] args)
         {
+            int[] array = [128, 64, 8, 512, 16, 32, 256, -555];
             int tempo = 0;
-            int[] array = [128, 64, 8, 512, 16, 32, 256];
             int index = 0;
 
             Console.WriteLine("Voici le tableau non-trié :");
 
-            foreach (int i in array)
+            foreach (int num in array)
             {
-                Console.Write($"{i} ");
+                Console.Write($"{num} ");
             }
 
-            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine();
 
-            for (int j = 0; j < array.Length - 1; j++)
+            for (int i = 0; i < array.Length; i++)
             {
-                index = j;
+                index = i;
 
-                for (int i = j; i < array.Length; i++)
+                for (int j = i; j < array.Length; j++)
                 {
-                    if (array[index] > array[i])
+                    if (array[index] > array[j])
                     {
-                        index = i;
+                        index = j;
                     }
                 }
                 tempo = array[index];
-                array[index] = array[j];
-                array[j] = tempo;
+                array[index] = array[i];
+                array[i] = tempo;
                 tempo = 0;
             }
 
             Console.WriteLine("Voici le tableau trié :");
             
-            foreach (int i in array)
+            foreach (int num in array)
             {
-                Console.Write($"{i} ");
+                Console.Write($"{num} ");
             }
         }   
-        
     }
 }

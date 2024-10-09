@@ -58,56 +58,5 @@
 
             return returnValue;
         }
-
-
-        public static void telephoneNumberCheck()
-        {
-            string prompt;
-
-            do
-            {
-                Console.WriteLine("Entrez un numéro de téléphone : ");
-                prompt = Console.ReadLine() ?? "";
-
-                isOk = RegexCheck.telephoneNumber(prompt);
-
-                if (!isOk)
-                {
-                    Console.WriteLine("Numéro de téléphone invalide, recommencez !");
-                }
-
-                else
-                {
-                    Console.WriteLine("Numéro de téléphone valide, merci !");
-                }
-            }
-            while (!isOk);
-        }
-
-        public static void passwordCheck()
-        {
-            string prompt;
-
-            do
-            {
-                Console.WriteLine("Entrez un mot de passe : ");
-                Console.WriteLine("(12 caractères minimum, au moins une minuscule, une majuscule, un chiffre et un caractère spécial ou ");
-                Console.WriteLine("20 caractères minimum, au moins une minuscule, une majuscule et un chiffre)");
-                prompt = Console.ReadLine() ?? "";
-
-                isOk = RegexCheck.password(prompt);
-
-                if (!isOk)
-                {
-                    Console.WriteLine("Mot de passe invalide, recommencez !");
-                }
-
-                else
-                {
-                    Console.WriteLine("Mot de passe valide, continuez !");
-                }
-            }
-            while (!isOk);
-        }
     }
 }
