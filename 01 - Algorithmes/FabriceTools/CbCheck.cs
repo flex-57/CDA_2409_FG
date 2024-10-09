@@ -1,6 +1,6 @@
 ﻿namespace FabriceTools
 {
-    public class CbCheck
+    public class CBCheck
     {
         public static bool algoLuhn(string _val)
         {
@@ -17,6 +17,7 @@
                 if (i % 2 != 0) 
                 {
                     digit *= 2;
+
                     if (digit > 9) 
                     {
                         digit -= 9;

@@ -14,7 +14,7 @@ namespace Validations
 
                 Console.WriteLine("1. Vérifiez un numéro de CB");
                 Console.WriteLine("2. Vérifiez un numéro de téléphone");
-                Console.WriteLine("3. Vérifiez un password");
+                Console.WriteLine("3. Vérifiez un mot de passe");
 
                 s = Console.ReadKey(true).KeyChar;
 
@@ -24,16 +24,15 @@ namespace Validations
                         IsValid.ValidCreditCard();
                         break;
                     case '2':
-                        ConsolePrompt.telephoneNumberCheck();
+                        IsValid.ValidTelephoneNumber();
                         break;
                     case '3':
-                        ConsolePrompt.passwordCheck();
+                        IsValid.ValidPassword();
                         break;
                 }
       
             }
             while (s != '6');
-
         }
     }
 }

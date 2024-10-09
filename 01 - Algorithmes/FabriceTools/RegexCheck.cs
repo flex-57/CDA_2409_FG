@@ -12,7 +12,7 @@ namespace FabriceTools
 
         public static bool telephoneNumber(string _val)
         {
-            return (new Regex(@"^(0[1-79]{1}[ -]?){1}([\d]{2}[ -]?){4}$")).IsMatch(_val);
+            return (new Regex(@"^(0[1-9]{1}[ -]?){1}([\d]{2}[ -]?){4}$")).IsMatch(_val);
         }
 
         public static bool email(string _val)
