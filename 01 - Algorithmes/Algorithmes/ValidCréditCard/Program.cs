@@ -16,6 +16,9 @@ namespace Validations
                 Console.WriteLine("2. Vérifiez un numéro de téléphone");
                 Console.WriteLine("3. Vérifiez un mot de passe");
 
+
+                Console.WriteLine("6. Sortir");
+
                 s = Console.ReadKey(true).KeyChar;
 
                 switch(s)
@@ -29,8 +32,12 @@ namespace Validations
                     case '3':
                         IsValid.ValidPassword();
                         break;
+
+
+                    default:
+                        Console.WriteLine("Cette option n'existe pas !");
+                        break;
                 }
-      
             }
             while (s != '6');
         }
