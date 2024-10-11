@@ -35,5 +35,12 @@ namespace FabriceTools
 
             return (new Regex(pattern)).IsMatch(_val);
         }
+
+        /*
+        public static bool date(string _val)
+        {
+            return new Regex(@"");
+        }
+        */
     }
 }
