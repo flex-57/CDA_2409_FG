@@ -16,16 +16,18 @@ namespace LearnLists
                 List<string[]> users = new List<string[]>();
                 TimeSpan Birthday;
                 DateTime Now = DateTime.Now;
+                DateTime d;
                 int age = 0;
                 bool isMajor = true;
                 bool isNameOk;
+                bool isDateOk;
                 int i = 1;
 
                 do
                 {
                     do
                     {
-                        Regex reg = new Regex(@"[a-zA-Z -]{2,40}");
+                        Regex reg = new Regex(@"^[a-zàâéèëêïîôöùüûçñ -]+$", RegexOptions.IgnoreCase);
 
                         Console.Write("Entrez nom et prénom : ");
                         inputName = Console.ReadLine() ?? "";
@@ -34,25 +36,31 @@ namespace LearnLists
 
                         if(!isNameOk)
                         {
-                            Console.WriteLine("Ce n'est pas un nom valid");
+                            Console.WriteLine("Ce n'est pas un nom valide");
                         }
                     }
                     while (!isNameOk);
 
-
-                    Console.Write("Entrez date de naissance (dd-mm-yyyy) : ");
-                    inputBirthday = Console.ReadLine() ?? "";
-
-                    if (!DateTime.TryParse(inputBirthday, out DateTime d))
+                    do
                     {
-                        Console.WriteLine("La date fournie n'est pas au bon format");
-                    }
+                        Console.Write("Entrez date de naissance (dd-mm-yyyy) : ");
+                        inputBirthday = Console.ReadLine() ?? "";
 
-                    else
-                    {
-                        Birthday = Now - d;
-                        age = (int)(Birthday.Days / 365.25);
+                        isDateOk = DateTime.TryParse(inputBirthday, out d);
+
+                        if (!isDateOk)
+                        {
+                            Console.WriteLine("La date fournie n'est pas au bon format");
+                        }
+
+                        else
+                        {
+                            Birthday = Now - d;
+                            age = (int)(Birthday.Days / 365.25);
+                        }
                     }
+                    while (!isDateOk);
+
 
                     if (age >= 18)
                     {
@@ -77,7 +85,7 @@ namespace LearnLists
                     string[] user = new string[3];
 
                     user[0] = $"Nom et prénon : {inputName}";
-                    user[1] = $"Age : {age} ans";
+                    user[1] = $"Date de naissance : {d.ToShortDateString()} / Age : {age} ans";
                     user[2] = isMajor ? $"Métier : {inputInfosUser}" : $"Couleur préférée : {inputInfosUser}";
 
                     users.Add(user);
