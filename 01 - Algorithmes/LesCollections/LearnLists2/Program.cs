@@ -4,7 +4,6 @@ namespace LearnLists
 {
     internal class Program
     {
-        const int USER_MAX_LENGHT = 6;
         static void Main(string[] args)
         {
             do
@@ -12,7 +11,7 @@ namespace LearnLists
                 List<string[]> users = [];
                 string inputName;
                 string inputBirthday;
-                string? inputInfosUser = null;
+                string? inputInfosUser;
                 DateTime Now = DateTime.Now;
                 DateTime d;
                 int years = 0;
@@ -96,15 +95,15 @@ namespace LearnLists
                             isMajor = false;
                         }
 
-                        string[] user = new string[USER_MAX_LENGHT];
-
-                        user[0] = inputName;
-                        user[1] = d.ToShortDateString();
-                        user[2] = years.ToString();
-                        user[3] = months.ToString();
-                        user[4] = days.ToString();
-                        user[5] = inputInfosUser;
-
+                        string[] user =
+                        [
+                            inputName,
+                            d.ToShortDateString(),
+                            years.ToString(),
+                            months.ToString(),
+                            days.ToString(),
+                            inputInfosUser,
+                        ];
                         users.Add(user);
                     }
 
