@@ -1,7 +1,5 @@
 ﻿using FabriceTools;
-using System;
 using System.Text.RegularExpressions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace LearnLists
 {
     internal class Program
@@ -10,11 +8,10 @@ namespace LearnLists
         {
             do
             {
-                List<string[]> users = new List<string[]>();
+                List<string[]> users = [];
                 string inputName;
                 string inputBirthday;
-                string inputInfosUser = "";
-                TimeSpan Birthday;
+                string? inputInfosUser;
                 DateTime Now = DateTime.Now;
                 DateTime d;
                 int years = 0;
@@ -33,10 +30,10 @@ namespace LearnLists
 
                         Console.Write("Entrez nom et prénom : ");
                         inputName = Console.ReadLine() ?? "";
-                    
+
                         isNameOk = reg.IsMatch(inputName);
 
-                        if(!isNameOk)
+                        if (!isNameOk)
                         {
                             Console.WriteLine("Ce n'est pas un nom valide !");
                         }
@@ -57,37 +54,32 @@ namespace LearnLists
 
                         else
                         {
-                            /*
-                            Birthday = Now - d;
-                            years = (int)(Birthday.Days / 365.25);
-                            decimals = Birthday.Days / 365.25 - years;
-                            months = (int)(12 * decimals);
-                            */
                             years = Now.Year - d.Year;
 
-                            if(Now < d.AddYears(years))
+                            if (Now < d.AddYears(years))
                             {
                                 years--;
                             }
 
                             months = Now.Month - d.Month;
 
-                            if(months < 0)
+                            if (months < 0)
                             {
                                 months += 12;
                             }
 
                             days = (Now - d.AddYears(years).AddMonths(months)).Days;
+
+                            if (days < 0)
+                            {
+                                months--;
+                                days = DateTime.DaysInMonth(d.Year, d.Month) + days;
+                            }
                         }
                     }
                     while (!isDateOk);
 
-                    if(years < 0)
-                    {
-                        Console.WriteLine("L'utilisateur n'est pas encore conçu !! :D");
-                    }
-
-                    else
+                    if (years > 0)
                     {
                         if (years >= 18)
                         {
@@ -103,20 +95,26 @@ namespace LearnLists
                             isMajor = false;
                         }
 
-                        string[] user = new string[3];
-
-                        user[0] = $"Nom et prénom : {inputName}";
-                        user[1] = $"Date de naissance : {d.ToShortDateString()} / Age : {years} ans, {months} mois et {days} jours.";
-                        user[2] = isMajor ? $"Métier : {inputInfosUser}" : $"Couleur préférée : {inputInfosUser}";
-
+                        string[] user =
+                        [
+                            inputName,
+                            d.ToShortDateString(),
+                            years.ToString(),
+                            months.ToString(),
+                            days.ToString(),
+                            inputInfosUser,
+                        ];
                         users.Add(user);
                     }
 
-
+                    else
+                    {
+                        Console.WriteLine("L'utilisateur n'est pas encore conçu !! :D");
+                    }
                 }
                 while (WantToAddUser());
 
-                if(users.Count < 1)
+                if (users.Count < 1)
                 {
                     Console.WriteLine("Il n'y a aucun utilisateur !");
                 }
@@ -124,16 +122,22 @@ namespace LearnLists
                 {
                     string suffixe = users.Count <= 1 ? "" : "s";
                     Console.WriteLine($"{Environment.NewLine}Il y a {users.Count} utilisateur{suffixe} :");
-                }                   
+                }
 
                 foreach (string[] user_ in users)
                 {
                     Console.WriteLine($"Utilisateur {i++} : ");
-                
-                    foreach(string u in user_)
+
+                    Console.WriteLine($"\tNom et prénom : {user_[0]}");
+                    Console.WriteLine($"\tDate de naissance : {user_[1]} / Age : {user_[2]} ans, {user_[3]} mois et {user_[4]} jours");
+                    Console.WriteLine(isMajor ? $"\tMétier : {user_[5]}" : $"\tCouleur préférée : {user_[5]}");
+
+                    /*
+                    foreach (string u in user_)
                     {
                         Console.WriteLine($"\t{u}");
                     }
+                    */
                 }
             }
             while (ConsolePrompt.TryAgain());
@@ -143,9 +147,9 @@ namespace LearnLists
         {
             Console.WriteLine("Voulez-vous ajouter une autre personne (o/n) ? ");
 
-            ConsoleKeyInfo key = Console.ReadKey(true);
+            ConsoleKey key = Console.ReadKey(true).Key;
 
-            return key.KeyChar == 'o' || key.KeyChar == 'O';
+            return key == ConsoleKey.O;
         }
     }
 }
