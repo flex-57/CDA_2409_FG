@@ -26,6 +26,8 @@
     public class MajorUser(string? _firstName, string? _lastName, DateTime _birthDate, string? _job) : User(_firstName, _lastName, _birthDate)
     {
         public string? Job { get; set; } = _job;
+
+        
     }
 
     public class MinorUser(string? _firstName, string? _lastName, DateTime _birthDate, string? _color) : User(_firstName, _lastName, _birthDate)
