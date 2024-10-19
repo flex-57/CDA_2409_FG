@@ -10,10 +10,10 @@ namespace LearnLists
             {
                 List<string[]> users = [];
                 string inputName;
-                string inputBirthday;
+                string inputBirthdate;
                 string? inputInfosUser;
                 DateTime Now = DateTime.Now;
-                DateTime d;
+                DateTime birthDate;
                 int years = 0;
                 int months = 0;
                 int days = 0;
@@ -43,9 +43,9 @@ namespace LearnLists
                     do
                     {
                         Console.Write("Entrez date de naissance (dd-mm-yyyy) : ");
-                        inputBirthday = Console.ReadLine() ?? "";
+                        inputBirthdate = Console.ReadLine() ?? "";
 
-                        isDateOk = DateTime.TryParse(inputBirthday, out d);
+                        isDateOk = DateTime.TryParse(inputBirthdate, out birthDate);
 
                         if (!isDateOk)
                         {
@@ -54,26 +54,27 @@ namespace LearnLists
 
                         else
                         {
-                            years = Now.Year - d.Year;
+                            years = Now.Year - birthDate.Year;
 
-                            if (Now < d.AddYears(years))
+
+                            if (years < 0)
                             {
                                 years--;
                             }
 
-                            months = Now.Month - d.Month;
+                            months = Now.Month - birthDate.Month;
 
                             if (months < 0)
                             {
                                 months += 12;
                             }
 
-                            days = (Now - d.AddYears(years).AddMonths(months)).Days;
+                            days = (Now - birthDate.AddYears(years).AddMonths(months)).Days;
 
                             if (days < 0)
                             {
                                 months--;
-                                days = DateTime.DaysInMonth(d.Year, d.Month) + days;
+                                days = DateTime.DaysInMonth(birthDate.Year, birthDate.Month) + days;
                             }
                         }
                     }
@@ -98,7 +99,7 @@ namespace LearnLists
                         string[] user =
                         [
                             inputName,
-                            d.ToShortDateString(),
+                            birthDate.ToLongDateString(),
                             years.ToString(),
                             months.ToString(),
                             days.ToString(),
@@ -120,7 +121,7 @@ namespace LearnLists
                 }
                 else
                 {
-                    string suffixe = users.Count <= 1 ? "" : "s";
+                    string suffixe = users.Count == 1 ? "" : "s";
                     Console.WriteLine($"{Environment.NewLine}Il y a {users.Count} utilisateur{suffixe} :");
                 }
 
