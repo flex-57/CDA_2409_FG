@@ -12,11 +12,17 @@
 
 </head>
 <body>
-    <header id="header"><h1>Mon blog technique</h1></header>
+    <header id="header">
+        <h1>Mon blog technique</h1>
+        <div class="dark-or-light">
+            <label for="dark-or-light" class="label-dark-or-light">Mode sombre</label>
+            <input type="checkbox" id="dark-or-light" checked />
+        </div>
+    </header>
     <div class="container">
         <nav>
+            <label for="hamburger" class="label-hamburger" aria-label="Ouvrir le menu">&#9776;</label>
             <input type="checkbox" id="hamburger" />
-            <label for="hamburger">&#9776;</label>
             <h2>Menu</h2>
             <ul>
                 <li><a href="">Accueil</a></li>
@@ -24,7 +30,6 @@
                 <li><a href="">Tutoriaux</a></li>
                 <li><a href="">&Agrave; Propos</a></li>
                 <li><a href="">Contact</a></li>
-                <li><a href="">Mode sombre</a></li>
             </ul>
         </nav>
         <section id="content">
@@ -52,5 +57,54 @@
             <a href="#">J'achète !</a>
         </section>
     </div>
+
+<script>
+
+    function applyTheme(theme) {
+        const body = document.body;
+        
+        body.classList.remove('dark-mode', 'light-mode');
+        
+        if (theme === 'dark-mode') {
+            body.classList.add('dark-mode');
+            document.querySelector(".label-dark-or-light").textContent = 'Mode clair';
+            document.querySelector("#dark-or-light").checked = true;
+        } else {
+            body.classList.add('light-mode');
+            document.querySelector(".label-dark-or-light").textContent = 'Mode sombre';
+            document.querySelector("#dark-or-light").checked = false;
+        }
+
+        localStorage.setItem('theme', theme);
+    }
+
+    function toggleTheme() {
+        const currentTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+        const newTheme = currentTheme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+        applyTheme(newTheme);
+    }
+
+    function applyInitialTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } 
+        
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            applyTheme('dark-mode');
+        } 
+        
+        else {
+            applyTheme('light-mode');
+        }
+    }
+
+    document.querySelector("#dark-or-light").addEventListener("change", toggleTheme);
+
+    applyInitialTheme();
+    
+</script>
+
 </body>
 </html>
