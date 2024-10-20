@@ -21,9 +21,9 @@
     </header>
     <div class="container">
         <nav>
+            <h2>Menu</h2>
             <label for="hamburger" class="label-hamburger" aria-label="Ouvrir le menu">&#9776;</label>
             <input type="checkbox" id="hamburger" />
-            <h2>Menu</h2>
             <ul>
                 <li><a href="">Accueil</a></li>
                 <li><a href="">Articles</a></li>
@@ -46,7 +46,7 @@
         <section id="pub">
             <h4>Publicité</h4>
             <div>
-                <img src="public/basic-template-aside.jpg" alt="Super livre sur l'algo !" title="Super livre sur l'algo !" width="232" height="275">
+                <img src="public/basic-template-aside.jpg" alt="Super livre sur l'algo !" title="Super livre sur l'algo !">
                 <p>
                     Ce livre sur l'algorithmique s'adresse à toute personne désireuse de maîtriser les bases essentielles de la programmation.
                     Pour apprendre à programmmer, il faut d'abord comprendre ce qu'est vraiment un ordinateur, comment il fonctionne et surtout 

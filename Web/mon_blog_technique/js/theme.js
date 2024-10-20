@@ -7,7 +7,9 @@ function applyTheme(theme) {
         body.classList.add('dark-mode');
         document.querySelector(".label-dark-or-light").textContent = 'Mode clair';
         document.querySelector("#dark-or-light").checked = true;
-    } else {
+    } 
+    
+    else {
         body.classList.add('light-mode');
         document.querySelector(".label-dark-or-light").textContent = 'Mode sombre';
         document.querySelector("#dark-or-light").checked = false;
