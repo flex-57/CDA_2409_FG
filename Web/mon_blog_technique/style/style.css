@@ -1,0 +1,227 @@
+:root {
+    --dark1: #111;
+    --dark2: #212121;
+    --dark3: #303030;
+    --light1: #b1b1b1;
+    --light2: #bebebe;
+    --light3: #ccc;
+    --blue: #09bce0;
+    --light-blue: #51e2ff;
+    --dark-blue: #085e8f;
+
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: var(--light3);
+        --content-background: var(--dark1);
+        --content-h2: var(--dark2);
+        --content-article: var(--content-h2);
+        --content-article-hover: var(--dark3);
+        --link: var(--blue);
+        --link-hover: var(--light-blue);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --text-color: var(--dark1);
+        --content-background: var(--light3);
+        --content-h2: var(--light2);
+        --content-article: var(--content-h2);
+        --content-article-hover: var(--light1);
+        --link: var(--dark-blue);
+        --link-hover: var(--blue);
+    }
+}
+
+
+body, html {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    color: var(--text-color)
+}
+
+h1, h2, h3, nav label { font-weight: bold; }
+
+h1 {
+    font-size: 2em;
+    line-height: 2em;
+    color: var(--light3);
+}
+
+h2, nav label {
+    font-size: 1.6em;
+    line-height: 2em;
+}
+
+h4 {
+    line-height: 2.4em;
+}
+
+a { text-decoration: none; }
+
+header {
+    background-image: url("../public/basic-template-banner.png");
+    background-size: cover;
+    text-align: center;
+    height: 200px;
+}
+
+.container {
+    display: flex;
+    align-items: stretch;
+}
+
+nav {
+    min-width: 240px;
+}
+
+nav a {
+    padding: 3px 15px 0;
+    display: block;
+    line-height: 2em;
+    margin-top: 13px;
+}
+
+nav a:hover {
+    padding: 3px 20px 0;
+}
+
+#content {
+    flex: auto;
+    background-color: var(--content-background);
+}
+
+#content h2 {
+    background-color: var(--content-h2);
+    min-width: 300px;
+}
+
+#content article {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+#content article > a {
+    width: 42%;
+    height: 80px;
+    padding: 10px;
+    background-color: var(--content-article);
+    color: var(--text-color);
+    margin: 0 0 25px;
+}
+
+#content article > a:hover {
+    background-color: var(--content-article-hover);
+}
+
+#pub {
+    width:240px;
+    text-align: center;
+    padding: 0 2px 8px;
+}
+
+#pub h4 {
+    padding-top: 3px;
+    font-weight: bold;
+}
+
+#pub div {
+    padding: 4px 4px 8px;
+}
+
+#pub p {
+    text-align: justify;
+    font-size: .75em;
+    line-height: 1.3em;
+    padding-top: 8px;
+}
+
+#pub a {
+    text-decoration: none;
+    background-color: var(--link);
+    font-weight: bold;
+    display: block;
+    line-height: 1.8em;
+    margin: 4px;
+    color: var(--content-h2);
+}
+
+#pub a:hover {
+    background-color: var(--link-hover);
+}
+
+nav h2, #content h2, nav label {
+    padding: 3px 15px 0;
+    margin-bottom: 25px;
+}
+
+nav, #pub {
+    background-color: var(--content-h2);
+}
+
+nav h2, nav a, #pub h4, nav label {
+    background-color: var(--content-article-hover);
+}
+
+nav a, #pub h4 {
+    color: var(--link)
+}
+
+nav label, #hamburger {
+    display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+    #content article > a {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        flex-wrap: wrap;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    #content article > a {
+        width: 100%;
+    }
+
+    #pub {
+      width: 100%;
+    }
+
+    #pub div {
+        display: flex;
+    }
+
+    #pub p {
+        margin-left: 10px;
+    }
+
+    nav label { 
+        display: block; 
+        font-style: bold;
+        font-size: 1.6em;
+    }
+
+    nav label:hover { 
+        color: var(--link);
+        cursor: pointer;
+    }
+
+    nav ul li, nav h2 { 
+        display: none;
+    }
+
+    nav input:checked ~ ul li {
+        display: block;
+    }
+}
