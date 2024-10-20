@@ -21,9 +21,9 @@
     </header>
     <div class="container">
         <nav>
-            <h2>Menu</h2>
             <label for="hamburger" class="label-hamburger" aria-label="Ouvrir le menu">&#9776;</label>
             <input type="checkbox" id="hamburger" />
+            <h2>Menu</h2>
             <ul>
                 <li><a href="">Accueil</a></li>
                 <li><a href="">Articles</a></li>

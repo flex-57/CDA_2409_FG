@@ -96,11 +96,15 @@ nav {
     min-width: 240px;
 }
 
+nav ul {
+    padding-top: 20px;
+}
+
 nav a {
     padding: 3px 15px 0;
     display: block;
     line-height: 2em;
-    margin-top: 13px;
+    margin-bottom: 13px;
     transition: transform 0.3s ease;
 }
 
@@ -122,7 +126,7 @@ nav a:hover {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    padding: 0 20px;
+    padding: 20px 20px;
 }
 
 #content article > a {
@@ -181,7 +185,7 @@ nav a:hover {
 
 nav h2, #content h2, .label-hamburger {
     padding: 3px 15px 0;
-    margin-bottom: 25px;
+    margin-bottom: 0px;
 }
 
 nav, #pub {
@@ -221,6 +225,10 @@ nav a, #pub h4 {
         width: 100%;
     }
     
+    nav ul {
+        padding-top: 0;
+    }
+
     #content article > a {
         width: 40%;
     }
