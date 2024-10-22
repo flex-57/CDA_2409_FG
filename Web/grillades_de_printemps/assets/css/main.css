@@ -41,6 +41,7 @@ main {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: flex-end;
+    padding-bottom: 20px;
 }
 
 .principal h2 {
@@ -74,17 +75,25 @@ h1, aside, footer {
     align-content: center;
 }
 
+@media (max-width: 1000px) {
+    .principal section {
+        flex: 0 1 calc(96% - 10px);
+    }
+}
+
 @media (max-width: 800px) {
     body {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
+        grid-template-rows: 90px 1fr 90fr;
     }
 
     header {
+        grid-column: -1;
         grid-row: 1;
     }
-
+    
     nav {
+        grid-column: -1;
         grid-row: 2;
     }
 
