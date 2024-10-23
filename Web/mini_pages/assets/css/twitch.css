@@ -2,12 +2,16 @@
     --blue: #008cba;
     --gray: #555;
     --green: #4caf50;
+    --blue-hover: #008cbad8;
+    --gray-hover: #555555d8;
+    --green-hover: #4caf50d8;
+    --black: #252525;
+    --light-gray : #e6e6e6;
 }
 
 body{
-    margin: 0;
-    padding: 0;
     font-family: monospace;
+    font-size: 15px;
 }
 
 h1 {
@@ -15,9 +19,10 @@ h1 {
 }
 
 nav {
-    border-top: 1px outset #252525;
-    border-bottom: 1px inset #252525;
+    border-top: 1px outset var(--black);
+    border-bottom: 1px inset var(--black);
     padding: 15px 0;
+    margin: 10px 0;
 }
 
 .btn {
@@ -25,6 +30,20 @@ nav {
     padding: 15px 30px;
     border-radius: 10px;
     color: #fff;
+    font-size: 1.33em;
+    cursor: pointer;
+}
+
+.badge {
+    padding: 0 5px;
+    color: #fff;
+}
+
+.badge-gray {
+    background-color: var(--light-gray);
+    color: var(--black);
+    font-size: .4em;
+    border-radius: 10px;
 }
 
 .btn-blue {
@@ -37,4 +56,37 @@ nav {
 
 .btn-green {
     background-color: var(--green);
+}
+
+nav .btn-blue:hover {
+    background-color: var(--blue-hover);
+}
+
+nav .btn-gray:hover {
+    background-color: var(--gray-hover);
+}
+
+nav .btn-green:hover {
+    background-color: var(--green-hover);
+}
+
+table {
+    border: 1px outset var(--black);
+    font-size: 1.05em;
+}
+
+tr, th, td {
+    border: 1px inset var(--black);
+}
+
+th {
+    background-color: var(--light-gray);
+}
+
+td .btn-green {
+    display: block;
+}
+
+table img {
+    width: 55px;
 }
