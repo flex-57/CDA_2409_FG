@@ -90,3 +90,7 @@ td .btn-green {
 table img {
     width: 55px;
 }
+
+header a {
+    text-decoration: none;
+}
