@@ -53,10 +53,7 @@ nav a {
 }
 
 nav a:hover {
-    text-decoration: none;
     background-color: #356b35;
-    display: block;
-    padding: 5px 10px;
 }
 
 main {
