@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: Karantina;
+    src: url("../font/Karantina-Regular.ttf") format(TrueType);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: Karantina;
+}
+
+
+header {
+    background-size: cover;
+    
+
+    display: grid;
+    justify-items: center;
+    
+}
+
+header img {
+    width: 100%
+}
+
+nav {
+    padding: 23px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+nav ul li {
+    padding: 0 15px;
+}
+
+nav a:hover {
+    color: #26C1DC;
+}
+
+.brand {
+}
+
+.arrow {
+}
