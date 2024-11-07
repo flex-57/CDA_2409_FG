@@ -4,13 +4,12 @@
 }
 
 body {
-    padding: 0;
-    margin: 0;
+
     display: grid;
     grid-template-columns: 280px 1fr;
     grid-template-rows: 90px 1fr 90px;
     gap: 8px;
-    height: 100vh;
+    height: calc(100vh - 2 * 8px);
 }
 
 header {
