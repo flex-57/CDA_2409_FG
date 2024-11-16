@@ -28,7 +28,7 @@ ul {
     display: flex;
     gap: 1rem;
     margin: 0;
-    padding: 0 2rem;
+    padding: 0;
 }
 
 a {
@@ -43,8 +43,8 @@ a {
 .brand {
     font-weight: bold;
     font-size: 2.6rem;
-    text-shadow: 0 3px 3px rgb(156, 156, 156);
-    padding: 0 2rem;
+    text-shadow: 0 4px 4px rgb(160, 160, 160);
+    padding: 0 0 0 2rem;
 }
 
 .promo a, .profilCart a {
@@ -61,7 +61,7 @@ a {
 .profilCart {
     display: flex;
     gap: 2rem;
-    padding: 0 2rem;
+    padding: 0 2rem 0 0;
     align-self: center;
     img {
         width: 25px;
@@ -137,8 +137,11 @@ input {
     border-radius: .6rem;
     padding: 0;
     margin: .5rem 0;
-    h4, p {
-        margin: 1rem 0;
+    h4 {
+        margin: .75rem 0 0;
+        padding: 0 1rem;
+    }
+    p {
         padding: 0 1rem;
     }
 }
@@ -162,13 +165,16 @@ input {
     display: none;
     align-self: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
-@media(max-width: 1000px) {
+@media(max-width: 950px) {
     body {
         display: block;
-        min-width: 360px;
+        min-width: 340px;
+    }
+    nav {
+        height: 138px;
     }
     main {
         display: block;
