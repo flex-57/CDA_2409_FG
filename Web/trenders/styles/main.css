@@ -8,8 +8,12 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+}
+
+.container {
     display: grid;
     grid-template-rows: 80px 1fr;
+    height: 100%;
 }
 
 header {
@@ -19,7 +23,7 @@ header {
 nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content:space-between;
+    justify-content: space-between;
     height: 80px;
 }
 
@@ -136,10 +140,14 @@ input {
     border: 1px solid #000;
     border-radius: .6rem;
     padding: 0;
-    margin: .5rem 0;
-    h4, p {
-        margin: 1rem 0;
-        padding: 0 1rem;
+    margin: .5rem 0 10rem;
+    h4 {
+        margin: 0;
+        padding: 1rem 1rem .5rem;
+    }
+    p {
+        margin: 0;
+        padding: .5rem 1rem 1rem;
     }
 }
 
@@ -167,8 +175,10 @@ input {
 
 @media(max-width: 1000px) {
     body {
-        display: block;
         min-width: 360px;
+    }
+    .container {
+        display: block;
     }
     main {
         display: block;
