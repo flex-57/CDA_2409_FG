@@ -32,7 +32,7 @@ ul {
     display: flex;
     gap: 1rem;
     margin: 0;
-    padding: 0 2rem;
+    padding: 0;
 }
 
 a {
@@ -47,8 +47,8 @@ a {
 .brand {
     font-weight: bold;
     font-size: 2.6rem;
-    text-shadow: 0 3px 3px rgb(156, 156, 156);
-    padding: 0 2rem;
+    text-shadow: 0 4px 4px rgb(160, 160, 160);
+    padding: 0 0 0 2rem;
 }
 
 .promo a, .profilCart a {
@@ -65,7 +65,7 @@ a {
 .profilCart {
     display: flex;
     gap: 2rem;
-    padding: 0 2rem;
+    padding: 0 2rem 0 0;
     align-self: center;
     img {
         width: 25px;
@@ -113,23 +113,24 @@ form {
 
 .form-container {
     display: flex;
-    gap: .4rem;
+    gap: 1rem;
 }
 
 .form-container div {
     width: 100%;
 }
 
-select, input {
+select, button {
     width: 100%;
     padding: .4rem .6rem;
     border-radius: .6rem;
     margin: .4rem 0 .6rem;
 }
 
-input {
+button {
     background-color: #000;
     color: #fff;
+    cursor: pointer;
 }
 
 .description {
@@ -166,14 +167,18 @@ input {
     width: 100%;
 }
 
+.like {
+    cursor: pointer;
+}
+
 .label-hamburger, #hamburger {
     display: none;
     align-self: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
-@media(max-width: 1000px) {
+@media(max-width: 950px) {
     body {
         min-width: 360px;
     }
