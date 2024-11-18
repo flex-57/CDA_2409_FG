@@ -9,7 +9,7 @@ body {
     padding: 0;
     height: 100vh;
     display: grid;
-    grid-template-rows: 80px 1fr;
+    grid-template-rows: 90px 1fr;
 }
 
 header {
@@ -109,23 +109,24 @@ form {
 
 .form-container {
     display: flex;
-    gap: .4rem;
+    gap: 1rem;
 }
 
 .form-container div {
     width: 100%;
 }
 
-select, input {
+select, button {
     width: 100%;
     padding: .4rem .6rem;
     border-radius: .6rem;
     margin: .4rem 0 .6rem;
 }
 
-input {
+button {
     background-color: #000;
     color: #fff;
+    cursor: pointer;
 }
 
 .description {
@@ -159,6 +160,10 @@ input {
 
 .img-article {
     width: 100%;
+}
+
+.like {
+    cursor: pointer;
 }
 
 .label-hamburger, #hamburger {

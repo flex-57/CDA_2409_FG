@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div>
-                    <input type="button" value="Ajouter au panier">
+                    <button>Ajouter au panier</button>
                 </div>
             </form>
             <div class="carac">
