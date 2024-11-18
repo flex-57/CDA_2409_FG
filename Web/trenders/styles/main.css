@@ -8,8 +8,12 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+}
+
+.container {
     display: grid;
-    grid-template-rows: 90px 1fr;
+    grid-template-rows: 80px 1fr;
+    height: 100%;
 }
 
 header {
@@ -19,7 +23,7 @@ header {
 nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content:space-between;
+    justify-content: space-between;
     height: 80px;
 }
 
@@ -137,13 +141,14 @@ button {
     border: 1px solid #000;
     border-radius: .6rem;
     padding: 0;
-    margin: .5rem 0;
+    margin: .5rem 0 10rem;
     h4 {
-        margin: .75rem 0 0;
-        padding: 0 1rem;
+        margin: 0;
+        padding: 1rem 1rem .5rem;
     }
     p {
-        padding: 0 1rem;
+        margin: 0;
+        padding: .5rem 1rem 1rem;
     }
 }
 
@@ -175,11 +180,10 @@ button {
 
 @media(max-width: 950px) {
     body {
-        display: block;
-        min-width: 340px;
+        min-width: 360px;
     }
-    nav {
-        height: 138px;
+    .container {
+        display: block;
     }
     main {
         display: block;
