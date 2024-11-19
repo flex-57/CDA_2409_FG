@@ -1,95 +1,254 @@
 :root {
     font-family: "Titillium Web";
-    --primary-color: #111;
-    --moutarde: #C4B35D;
-    color: var(--basic-color);
+    color: #111;
     font-size: 22px;
 }
 
 a {
     text-decoration: none;
-    color: var(--primary-color);
+    color: #111;
 }
 
-body {
+button {
+    padding: .7rem 2.4rem;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    border: none;
+    border-radius: 5rem;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+html, body {
     padding: 0;
     margin: 0;
     min-width: 300px;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 75%;
+    padding: 2rem;
+    margin: auto;
+    height: fit-content;
+}
+
+h2 {
+    text-align: center;
+}
+
+.f-wrap {
+    display: flex;
+    width: fit-content;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: .5rem;
+}
+
 header {
     height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    
+    .container {
+        padding: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+    }
 }
 
-.brand, .label-hamburger, nav ul {
-    padding: 0 1rem;
-}
-
-.brand {
+#brand {
     font-size: 2rem;
     color: #BBBBBB;
 }
 
-.accueil {
-    background-color: #111;
-    padding: 2rem;
+header ul {
     display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    justify-content: center;
-}
-
-.accueil p, .page2 p {
-    font-size: 4rem;
-    line-height: 5rem;
-    color: white;
-    text-align: center;
-}
-
-.accueil .f-wrap {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 1rem;
+    justify-content: space-between;
 }
 
-.accueil .card {
-    padding: 1.5rem;
-    width: 150px;
-    height: 150px;
-    background-color: var(--moutarde);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    border-radius: .6rem;
+section {
+    height: 100vh;
 }
 
-.f-wrap img {
-    width: 40%;
+#accueil {
+    background: linear-gradient(#3d352e31, #3d352e31),  
+        url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/26193-min.jpg') center no-repeat;
+    background-size: cover;
+
+    .container {
+        gap: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 4.4rem;
+        line-height: 4.9rem;
+        color: white;
+        text-shadow: 3px 3px 10px #5c5c5c;
+        width: 80%;
+    }
+
+    .f-wrap {
+        gap: 2rem;
+    }
+    
+    .card {
+        background: #C4B35D;
+        color: white;
+        text-align: center;
+        gap: 1.2rem;
+        width: 25%;
+        padding: 50px 1rem 30px;
+        img {
+            width: 30%;
+        }
+    }
+
+    button {
+        background: white;
+    }
+
+    button:hover {
+        background: #C4B35D;
+        color: white;
+    }
+} 
+
+#page2 {
+
+    .container {
+        gap: 2.5rem;
+        
+        justify-content: space-around;
+    }
+
+    h3 {
+        font-size: 2.7rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .f-wrap {
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        gap: 1.2rem;
+        width: calc(50% - 4rem);
+        padding: 1.5rem;
+        color: white;
+        align-items: flex-start;
+        
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            line-height: 1.6rem;
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: .8rem 2.5rem;
+        }
+    
+        button:hover {
+            background: white;
+            color: #C4B35D;
+        }
+    }
+
+    .card:first-child, .card:last-child {
+        background: #C4B35D;
+    }
+
+    .card:nth-child(2) {
+        background: linear-gradient(#352f2c8a, #352f2c8a), 
+            url("https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/235.jpg") center;
+            background-size: cover;
+    }
+
+    .card:nth-child(3) {
+        background: black;
+    }
 }
 
-.accueil button {
-    font-size: .8rem;
-    text-transform: uppercase;
-    padding: 1rem;
-    border: 2px solid #fff;
-    border-radius: 2rem;
-    width: 70%;
-    margin: auto;
+#page3 {
+    background:  linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
+        url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
+    background-size: cover;
+
+    line-height: 2.5rem;
+
+    .container {
+        height: 38vh;
+        border: 5px solid;
+        justify-content: space-around;
+    }
+
+    .f-wrap {
+        gap: 1rem;
+        align-items: center;
+    }
+
+    button:first-child {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+    }
+
+    h2 {
+        font-size: 2.6rem;
+        text-align: center;
+        width: 60%;
+        color: white;
+    }
 }
 
 #hamburger, .label-hamburger {
     display: none;
     font-size: 1.8rem;
     font-weight: bold;
+}
+
+@media (max-width: 1280px) {
+
+    #page2 {
+
+        h3 {
+            font-size: 2.3rem;
+        }
+
+        .card {
+            gap: .8rem;
+
+            p {
+                line-height: 1.4rem;
+                max-height: 95px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+    
+            button span {
+                display: none;
+            }
+        
+            button:after {
+                content: 'Apprendre plus';
+            }
+        } 
+    }
 }
 
 @media (max-width: 800px) {
