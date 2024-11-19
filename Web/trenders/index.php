@@ -45,18 +45,23 @@
                         <div>
                             <label for="taille">Taille</label>
                             <select name="taille" id="taille">
+                                <option value="">39</option>
+                                <option value="">40</option>
+                                <option value="">41</option>
                                 <option value="">42</option>
                             </select>
                         </div>
                         <div>
                             <label for="couleur">Couleur</label>
                             <select name="couleur" id="couleur">
-                                <option value="">Bleu</option>
+                            <option value="">Bleu</option>
+                            <option value="">Rouge</option>
+                            <option value="">Noir</option>
                             </select>
                         </div>
                     </div>
                     <div>
-                        <input type="button" value="Ajouter au panier">
+                        <button>Ajouter au panier</button>
                     </div>
                 </form>
                 <div class="carac">

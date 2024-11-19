@@ -1,0 +1,111 @@
+:root {
+    font-family: "Titillium Web";
+    --primary-color: #111;
+    --moutarde: #C4B35D;
+    color: var(--basic-color);
+    font-size: 22px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    min-width: 300px;
+}
+
+header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand, .label-hamburger, nav ul {
+    padding: 0 1rem;
+}
+
+.brand {
+    font-size: 2rem;
+    color: #BBBBBB;
+}
+
+.accueil {
+    background-color: #111;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+}
+
+.accueil p, .page2 p {
+    font-size: 4rem;
+    line-height: 5rem;
+    color: white;
+    text-align: center;
+}
+
+.accueil .f-wrap {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.accueil .card {
+    padding: 1.5rem;
+    width: 150px;
+    height: 150px;
+    background-color: var(--moutarde);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    border-radius: .6rem;
+}
+
+.f-wrap img {
+    width: 40%;
+}
+
+.accueil button {
+    font-size: .8rem;
+    text-transform: uppercase;
+    padding: 1rem;
+    border: 2px solid #fff;
+    border-radius: 2rem;
+    width: 70%;
+    margin: auto;
+}
+
+#hamburger, .label-hamburger {
+    display: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+
+    .label-hamburger {
+        display: block;
+    }
+
+    nav ul {
+        position: absolute;
+        top: -200px;
+        left: 0;
+        transition: .5s ease-in-out;
+    }
+
+    #hamburger:checked ~ ul {
+        top: 90px;
+    }
+}
