@@ -10,17 +10,19 @@
 </head>
 <body>
     <header>
-        <h1 id="brand">Logo</h1>
-        <nav>
-            <label for="hamburger" class="label-hamburger">☰</label>
-            <input type="checkbox" name="hamburger" id="hamburger">
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#page2">Page 2</a></li>
-                <li><a href="#page3">Page 3</a></li>
-                <li><a href="#page4">Page 4</a></li>
-            </ul>
-        </nav>
+        <div class="wrap">
+            <h1 id="brand">Logo</h1>
+            <nav>
+                <label for="hamburger" class="label-hamburger">☰</label>
+                <input type="checkbox" name="hamburger" id="hamburger">
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#page2">Page 2</a></li>
+                    <li><a href="#page3">Page 3</a></li>
+                    <li><a href="#page4">Page 4</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         <section id="accueil">
@@ -82,6 +84,46 @@
                 <div class="wrap">
                     <button>Voir tous les produits</button>
                     <button>Obtenez une consultation gratuite</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page4">
+            <div class="container">
+                <div>
+                    <h3>Installation des avantages</h3>
+                    <p>
+                        Exploiter l’énergie du soleil et la convertir en énergie propre 
+                        pour alimenter votre maison – ou même une voiture – 
+                        réduit votre empreinte carbone et permet d’économiser 
+                        sur les coûts énergétiques pour les années à venir.
+                    </p>
+                </div>
+                <div class="wrap">
+                    <div class="card">
+                        <h4>Économies de coûts</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Augmenter la valeur de la maison</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>L’énergie solaire fonctionne partout</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Bénéficiez de crédits d'impôt et de remises</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Aidez l'environnement</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Exploiter l’énergie</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
                 </div>
             </div>
         </section>
