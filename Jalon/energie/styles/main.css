@@ -4,64 +4,14 @@
     font-size: 22px;
 }
 
-a {
-    text-decoration: none;
-    color: #111;
-}
-
-button {
-    padding: .7rem 2.4rem;
-    font-size: .75rem;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-    border: none;
-    border-radius: 5rem;
-    transition: .3s ease;
-    cursor: pointer;
-}
-
-html, body {
-    padding: 0;
-    margin: 0;
+body {
+    width: 100vw;
     min-width: 300px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 75%;
-    padding: 2rem;
-    margin: auto;
-    height: fit-content;
-}
-
-h2 {
-    text-align: center;
-}
-
-.f-wrap {
-    display: flex;
-    width: fit-content;
-}
-
-.card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: .5rem;
 }
 
 header {
     height: 80px;
-    
-    .container {
-        padding: 0;
-        flex-direction: row;
-        justify-content: space-between;
-        height: 100%;
-    }
+    margin: auto;
 }
 
 #brand {
@@ -71,200 +21,90 @@ header {
 
 header ul {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: space-between;
 }
 
 section {
+    border: 1px solid red;
+}
+
+#accueil, #page2, #page5 {
     height: 100vh;
 }
 
 #accueil {
-    background: linear-gradient(#3d352e31, #3d352e31),  
+    background: linear-gradient(#362f2831, #362f2831),  
         url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/26193-min.jpg') center no-repeat;
     background-size: cover;
-
-    .container {
-        gap: 2.5rem;
-    }
-    
-    h2 {
-        font-size: 4.4rem;
-        line-height: 4.9rem;
-        color: white;
-        text-shadow: 3px 3px 10px #5c5c5c;
-        width: 80%;
-    }
-
-    .f-wrap {
-        gap: 2rem;
-    }
-    
-    .card {
-        background: #C4B35D;
-        color: white;
-        text-align: center;
-        gap: 1.2rem;
-        width: 25%;
-        padding: 50px 1rem 30px;
-        img {
-            width: 30%;
-        }
-    }
-
-    button {
-        background: white;
-    }
-
-    button:hover {
-        background: #C4B35D;
-        color: white;
-    }
-} 
-
-#page2 {
-
-    .container {
-        gap: 2.5rem;
-        
-        justify-content: space-around;
-    }
-
-    h3 {
-        font-size: 2.7rem;
-        width: 100%;
-        text-align: center;
-    }
-
-    .f-wrap {
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .card {
-        gap: 1.2rem;
-        width: calc(50% - 4rem);
-        padding: 1.5rem;
-        color: white;
-        align-items: flex-start;
-        
-        h4 {
-            font-size: 1.5rem;
-        }
-
-        p {
-            line-height: 1.6rem;
-        }
-
-        button {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            padding: .8rem 2.5rem;
-        }
-    
-        button:hover {
-            background: white;
-            color: #C4B35D;
-        }
-    }
-
-    .card:first-child, .card:last-child {
-        background: #C4B35D;
-    }
-
-    .card:nth-child(2) {
-        background: linear-gradient(#352f2c8a, #352f2c8a), 
-            url("https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/235.jpg") center;
-            background-size: cover;
-    }
-
-    .card:nth-child(3) {
-        background: black;
-    }
 }
 
 #page3 {
-    background:  linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
-        url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
-    background-size: cover;
-
-    line-height: 2.5rem;
-
-    .container {
-        height: 38vh;
-        border: 5px solid;
-        justify-content: space-around;
-    }
-
-    .f-wrap {
-        gap: 1rem;
-        align-items: center;
-    }
-
-    button:first-child {
-        background: transparent;
-        border: 2px solid white;
-        color: white;
-    }
-
-    h2 {
-        font-size: 2.6rem;
-        text-align: center;
-        width: 60%;
-        color: white;
-    }
+    height: 50vh;
 }
 
-#hamburger, .label-hamburger {
+#page4 {
+    height: 150vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.wrap {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid blue;
+    margin: auto;
+}
+
+.card {
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+}
+
+h2 {
+    font-size: 4.4rem;
+    line-height: 4.9rem;
+    color: white;
+    text-shadow: 3px 3px 10px #5c5c5c;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.label-hamburger, #hamburger {
     display: none;
-    font-size: 1.8rem;
-    font-weight: bold;
 }
 
-@media (max-width: 1280px) {
-
-    #page2 {
-
-        h3 {
-            font-size: 2.3rem;
-        }
-
-        .card {
-            gap: .8rem;
-
-            p {
-                line-height: 1.4rem;
-                max-height: 95px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-    
-            button span {
-                display: none;
-            }
-        
-            button:after {
-                content: 'Apprendre plus';
-            }
-        } 
-    }
-}
-
-@media (max-width: 800px) {
-
+@media (max-width: 1200px) {
     .label-hamburger {
         display: block;
     }
 
-    nav ul {
-        position: absolute;
-        top: -200px;
-        left: 0;
-        transition: .5s ease-in-out;
+    header {
+        ul {
+            display: block;
+            position: absolute;
+            width: 100%;
+            top: -200px;
+            left: 0;
+            transition: .5s ease-in-out;
+            background: white;
+        }
+
     }
 
     #hamburger:checked ~ ul {
-        top: 90px;
+        top: 80px;
     }
 }
