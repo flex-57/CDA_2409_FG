@@ -20,6 +20,8 @@
                 <li><a href="#page3">Page 3</a></li>
                 <li><a href="#page4">Page 4</a></li>
                 <li><a href="#page5">Page 5</a></li>
+                <li><a href="#page6">Page 6</a></li>
+                <li><a href="#page7">Page 7</a></li>
             </ul>
         </nav>
     </header>
@@ -128,20 +130,81 @@
         </section>
 
         <section id="page5">
-            <div class="black">&nbsp;</div>
-            <div class="yellow"></div>
-            <div class="photo">
-                <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg" alt="">
-            </div>
-                <div class="card">
-                    <h3>Laissez-nous vous aider à économiser</h3>
-                    <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat non 
-                        proident
-                    </p>
-                    <button>Apprendre encore plus</button>
+            <div class="black"></div>
+            <div class="container">
+                <div class="wrap">
+                    <div class="yellow"></div>
+                    <div class="photo"></div>
+                    <div class="card">
+                        <h4>Laissez-nous vous aider à économiser</h4>
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat non 
+                            proident
+                        </p>
+                        <button>Apprendre encore plus</button>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="page6">
+            <div class="container">
+                <h3>Avantages solaires</h3>
+                <div class="wrap">
+                    <ul>
+                        <li><span>+</span><a href="">Préparez-vous pour l'avenir</a></li>
+                        <li><span>+</span><a href="">Préserver notre maison</a></li>
+                        <li><span>+</span><a href="">Utilisation maximale</a></li>
+                    </ul>
+                    <ul>
+                        <li><span>+</span><a href="">Augmentez la valeur de votre maison</a></li>
+                        <li><span>+</span><a href="">Dites non aux pannes de courant</a></li>
+                        <li><span>+</span><a href="">Enregistrer davantage</a></li>
+                    </ul>
+                    <ul>
+                        <li><span>+</span><a href="">Contrôlez votre énergie</a></li>
+                        <li><span>+</span><a href="">Non-maintenance</a></li>
+                        <li><span>+</span><a href="">Énergie renouvelable</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="page7">
+            <div class="container">
+                <h3>Nos projets</h3>
+                <div class="bg"></div>
+                <div class="wrap">
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/business-person-planning-alterna.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/person-near-alternative-energy-p.jpg"" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/solar-energy-panel-light-bulb-gr.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/medium-shot-men-working-together6.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/photovoltaics-solar-power-statio.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/mother-with-her-little-son-by-so.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/alternative-energy-ecological-co.jpg" alt="">
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/electric-farm-with-panels-product7.jpg" alt="">
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 </body>

@@ -22,10 +22,7 @@ body {
 
 .wrap {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    margin: 0 auto;
+    display: grid;
 }
 
 .card {
@@ -92,19 +89,20 @@ header ul {
 }
 
 section {
+    height: fit-content;
 }
 
 #accueil, #page2, #page5 {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 
-#page3 {
-    height: 50vh;
+#page3, #page6 {
+    max-height: 50vh;
 }
 
 #page4 {
-    height: 150vh;
+    min-height: 150vh;
 }
 
 #accueil {
@@ -114,10 +112,10 @@ section {
 
     .wrap {
         gap: 1.5rem;
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .card {
-        width: calc(25vw - 4rem);
         background-color: #C4B35D;
         color: white;
         text-shadow: 0 1px 2px #5c5c5c;
@@ -153,11 +151,12 @@ section {
     .wrap {
         gap: 2rem;
         flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
     .card {
         gap: 1.2rem;
-        width: calc(50% - 3rem);
         padding: 30px 1rem;
         color: white;
         align-items: flex-start;
@@ -211,6 +210,7 @@ section {
 
     .wrap {
         gap: .6rem;
+        grid-template-columns: 1fr 1fr;
     }
 
     h3 {
@@ -236,16 +236,16 @@ section {
     }
 
     .wrap {
-        flex-wrap: wrap;
-        justify-content: center;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         gap: 2rem;
+        
     }
 
     .card {
         gap: 1.2rem;
-        width: calc(33% - 4.2rem);
         height: 37vh;
-        padding: 3rem 1.5rem;
+        padding: 3rem 1.2rem;
         color: white;
         align-items: flex-start;
         justify-content: flex-end;
@@ -253,8 +253,9 @@ section {
         h4 {
             font-size: 1.4vw;
             font-weight: bold;
+            line-height: 1.8vw;
             padding-top: 20px;
-            border-top: 4px solid rgba(255, 255, 255, 0.418);
+            border-top: 4px solid rgba(255, 255, 255, 0.61);
             width: 95%;
         }
 
@@ -307,22 +308,132 @@ section {
 }
 
 #page5 {
-    border: 1px solid red;
     .black {
         background: #1A1A1A;
-        height: 50vh;
-        z-index: 0;
+        height: 50%;
     }
 
+    .wrap {
+        height: 40vw;
+        position: relative;
+    }
+    
+    .yellow {
+        background: #C4B35D;
+        width: 80%;
+        height: 85%;
+        position:absolute;
+        top: 25%;
+        border-radius: .6rem;
+    }
+    
+
     .photo {
-        height: 100vh;
-        img {
-            width: 55%;
-            z-index: 10;
-            position: relative;
-            top: -25%;
-            left: 25%;
+        position: absolute;
+        left: 6%;
+        background: url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg') center no-repeat;
+        background-size: cover;
+        width: 94%;
+        height: 100%;
+        border-radius: .6rem;
+    }
+
+    .card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: #fff;
+        width: 36%;
+        padding: 1.8rem;
+        align-items: flex-start;
+
+        h4 {
+            font-size: 2.4vw;
+            font-weight: 400;
         }
+
+        p {
+            font-size: 1.4vw;
+            line-height: 2.2vw;
+            padding: 1.8rem 0;
+        }
+
+        button {
+            background: #C4B35D;
+            color: white;
+            text-shadow: 0 1px 2px #5c5c5c;
+        }
+
+        button:hover {
+            background: #948A56;
+        }
+    }
+}
+
+#page6 {
+    .wrap {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    a {
+        color: #1A1A1A;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color: #C4B35D;
+    }
+
+    li {
+        display: flex;
+        align-items: first baseline;
+        margin-bottom: .8rem;
+        span {
+            font-size: 1.5em;
+            color: #B3B3B3;
+            margin-right: .2rem; 
+        }      
+    }
+}
+
+#page7 {
+    
+    .container {
+        position: relative;
+        height: fit-content;
+    }
+
+    .bg {
+        height: 50vw;
+        background: #C4B35D;
+        position: relative;
+        top: 5vw;
+    }
+
+    .wrap {
+        position: relative;
+        top: -55vw;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+        width: 90%;
+        margin: auto;
+    }
+
+    .card {
+        height: 20vw;
+        width: auto;
+        overflow: hidden;
+    }
+    
+    img {
+        height: 25vw;
+    }
+    
+    img:hover {
+        background: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2));   
     }
 }
 
