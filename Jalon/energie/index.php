@@ -19,6 +19,7 @@
                 <li><a href="#page2">Page 2</a></li>
                 <li><a href="#page3">Page 3</a></li>
                 <li><a href="#page4">Page 4</a></li>
+                <li><a href="#page5">Page 5</a></li>
             </ul>
         </nav>
     </header>
@@ -84,6 +85,63 @@
                     <button>Obtenez une consultation gratuite</button>
                 </div>
             </div>
+        </section>
+
+        <section id="page4">
+            <div class="container">
+                <div class="intro">
+                    <h3>Installation des avantages</h3>
+                    <p>
+                        Exploiter l’énergie du soleil et la convertir en énergie propre 
+                        pour alimenter votre maison – ou même une voiture – 
+                        réduit votre empreinte carbone et permet d’économiser 
+                        sur les coûts énergétiques pour les années à venir.
+                    </p>
+                </div>
+                <div class="wrap">
+                    <div class="card">
+                        <h4>Économies de coûts</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Augmenter la valeur de la maison</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>L’énergie solaire fonctionne partout</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Bénéficiez de crédits d'impôt et de remises</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Aidez l'environnement</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Exploiter l’énergie</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page5">
+            <div class="black">&nbsp;</div>
+            <div class="yellow"></div>
+            <div class="photo">
+                <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg" alt="">
+            </div>
+                <div class="card">
+                    <h3>Laissez-nous vous aider à économiser</h3>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat non 
+                        proident
+                    </p>
+                    <button>Apprendre encore plus</button>
+                </div>
         </section>
     </main>
 </body>
