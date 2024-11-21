@@ -11,11 +11,13 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: calc(100% - 10vw);
-    width: 80vw;
+    justify-content: space-around;
+    gap: 2rem;
+    height: fit-content;
+    width: 70vw;
+    height: calc(100% - 4rem);
     margin: 0 auto;
-    padding: 5vw;
+    padding: 2rem;
 }
 
 .wrap {
@@ -29,8 +31,9 @@ body {
 .card {
     display: flex;
     flex-direction: column;
-    border-radius: 1vw;
+    border-radius: .6rem;
     align-items: center;
+    justify-content: space-between;
 }
 
 a {
@@ -39,32 +42,31 @@ a {
 }
 
 h2 {
-    font-size: 5.4vw;
-    line-height: 6.2vw;
+    font-size: 4.5vw;
+    line-height: 5.2vw;
     color: white;
     text-shadow: 3px 4px 6px #5c5c5c;
-    width: 60vw;
+    width: 50vw;
     margin: 0 auto;
     text-align: center;
 }
 
 h3 {
     text-align: center;
-    font-size: 4vw;
-    line-height: 5vw;
+    font-size: 3.6vw;
+    line-height: 4.8vw;
     margin: 0 auto;
 }
 
 button {
     padding: .7rem 2.4rem;
-    font-size: 1.5vw;
+    font-size: .8rem;
     text-transform: uppercase;
     letter-spacing: .1rem;
     border: none;
-    border-radius: 5vw;
+    border-radius: 5rem;
     transition: .3s ease;
     cursor: pointer;
-    width: fit-content;
     margin: 0 auto;
 }
 
@@ -78,13 +80,14 @@ header {
 }
 
 #brand {
-    font-size: 3.5vw;
+    font-size: 2.2rem;
     color: #BBBBBB;
+    margin-top: -10px;
 }
 
 header ul {
     display: flex;
-    gap: 2vw;
+    gap: 2rem;
     justify-content: space-between;
 }
 
@@ -95,24 +98,34 @@ section {
     height: 100vh;
 }
 
+
+#page3 {
+    height: 50vh;
+}
+
+#page4 {
+    height: 150vh;
+}
+
 #accueil {
     background: linear-gradient(#362f2831, #362f2831),  
         url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/26193-min.jpg') center no-repeat;
     background-size: cover;
 
     .wrap {
-        gap: 1.5vw;
+        gap: 1.5rem;
     }
 
     .card {
-        width: 25vw;
+        width: calc(25vw - 4rem);
         background-color: #C4B35D;
         color: white;
         text-shadow: 0 1px 2px #5c5c5c;
         box-shadow: 1px 2px 10px hsla(0, 0%, 36%, 0.5);
         text-align: center;
-        gap: 2vw;
-        padding: 40px 1vw 40px;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 40px 1rem 40px;
 
         img {
             width: 30%;
@@ -138,24 +151,24 @@ section {
     }
 
     .wrap {
-        gap: 2vw;
+        gap: 2rem;
         flex-wrap: wrap;
     }
 
     .card {
-        gap: 1.8vw;
-        width: 34vw;
-        padding: 2.4vw;
+        gap: 1.2rem;
+        width: calc(50% - 3rem);
+        padding: 30px 1rem;
         color: white;
         align-items: flex-start;
         
         h4 {
-            font-size: 3vw;
+            font-size: 2.4vw;
         }
 
         p {
-            font-size: 1.8vw;
-            line-height: 2.4vw;
+            font-size: 1.4vw;
+            line-height: 2.2vw;
         }
 
         button {
@@ -176,9 +189,10 @@ section {
     }
 
     .card:nth-child(2) {
-        background: linear-gradient(#352f2c8a, #352f2c8a), 
+        background: 
+            linear-gradient(#352f2c8a, #352f2c8a), 
             url("https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/235.jpg") center;
-            background-size: cover;
+        background-size: cover;
     }
 
     .card:nth-child(3) {
@@ -187,21 +201,20 @@ section {
 }
 
 #page3 {
-    background:  linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
+    background: 
+        linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
         url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
     background-size: cover;
     background-attachment: fixed;
     height: 50vh;
     color: white;
 
-
-
     .wrap {
         gap: .6rem;
     }
 
     h3 {
-        width: 55%;
+        width: 70%;
     }
 
     button:first-child {
@@ -211,19 +224,177 @@ section {
     }
 }
 
-#page3 {
-    height: 50vh;
+#page4 {
+    background-color: #1A1A1A;
+    color: white;
+
+    .intro {
+        p {
+            margin: 1rem 0;
+            text-align: center;
+        }
+    }
+
+    .wrap {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .card {
+        gap: 1.2rem;
+        width: calc(33% - 4.2rem);
+        height: 37vh;
+        padding: 3rem 1.5rem;
+        color: white;
+        align-items: flex-start;
+        justify-content: flex-end;
+        
+        h4 {
+            font-size: 1.4vw;
+            font-weight: bold;
+            padding-top: 20px;
+            border-top: 4px solid rgba(255, 255, 255, 0.418);
+            width: 95%;
+        }
+
+        p {
+            font-size: 1.2vw;
+        }
+    }
+
+    .card:nth-child(1) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/443.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(2) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/45435.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(3) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/656.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(4) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(5) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/3d-house-with-solar-pannels.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(6) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/5453.jpg') center no-repeat;
+        background-size: cover;    
+    }
 }
 
-#page4 {
-    height: 150vh;
+#page5 {
+    border: 1px solid red;
+    .black {
+        background: #1A1A1A;
+        height: 50vh;
+        z-index: 0;
+    }
+
+    .photo {
+        height: 100vh;
+        img {
+            width: 55%;
+            z-index: 10;
+            position: relative;
+            top: -25%;
+            left: 25%;
+        }
+    }
 }
 
 .label-hamburger, #hamburger {
     display: none;
 }
 
+@media (max-width: 1200px) {
+    #accueil .wrap {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #page2 {
+        .card {
+            gap: .8rem;
+            width: calc(50% - 3rem);
+
+            h4 {
+                font-size: 2.4vw;
+            }
+    
+            p {
+                font-size: 1.8vw;
+                line-height: 2.4vw;
+            }
+
+            button {
+                padding: .6rem 1.2rem;
+            }
+
+            button span {
+                display: none;
+            }
+        
+            button:after {
+                content: 'Apprendre plus';
+            }
+        }
+    }
+
+    #page4 {
+        
+    }
+}
+
 @media (max-width: 800px) {
+
+    h2 {
+        font-size: 8vw;
+        line-height: 9.5vw;
+        width: 60vw;
+    }
+
+    h3 {
+        font-size: 5.2vw;
+        line-height: 6.2vw;
+    }
+
+    #accueil {
+        .card {
+            flex-direction: row;
+            width: 100%;
+            justify-content: stretch;
+            padding: .5rem 1rem;
+
+            img {
+                width: 10%;
+            }
+        }
+    }
+
     .label-hamburger {
         display: block;
     }
@@ -239,6 +410,40 @@ section {
             background: white;
         }
 
+    }
+
+    #page2 {
+        .card {
+            gap: .6rem;
+            width: calc(50% - 3rem);
+
+            h4 {
+                font-size: 3.2vw;
+            }
+    
+            p {
+                font-size: 2.8vw;
+                line-height: 3.2vw;
+            }
+
+            button {
+                padding: .6rem 1.2rem;
+            }
+  
+            button:after {
+                content: 'Plus';
+            }
+        }
+    }
+
+    #page3 {
+        h3 {
+            width: 100%;
+        }
+
+        .wrap {
+            flex-wrap: wrap;
+        }
     }
 
     #hamburger:checked ~ ul {
