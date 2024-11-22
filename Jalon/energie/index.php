@@ -22,6 +22,7 @@
                 <li><a href="#page5">Page 5</a></li>
                 <li><a href="#page6">Page 6</a></li>
                 <li><a href="#page7">Page 7</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -130,7 +131,6 @@
         </section>
 
         <section id="page5">
-            <div class="black"></div>
             <div class="container">
                 <div class="wrap">
                     <div class="yellow"></div>
@@ -174,35 +174,69 @@
         <section id="page7">
             <div class="container">
                 <h3>Nos projets</h3>
-                <div class="bg"></div>
+                <div class="bg">
+                    <div class="wrap">
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/business-person-planning-alterna.jpg" alt="">
+                        </div>
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg" alt="">
+                        </div>
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/person-near-alternative-energy-p.jpg"" alt="">
+                        </div>
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/solar-energy-panel-light-bulb-gr.jpg" alt="">
+                        </div>
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/medium-shot-men-working-together6.jpg" alt="">
+                        </div>
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/photovoltaics-solar-power-statio.jpg" alt="">
+                        </div>
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/mother-with-her-little-son-by-so.jpg" alt="">
+                        </div>
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/alternative-energy-ecological-co.jpg" alt="">
+                        </div>
+                        <div class="card">
+                            <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/electric-farm-with-panels-product7.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <button>Contactez-nous</button>
                 <div class="wrap">
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/business-person-planning-alterna.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/person-near-alternative-energy-p.jpg"" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/solar-energy-panel-light-bulb-gr.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/medium-shot-men-working-together6.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/photovoltaics-solar-power-statio.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/mother-with-her-little-son-by-so.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/alternative-energy-ecological-co.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/electric-farm-with-panels-product7.jpg" alt="">
-                    </div>
+                    <div class="photo"></div>
+                    <form action="">
+                        <h3>Contactez-nous</h3>
+                        <div>
+                            <label for="name">Nom</label>
+                            <input type="text" name="name" id="name" placeholder="Entrez votre nom">
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" placeholder="Entrez un email valide">
+                        </div>
+                        <div>
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message"></textarea>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="terms" id="terms">
+                            <label for="terms">
+                                J'accepte <a href="">les conditions d'utilisations</a>
+                            </label>
+                        </div>
+                        <div>
+                            <button>Soumettre</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

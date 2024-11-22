@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     gap: 2rem;
-    height: fit-content;
+    height: 100%;
     width: 70vw;
     height: calc(100% - 4rem);
     margin: 0 auto;
@@ -84,13 +84,11 @@ header {
 
 header ul {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     justify-content: space-between;
+    font-size: .8rem;
 }
 
-section {
-    height: fit-content;
-}
 
 #accueil, #page2, #page5 {
     min-height: 100vh;
@@ -98,7 +96,7 @@ section {
 
 
 #page3, #page6 {
-    max-height: 50vh;
+    min-height: 50vh;
 }
 
 #page4 {
@@ -149,15 +147,14 @@ section {
     }
 
     .wrap {
-        gap: 2rem;
-        flex-wrap: wrap;
+        gap: 1.5rem;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
     }
 
     .card {
         gap: 1.2rem;
-        padding: 30px 1rem;
+        padding: 20px 1rem;
         color: white;
         align-items: flex-start;
         
@@ -308,14 +305,13 @@ section {
 }
 
 #page5 {
-    .black {
-        background: #1A1A1A;
-        height: 50%;
-    }
+    height: 100vh;
+    background: repeating-linear-gradient(#1A1A1A, #1A1A1A 50%, #fff 50%, #fff);
 
     .wrap {
-        height: 40vw;
+        height: 38vw;
         position: relative;
+        top: -4vh;
     }
     
     .yellow {
@@ -346,6 +342,7 @@ section {
         width: 36%;
         padding: 1.8rem;
         align-items: flex-start;
+        box-shadow: 1px 2px 10px #5c5c5c;
 
         h4 {
             font-size: 2.4vw;
@@ -399,22 +396,20 @@ section {
 
 #page7 {
     
-    .container {
-        position: relative;
-        height: fit-content;
-    }
-
     .bg {
-        height: 50vw;
-        background: #C4B35D;
-        position: relative;
-        top: 5vw;
+        height: 60vw;
+        background: 
+            linear-gradient(
+                #fff, 
+                #fff 10%, 
+                #C4B35D 10%,
+                #C4B35D 95%,
+                #fff 95%,
+                #fff
+        );
     }
 
     .wrap {
-        position: relative;
-        top: -55vw;
-        display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
         gap: 1rem;
@@ -437,42 +432,80 @@ section {
     }
 }
 
+#contact {
+    .wrap {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .photo {
+        background: url("//images01.nicepagecdn.com/c461c07a441a5d220e8feb1a/3dd3a5b1f7d05c41a6395584/sss.jpg") center no-repeat;
+        background-size: cover;
+        border-radius: .6rem;
+    }
+
+    form {
+        
+        div {
+            margin: 1rem 0;
+            width: 100%;
+        }
+
+        label {
+            font-size: .9rem;
+        }
+
+        input:not(input[type=checkbox]), textarea {
+            width: calc(100% - 2rem);
+            border: none;
+            border-bottom: 2px solid #1A1A1A;
+            padding: .6rem .5rem;
+            margin-top: .4rem;
+            outline: none;
+            font-size: .8rem;
+        }
+
+        textarea {
+            height: 10vh;
+        }
+
+        input:not(input[type=checkbox]):focus, textarea:focus {
+            border-bottom: 3px solid #1A1A1A;
+        }
+
+        button {
+            width: 100%;
+        }
+        
+        a {
+            color: #C4B35D;
+        }
+    }
+}
+
 .label-hamburger, #hamburger {
     display: none;
 }
 
 @media (max-width: 1200px) {
-    #accueil .wrap {
-        flex-wrap: wrap;
-        justify-content: center;
+    #accueil {
+        .wrap {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 
     #page2 {
         .card {
-            gap: .8rem;
-            width: calc(50% - 3rem);
-
             h4 {
-                font-size: 2.4vw;
+                font-size: 2.8vw;
             }
     
             p {
-                font-size: 1.8vw;
-                line-height: 2.4vw;
-            }
-
-            button {
-                padding: .6rem 1.2rem;
-            }
-
-            button span {
-                display: none;
-            }
-        
-            button:after {
-                content: 'Apprendre plus';
+                font-size: 1.6vw;
+                line-height: 2.5vw;
             }
         }
+
     }
 
     #page4 {
@@ -494,6 +527,11 @@ section {
     }
 
     #accueil {
+        .wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
         .card {
             flex-direction: row;
             width: 100%;
@@ -503,6 +541,43 @@ section {
             img {
                 width: 10%;
             }
+        }
+    }
+
+    #page2 {
+        .card {
+            gap: .6rem;
+
+            h4 {
+                font-size: 3.2vw;
+            }
+    
+            p {
+                font-size: 2.8vw;
+                line-height: 3.2vw;
+            }
+
+            button {
+                padding: .6rem 1.2rem;
+            }
+
+            button span {
+                display: none;
+            } 
+
+            button:after {
+                content: 'Plus';
+            }
+        }
+    }
+
+    #page3 {
+        h3 {
+            width: 100%;
+        }
+
+        .wrap {
+            flex-wrap: wrap;
         }
     }
 
@@ -521,40 +596,6 @@ section {
             background: white;
         }
 
-    }
-
-    #page2 {
-        .card {
-            gap: .6rem;
-            width: calc(50% - 3rem);
-
-            h4 {
-                font-size: 3.2vw;
-            }
-    
-            p {
-                font-size: 2.8vw;
-                line-height: 3.2vw;
-            }
-
-            button {
-                padding: .6rem 1.2rem;
-            }
-  
-            button:after {
-                content: 'Plus';
-            }
-        }
-    }
-
-    #page3 {
-        h3 {
-            width: 100%;
-        }
-
-        .wrap {
-            flex-wrap: wrap;
-        }
     }
 
     #hamburger:checked ~ ul {
