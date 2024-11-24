@@ -4,6 +4,14 @@
     font-size: 22px;
 }
 
+* {
+    box-sizing: content-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     min-width: 300px;
 }
@@ -11,17 +19,15 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    gap: 2rem;
-    height: 100%;
     width: 70vw;
-    height: calc(100% - 4rem);
     margin: 0 auto;
-    padding: 2rem;
+    height: calc(100% - 11vh);
+    gap: 4vh;
+    justify-content: space-between;
+    padding: 5vh 0 6vh;
 }
 
 .wrap {
-    width: 100%;
     display: grid;
 }
 
@@ -36,27 +42,12 @@ body {
 a {
     text-decoration: none;
     color: #111;
-}
-
-h2 {
-    font-size: 4.5vw;
-    line-height: 5.2vw;
-    color: white;
-    text-shadow: 3px 4px 6px #5c5c5c;
-    width: 50vw;
-    margin: 0 auto;
-    text-align: center;
-}
-
-h3 {
-    text-align: center;
-    font-size: 3.6vw;
-    line-height: 4.8vw;
-    margin: 0 auto;
+    transition: color .5s ease;
+    padding: 0 3px;
 }
 
 button {
-    padding: .7rem 2.4rem;
+    padding: .7rem 2.4rem .6rem;
     font-size: .8rem;
     text-transform: uppercase;
     letter-spacing: .1rem;
@@ -68,537 +59,82 @@ button {
 }
 
 header {
+    padding: 0 3.5rem;
     height: 80px;
-    width: 80%;
-    margin: auto;
+    width: calc(100% - 7rem);
+    background: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-#brand {
-    font-size: 2.2rem;
-    color: #BBBBBB;
-    margin-top: -10px;
-}
-
-header ul {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-    font-size: .8rem;
-}
-
-
-#accueil, #page2, #page5 {
-    min-height: 100vh;
-}
-
-
-#page3, #page6 {
-    min-height: 50vh;
-}
-
-#page4 {
-    min-height: 150vh;
-}
-
-#accueil {
-    background: linear-gradient(#362f2831, #362f2831),  
-        url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/26193-min.jpg') center no-repeat;
-    background-size: cover;
-
-    .wrap {
-        gap: 1.5rem;
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .card {
-        background-color: #C4B35D;
-        color: white;
-        text-shadow: 0 1px 2px #5c5c5c;
-        box-shadow: 1px 2px 10px hsla(0, 0%, 36%, 0.5);
-        text-align: center;
-        justify-content: space-between;
-        gap: 1rem;
-        padding: 40px 1rem 40px;
-
-        img {
-            width: 30%;
-        }
-    }
-
-    button {
-        background: white;
-        box-shadow: 1px 2px 10px hsla(0, 0%, 36%, 0.5);
-    }
-
-    button:hover {
-        background: #C4B35D;
-        color: white;
-        text-shadow: 0 1px 2px #5c5c5c;
-    }
-}
-
-#page2 {
-
-    h3 {
-        width: 100%;
-    }
-
-    .wrap {
-        gap: 1.5rem;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
-
-    .card {
-        gap: 1.2rem;
-        padding: 20px 1rem;
-        color: white;
-        align-items: flex-start;
-        
-        h4 {
-            font-size: 2.4vw;
-        }
-
-        p {
-            font-size: 1.4vw;
-            line-height: 2.2vw;
-        }
-
-        button {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            padding: .8rem 2.5rem;
-        }
+    border-bottom: 2px solid #948A56;
     
-        button:hover {
-            background: white;
-            color: #C4B35D;
-        }
-    }
-
-    .card:first-child, .card:last-child {
-        background: #C4B35D;
-    }
-
-    .card:nth-child(2) {
-        background: 
-            linear-gradient(#352f2c8a, #352f2c8a), 
-            url("https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/235.jpg") center;
-        background-size: cover;
-    }
-
-    .card:nth-child(3) {
-        background: black;
-    }
-}
-
-#page3 {
-    background: 
-        linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
-        url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    height: 50vh;
-    color: white;
-
-    .wrap {
-        gap: .6rem;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    h3 {
-        width: 70%;
-    }
-
-    button:first-child {
-        background: transparent;
-        color: white;
-        border: 2px solid white;
-    }
-}
-
-#page4 {
-    background-color: #1A1A1A;
-    color: white;
-
-    .intro {
-        p {
-            margin: 1rem 0;
-            text-align: center;
-        }
-    }
-
-    .wrap {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap: 2rem;
-        
-    }
-
-    .card {
-        gap: 1.2rem;
-        height: 37vh;
-        padding: 3rem 1.2rem;
-        color: white;
-        align-items: flex-start;
-        justify-content: flex-end;
-        
-        h4 {
-            font-size: 1.4vw;
-            font-weight: bold;
-            line-height: 1.8vw;
-            padding-top: 20px;
-            border-top: 4px solid rgba(255, 255, 255, 0.61);
-            width: 95%;
-        }
-
-        p {
-            font-size: 1.2vw;
-        }
-    }
-
-    .card:nth-child(1) {
-        background: 
-            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
-            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/443.jpg') center no-repeat;
-        background-size: cover;    
-    }
-
-    .card:nth-child(2) {
-        background: 
-            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
-            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/45435.jpg') center no-repeat;
-        background-size: cover;    
-    }
-
-    .card:nth-child(3) {
-        background: 
-            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
-            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/656.jpg') center no-repeat;
-        background-size: cover;    
-    }
-
-    .card:nth-child(4) {
-        background: 
-            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
-            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
-        background-size: cover;    
-    }
-
-    .card:nth-child(5) {
-        background: 
-            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
-            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/3d-house-with-solar-pannels.jpg') center no-repeat;
-        background-size: cover;    
-    }
-
-    .card:nth-child(6) {
-        background: 
-            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
-            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/5453.jpg') center no-repeat;
-        background-size: cover;    
-    }
-}
-
-#page5 {
-    height: 100vh;
-    background: repeating-linear-gradient(#1A1A1A, #1A1A1A 50%, #fff 50%, #fff);
-
-    .wrap {
-        height: 38vw;
-        position: relative;
-        top: -4vh;
+    #brand {
+        font-size: 2.2rem;
+        color: #BBBBBB;
+        margin-top: -12px;
     }
     
-    .yellow {
-        background: #C4B35D;
-        width: 80%;
-        height: 85%;
-        position:absolute;
-        top: 25%;
-        border-radius: .6rem;
-    }
-    
-
-    .photo {
-        position: absolute;
-        left: 6%;
-        background: url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg') center no-repeat;
-        background-size: cover;
-        width: 94%;
-        height: 100%;
-        border-radius: .6rem;
-    }
-
-    .card {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        background: #fff;
-        width: 36%;
-        padding: 1.8rem;
-        align-items: flex-start;
-        box-shadow: 1px 2px 10px #5c5c5c;
-
-        h4 {
-            font-size: 2.4vw;
-            font-weight: 400;
-        }
-
-        p {
-            font-size: 1.4vw;
-            line-height: 2.2vw;
-            padding: 1.8rem 0;
-        }
-
-        button {
-            background: #C4B35D;
-            color: white;
-            text-shadow: 0 1px 2px #5c5c5c;
-        }
-
-        button:hover {
-            background: #948A56;
-        }
-    }
-}
-
-#page6 {
-    .wrap {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-    
-    a {
-        color: #1A1A1A;
-        text-decoration: underline;
-    }
-
-    a:hover {
-        color: #C4B35D;
-    }
-
-    li {
+    ul {
         display: flex;
-        align-items: first baseline;
-        margin-bottom: .8rem;
-        span {
-            font-size: 1.5em;
-            color: #B3B3B3;
-            margin-right: .2rem; 
-        }      
-    }
-}
-
-#page7 {
-    
-    .bg {
-        height: 60vw;
-        background: 
-            linear-gradient(
-                #fff, 
-                #fff 10%, 
-                #C4B35D 10%,
-                #C4B35D 95%,
-                #fff 95%,
-                #fff
-        );
-    }
-
-    .wrap {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 1rem;
-        width: 90%;
-        margin: auto;
-    }
-
-    .card {
-        height: 20vw;
-        width: auto;
-        overflow: hidden;
-    }
-    
-    img {
-        height: 25vw;
-    }
-    
-    img:hover {
-        background: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2));   
-    }
-}
-
-#contact {
-    .wrap {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-    }
-
-    .photo {
-        background: url("//images01.nicepagecdn.com/c461c07a441a5d220e8feb1a/3dd3a5b1f7d05c41a6395584/sss.jpg") center no-repeat;
-        background-size: cover;
-        border-radius: .6rem;
-    }
-
-    form {
-        
-        div {
-            margin: 1rem 0;
-            width: 100%;
-        }
-
-        label {
-            font-size: .9rem;
-        }
-
-        input:not(input[type=checkbox]), textarea {
-            width: calc(100% - 2rem);
-            border: none;
-            border-bottom: 2px solid #1A1A1A;
-            padding: .6rem .5rem;
-            margin-top: .4rem;
-            outline: none;
-            font-size: .8rem;
-        }
-
-        textarea {
-            height: 10vh;
-        }
-
-        input:not(input[type=checkbox]):focus, textarea:focus {
-            border-bottom: 3px solid #1A1A1A;
-        }
-
-        button {
-            width: 100%;
-        }
+        gap: .3rem;
+        justify-content: space-between;
+        align-items: center;
+        font-size: .8rem;
         
         a {
-            color: #C4B35D;
+            padding: .3rem 3px;
+        }
+        
+        a:hover {
+            color: #948A56;
+            border-bottom: 5px solid #948A56;
         }
     }
 }
 
-.label-hamburger, #hamburger {
-    display: none;
+h2 {
+    font-size: 4.5vw;
+    line-height: 5.5vw;
+    color: white;
+    text-shadow: 3px 4px 6px #111;
+    width: 50vw;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3.6vw;
+    line-height: 4.6vw;
+    width: 70%;
 }
 
 @media (max-width: 1200px) {
-    #accueil {
-        .wrap {
-            grid-template-columns: 1fr 1fr;
-        }
+            
+    h2 {
+        font-size: 5.5vw;
+        line-height: 6.5vw;
+        width: 50vw;
     }
 
-    #page2 {
-        .card {
-            h4 {
-                font-size: 2.8vw;
-            }
-    
-            p {
-                font-size: 1.6vw;
-                line-height: 2.5vw;
-            }
-        }
-
-    }
-
-    #page4 {
-        
+    h3 {
+        font-size: 4.2vw;
+        line-height: 5.5vw;
+        width: 80%;
     }
 }
 
 @media (max-width: 800px) {
-
+   
     h2 {
-        font-size: 8vw;
-        line-height: 9.5vw;
-        width: 60vw;
+        font-size: 7.5vw;
+        width: 70vw;
     }
-
-    h3 {
-        font-size: 5.2vw;
-        line-height: 6.2vw;
-    }
-
-    #accueil {
-        .wrap {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card {
-            flex-direction: row;
-            width: 100%;
-            justify-content: stretch;
-            padding: .5rem 1rem;
-
-            img {
-                width: 10%;
-            }
-        }
-    }
-
-    #page2 {
-        .card {
-            gap: .6rem;
-
-            h4 {
-                font-size: 3.2vw;
-            }
     
-            p {
-                font-size: 2.8vw;
-                line-height: 3.2vw;
-            }
-
-            button {
-                padding: .6rem 1.2rem;
-            }
-
-            button span {
-                display: none;
-            } 
-
-            button:after {
-                content: 'Plus';
-            }
-        }
-    }
-
-    #page3 {
-        h3 {
-            width: 100%;
-        }
-
-        .wrap {
-            flex-wrap: wrap;
-        }
-    }
-
-    .label-hamburger {
-        display: block;
-    }
-
-    header {
-        ul {
-            display: block;
-            position: absolute;
-            width: 100%;
-            top: -200px;
-            left: 0;
-            transition: .5s ease-in-out;
-            background: white;
-        }
-
-    }
-
-    #hamburger:checked ~ ul {
-        top: 80px;
+    h3 {
+        font-size: 5vw;
+        line-height: 5.4vw;
+        width: 100%;
     }
 }

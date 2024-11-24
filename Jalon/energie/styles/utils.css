@@ -1,0 +1,50 @@
+.label-hamburger, #hamburger {
+    display: none;
+}
+
+.back-top {
+    position: fixed;
+    bottom: 2vh;
+    right: -5vh;
+    padding: .5rem;
+    border: 1px solid #111;
+    text-transform: initial;
+    transition: all .5s ease;
+}
+
+.back-top.show {
+    right: 2vh;
+    z-index: 1000;
+}
+
+@media (max-width: 800px) {
+    .label-hamburger {
+        display: block;
+    }
+
+    header {
+        ul {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transition: .5s ease-in-out;
+            background: white;
+            text-align: center;
+            opacity: 0;
+            width: 0;
+            padding: 1rem 0;
+            border-top: 2px solid #948A56;
+            border-bottom: 2px solid #948A56;
+        }
+    }
+
+    #hamburger:checked ~ ul {
+        top: 80px;
+        opacity: 100%;
+        width: 100%;
+        left: 0;
+    }
+}

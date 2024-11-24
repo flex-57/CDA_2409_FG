@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/accueil.css">
+    <link rel="stylesheet" href="./styles/page2.css">
+    <link rel="stylesheet" href="./styles/page3.css">
+    <link rel="stylesheet" href="./styles/page4.css">
+    <link rel="stylesheet" href="./styles/page5.css">
+    <link rel="stylesheet" href="./styles/page6.css">
+    <link rel="stylesheet" href="./styles/page7.css">
+    <link rel="stylesheet" href="./styles/contact.css">
+    <link rel="stylesheet" href="./styles/utils.css">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <title>Énergie</title>
 </head>
-<body>
+<body id="top">
+    <button class="back-top">
+        <a href="#top" title="Retourner en haut">⮝</a>
+    </button>
     <header>
         <h1 id="brand">Logo</h1>
         <nav>
@@ -103,46 +115,60 @@
                 </div>
                 <div class="wrap">
                     <div class="card">
-                        <h4>Économies de coûts</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <div>
+                            <h4>Économies de coûts</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <h4>Augmenter la valeur de la maison</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <div>
+                            <h4>Augmenter la valeur de la maison</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <h4>L’énergie solaire fonctionne partout</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <div>
+                            <h4>L’énergie solaire fonctionne partout</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <h4>Bénéficiez de crédits d'impôt et de remises</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <div>
+                            <h4>Bénéficiez de crédits d'impôt et de remises</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <h4>Aidez l'environnement</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <div>
+                            <h4>Aidez l'environnement</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
                     </div>
                     <div class="card">
-                        <h4>Exploiter l’énergie</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <div>
+                            <h4>Exploiter l’énergie</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="page5">
-            <div class="container">
-                <div class="wrap">
-                    <div class="yellow"></div>
-                    <div class="photo"></div>
-                    <div class="card">
-                        <h4>Laissez-nous vous aider à économiser</h4>
-                        <p>
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat non 
-                            proident
-                        </p>
-                        <button>Apprendre encore plus</button>
+            <div class="black-white">
+                <div class="container">
+                    <div class="wrap">
+                        <div class="yellow"></div>
+                        <div class="photo"></div>
+                        <div class="card">
+                            <h4>Laissez-nous vous aider à économiser</h4>
+                            <p>
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat non 
+                                proident
+                            </p>
+                            <button><span>Apprendre encore plus</span></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,5 +267,7 @@
             </div>
         </section>
     </main>
+
+    <script src="./js/main.js"></script>
 </body>
 </html>

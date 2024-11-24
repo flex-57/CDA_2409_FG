@@ -1,0 +1,126 @@
+#page5 {
+    height: 100vh;
+
+    .black-white {
+        background: linear-gradient(
+            #1A1A1A, 
+            #1A1A1A 50%, 
+            #fff 50%, 
+            #fff);
+    }
+
+    .wrap {
+        height: 38vw;
+        position: relative;
+        top: 0vh;
+    }
+    
+    .yellow {
+        background: #C4B35D;
+        width: 80%;
+        height: 85%;
+        position:absolute;
+        top: 25%;
+        border-radius: .6rem;
+    }
+    
+
+    .photo {
+        position: absolute;
+        left: 6%;
+        background: url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg') center no-repeat;
+        background-size: cover;
+        width: 94%;
+        height: 100%;
+        border-radius: .6rem;
+    }
+
+    .card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: white;
+        width: 36%;
+        padding: 1.8rem;
+        align-items: flex-start;
+        box-shadow: 1px 2px 10px #1A1A1A;
+
+        h4 {
+            font-size: 2.4vw;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1.4vw;
+            line-height: 2.2vw;
+            padding: 1.8rem 0;
+        }
+
+        button {
+            background: #C4B35D;
+            color: white;
+            text-shadow: 0 1px 2px #111;
+        }
+
+        button:hover {
+            background: #948A56;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    #page5 {
+        .wrap {
+            height: 42vw;
+            position: relative;
+            top: 0vh;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    #page5 {
+        height: 75vh;
+
+        .wrap {
+            height: 45vw;
+        }
+    
+        .card {
+            left: 10%;
+            top: 80%;
+            background: white;
+            width: 70%;
+            padding: 1.8rem;
+            align-items: flex-start;
+            box-shadow: 1px 2px 10px #5c5c5c;
+    
+            h4 {
+                font-size: 4vw;
+            }
+    
+            p {
+                font-size: .8rem;
+                line-height: 3vw;
+                padding: 1.8rem 0;
+            }
+    
+            button {
+                font-size: .7rem;
+                padding: .6rem 1.2rem;
+            }
+            
+            button:hover {
+                background: #948A56;
+            }
+            
+            button span {
+                display: none;
+            }
+    
+            button::after {
+                content: 'Plus';
+            }
+        }
+    } 
+}

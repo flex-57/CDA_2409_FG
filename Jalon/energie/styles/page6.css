@@ -1,0 +1,46 @@
+#page6 {
+    height: 50vh;
+
+    .wrap {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+    
+    a {
+        color: #1A1A1A;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color: #C4B35D;
+    }
+
+    li {
+        display: flex;
+        align-items: first baseline;
+        margin-bottom: .8rem;
+        span {
+            font-size: 1.5em;
+            color: #B3B3B3;
+            margin-right: .2rem; 
+        }      
+    }
+}
+
+@media (max-width: 1200px) {
+    #page5 {
+        height: 75vh;
+    }
+}
+
+@media (max-width: 800px) {
+    #page6 {
+        height: fit-content;
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: auto;
+        }
+    }
+}
