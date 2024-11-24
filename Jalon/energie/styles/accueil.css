@@ -1,0 +1,81 @@
+#accueil {
+    height: 100vh;
+
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+        url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/26193-min.jpg') center no-repeat;
+    background-size: cover;
+
+    .wrap {
+        gap: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+        background-color: #C4B35D;
+        color: white;
+        text-shadow: 0 1px 2px #111;
+        box-shadow: 1px 2px 5px #11111169;
+        text-align: center;
+        justify-content: space-between;
+        gap: .8rem;
+        padding: 30px 1rem;
+
+        img {
+            width: 30%;
+        }
+    }
+
+    button {
+        background: white;
+        box-shadow: 1px 2px 5px #111;
+    }
+
+    button:hover {
+        background: #C4B35D;
+        color: white;
+        text-shadow: 0 1px 2px #111;
+    }
+}
+
+@media (max-width: 1200px) {
+    
+    #accueil {
+        .wrap {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 20vh 20vh;
+        }
+        
+        .card {
+            img {
+                width: 18%;
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+
+    #accueil {
+        .wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card {
+            flex-direction: row;
+            width: calc(100% - 3rem);
+            justify-content: left;
+            gap: 1.5rem;
+            text-align: left;
+            padding: .8rem 1.5rem;
+
+            img {
+                width: 8%;
+            }
+        }
+
+        button {
+            font-size: .7rem;
+        } 
+    }
+}

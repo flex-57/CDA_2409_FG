@@ -1,0 +1,783 @@
+:root {
+    font-family: "Titillium Web";
+    color: #111;
+    font-size: 22px;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 300px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 5vh;
+    width: 70vw;
+    margin: auto;
+    padding: 4vh 0;
+}
+
+.wrap {
+    display: grid;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: .6rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+    transition: color .5s ease;
+    padding: 0 3px;
+}
+
+h2 {
+    font-size: 4.5vw;
+    line-height: 5.2vw;
+    color: white;
+    text-shadow: 3px 4px 6px #5c5c5c;
+    width: 50vw;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-size: 3.6vw;
+    line-height: 4.2vw;
+    margin: 0 auto;
+}
+
+button {
+    padding: .7rem 2.4rem .6rem;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    border: none;
+    border-radius: 5rem;
+    transition: .3s ease;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+header {
+    padding: 0 3.5rem;
+    height: 80px;
+    width: calc(100% - 7rem);
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #948A56;
+    
+    #brand {
+        font-size: 2.2rem;
+        color: #BBBBBB;
+        margin-top: -12px;
+    }
+
+    ul {
+        display: flex;
+        gap: .3rem;
+        justify-content: space-between;
+        align-items: center;
+        font-size: .8rem;
+    
+        a {
+            padding: .3rem 3px;
+        }
+    
+        a:hover {
+            color: #948A56;
+            border-bottom: 5px solid #948A56;
+        }
+    }
+}
+
+#accueil, #page2, #page5, #contact {
+    height: 100vh;
+}
+
+
+#page3, #page6 {
+    height: 50vh;
+}
+
+#page4, #page7 {
+    height: 150vh;
+}
+
+
+
+#page2 {
+
+    h3 {
+        width: 100%;
+    }
+
+    .wrap {
+        gap: 1.2rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .card {
+        gap: 1.2rem;
+        padding: 20px 1rem;
+        color: white;
+        align-items: flex-start;
+        
+        h4 {
+            font-size: 2.4vw;
+        }
+
+        p {
+            line-height: 2.2vw;
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: .8rem 2.5rem;
+            text-shadow: 0 1px 2px #5c5c5c;
+            margin: 0;
+        }
+    
+        button:hover {
+            background: white;
+            color: #C4B35D;
+        }
+    }
+
+    .card:first-child, .card:last-child {
+        background: #C4B35D;
+    }
+
+    .card:nth-child(2) {
+        background: 
+            linear-gradient(#352f2c8a, #352f2c8a), 
+            url("https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/235.jpg") center;
+        background-size: cover;
+    }
+
+    .card:nth-child(3) {
+        background: black;
+    }
+}
+
+#page3 {
+    background: 
+        linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
+        url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 50vh;
+    color: white;
+
+    .wrap {
+        display: flex;
+        justify-content: center;
+        gap: .6rem;
+    }
+
+    h3 {
+        width: 70%;
+    }
+
+    button {
+        margin: 0;
+    }
+
+    button:hover {
+        background: #C4B35D;
+        color: #fff;
+        text-shadow: 0 1px 2px #111;
+    }
+
+    button:first-child {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+
+    button:first-child:hover {
+        background: white;
+        color: #AE9721;
+        border: 2px solid white;
+    }
+}
+
+#page4 {
+    background-color: #1A1A1A;
+    color: white;
+
+    .intro {
+        p {
+            margin: 1rem 0;
+            text-align: center;
+        }
+    }
+
+    .wrap {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1.5rem;
+        
+    }
+
+    .card {
+        gap: 1.2rem;
+        height: 47.5vh;
+        padding: 2rem 1.2rem;
+        color: white;
+        align-items: flex-start;
+        justify-content: flex-end;
+        
+        div {
+            opacity: 0;
+            transition: all .5s ease;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1.5rem;
+            padding-top: 20px;
+            border-top: 4px solid #ffffffa1;
+            width: 95%;
+        }
+
+        p {
+            font-size: .9rem;
+        }
+    }
+
+    .card:hover {
+        div {
+            opacity: 100%;
+        }
+    }
+
+    .card:nth-child(1) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/443.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(2) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/45435.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(3) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/656.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(4) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(5) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/3d-house-with-solar-pannels.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(6) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/5453.jpg') center no-repeat;
+        background-size: cover;    
+    }
+}
+
+#page5 {
+    .black-white {
+        background: linear-gradient(
+            #1A1A1A, 
+            #1A1A1A 50%, 
+            #fff 50%, 
+            #fff);
+    }
+
+    .wrap {
+        height: 38vw;
+        position: relative;
+        top: 0vh;
+    }
+    
+    .yellow {
+        background: #C4B35D;
+        width: 80%;
+        height: 85%;
+        position:absolute;
+        top: 25%;
+        border-radius: .6rem;
+    }
+    
+
+    .photo {
+        position: absolute;
+        left: 6%;
+        background: url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/12.jpg') center no-repeat;
+        background-size: cover;
+        width: 94%;
+        height: 100%;
+        border-radius: .6rem;
+    }
+
+    .card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: white;
+        width: 36%;
+        padding: 1.8rem;
+        align-items: flex-start;
+        box-shadow: 1px 2px 10px #1A1A1A;
+
+        h4 {
+            font-size: 2.4vw;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1.4vw;
+            line-height: 2.2vw;
+            padding: 1.8rem 0;
+        }
+
+        button {
+            background: #C4B35D;
+            color: white;
+            text-shadow: 0 1px 2px #111;
+        }
+
+        button:hover {
+            background: #948A56;
+        }
+    }
+}
+
+#page6 {
+    .wrap {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+    
+    a {
+        color: #1A1A1A;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color: #C4B35D;
+    }
+
+    li {
+        display: flex;
+        align-items: first baseline;
+        margin-bottom: .8rem;
+        span {
+            font-size: 1.5em;
+            color: #B3B3B3;
+            margin-right: .2rem; 
+        }      
+    }
+}
+
+#page7 {
+    
+    .bg {
+        height: 58vw;
+        background: 
+            linear-gradient(
+                #fff, 
+                #fff 10%, 
+                #C4B35D 10%,
+                #C4B35D 95%,
+                #fff 95%,
+                #fff
+        );
+    }
+
+    .wrap {
+        grid-template-columns: repeat(3, 1fr);
+        gap: .8rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .card {
+        height: 20vw;
+        width: auto;
+        overflow: hidden;
+        transition: all .5s;
+    }
+    
+    .card:hover {
+        box-shadow: 0 2px 10px #333333;
+    }
+
+    img {
+        height: 25vw;
+        transition: all .5s;
+    }
+    
+    img:hover {
+        height: 26vw;
+    }
+}
+
+#contact {
+    button {
+        background: transparent;
+        border: 2px solid #C4B35D;
+        padding: .8rem 2.5rem;
+    }
+
+    button:hover {
+        background: #C4B35D;
+        color: white;
+        text-shadow: 0 1px 2px #111;
+    }
+
+    .wrap {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .photo {
+        background: url("//images01.nicepagecdn.com/c461c07a441a5d220e8feb1a/3dd3a5b1f7d05c41a6395584/sss.jpg") center no-repeat;
+        background-size: cover;
+        border-radius: .6rem;
+    }
+
+    form {
+        div {
+            margin: 1rem 0;
+            width: 100%;
+        }
+
+        label {
+            font-size: .9rem;
+        }
+
+        input:not(input[type=checkbox]), textarea {
+            width: calc(100% - 1rem);
+            border: none;
+            border-bottom: 2px solid #1A1A1A;
+            padding: .6rem .5rem;
+            margin-top: .4rem;
+            outline: none;
+            font-size: .8rem;
+            display: block;
+            transition: all .3s ease;
+        }
+        
+        textarea {
+            height: 10vh;
+        }
+        
+        input[type=checkbox] {
+            width: .6rem;
+            height: .6rem;
+            transition: all .3s;
+        }
+
+        input[type=checkbox]:checked {
+            width: .7rem;
+            height: .7rem;
+        }
+
+        button {
+            width: 100%;
+            background: #AE9721;
+            color: #fff;
+            padding: .8rem 2.5rem;
+            border: none;
+            text-shadow: 0 1px 2px #111;
+        }
+
+        button:hover {
+            background: #5c5c5c;
+        }
+        
+        a {
+            color: #C4B35D;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+
+    h3 {
+        font-size: 4.8vw;
+        line-height: 5.4vw;
+    }
+
+    #page2 {
+        .card {
+            gap: .5rem;
+            h4 {
+                font-size: 3vw;
+            }
+    
+            p {
+                font-size: .95rem;
+                line-height: 2.6vw;
+            }
+        }
+        button span {
+            display: none;
+        } 
+
+        button:after {
+            content: 'Encore Plus';
+        }
+    }
+
+    #page3 {
+        h3 {
+            width: 90%;
+        }
+    }
+
+    #page4 {
+        .wrap {
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .card {
+            gap: 1.2rem;
+            height: calc(80vh / 3);
+            color: white;
+            align-items: flex-start;
+            justify-content: flex-end;
+            
+            h4 {
+                font-size: 1.1rem;
+                font-weight: bold;
+                line-height: 1.5rem;
+                padding-top: 20px;
+                width: 95%;
+            }
+    
+            p {
+                font-size: .85rem;
+            }
+        }
+    }
+
+    #page7 {
+        .bg {
+            height: 96vw;
+        }
+    
+        .wrap {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    
+        .card {
+            height: 19vw;
+        }
+    }
+
+    #contact {
+        .wrap {
+            grid-template-columns: none;
+            grid-template-rows: 75% 1fr;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+
+    h2 {
+        font-size: 8vw;
+        line-height: 9.5vw;
+        width: 60vw;
+    }
+
+    h3 {
+        font-size: 5.3vw;
+        line-height: 6.3vw;
+    }
+
+    #accueil {
+        .wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card {
+            flex-direction: row;
+            width: calc(100% - 3rem);
+            justify-content: left;
+            text-align: left;
+            padding: .8rem 1.5rem;
+
+            img {
+                width: 8%;
+            }
+        }
+
+        button {
+            font-size: .7rem;
+        } 
+    }
+
+    #page2 {
+        .card {
+            gap: .6rem;
+
+            h4 {
+                font-size: 4vw;
+            }
+    
+            p {
+                font-size: .8rem;
+                line-height: 3.2vw;
+            }
+
+            button {
+                font-size: .7rem;
+                padding: .6rem 1.2rem;
+            }
+
+            button:after {
+                content: 'Plus';
+            }
+        }
+    }
+
+    #page3 {
+        h3 {
+            width: 100%;
+        }
+
+        .wrap {
+            flex-wrap: wrap;
+        }
+
+        button {
+            font-size: .7rem;
+        }
+    }
+
+    #page5 {
+        height: 75vh;
+
+        .wrap {
+            height: 45vw;
+        }
+        
+        .yellow {
+            width: 80%;
+            height: 85%;
+            position:absolute;
+            top: 25%;
+            border-radius: .6rem;
+        }
+        
+    
+        .photo {
+            position: absolute;
+            left: 6%;
+            background-size: cover;
+            width: 94%;
+            height: 100%;
+        }
+    
+        .card {
+            left: 10%;
+            top: 90%;
+            background: white;
+            width: 60%;
+            padding: 1.8rem;
+            align-items: flex-start;
+            box-shadow: 1px 2px 10px #5c5c5c;
+    
+            h4 {
+                font-size: 4vw;
+            }
+    
+            p {
+                font-size: .8rem;
+                line-height: 3vw;
+                padding: 1.8rem 0;
+            }
+    
+            button {
+                font-size: .7rem;
+                padding: .6rem 1.2rem;
+            }
+            
+            button:hover {
+                background: #948A56;
+            }
+            
+            button span {
+                display: none;
+            }
+    
+            button::after {
+                content: 'Plus';
+            }
+        }
+    }
+
+    #page6 {
+        height: 75vh;
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: auto;
+        }
+    }
+
+    #page7 {
+        .bg {
+            height: 95vw;
+        }
+    
+        .wrap {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    
+        .card {
+            height: 16vw;
+            width: 100%;
+        }
+
+        img {
+            height: 42vw;
+        }
+
+        img:hover {
+            height: 44vw;
+        }
+    }
+}

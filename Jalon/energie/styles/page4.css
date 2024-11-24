@@ -1,0 +1,128 @@
+#page4 {
+    height: 150vh;
+
+    background-color: #1A1A1A;
+    color: white;
+
+    .intro {
+        p {
+            margin: 1rem 0;
+            text-align: center;
+        }
+    }
+
+    .wrap {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1.5rem;
+        
+    }
+
+    .card {
+        gap: 1.2rem;
+        height: 47.5vh;
+        padding: 2rem 1.2rem;
+        color: white;
+        align-items: flex-start;
+        justify-content: flex-end;
+        
+        div {
+            opacity: 0;
+            transition: all .5s ease;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1.5rem;
+            padding-top: 20px;
+            border-top: 4px solid #ffffffa1;
+            width: 95%;
+        }
+
+        p {
+            font-size: .9rem;
+        }
+    }
+
+    .card:hover {
+        div {
+            opacity: 100%;
+        }
+    }
+
+    .card:nth-child(1) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/443.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(2) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/45435.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(3) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/656.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(4) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/32423.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(5) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/3d-house-with-solar-pannels.jpg') center no-repeat;
+        background-size: cover;    
+    }
+
+    .card:nth-child(6) {
+        background: 
+            linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+            url('https://assets.nicepagecdn.com/d2cc3eaa/2298516/images/5453.jpg') center no-repeat;
+        background-size: cover;    
+    }
+}
+
+@media (max-width: 1200px) {
+    
+    #page4 {
+        .wrap {
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .card {
+            gap: 1.2rem;
+            height: calc(80vh / 3);
+            color: white;
+            align-items: flex-start;
+            justify-content: flex-end;
+            
+            h4 {
+                font-size: 1.1rem;
+                font-weight: bold;
+                line-height: 1.5rem;
+                padding-top: 20px;
+                width: 95%;
+            }
+            
+            p {
+                font-size: .85rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    
+}

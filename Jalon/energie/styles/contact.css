@@ -1,0 +1,88 @@
+#contact {
+    button {
+        background: transparent;
+        border: 2px solid #C4B35D;
+        padding: .8rem 2.5rem;
+    }
+
+    button:hover {
+        background: #C4B35D;
+        color: white;
+        text-shadow: 0 1px 2px #111;
+    }
+
+    .wrap {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .photo {
+        background: url("//images01.nicepagecdn.com/c461c07a441a5d220e8feb1a/3dd3a5b1f7d05c41a6395584/sss.jpg") center no-repeat;
+        background-size: cover;
+        border-radius: .6rem;
+    }
+
+    form {
+        div {
+            margin: 1rem 0;
+            width: 100%;
+        }
+
+        label {
+            font-size: .9rem;
+        }
+
+        input:not(input[type=checkbox]), textarea {
+            width: calc(100% - 1rem);
+            border: none;
+            border-bottom: 2px solid #1A1A1A;
+            padding: .6rem .5rem;
+            margin-top: .4rem;
+            outline: none;
+            font-size: .8rem;
+            display: block;
+            transition: all .3s ease;
+        }
+        
+        textarea {
+            height: 10vh;
+        }
+        
+        input[type=checkbox] {
+            width: .6rem;
+            height: .6rem;
+            transition: all .3s;
+        }
+
+        input[type=checkbox]:checked {
+            width: .7rem;
+            height: .7rem;
+        }
+
+        button {
+            width: calc(100% - 5rem);
+            background: #AE9721;
+            color: #fff;
+            padding: .8rem 2.5rem;
+            border: none;
+            text-shadow: 0 1px 2px #111;
+        }
+
+        button:hover {
+            background: #5c5c5c;
+        }
+        
+        a {
+            color: #C4B35D;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    #contact {
+        .wrap {
+            grid-template-columns: none;
+            grid-template-rows: 75% 1fr;
+        }
+    }
+}
