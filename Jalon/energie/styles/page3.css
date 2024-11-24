@@ -40,8 +40,9 @@
 
 @media (max-width: 1200px) {
     #page3 {
+        height: inherit;
         h3 {
-            width: 100%;
+            width: 82%;
         }
     
         .wrap {
