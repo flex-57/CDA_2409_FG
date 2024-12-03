@@ -80,7 +80,7 @@
 
 @media (max-width: 800px) {
     #page5 {
-        height: 75vh;
+        height: inherit;
 
         .wrap {
             height: 45vw;

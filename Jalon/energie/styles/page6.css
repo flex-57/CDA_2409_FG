@@ -35,7 +35,7 @@
 
 @media (max-width: 800px) {
     #page6 {
-        height: fit-content;
+        height: inherit;
         .wrap {
             display: flex;
             flex-direction: column;

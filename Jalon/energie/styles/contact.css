@@ -1,4 +1,7 @@
 #contact {
+    h3 {
+        width: 100%;
+    }
     button {
         background: transparent;
         border: 2px solid #C4B35D;
@@ -12,7 +15,7 @@
     }
 
     .wrap {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 50% 1fr;
         gap: 1.5rem;
     }
 

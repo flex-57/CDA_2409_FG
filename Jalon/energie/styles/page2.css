@@ -98,6 +98,14 @@
 
 @media (max-width: 800px) {
     #page2 {
+        height: inherit;
+        .wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        
+        }
+
         .card {
             h4 {
                 font-size: 4vw;
