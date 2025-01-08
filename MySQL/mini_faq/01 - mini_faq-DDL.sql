@@ -27,7 +27,7 @@ CREATE TABLE categories
 (
 	category_name VARCHAR(30) PRIMARY KEY,
     category_description VARCHAR(255) NOT NULL,
-    category_order SMALLINT NOT NULL UNIQUE
+    category_order TINYINT NOT NULL UNIQUE
 );
 
 CREATE TABLE categories_questions
