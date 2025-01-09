@@ -29,80 +29,109 @@
         private void InitializeComponent()
         {
             this.BtnRegister = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
+            this.InscriptionBox = new System.Windows.Forms.GroupBox();
+            this.EmailInput = new System.Windows.Forms.TextBox();
+            this.PasswordInput = new System.Windows.Forms.TextBox();
+            this.PasswordLabel = new System.Windows.Forms.Label();
+            this.EmailLabel = new System.Windows.Forms.Label();
+            this.PasswordRepeatLabel = new System.Windows.Forms.Label();
+            this.PasswordRepeatInput = new System.Windows.Forms.TextBox();
+            this.InscriptionBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRegister
             // 
-            this.BtnRegister.Location = new System.Drawing.Point(365, 257);
+            this.BtnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRegister.Location = new System.Drawing.Point(95, 300);
             this.BtnRegister.Name = "BtnRegister";
-            this.BtnRegister.Size = new System.Drawing.Size(75, 23);
+            this.BtnRegister.Size = new System.Drawing.Size(108, 33);
             this.BtnRegister.TabIndex = 0;
             this.BtnRegister.Text = "S\'inscrire";
             this.BtnRegister.UseVisualStyleBackColor = true;
             this.BtnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
-            // groupBox1
+            // InscriptionBox
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(294, 33);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(220, 194);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.InscriptionBox.Controls.Add(this.PasswordRepeatInput);
+            this.InscriptionBox.Controls.Add(this.PasswordRepeatLabel);
+            this.InscriptionBox.Controls.Add(this.EmailInput);
+            this.InscriptionBox.Controls.Add(this.BtnRegister);
+            this.InscriptionBox.Controls.Add(this.PasswordInput);
+            this.InscriptionBox.Controls.Add(this.PasswordLabel);
+            this.InscriptionBox.Controls.Add(this.EmailLabel);
+            this.InscriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InscriptionBox.Location = new System.Drawing.Point(238, 33);
+            this.InscriptionBox.Name = "InscriptionBox";
+            this.InscriptionBox.Padding = new System.Windows.Forms.Padding(10);
+            this.InscriptionBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.InscriptionBox.Size = new System.Drawing.Size(294, 380);
+            this.InscriptionBox.TabIndex = 1;
+            this.InscriptionBox.TabStop = false;
+            this.InscriptionBox.Text = "Inscription";
+            this.InscriptionBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label1
+            // EmailInput
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.EmailInput.Location = new System.Drawing.Point(13, 68);
+            this.EmailInput.Name = "EmailInput";
+            this.EmailInput.Size = new System.Drawing.Size(268, 31);
+            this.EmailInput.TabIndex = 3;
             // 
-            // label2
+            // PasswordInput
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 125);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.PasswordInput.Location = new System.Drawing.Point(13, 137);
+            this.PasswordInput.Name = "PasswordInput";
+            this.PasswordInput.Size = new System.Drawing.Size(268, 31);
+            this.PasswordInput.TabIndex = 2;
             // 
-            // textBox1
+            // PasswordLabel
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 122);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.PasswordLabel.AutoSize = true;
+            this.PasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordLabel.Location = new System.Drawing.Point(13, 118);
+            this.PasswordLabel.Name = "PasswordLabel";
+            this.PasswordLabel.Size = new System.Drawing.Size(174, 16);
+            this.PasswordLabel.TabIndex = 1;
+            this.PasswordLabel.Text = "Choisissez un mot de passe";
             // 
-            // textBox2
+            // EmailLabel
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 62);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
+            this.EmailLabel.AutoSize = true;
+            this.EmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailLabel.Location = new System.Drawing.Point(13, 49);
+            this.EmailLabel.Name = "EmailLabel";
+            this.EmailLabel.Size = new System.Drawing.Size(134, 16);
+            this.EmailLabel.TabIndex = 0;
+            this.EmailLabel.Text = "Saisissez votre email";
+            this.EmailLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // PasswordRepeatLabel
+            // 
+            this.PasswordRepeatLabel.AutoSize = true;
+            this.PasswordRepeatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordRepeatLabel.Location = new System.Drawing.Point(13, 188);
+            this.PasswordRepeatLabel.Name = "PasswordRepeatLabel";
+            this.PasswordRepeatLabel.Size = new System.Drawing.Size(157, 16);
+            this.PasswordRepeatLabel.TabIndex = 4;
+            this.PasswordRepeatLabel.Text = "Répétez le mot de passe";
+            // 
+            // PasswordRepeatInput
+            // 
+            this.PasswordRepeatInput.Location = new System.Drawing.Point(13, 207);
+            this.PasswordRepeatInput.Name = "PasswordRepeatInput";
+            this.PasswordRepeatInput.Size = new System.Drawing.Size(268, 31);
+            this.PasswordRepeatInput.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.BtnRegister);
+            this.Controls.Add(this.InscriptionBox);
             this.Name = "Form1";
             this.Text = "Inscription";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.InscriptionBox.ResumeLayout(false);
+            this.InscriptionBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -110,11 +139,13 @@
         #endregion
 
         private System.Windows.Forms.Button BtnRegister;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox InscriptionBox;
+        private System.Windows.Forms.TextBox EmailInput;
+        private System.Windows.Forms.TextBox PasswordInput;
+        private System.Windows.Forms.Label PasswordLabel;
+        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.TextBox PasswordRepeatInput;
+        private System.Windows.Forms.Label PasswordRepeatLabel;
     }
 }
 
