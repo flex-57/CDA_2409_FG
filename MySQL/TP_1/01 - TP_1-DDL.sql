@@ -1,0 +1,31 @@
+/* SUPPRIMER la BDD "mini_faq" */
+DROP DATABASE IF EXISTS TP_1;
+
+/* SUPPRIMER la BDD "mini_faq" */
+CREATE DATABASE IF NOT EXISTS TP_1;
+
+USE TP_1;
+
+CREATE TABLE dept
+(
+deptno TINYINT PRIMARY KEY AUTO_INCREMENT,
+dname VARCHAR(50) NOT NULL,
+loc VARCHAR(50)
+);
+
+CREATE TABLE emp
+(
+empno INT PRIMARY KEY AUTO_INCREMENT,
+ename VARCHAR(50) NOT NULL,
+job VARCHAR(50) NOT NULL,
+mgr INT,
+hiredate DATE NOT NULL,
+sal INT NOT NULL,
+comm INT,
+deptno TINYINT NOT NULL
+); 
+
+ALTER TABLE emp ADD FOREIGN KEY fk_emp_emp (mgr) REFERENCES emp(empno);
+
+ALTER TABLE emp ADD FOREIGN KEY fk_emp_dept (deptno) REFERENCES dept(deptno);
+
