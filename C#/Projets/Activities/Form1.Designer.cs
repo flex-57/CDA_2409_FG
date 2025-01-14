@@ -1,6 +1,6 @@
 ﻿namespace Activities
 {
-    partial class Form1
+    partial class InscriptionActivities
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -30,18 +30,19 @@
         {
             this.BtnRegister = new System.Windows.Forms.Button();
             this.InscriptionBox = new System.Windows.Forms.GroupBox();
+            this.PasswordRepeatInput = new System.Windows.Forms.TextBox();
+            this.PasswordRepeatLabel = new System.Windows.Forms.Label();
             this.EmailInput = new System.Windows.Forms.TextBox();
             this.PasswordInput = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
-            this.PasswordRepeatLabel = new System.Windows.Forms.Label();
-            this.PasswordRepeatInput = new System.Windows.Forms.TextBox();
             this.InscriptionBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRegister
             // 
             this.BtnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRegister.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnRegister.Location = new System.Drawing.Point(95, 300);
             this.BtnRegister.Name = "BtnRegister";
             this.BtnRegister.Size = new System.Drawing.Size(108, 33);
@@ -60,15 +61,32 @@
             this.InscriptionBox.Controls.Add(this.PasswordLabel);
             this.InscriptionBox.Controls.Add(this.EmailLabel);
             this.InscriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InscriptionBox.Location = new System.Drawing.Point(238, 33);
+            this.InscriptionBox.Location = new System.Drawing.Point(154, 28);
             this.InscriptionBox.Name = "InscriptionBox";
             this.InscriptionBox.Padding = new System.Windows.Forms.Padding(10);
             this.InscriptionBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.InscriptionBox.Size = new System.Drawing.Size(294, 380);
+            this.InscriptionBox.Size = new System.Drawing.Size(300, 400);
             this.InscriptionBox.TabIndex = 1;
             this.InscriptionBox.TabStop = false;
             this.InscriptionBox.Text = "Inscription";
             this.InscriptionBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // PasswordRepeatInput
+            // 
+            this.PasswordRepeatInput.Location = new System.Drawing.Point(13, 207);
+            this.PasswordRepeatInput.Name = "PasswordRepeatInput";
+            this.PasswordRepeatInput.Size = new System.Drawing.Size(268, 31);
+            this.PasswordRepeatInput.TabIndex = 5;
+            // 
+            // PasswordRepeatLabel
+            // 
+            this.PasswordRepeatLabel.AutoSize = true;
+            this.PasswordRepeatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordRepeatLabel.Location = new System.Drawing.Point(13, 188);
+            this.PasswordRepeatLabel.Name = "PasswordRepeatLabel";
+            this.PasswordRepeatLabel.Size = new System.Drawing.Size(157, 16);
+            this.PasswordRepeatLabel.TabIndex = 4;
+            this.PasswordRepeatLabel.Text = "Répétez le mot de passe";
             // 
             // EmailInput
             // 
@@ -103,33 +121,18 @@
             this.EmailLabel.Size = new System.Drawing.Size(134, 16);
             this.EmailLabel.TabIndex = 0;
             this.EmailLabel.Text = "Saisissez votre email";
-            this.EmailLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // PasswordRepeatLabel
-            // 
-            this.PasswordRepeatLabel.AutoSize = true;
-            this.PasswordRepeatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordRepeatLabel.Location = new System.Drawing.Point(13, 188);
-            this.PasswordRepeatLabel.Name = "PasswordRepeatLabel";
-            this.PasswordRepeatLabel.Size = new System.Drawing.Size(157, 16);
-            this.PasswordRepeatLabel.TabIndex = 4;
-            this.PasswordRepeatLabel.Text = "Répétez le mot de passe";
-            // 
-            // PasswordRepeatInput
-            // 
-            this.PasswordRepeatInput.Location = new System.Drawing.Point(13, 207);
-            this.PasswordRepeatInput.Name = "PasswordRepeatInput";
-            this.PasswordRepeatInput.Size = new System.Drawing.Size(268, 31);
-            this.PasswordRepeatInput.TabIndex = 5;
-            // 
-            // Form1
+            // InscriptionActivities
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(580, 457);
             this.Controls.Add(this.InscriptionBox);
-            this.Name = "Form1";
-            this.Text = "Inscription";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.Name = "InscriptionActivities";
+            this.Padding = new System.Windows.Forms.Padding(50, 25, 50, 25);
+            this.Text = "Inscription - Activities";
             this.InscriptionBox.ResumeLayout(false);
             this.InscriptionBox.PerformLayout();
             this.ResumeLayout(false);
