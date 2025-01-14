@@ -12,7 +12,7 @@ INSERT INTO categories (category_name, category_description, category_order) VAL
 	('PHP', 'Les questions relatives à PHP', 1);
     
 INSERT INTO questions (question_date, question_label, question_response, user_id) VALUE 
-	('2024-11-23', 
+	(NULL, 
 		'Dans MySQL, quel type de données permet de stocker des valeurs numériques dont le maximum est 127 ?',
 		'Le type TINYINT stocke des valeurs numériques comprises entre -128 et 127',
 		3
