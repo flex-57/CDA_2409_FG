@@ -127,14 +127,15 @@ SELECT e.ename, e.hiredate, m.ename 'mgr name', m.hiredate 'mgr date' FROM emp e
     WHERE e.hiredate < m.hiredate;
 	
 -- 7
-SELECT e.empno, e.mgr FROM emp e
-	JOIN emp m ON e.empno = m.empno
-    WHERE m.mgr <> e.empno;
+SELECT m.empno, m.ename FROM emp m
+	LEFT JOIN emp e ON e.mgr = m.empno
+    WHERE e.empno IS NULL;
 
 -- 8
-SELECT e.ename, n.hiredate FROM emp e
-	JOIN emp n ON e.mgr = n.empno
-    WHERE e.hiredate >= n.hiredate;
+SELECT ename, hiredate FROM emp
+    WHERE hiredate <= (
+		SELECT hiredate FROM emp WHERE ename = 'BLAKE'
+    );
 
 -- 9
 

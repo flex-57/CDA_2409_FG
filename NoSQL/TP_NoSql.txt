@@ -1,0 +1,22 @@
+1_ 	db.emp.find({}, {_id: 0, ename: 1, job: 1, empno: 1, sal: 1})
+	db.emp.find({deptno: 10}, {_id: 0, ename: 1, job: 1, empno: 1, sal: 1})
+
+2_	db.emp.find({job: "MANAGER", sal: {$gt: 2800}}, {_id: 0, ename: 1, job: 1, sal:1})
+
+3_	db.emp.find({job: "MANAGER", deptno : {$ne: 30}}, {_id: 0, ename: 1} )
+
+4_	db.emp.find({sal: {$gte: 1200, $lte: 1400}}, {_id: 0, ename: 1, sal: 1})
+
+5_	db.emp.find({$or: [{deptno: 10}, {deptno: 30}]}, {_id: 0, ename: 1}).sort({ename: 1})
+
+6_	db.emp.find({deptno: 30}, {_id: 0}).sort({ename: 1})
+
+7_	db.emp.find({_id: 0}).sort({job: -1, sal: -1})
+
+8_	db.emp.distinct("job")
+
+9_	db.emp.find({ename: "ALLEN"}, {_id: 0, dname: 1})
+
+10_ 	db.emp.find({}, {_id: 0, dname: 1, ename: 1, job: 1, sal: 1}).sort({dname: -1, sal: -1})
+
+11_	
