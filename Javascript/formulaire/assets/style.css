@@ -1,0 +1,35 @@
+:root {
+    --color: blue;
+}
+
+h1 {
+    margin: .6rem 0;
+}
+
+body, input {
+    border: 1px solid var(--color);
+}
+
+body {
+    margin: 2rem;
+    padding: 0 1rem;
+}
+
+input {
+    padding: .3rem;
+    color: var(--color)
+}
+
+form {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.blue {
+    color: var(--color);
+}
+
+hr {
+    border: 1px solid black;
+}

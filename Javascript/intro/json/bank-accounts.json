@@ -1,0 +1,18 @@
+{
+    "comptes_banquaires" : [
+        {
+            "Account" : "FR76 10001 10001 10000000001 11",
+            "Bank" : "Banque populaire",
+            "City" : "Paris",
+            "Owner" : "John Doe",
+            "Balance" : 36813.47
+        },
+        {
+            "Account" : "FR76 30001 30001 30000000012 33",
+            "Bank" : "Crédit Mutuel",
+            "City" : "Paris",
+            "Owner" : "Mark Zouk",
+            "Balance" : 5295.59
+        }
+    ]
+}
