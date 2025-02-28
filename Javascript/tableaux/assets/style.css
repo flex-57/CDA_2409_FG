@@ -1,0 +1,68 @@
+:root {
+    --blue: #ACCBE1;
+    --red: #e94747;
+    --bg: #536B78;
+    --bg-elem: #637081;
+}
+
+h1 {
+    margin: .6rem 0;
+}
+
+body {
+    margin: 2rem;
+    padding: 0 1rem 1rem;
+    background: var(--bg);
+    color: var(--blue);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid var(--blue);
+}
+
+.blue {
+    color: var(--blue);
+}
+
+.red {
+    color: var(--red);
+}
+
+hr {
+    border: 1px solid black;
+}
+
+table, tr, th, td {
+    background: var(--bg-elem);
+    border-collapse: collapse;
+    border: 2px solid var(--blue);
+}
+
+th, td {
+    padding: .5rem;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+p {
+    margin: 1rem 0 0;
+}
+
+.add-person {
+    border: 1px dashed var(--blue);
+    padding: 0 1rem 1rem;
+}
+
+form, form > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+input {
+    padding: .3rem .6rem;
+    color: var(--blue);
+    background: var(--bg-elem);
+    border: 2px solid var(--blue);
+}

@@ -1,0 +1,18 @@
+{
+    "utilisateurs" : [
+        {
+            "id" : 1,
+            "nom_utilisateur" : "Mimi",
+            "patronyme" : "coco",
+            "prenom" : "Michel",
+            "date_naissance" : "1981-02-05"
+        },
+        {
+            "id" : 2,
+            "nom_utilisateur" : "Riri",
+            "patronyme" : "roro",
+            "prenom" : "Rico",
+            "date_naissance" : "1999-05-25"
+        }
+    ]
+}
