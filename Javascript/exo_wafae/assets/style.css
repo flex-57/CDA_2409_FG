@@ -8,6 +8,15 @@ th, td {
     color: rgb(6, 6, 70);
 }
 
+tr > td:last-child {
+    text-align: center;
+    
+    a {
+        color: rgb(230, 0, 38);
+        text-decoration: none;
+    }
+}
+
 h2 {
    color: rgb(28, 14, 56);
 }
@@ -20,8 +29,6 @@ form {
     label {
         display: inline-block;
         width: 150px;
-
-    
     }
 
     input:not(input[type=button]) {
