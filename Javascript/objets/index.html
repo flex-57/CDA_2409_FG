@@ -8,12 +8,14 @@
     <title>Manipuler un objet</title>
 </head>
 <body>
-    <h1>Profil de <span id="user-name">dfgdfgd</span></h1>
-
+    <div class="message"></div>
+   
+    <h1>Profil de <span id="user-name"></span></h1>
+ 
     <table class="table-bloc"></table>
-
+ 
     <h3>Modifier le profil</h3>
-
+ 
     <form>
         <div>
             <label for="input-firstname">Prénom</label>
@@ -25,17 +27,17 @@
         </div>
         <div>
             <label for="input-birthday">Date de naissance</label>
-            <input type="text" id="input-birthday">
+            <input type="date" id="input-birthday">
         </div>
         <div>
             <label for="input-salary">Salaire</label>
-            <input type="text" id="input-salary">
+            <input type="number" id="input-salary">
         </div>
         <div>
             <label></label>
-            <input type="button" value="Enregistrer">
+            <input type="button" id="btn-save" value="Enregistrer">
         </div>
     </form>
-
+ 
 </body>
 </html>
