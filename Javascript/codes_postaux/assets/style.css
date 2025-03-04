@@ -1,0 +1,14 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+form {
+    display: flex;
+    gap: 1rem;
+}
+
+input {
+    padding: .3rem .5rem;
+    border: 1px solid black;
+    border-radius: .3rem;
+}

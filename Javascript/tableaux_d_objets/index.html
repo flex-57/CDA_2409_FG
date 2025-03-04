@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <script src="./assets/script.js" async></script>
+    <title>Tableau d'objets</title>
+</head>
+<body>
+    <header>
+        <h1>Espace membres</h1>
+        <div id="message"></div>
+    </header>
+    <form>
+        <h3>Identification</h3>
+        <div>
+            <label for="username">Identifiant</label>
+            <input type="text" id="username">
+        </div>
+        <div>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password">
+        </div>
+        <div>
+            <label></label>
+            <input type="submit" id="btn-connection" value="Connexion">
+        </div>
+    </form>
+    <section id="list-users">
+        <div id="hello">
+            <h3>Bonjour <span></span></h3>
+            <input type="button" id="btn-disconnection" value="Déconnexion">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Email</th>
+                    <th>Salaire</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+</body>
+</html>
