@@ -1,68 +1,71 @@
 :root {
-    --blue: #ACCBE1;
-    --red: #e94747;
-    --bg: #536B78;
-    --bg-elem: #637081;
-}
-
-h1 {
-    margin: .6rem 0;
+    --color: #CEE5F2;
+    --color-h1_btn-add_table: #ACCBE1;
+    --background: #536B78;
+    --background-input_table: #637081;
+    --border-input_table: #748BA3;
+    --success : #00b64c;
+    --error : #af0202;
 }
 
 body {
-    margin: 2rem;
-    padding: 0 1rem 1rem;
-    background: var(--bg);
-    color: var(--blue);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px solid var(--blue);
+    background: var(--background);
+    color: var(--color);
 }
 
-.blue {
-    color: var(--blue);
+main {
+    border: 1px solid var(--color-h1_btn-add_table);
+    padding: 0 1rem 1rem;
 }
 
-.red {
-    color: var(--red);
+h1, table {
+    color: var(--color-h1_btn-add_table);
 }
 
-hr {
-    border: 1px solid black;
+section {
+    border: 1px dashed var(--color-h1_btn-add_table);
+    padding: 0 1rem;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+input {
+    border: 2px solid var(--border-input_table);
+    background: var(--background-input_table);
+    padding: .3rem .5rem;
+    color: var(--color-h1_btn-add_table);
 }
 
 table, tr, th, td {
-    background: var(--bg-elem);
+    border: 2px solid var(--border-input_table);
     border-collapse: collapse;
-    border: 2px solid var(--blue);
 }
 
 th, td {
-    padding: .5rem;
+    padding: .3rem .5rem;
 }
 
 td:last-child {
     text-align: center;
 }
 
-p {
-    margin: 1rem 0 0;
+a {
+    color: var(--color);
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.add-person {
-    border: 1px dashed var(--blue);
-    padding: 0 1rem 1rem;
+.success {
+    background: var(--success);
+    padding: .5rem 1rem;
 }
 
-form, form > div {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 1rem;
-}
-
-input {
-    padding: .3rem .6rem;
-    color: var(--blue);
-    background: var(--bg-elem);
-    border: 2px solid var(--blue);
+.error {
+    background: var(--error);
+    padding: .5rem 1rem;
 }
