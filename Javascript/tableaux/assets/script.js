@@ -35,9 +35,11 @@ const display = () => {
             const firstname = p.split(' ')[0]
             const lastname = p.split(' ')[1]
     
+            const reg = /[\u0300-\u036f]/g
+
             tdLastname.innerText = lastname
             tdFirstname.innerText = firstname
-            tdEmail.innerText = `${firstname.toLowerCase()}.${lastname.toLowerCase()}@exemple.com`
+            tdEmail.innerText = `${firstname.toLowerCase().normalize("NFD").replace(reg, "")}.${lastname.toLowerCase().normalize("NFD").replace(reg, "")}@exemple.com`
             tdSupprimer.innerHTML = `<a href="" id="${i}" class="delete">X</a>`
     
             tbody.append(tr)
