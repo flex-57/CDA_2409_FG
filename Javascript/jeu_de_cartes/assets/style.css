@@ -1,0 +1,19 @@
+table {
+    border: 2px solid #000;
+}
+
+thead {
+    background: #DDDDDD;
+}
+
+th {
+    border: 1px solid #919191;
+}
+
+table, tr, th, td {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: .3rem .8rem;
+}
