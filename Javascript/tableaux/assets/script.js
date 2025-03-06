@@ -90,8 +90,14 @@ form.addEventListener('submit', e => {
 
 const displayMessage = (elem, m) => {
     elem.innerHTML = m
-    let opacity = 1
-    elem.style.opacity = opacity
+    let opacity = 0
+    const interval = setInterval(() => {
+        if(opacity >= 1) {
+            clearInterval(interval)
+        }
+        elem.style.opacity = opacity
+        opacity += .1
+    }, 50)
     setTimeout(() => {
         const interval = setInterval(() => {
             if(opacity <= 0) {

@@ -60,12 +60,14 @@ a {
     font-weight: bold;
 }
 
+.success, .error {
+    padding: .5rem 1rem;
+}
+
 .success {
     background: var(--success);
-    padding: .5rem 1rem;
 }
 
 .error {
     background: var(--error);
-    padding: .5rem 1rem;
 }
