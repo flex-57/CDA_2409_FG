@@ -17,14 +17,15 @@ const titleHead = [
 const table = document.querySelector('table')
 const thead = document.querySelector('thead')
 const tbody = document.querySelector('tbody')
+const tfoot = document.querySelector('tfoot')
 
-const tr = document.createElement('tr')
-thead.append(tr)
+const trHead = document.createElement('tr')
+thead.append(trHead)
 
 titleHead.forEach(t => {
     const th = document.createElement('th')
     th.innerText = t
-    tr.append(th)
+    trHead.append(th)
 })
 
 const getCards = async () => {
@@ -43,7 +44,7 @@ const getCards = async () => {
 
 getCards().then(cards => {
     cards.forEach(c => {
-        const tr = document.createElement('tr')
+        const trBody = document.createElement('tr')
         const tdId = document.createElement('td')
         const tdName = document.createElement('td')
         const tdLevel = document.createElement('td')
@@ -72,7 +73,7 @@ getCards().then(cards => {
         tdDefeat.innerText = c.defeat
         tdDraw.innerText = c.draw
 
-        tr.append(
+        trBody.append(
             tdId, 
             tdName, 
             tdLevel, 
@@ -87,8 +88,41 @@ getCards().then(cards => {
             tdDefeat,
             tdDraw
         )
-        tbody.append(tr)
+        tbody.append(trBody) 
     })
-    
+
+    const maxPlayedCard = cards.reduce((max, card) => card.played > max.played ? card : max)
+    const bestRatioCard = cards.reduce((best, card) => {
+        const ratio = card.victory / card.played;
+        const bestRatio = best.victory / best.played;
+        return ratio > bestRatio ? card : best;
+    })
+
+    const trMax = document.createElement('tr')
+    const trBest = document.createElement('tr')
+    const tdMax = document.createElement('td')
+    const tdBest = document.createElement('td')
+
+    const labelMax = document.createElement('label')
+    const labelBest = document.createElement('label')
+
+    let spanMax = document.createElement('span')
+    let spanBest = document.createElement('span')
+
+    labelMax.innerText = 'Carte la plus jouée'
+    labelBest.innerText = 'Meilleur ratio de victoire'
+
+    spanMax.innerHTML = `<b>${maxPlayedCard.name} (${maxPlayedCard.played} parties)</b>`
+    spanBest.innerHTML = `<b>${bestRatioCard.name} (${bestRatioCard.played} parties) (${(bestRatioCard.victory / bestRatioCard.played * 100).toFixed(2)}%)</b>`
+
+    tdMax.append(labelMax, spanMax)
+    tdBest.append(labelBest, spanBest)
+
+    tdMax.setAttribute('colspan', titleHead.length)
+    tdBest.setAttribute('colspan', titleHead.length)
+
+    tfoot.append(trMax, trBest)
+    trMax.append(tdMax)
+    trBest.append(tdBest)
 })
 
