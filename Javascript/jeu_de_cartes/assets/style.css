@@ -1,19 +1,36 @@
+table, tr, th, td {
+    border-collapse: collapse;
+}
+
 table {
     border: 2px solid #000;
 }
 
 thead {
-    background: #DDDDDD;
+    background: #ddd;
 }
 
-th {
-    border: 1px solid #919191;
+tr {
+    border: 1px solid #aaa;
 }
 
-table, tr, th, td {
-    border-collapse: collapse;
+tr:nth-child(even) {
+    background: #e6e6e6;
 }
 
 th, td {
-    padding: .3rem .8rem;
+    padding: .4rem .8rem;
+}
+
+th {
+    border: 1px solid #aaa;
+}
+
+tfoot {
+    border-top: 2px solid #000;
+}
+
+label {
+    display: inline-block;
+    width: 25%;
 }
