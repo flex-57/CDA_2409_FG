@@ -1,96 +1,107 @@
 const people = ['Mike Dev', 'John Makenzie', 'Léa Grande']
 
-const addPerson = document.querySelector('.add-person')
+const main = document.querySelector('main')
+const form = document.querySelector('form')
 const inputFirstname = document.querySelector('#input-firstname')
 const inputLastname = document.querySelector('#input-lastname')
-const btnAddPerson = document.querySelector('.btn-add-person')
-const addPersonneText = document.createElement('p')
+const btnAdd = document.querySelector('#btn-add')
+const formMessage = document.querySelector('#form-message')
+const message = document.querySelector('#message')
+const ul = document.querySelector('ul')
+const table = document.querySelector('table')
+const tbody = document.querySelector('tbody')
 
-const listPersonBloc = document.querySelector('.list-person-bloc')
-const tablePersonBloc = document.querySelector('.table-person-bloc')
+const display = () => {
 
-btnAddPerson.addEventListener('click', () => {
-    addPersonneText.innerText = ''
+    tbody.innerText = ''
+    ul.innerText = ''
+    
+    if(people.length > 0) {
 
-    if(/[a-zA-Z -]{2,}/.test(inputFirstname.value) && /[a-zA-Z -]{2,}/.test(inputLastname.value)) {
+        table.style.display = ''
+        message.innerText = ''
+
+        people.forEach((p, i) => {
+            const li = document.createElement('li')
+            li.innerText = p
+            ul.append(li)
+    
+            const tr = document.createElement('tr')
+            const tdLastname = document.createElement('td')
+            const tdFirstname = document.createElement('td')
+            const tdEmail = document.createElement('td')
+            const tdSupprimer = document.createElement('td')
+    
+            const firstname = p.split(' ')[0]
+            const lastname = p.split(' ')[1]
+    
+            tdLastname.innerText = lastname
+            tdFirstname.innerText = firstname
+            tdEmail.innerText = `${firstname.toLowerCase()}.${lastname.toLowerCase()}@exemple.com`
+            tdSupprimer.innerHTML = `<a href="" id="${i}" class="delete">X</a>`
+    
+            tbody.append(tr)
+            tr.append(tdLastname, tdFirstname, tdEmail, tdSupprimer)
+        })
+    
+        const deletable = document.querySelectorAll('.delete')
+    
+        deletable.forEach(d => {
+            d.addEventListener('click', (e) => {
+                e.preventDefault()
+                people.splice(d.id, 1)
+                display()
+            })
+        })
+    }
+
+    else {
+        table.style.display = 'none'
+        message.innerHTML = '<p>La liste est vide.</p>'
+    }
+}
+
+form.addEventListener('submit', e => {
+    e.preventDefault()
+    formMessage.innerText = ''
+
+    const reg = /[a-zA-Z-]{2,}/
+
+    if(reg.test(inputFirstname.value.trim()) && reg.test(inputLastname.value.trim())) {
     
         const firstname = `${String(inputFirstname.value).charAt(0).toUpperCase()}${String(inputFirstname.value).slice(1)}`
         const lastname = `${String(inputLastname.value).charAt(0).toUpperCase()}${String(inputLastname.value).slice(1)}`
 
-        if(!people.includes(`${firstname} ${lastname}`)) {
-            addPersonneText.innerHTML = `${firstname} ${lastname} à été ajouté !`
-            
-            people.push(`${firstname} ${lastname}`)
+        if(!people.includes(`${firstname.trim()} ${lastname.trim()}`)) {
+            displayMessage(formMessage, `<p class="success">✔ ${firstname.trim()} ${lastname.trim()} à été ajouté !</p>`)
+            people.push(`${firstname.trim()} ${lastname.trim()}`)
+            inputFirstname.value = ''
+            inputLastname.value = ''
             display()
+        }
+        else {
+            displayMessage(formMessage, '<p class="error">⚠ Le nom de la personne existe déjà !</p>')
         }
     }
     else {
-        addPersonneText.innerHTML = '<span class="red">Veuillez remplir les champs correctement !</span>'
+        displayMessage(formMessage, '<p class="error">⚠ Le prénom et le nom doivent comporter 2 caractères minimum chacun sans espaces !</p>')
     }
-    addPerson.append(addPersonneText)
 })
 
-
-const display = () => {
-
-    listPersonBloc.innerHTML = ''
-    tablePersonBloc.innerHTML = ''
-
-    if(people.length > 0) {
-
-        const listPerson = document.createElement('ul')
-        listPersonBloc.append(listPerson)
-    
-        const rowHead = document.createElement('tr')
-        const headLastname = document.createElement('th')
-        const headFirstname = document.createElement('th')
-        const headEmail = document.createElement('th')
-        const headDelete = document.createElement('th')
-    
-        headLastname.innerText = 'Nom'
-        headFirstname.innerText = 'Prénom'
-        headEmail.innerText = 'Email'
-        headDelete.innerText = 'Supprimer'
-    
-        tablePersonBloc.append(rowHead)
-        rowHead.append(headLastname)
-        rowHead.append(headFirstname)
-        rowHead.append(headEmail)
-        rowHead.append(headDelete)
-    
-        people.forEach((e, index) => {
-            const personItem = document.createElement('li')
-            personItem.innerText = e
-            listPerson.append(personItem)
-    
-            const rowPerson = document.createElement('tr')
-            const columnLastname = document.createElement('td')
-            const columnFirstname = document.createElement('td')
-            const columnEmail = document.createElement('td')
-            const columnDelete = document.createElement('td')
-    
-            columnFirstname.innerText = e.split(' ')[0]
-            columnLastname.innerText = e.split(' ')[1]
-            columnEmail.innerText = `${e.split(' ')[0].toLowerCase()}.${e.split(' ')[1].toLowerCase()}@example.com`
-            columnDelete.innerHTML = `<a href="" id="${index}" class="delete">X</a>`
-            
-            tablePersonBloc.append(rowPerson)
-            rowPerson.append(columnLastname)
-            rowPerson.append(columnFirstname)
-            rowPerson.append(columnEmail)
-            rowPerson.append(columnDelete)
-        })
-    
-        const deletable = document.querySelectorAll('.delete')
-        
-        deletable.forEach((d) => {
-            d.addEventListener('click', (e) => {
-                e.preventDefault()
-                people.splice(d.id, 1)
-                display() 
-            })
-        })
-    }
+const displayMessage = (elem, m) => {
+    elem.innerHTML = m
+    let opacity = 1
+    elem.style.opacity = opacity
+    setTimeout(() => {
+        const interval = setInterval(() => {
+            if(opacity <= 0) {
+                clearInterval(interval)
+                elem.innerHTML = ''
+            }
+            elem.style.opacity = opacity
+            opacity -= .1
+        }, 50)
+    }, 3000)
 }
 
 display()

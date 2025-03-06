@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
-    <script src="./assets/script.js" async></script>
+    <script src="./assets/script.js" defer></script>
     <title>Manipuler un tableau</title>
 </head>
 <body>
-    <h1>Liste des personnes inscrites</h1>
-
-    <div class="add-person">
-        <h3>Ajouter une personne</h3>
-
-        <form>
-            <div>
+    <main>
+        <h1>Liste des personnes inscrites</h1>
+        <section>
+            <h4>Ajouter une personne</h4>
+            <form>
                 <div>
                     <label for="input-firstname">Prénom</label>
                     <input type="text" id="input-firstname">
@@ -23,15 +21,29 @@
                     <label for="input-lastname">Nom</label>
                     <input type="text" id="input-lastname">
                 </div>
-            </div>
+                <div>
+                    <input type="submit" id="btn-add" value="Ajouter">
+                </div>
+            </form>
             <div>
-                <input type="button" class="btn-add-person" value="Ajouter">
+                <p id="form-message"></p>
             </div>
-        </form>
-    </div>
-
-    <div class="list-person-bloc"></div>
-    
-    <table class="table-person-bloc"></table>
+        </section>
+        <div>
+            <p id="message"></p>
+            <ul></ul>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </main>
 </body>
 </html>
