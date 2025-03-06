@@ -41,6 +41,10 @@ input {
     color: var(--color-h1_btn-add_table);
 }
 
+table {
+    width: 50%;
+}
+
 table, tr, th, td {
     border: 2px solid var(--border-input_table);
     border-collapse: collapse;
