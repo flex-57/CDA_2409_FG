@@ -1,0 +1,55 @@
+:root {
+    --color1: #30343F;
+    --color2: #FAFAFF;
+    --color3: #E4D9FF;
+    --color4: #374479;
+    --color5: #6E7799;
+    --color6: #C490D1;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: var(--color1);
+    color: var(--color3);
+}
+
+main {
+    border: 1px solid var(--color3);
+    padding: 0 1rem 1rem;
+}
+
+section {
+    border: 1px dashed var(--color5);
+    padding: 0 1rem 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    display: inline-block;
+    width: 130px;
+}
+
+input {
+    background: var(--color4);
+    border: 2px solid var(--color5);
+    color: var(--color3);
+    padding: .4rem .6rem .3rem;
+}
+
+table, tr, th, td {
+    background: var(--color4);
+    border: 2px solid var(--color5);
+    border-collapse: collapse;
+    color: var(--color3);
+    padding: .4rem .6rem .3rem;
+}
+
+table {
+    margin: 1.5rem 0;
+}
+
