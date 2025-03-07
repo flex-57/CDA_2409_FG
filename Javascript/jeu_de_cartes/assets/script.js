@@ -93,9 +93,7 @@ getCards().then(cards => {
 
     const maxPlayedCard = cards.reduce((max, card) => card.played > max.played ? card : max)
     const bestRatioCard = cards.reduce((best, card) => {
-        const ratio = card.victory / card.played;
-        const bestRatio = best.victory / best.played;
-        return ratio > bestRatio ? card : best;
+        return best
     })
 
     const trMax = document.createElement('tr')
@@ -112,8 +110,8 @@ getCards().then(cards => {
     labelMax.innerText = 'Carte la plus jouée'
     labelBest.innerText = 'Meilleur ratio de victoire'
 
-    spanMax.innerHTML = `<b>${maxPlayedCard.name} (${maxPlayedCard.played} parties)</b>`
-    spanBest.innerHTML = `<b>${bestRatioCard.name} (${bestRatioCard.played} parties) (${(bestRatioCard.victory / bestRatioCard.played * 100).toFixed(2)}%)</b>`
+    spanMax.innerHTML = `<b>${maxPlayedCard.name} avec ${maxPlayedCard.victory} victoires pour ${maxPlayedCard.played} parties</b>`
+    spanBest.innerHTML = `<b>${bestRatioCard.name} avec ${bestRatioCard.victory} victoires pour ${bestRatioCard.played} parties (${(bestRatioCard.victory / bestRatioCard.played * 100).toFixed(2)}%)</b>`
 
     tdMax.append(labelMax, spanMax)
     tdBest.append(labelBest, spanBest)
