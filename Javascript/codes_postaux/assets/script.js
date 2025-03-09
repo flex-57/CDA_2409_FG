@@ -16,13 +16,9 @@ getCommunes().then(communes => {
         const list = communes.filter(commune => commune.codePostal.startsWith(inputSearchCp.value))
         list.forEach(el => {
             const option = document.createElement('option')
-            //option.setAttribute('label', el.nomCommune)
-            option.innerText = el.codePostal
-            option.value = el.codePostal + "/" + el.nomCommune
-           // option.dataset.toto = JSON.stringify(el);
+            option.innerText = el.nomCommune
+            option.value = el.codePostal
             datalistVilles.append(option)
-
-            console.log(datalistVilles.options);
         })
     })
 })
@@ -32,8 +28,6 @@ getCommunes().then(communes => {
 datalistVilles.querySelectorAll('option').forEach(e => {
     e.addEventListener('keypress', () => {
     
-
-        console.log('currentCommune');
         
     })
 })
@@ -46,7 +40,6 @@ form.addEventListener('submit', (e) => {
         getCommunes().then(communes => {
             const commune = communes.find(c => c.codePostal == currentCommune.value)
 
-            console.log(commune);
             
         })   
     }
