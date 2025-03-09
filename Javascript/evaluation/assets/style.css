@@ -53,3 +53,7 @@ table {
     margin: 1.5rem 0;
 }
 
+.error {
+    background: rgb(131, 0, 0);
+    padding: .3rem .5rem;
+}

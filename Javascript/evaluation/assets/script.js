@@ -5,6 +5,9 @@ const btnAdd = document.querySelector('#btn-add')
 const table = document.querySelector('table')
 const tbody = document.querySelector('tbody')
 const ul = document.querySelector('ul')
+const errorForm = document.querySelector('.error-form')
+const errorFullname = document.querySelector('.error-fullname')
+const errorGrade = document.querySelector('.error-grade')
 
 const failingGrade = 12
 let evalData = []
@@ -70,18 +73,47 @@ form.addEventListener('submit', (e) => {
     const fullname = inputFullname.value.trim()
     const grade = parseFloat(inputGrade.value)
 
-    if(
-        /[a-zA-Z-]{2,}/.test(fullname.split(' ')[0]) && 
-        /[a-zA-Z-]{2,}/.test(fullname.split(' ')[1]) && 
-        !isNaN(grade) && 
-        grade >= 0 && 
-        grade <= 20
-    ) {
-        evalData.push({fullname, grade})
-        inputFullname.value = ''
-        inputGrade.value = ''
-        display()
+    errorFullname.innerText = ''
+    errorGrade.innerText = ''
+    
+    if (fullname && !isNaN(grade)) {
+        
+        errorForm.innerText = ''
+        errorFullname.innerText = ''
+        errorGrade.innerText = ''
+
+        if(
+            /[a-zA-Z-]{2,}/.test(fullname.split(' ')[0]) &&
+            /[a-zA-Z-]{2,}/.test(fullname.split(' ')[1])
+        ) {
+            
+            evalData.push({fullname, grade})
+            inputFullname.value = ''
+            inputGrade.value = ''
+            display()
+        }
+
+        else {
+            if(
+                !/[a-zA-Z-]{2,}/.test(fullname.split(' ')[0]) || 
+                !/[a-zA-Z-]{2,}/.test(fullname.split(' ')[1])
+            ) {
+                errorFullname.innerText = 'Le prénom et le nom ne doivent comporter que des lettres et des tirets avec deux caractères minimum chacun !'
+            }
+            
+            if(
+                grade > 20 || 
+                grade < 0
+            ) {
+                errorGrade.innerText = 'La note doit être comprise entre 0 et 20 !'
+            }
+        }
+        
     }
+    else {
+        errorForm.innerText = 'Les deux champs doivent être complétés correctements !'        
+    }
+
 })
 
 getEval()
