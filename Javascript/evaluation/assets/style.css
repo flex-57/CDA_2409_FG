@@ -55,5 +55,7 @@ table {
 
 .error {
     background: rgb(131, 0, 0);
-    padding: .3rem .5rem;
+    padding: .4rem .8rem;
+    margin-bottom: .5rem;
+    display: none;
 }

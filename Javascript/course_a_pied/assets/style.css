@@ -1,0 +1,55 @@
+:root {
+    --base-bg: #111111;
+    --base-txt: #CCCCCC;
+    --base-link: #E4D9FF;
+    --base-btn: #085E8F;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: var(--base-bg);
+    color: var(--base-link);
+}
+
+main {
+    border: 1px solid var(--base-link);
+    padding: 1rem;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+#results {
+    display: flex;
+    gap: .2rem;
+}
+
+#results div {
+    background: var(--base-link);
+    color: var(--base-btn);
+    padding: .3rem .5rem;
+}
+
+#country {
+    display: flex;
+    gap: .2rem;
+    flex-wrap: wrap;
+}
+
+.checkbox-container {
+    background: var(--base-btn);
+    padding: .3rem .2rem;
+    width: 18%;
+    display: flex;
+    gap: .5rem;
+}
+
+table {
+    margin-top: 1.5rem;
+    background: var(--base-btn);
+}
+
+th, td {
+    padding: .3rem .5rem;
+}

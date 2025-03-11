@@ -5,6 +5,7 @@ const btnAdd = document.querySelector('#btn-add')
 const table = document.querySelector('table')
 const tbody = document.querySelector('tbody')
 const ul = document.querySelector('ul')
+const errors = document.querySelectorAll('.error')
 const errorForm = document.querySelector('.error-form')
 const errorFullname = document.querySelector('.error-fullname')
 const errorGrade = document.querySelector('.error-grade')
@@ -70,50 +71,53 @@ const display = () => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    const fullname = inputFullname.value.trim()
+    const lastname = inputFullname.value.trim().split(' ')[0]
+    const firstname = inputFullname.value.trim().split(' ')[1]
     const grade = parseFloat(inputGrade.value)
 
-    errorFullname.innerText = ''
-    errorGrade.innerText = ''
-    
-    if (fullname && !isNaN(grade)) {
-        
-        errorForm.innerText = ''
-        errorFullname.innerText = ''
-        errorGrade.innerText = ''
+    const fullname = ucFirst(lastname) + ' ' + ucFirst(firstname)
 
-        if(
-            /[a-zA-Z-]{2,}/.test(fullname.split(' ')[0]) &&
-            /[a-zA-Z-]{2,}/.test(fullname.split(' ')[1])
-        ) {
-            
-            evalData.push({fullname, grade})
-            inputFullname.value = ''
-            inputGrade.value = ''
-            display()
-        }
+    let error = 0
+  
+    errors.forEach((er) => {
+        er.style.display = 'none'
+        er.innerText = ''
+    })
 
-        else {
-            if(
-                !/[a-zA-Z-]{2,}/.test(fullname.split(' ')[0]) || 
-                !/[a-zA-Z-]{2,}/.test(fullname.split(' ')[1])
-            ) {
-                errorFullname.innerText = 'Le prénom et le nom ne doivent comporter que des lettres et des tirets avec deux caractères minimum chacun !'
-            }
-            
-            if(
-                grade > 20 || 
-                grade < 0
-            ) {
-                errorGrade.innerText = 'La note doit être comprise entre 0 et 20 !'
-            }
-        }
-        
+    const reg = /[a-zA-Z-]{2,}/
+
+    if(!reg.test(lastname) || !reg.test(firstname)) {
+        displayMessage(
+            'Le nom et le prénom ne doivent comporter que des lettres et des tirets avec deux caractères minimum chacun !',
+            errorFullname
+        )
+        error++
     }
-    else {
-        errorForm.innerText = 'Les deux champs doivent être complétés correctements !'        
+    
+    if(isNaN(grade) || grade > 20 || grade < 0) {
+        displayMessage(
+            'La note doit être comprise entre 0 et 20 !',
+            errorGrade
+        ) 
+        error++
+    }
+
+    if(error === 0) {
+        evalData.push({fullname, grade})
+        inputFullname.value = ''
+        inputGrade.value = ''
+        display()
     }
 
 })
 
+const ucFirst = (word) => {
+    return String(word).charAt(0).toUpperCase()+String(word).slice(1).toLowerCase()
+}
+
+const displayMessage = (message, elem) => {
+    elem.style.display = 'block'
+    elem.innerText = message
+}
+ 
 getEval()
