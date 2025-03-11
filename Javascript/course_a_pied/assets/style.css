@@ -32,22 +32,30 @@ h1 {
 }
 
 #country {
-    display: flex;
-    gap: .2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: .3rem;
 }
 
-.checkbox-container {
+label {
     background: var(--base-btn);
-    padding: .3rem .2rem;
-    width: 18%;
     display: flex;
-    gap: .5rem;
+    gap: .6rem;
+    flex-direction: row-reverse;
+    justify-content: start;
+    cursor: pointer;
+    padding: .3rem .5rem;
+}
+
+input {
+    background: var(--base-link);
+    cursor: pointer;
 }
 
 table {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     background: var(--base-btn);
+    width: 100%;
 }
 
 th, td {
