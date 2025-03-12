@@ -1,10 +1,12 @@
 const tbody = document.querySelector('tbody')
 const tfoot = document.querySelector('tfoot')
 
-const btnSort = document.querySelector('#monthly button')
+const btnSortEid = document.querySelector('.btn-sort-eid')
+const btnSortName = document.querySelector('.btn-sort-name')
+const btnSortSalary = document.querySelector('.btn-sort-salary')
+const btnSortBirthdate = document.querySelector('.btn-sort-birthdate')
 
 let resultsData = []
-let sorted = 0
 
 const getResults = async () => {
     try {
@@ -23,8 +25,9 @@ const getResults = async () => {
 const display = (result) => {
 
     tbody.innerText = ''
+    tfoot.innerText = ''
 
-    result.forEach((r) => {
+    result.forEach((r, indexResult) => {
         const trBody = tbody.insertRow()
         const tdEid = trBody.insertCell()
         const tdName = trBody.insertCell()
@@ -42,60 +45,59 @@ const display = (result) => {
         btnDuplicate.innerText = 'Duplicate'
         btnDelete.innerText = 'Delete'
 
-        btnDuplicate.id = r.id
-        btnDelete.id = r.id
-
         tdEid.innerText = r.id
         tdName.innerText = r.employee_name
         tdEmail.innerText = `${(r.employee_name.split(' ')[0]).charAt(0).toLowerCase()}.${(r.employee_name.split(' ')[1]).toLowerCase()}@email.fr`
-        tdSalary.innerText = `${(r.employee_salary / 12).toFixed(2)} €`
+        tdSalary.innerText = `${parseFloat((r.employee_salary / 12).toFixed(2)).toLocaleString('en')} €`
         tdBirth.innerText = new Date().getFullYear() - r.employee_age
         tdActions.append(btnDuplicate, btnDelete)
 
         btnDuplicate.addEventListener('click', () => {
-            tfoot.innerText = ''
             const dup = {
-                id: result.length + 1,
-                employee_name: r.employee_name,
-                employee_salary: r.employee_salary,
-                employee_age: r.employee_age,
-                profile_image: ''
+                ...r, 
+                id: Math.max(...result.map(r => r.id)) + 1
             }
-            result.push(dup)
-            tfoot.innerText = ''
+            result.splice(indexResult + 1, 0, dup)
             display(result)
         })
 
         btnDelete.addEventListener('click', () => {
-            tfoot.innerText = ''
-            display(result.filter(employee => employee.id != btnDelete.id))
+            result.splice(indexResult, 1)
+            display(result)
         })
     })
 
     const trFoot = tfoot.insertRow()
     const tdCount = trFoot.insertCell()
-    const tdVoid = trFoot.insertCell()
+    const tdVoid = trFoot.insertCell().setAttribute('colspan', 2)
     const tdTotalSalary = trFoot.insertCell()
-    const tdVoid2 = trFoot.insertCell()
-
-    tdVoid.setAttribute('colspan', 2)
-    tdVoid2.setAttribute('colspan', 2)
+    const tdVoid2 = trFoot.insertCell().setAttribute('colspan', 2)
 
     tdCount.innerHTML = `<b>${result.length}</b>`
-    tdTotalSalary.innerHTML = `${result.reduce((a, b) => (a + b.employee_salary / 12), 0).toFixed(2)} €`
-    
-    btnSort.addEventListener('click', () => {
-        if(sorted == 0) {
-            tfoot.innerText = ''
-            sorted = 1
-            display(result.sort((a, b) => a.employee_salary - b.employee_salary))
-        }
-        else if(sorted == 1) {
-            tfoot.innerText = ''
-            sorted = 2
-            display(result.sort((a, b) => b.employee_salary - a.employee_salary))
-        }
-    })
+    tdTotalSalary.innerHTML = `${parseFloat(result.reduce((a, b) => a + b.employee_salary / 12, 0).toFixed(2)).toLocaleString('en')} €`
+}
+
+const sortState = {
+    id: false,
+    employee_name: false,
+    employee_salary: false,
+    employee_age: false
+}
+
+btnSortEid.addEventListener('click', () => sortResult('id'))
+btnSortName.addEventListener('click', () => sortResult('employee_name', false))
+btnSortSalary.addEventListener('click', () => sortResult('employee_salary'))
+btnSortBirthdate.addEventListener('click', () => sortResult('employee_age'))
+
+const sortResult = (col, isNum = true) => {
+    sortState[col] = !sortState[col]
+    resultsData.sort((a, b) => sortState[col]
+    ? isNum 
+        ? a[col] - b[col] : a[col].localeCompare(b[col])
+    : isNum
+        ? b[col] - a[col] : b[col].localeCompare(a[col])
+    )
+    display(resultsData)
 }
 
 getResults()
