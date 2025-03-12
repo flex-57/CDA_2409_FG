@@ -1,13 +1,26 @@
 :root {
-    --color: #808080;
+    --color-light: #707070;
+    --color-dark: #4b4b4b;
     --border-table: #d3d3d3;
+    --highlight-table: #ececec;
+    --hover-table: #e0e0e0;
     --btn-duplicate: #3298DC;
     --btn-delete: #F14668;
 }
 
 body {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: var(--color);
+    color: var(--color-light);
+    font-size: 14px;
+}
+
+main {
+    width: 80vw;
+    margin: auto;
+}
+
+h1 {
+    color: var(--color-dark);
 }
 
 table {
@@ -20,11 +33,28 @@ table, tr, th, td {
 }
 
 th {
-    padding: 1.2rem .8rem;
+    font-size: 1rem;
+    padding: .7rem .5rem .6rem;
 }
 
-td {
-    padding: .3rem .5rem;
+th div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    border: none;
+}
+
+tbody tr:nth-child(even) {
+    background: var(--highlight-table);
+}
+
+tbody tr:hover {
+    background: var(--hover-table);
+}
+
+tbody td {
+    padding: .2rem .5rem .1rem;
 }
 
 tbody td:last-child {
@@ -35,20 +65,14 @@ tbody td:last-child {
 }
 
 tfoot td {
+    color: var(--color-dark);
     font-weight: bold;
-    font-size: 1.1rem;
-    padding: 1rem .5rem;
+    font-size: 1rem;
+    padding: .7rem .5rem .6rem;
+    text-align: center;
 }
 
-#monthly {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-    border: none;
-}
-
-#monthly button {
+.btn-sort {
     cursor: pointer;
     width: 30px;
     height: 30px;
