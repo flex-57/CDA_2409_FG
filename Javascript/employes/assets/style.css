@@ -10,28 +10,58 @@ body {
     color: var(--color);
 }
 
+table {
+    width: 100%;
+}
+
 table, tr, th, td {
     border: 1px solid var(--border-table);
     border-collapse: collapse;
 }
 
 th {
-    padding: 1rem .8rem;
+    padding: 1.2rem .8rem;
 }
 
 td {
-    padding: .2rem .5rem;
+    padding: .3rem .5rem;
 }
 
-td:last-child {
+tbody td:last-child {
     display: flex;
-    gap: .3rem;
+    justify-content: center;
+    gap: .5rem;
+    border: none;
+}
+
+tfoot td {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 1rem .5rem;
+}
+
+#monthly {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    border: none;
+}
+
+#monthly button {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    font-size: .7rem;
+    border: 1px solid var(--border-table);
 }
 
 .btn {
     padding: .6rem .8rem;
     border: none;
     color: white;
+    cursor: pointer;
+    border-radius: .4rem;
 }
 
 .btn-duplicate {

@@ -89,6 +89,10 @@ const displayTable = (data) => {
 const filterResults = () => {
     const checkedCountries = Array.from(document.querySelectorAll('#country input:checked')).map(input => input.value)
     let filteredData = resultsData.filter(r => checkedCountries.includes(r.pays) || checkedCountries.length === 0)
+
+    console.log(checkedCountries);
+    
+
     filteredData.sort((a, b) => a.temps - b.temps)
     displayTable(filteredData)
 }
