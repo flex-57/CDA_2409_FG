@@ -1,0 +1,43 @@
+:root {
+    --color: #808080;
+    --border-table: #d3d3d3;
+    --btn-duplicate: #3298DC;
+    --btn-delete: #F14668;
+}
+
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--color);
+}
+
+table, tr, th, td {
+    border: 1px solid var(--border-table);
+    border-collapse: collapse;
+}
+
+th {
+    padding: 1rem .8rem;
+}
+
+td {
+    padding: .2rem .5rem;
+}
+
+td:last-child {
+    display: flex;
+    gap: .3rem;
+}
+
+.btn {
+    padding: .6rem .8rem;
+    border: none;
+    color: white;
+}
+
+.btn-duplicate {
+    background: var(--btn-duplicate);
+}
+
+.btn-delete {
+    background: var(--btn-delete);
+}
