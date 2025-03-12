@@ -92,10 +92,8 @@ btnSortBirthdate.addEventListener('click', () => sortResult('employee_age'))
 const sortResult = (col, isNum = true) => {
     sortState[col] = !sortState[col]
     resultsData.sort((a, b) => sortState[col]
-    ? isNum 
-        ? a[col] - b[col] : a[col].localeCompare(b[col])
-    : isNum
-        ? b[col] - a[col] : b[col].localeCompare(a[col])
+        ? isNum ? a[col] - b[col] : a[col].localeCompare(b[col])
+        : isNum ? b[col] - a[col] : b[col].localeCompare(a[col])
     )
     display(resultsData)
 }
