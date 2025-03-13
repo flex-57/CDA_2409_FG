@@ -1,6 +1,7 @@
 const tbody = document.querySelector('tbody')
 const tfoot = document.querySelector('tfoot')
 
+const btnSort = document.querySelectorAll('.btn-sort')
 const btnSortEid = document.querySelector('.btn-sort-eid')
 const btnSortName = document.querySelector('.btn-sort-name')
 const btnSortSalary = document.querySelector('.btn-sort-salary')
@@ -69,9 +70,9 @@ const display = (result) => {
 
     const trFoot = tfoot.insertRow()
     const tdCount = trFoot.insertCell()
-    const tdVoid = trFoot.insertCell().setAttribute('colspan', 2)
+    trFoot.insertCell().setAttribute('colspan', 2)
     const tdTotalSalary = trFoot.insertCell()
-    const tdVoid2 = trFoot.insertCell().setAttribute('colspan', 2)
+    trFoot.insertCell().setAttribute('colspan', 2)
 
     tdCount.innerHTML = `<b>${result.length}</b>`
     tdTotalSalary.innerHTML = `${parseFloat(result.reduce((a, b) => a + b.employee_salary / 12, 0).toFixed(2)).toLocaleString('en')} €`
@@ -84,10 +85,22 @@ const sortState = {
     employee_age: false
 }
 
-btnSortEid.addEventListener('click', () => sortResult('id'))
-btnSortName.addEventListener('click', () => sortResult('employee_name', false))
-btnSortSalary.addEventListener('click', () => sortResult('employee_salary'))
-btnSortBirthdate.addEventListener('click', () => sortResult('employee_age'))
+btnSortEid.addEventListener('click', () => {
+    sortResult('id')
+    btnSortEid.innerText = sortState.id ? '▲' : '▼'
+})
+btnSortName.addEventListener('click', () => {
+    sortResult('employee_name', false)
+    btnSortName.innerText = sortState.employee_name ? '▲' : '▼'
+})
+btnSortSalary.addEventListener('click', () => {
+    sortResult('employee_salary')
+    btnSortSalary.innerText = sortState.employee_salary ? '▲' : '▼'
+})
+btnSortBirthdate.addEventListener('click', () => {
+    sortResult('employee_age')
+    btnSortBirthdate.innerText = sortState.employee_age ? '▼' : '▲'
+})
 
 const sortResult = (col, isNum = true) => {
     sortState[col] = !sortState[col]
@@ -95,6 +108,7 @@ const sortResult = (col, isNum = true) => {
         ? isNum ? a[col] - b[col] : a[col].localeCompare(b[col])
         : isNum ? b[col] - a[col] : b[col].localeCompare(a[col])
     )
+    btnSort.forEach(btn => btn.innerHTML = '▲<br>▼')
     display(resultsData)
 }
 

@@ -92,7 +92,7 @@ getCards().then(cards => {
     })
 
     const maxPlayedCard = cards.reduce((max, card) => card.played > max.played ? card : max)
-    const bestRatioCard = cards.reduce((best, card) => best)
+    const bestRatioCard = cards.reduce((best, card) => best.victory / (best.played - best.draw) > card.victory / (card.played - card.draw) ? best : card)
 
     const trMax = document.createElement('tr')
     const trBest = document.createElement('tr')
