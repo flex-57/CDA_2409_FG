@@ -1,0 +1,55 @@
+:root {
+    --title: #9ACD32;
+    --fieldset: #333;
+    --th: #444;
+    --tr-hover: #664;
+}
+
+body {
+    background: #111;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#app {
+    display: grid;
+    gap: 1.5rem;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 45vw 1fr 35vw;
+    grid-template-rows: 80px;
+    align-items: center;
+}
+
+h1 {
+    color: var(--title);
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+fieldset {
+    background: var(--fieldset);
+    height: 100%;
+    border-radius: .3rem;
+}
+
+#filter {
+    display: flex;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    text-transform: uppercase;
+    background: var(--th);
+    color: var(--title);
+    padding: .4rem;
+}
+
+tr:hover {
+    background: var(--tr-hover);
+}
