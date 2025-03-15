@@ -1,8 +1,14 @@
 :root {
-    --title: #9ACD32;
+    --title: #9acd32;
     --fieldset: #333;
     --th: #444;
     --tr-hover: #664;
+    --bg-td-id_del: #333;
+    --A: darkgreen;
+    --B: #009900cc;
+    --C: #cccc00cc;
+    --D: #cc6600cc;
+    --E: #cc0000cc;
 }
 
 body {
@@ -19,7 +25,7 @@ body {
 header {
     display: grid;
     grid-template-columns: 45vw 1fr 35vw;
-    grid-template-rows: 80px;
+    grid-template-rows: 80px 1fr;
     align-items: center;
 }
 
@@ -27,29 +33,15 @@ h1 {
     color: var(--title);
     text-align: center;
     font-size: 2.2rem;
+    font-family: 'Comic Sans MS';
 }
 
 fieldset {
     background: var(--fieldset);
     height: 100%;
-    border-radius: .3rem;
+    border-radius: 0.3rem;
 }
 
 #filter {
     display: flex;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-th {
-    text-transform: uppercase;
-    background: var(--th);
-    color: var(--title);
-    padding: .4rem;
-}
-
-tr:hover {
-    background: var(--tr-hover);
 }
