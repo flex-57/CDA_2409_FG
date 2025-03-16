@@ -13,35 +13,12 @@
 
 body {
     background: #111;
-    color: white;
+    color: #e0e0e0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #app {
-    display: grid;
-    gap: 1.5rem;
-}
-
-header {
-    display: grid;
-    grid-template-columns: 45vw 1fr 35vw;
-    grid-template-rows: 80px 1fr;
-    align-items: center;
-}
-
-h1 {
-    color: var(--title);
-    text-align: center;
-    font-size: 2.2rem;
-    font-family: 'Comic Sans MS';
-}
-
-fieldset {
-    background: var(--fieldset);
-    height: 100%;
-    border-radius: 0.3rem;
-}
-
-#filter {
     display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }

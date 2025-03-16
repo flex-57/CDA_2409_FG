@@ -1,22 +1,22 @@
 <template>
     <table>
         <thead>
-            <th>id</th>
-            <th>nom</th>
-            <th>calories</th>
-            <th>proteïnes</th>
-            <th>sel</th>
-            <th>fibres</th>
-            <th>glucides</th>
-            <th>sucre</th>
-            <th>potassium</th>
-            <th>vitamines</th>
-            <th>évaluation</th>
+            <th @click="sortCereals('id')">id</th>
+            <th @click="sortCereals('name', false)">nom</th>
+            <th @click="sortCereals('calories')">calories</th>
+            <th @click="sortCereals('protein')">proteïnes</th>
+            <th @click="sortCereals('sodium')">sel</th>
+            <th @click="sortCereals('fiber')">fibres</th>
+            <th @click="sortCereals('carbo')">glucides</th>
+            <th @click="sortCereals('sugars')">sucre</th>
+            <th @click="sortCereals('potass')">potassium</th>
+            <th @click="sortCereals('vitamins')">vitamines</th>
+            <th @click="sortCereals('rating')">évaluation</th>
             <th>ns</th>
             <th>del</th>
         </thead>
         <tbody>
-            <tr v-for="cereal in filteredCereals" :key="cereal.id">
+            <tr v-for="cereal in cereals" :key="cereal.id">
                 <td>{{ cereal.id }}</td>
                 <td>{{ cereal.name }}</td>
                 <td>{{ cereal.calories }}</td>
@@ -44,35 +44,18 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-const props = defineProps(['cereals', 'search', 'selectedNs', 'selectedCat'])
-const emit = defineEmits(['deleteCereal'])
-
-const avgCalories = computed(() => {
-    return Math.floor(props.cereals.reduce((sum, c) => sum + c.calories, 0) / props.cereals.length)
+const props = defineProps({
+    cereals: {
+        type: Array,
+        required: true,
+    },
+    avgCalories: {
+        type: Number,
+        required: true,
+    },
 })
 
-const deleteCereal = (id) => {
-    emit('deleteCereal', id)
-}
-
-const filteredCereals = computed(() => {
-    return props.cereals.filter((cereal) => {
-        const matchSearch = cereal.name.toLowerCase().includes(props.search.toLowerCase())
-
-        const matchNutriscore =
-            props.selectedNs.length === 0 || props.selectedNs.includes(ns(cereal.rating))
-
-        const matchCategory =
-            props.selectedCat === 'Tous' ||
-            (props.selectedCat === 'Sans sucre' && cereal.sugars < 1) ||
-            (props.selectedCat === 'Pauvre en sel' && cereal.sodium < 50) ||
-            (props.selectedCat === 'Boost' && cereal.vitamins >= 25 && cereal.fiber >= 10)
-
-        return matchSearch && matchNutriscore && matchCategory
-    })
-})
+const emit = defineEmits(['deleteCereal', 'sortCereals'])
 
 const ns = (rating) => {
     if (rating < 35) return 'E'
@@ -80,6 +63,14 @@ const ns = (rating) => {
     if (rating < 70) return 'C'
     if (rating < 80) return 'B'
     return 'A'
+}
+
+const deleteCereal = (id) => {
+    emit('deleteCereal', id)
+}
+
+const sortCereals = (col, isNum = true) => {
+    emit('sortCereals', col, isNum)
 }
 </script>
 
