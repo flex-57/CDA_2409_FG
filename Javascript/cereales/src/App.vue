@@ -9,13 +9,15 @@
     />
     <div id="save-box">
         <button @click="saveData">Enregistrer les infos</button>
+        <button @click="resetData">Reset</button>
     </div>
     <TableComponent
         :cereals="filteredCereals"
+        :avgCalories="avgCalories"
         @deleteCereal="deleteCereal"
         @sortCereals="sortCereals"
-        :avgCalories="avgCalories"
     />
+    <ModalComponent :isVisible="showModal" @confirm="confirmSave" @cancel="cancelSave" />
 </template>
 
 <script setup>
@@ -23,11 +25,13 @@ import { ref, onMounted, computed } from 'vue'
 import { fetchCereals } from '@/utils/fetchCereals'
 import HeaderComponent from './components/HeaderComponent.vue'
 import TableComponent from './components/TableComponent.vue'
+import ModalComponent from './components/ModalComponent.vue'
 
 const cereals = ref([])
 const search = ref('')
 const selectedNs = ref([])
 const selectedCat = ref('Tous')
+const showModal = ref(false)
 const sortState = ref({
     id: false,
     name: false,
@@ -79,8 +83,8 @@ const sortCereals = (col, isNum = true) => {
                 ? b[col] - a[col]
                 : b[col].localeCompare(a[col])
             : isNum
-                ? a[col] - b[col]
-                : a[col].localeCompare(b[col]),
+              ? a[col] - b[col]
+              : a[col].localeCompare(b[col]),
     )
 }
 
@@ -101,8 +105,22 @@ const filteredCereals = computed(() => {
     })
 })
 
-const saveData = () => {  
+const saveData = () => {
+    const savedCereals = localStorage.getItem('savedCereals')
+    if (savedCereals) {
+        showModal.value = true
+    } else {
+        confirmSave()
+    }
+}
+
+const confirmSave = () => {
     localStorage.setItem('savedCereals', JSON.stringify(cereals.value))
+    showModal.value = false 
+}
+
+const cancelSave = () => {
+    showModal.value = false
 }
 
 onMounted(() => {
@@ -116,66 +134,4 @@ onMounted(() => {
 </script>
 
 <style scoped>
-table {
-    border-collapse: collapse;
-}
-
-th {
-    text-transform: uppercase;
-    background: var(--th);
-    color: var(--title);
-    padding: 0.4rem;
-}
-
-tbody tr:hover td:not(:nth-child(12)) {
-    background: var(--tr-hover);
-}
-
-td {
-    padding: 0.3rem 0;
-}
-
-td:first-child,
-tbody td:last-child {
-    background: var(--bg-td-id_del);
-}
-
-td:first-child {
-    color: yellow;
-}
-
-td:nth-child(2) {
-    padding-left: 0.5rem;
-}
-
-td:not(td:nth-child(2)) {
-    text-align: center;
-}
-
-.delete {
-    cursor: pointer;
-    color: var(--E);
-    font-weight: bold;
-    text-shadow: 0 1px 1px #000;
-}
-
-.E {
-    background: var(--E);
-}
-
-.D {
-    background: var(--D);
-}
-
-.C {
-    background: var(--C);
-}
-
-.B {
-    background: var(--B);
-}
-
-.A {
-    background: var(--A);
-}
 </style>
