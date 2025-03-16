@@ -64,10 +64,10 @@ const props = defineProps({
     },
 })
 
-const emit = defineEmits(['update:search', 'update:selectedNs', 'update:selectedCat'])
-
 const nutriscores = ['A', 'B', 'C', 'D', 'E']
 const categories = ['Tous', 'Sans sucre', 'Pauvre en sel', 'Boost']
+
+const emit = defineEmits(['update:search', 'update:selectedNs', 'update:selectedCat'])
 
 const updateSearch = (event) => {
     emit('update:search', event.target.value)

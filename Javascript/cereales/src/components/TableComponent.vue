@@ -55,8 +55,6 @@ const props = defineProps({
     },
 })
 
-const emit = defineEmits(['deleteCereal', 'sortCereals'])
-
 const ns = (rating) => {
     if (rating < 35) return 'E'
     if (rating < 55) return 'D'
@@ -64,6 +62,8 @@ const ns = (rating) => {
     if (rating < 80) return 'B'
     return 'A'
 }
+
+const emit = defineEmits(['deleteCereal', 'sortCereals'])
 
 const deleteCereal = (id) => {
     emit('deleteCereal', id)
@@ -84,6 +84,11 @@ th {
     background: var(--th);
     color: var(--title);
     padding: 0.4rem;
+}
+
+th:not(th:nth-child(12)),
+th:not(th:last-child) {
+    cursor: pointer;
 }
 
 tbody tr:hover td:not(:nth-child(12)) {
