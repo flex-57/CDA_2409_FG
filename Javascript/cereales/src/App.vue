@@ -1,104 +1,46 @@
 <template>
-        <header>
-        <h1>Cereals</h1>
-        <fieldset>
-            <legend>Rechercher</legend>
-            <input
-                type="search"
-                id="input-search"
-                placeholder="Nom de la céréale"
-                v-model="search"
-            />
-        </fieldset>
-        <fieldset>
-            <legend>Filtrer</legend>
-            <div id="filter">
-                <fieldset>
-                    <legend>Nutriscore</legend>
-                    <label v-for="nutriscore in nutriscores" :for="nutriscore" :key="nutriscore">
-                        {{ nutriscore }}
-                        <input
-                            type="checkbox"
-                            name=""
-                            :id="'nutriscore-' + nutriscore"
-                            :value="nutriscore"
-                            v-model="selectedNs"
-                        />
-                    </label>
-                </fieldset>
-                <fieldset>
-                    <legend>Catégorie</legend>
-                    <select
-                        name=""
-                        id="select-categorie"
-                        v-model="selectedCat"
-                    >
-                        <option v-for="cat in categories" :value="cat" :key="cat">{{ cat }}</option>
-                    </select>
-                </fieldset>
-            </div>
-        </fieldset>
-    </header>
-    <div>
-        <div>recherche: {{ search }}</div>
-        <div>ns: {{ selectedNs }}</div>
-        <div>cat: {{ selectedCat }}</div>
+    <HeaderComponent
+        :search="search"
+        :selectedNs="selectedNs"
+        :selectedCat="selectedCat"
+        @update:search="search = $event"
+        @update:selectedNs="selectedNs = $event"
+        @update:selectedCat="selectedCat = $event"
+    />
+    <div id="save-box">
+        <button @click="saveData">Enregistrer les infos</button>
     </div>
-    <table>
-        <thead>
-            <th>id</th>
-            <th>nom</th>
-            <th>calories</th>
-            <th>proteïnes</th>
-            <th>sel</th>
-            <th>fibres</th>
-            <th>glucides</th>
-            <th>sucre</th>
-            <th>potassium</th>
-            <th>vitamines</th>
-            <th>évaluation</th>
-            <th>ns</th>
-            <th>del</th>
-        </thead>
-        <tbody>
-            <tr v-for="cereal in filteredCereals" :key="cereal.id">
-                <td>{{ cereal.id }}</td>
-                <td>{{ cereal.name }}</td>
-                <td>{{ cereal.calories }}</td>
-                <td>{{ cereal.protein }}</td>
-                <td>{{ cereal.sodium }}</td>
-                <td>{{ cereal.fiber }}</td>
-                <td>{{ cereal.carbo }}</td>
-                <td>{{ cereal.sugars }}</td>
-                <td>{{ cereal.potass }}</td>
-                <td>{{ cereal.vitamins }}</td>
-                <td>{{ cereal.rating }}</td>
-                <td :class="ns(cereal.rating)">{{ ns(cereal.rating) }}</td>
-                <td @click="deleteCereal(cereal.id)" class="delete">X</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td>{{ filteredCereals.length }} élément{{ filteredCereals.length > 1 ? 's' : '' }}</td>
-                <td>Moyenne <br />calories <br />{{ avgCalories }}</td>
-                <td colspan="10"></td>
-            </tr>
-        </tfoot>
-    </table>
+    <TableComponent
+        :cereals="filteredCereals"
+        @deleteCereal="deleteCereal"
+        @sortCereals="sortCereals"
+        :avgCalories="avgCalories"
+    />
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { fetchCereals } from '@/utils/fetchCereals'
+import HeaderComponent from './components/HeaderComponent.vue'
+import TableComponent from './components/TableComponent.vue'
 
 const cereals = ref([])
 const search = ref('')
 const selectedNs = ref([])
 const selectedCat = ref('Tous')
-
-const nutriscores = ['A', 'B', 'C', 'D', 'E']
-const categories = ['Tous', 'Sans sucre', 'Pauvre en sel', 'Boost']
+const sortState = ref({
+    id: false,
+    name: false,
+    calories: false,
+    protein: false,
+    sodium: false,
+    fiber: false,
+    carbo: false,
+    sugars: false,
+    potass: false,
+    vitamins: false,
+    rating: false,
+})
 
 const ns = (rating) => {
     if (rating < 35) return 'E'
@@ -117,8 +59,30 @@ const getCereals = async () => {
 }
 
 const avgCalories = computed(() => {
-    return cereals.value.length > 0 ? Math.floor(cereals.value.reduce((sum, c) => sum + c.calories, 0) / cereals.value.length) : 0
+    return filteredCereals.value.length > 0
+        ? Math.floor(
+              filteredCereals.value.reduce((sum, c) => sum + c.calories, 0) /
+                  filteredCereals.value.length,
+          )
+        : 0
 })
+
+const deleteCereal = (id) => {
+    cereals.value = cereals.value.filter((cereal) => cereal.id !== id)
+}
+
+const sortCereals = (col, isNum = true) => {
+    sortState.value[col] = !sortState.value[col]
+    cereals.value.sort((a, b) =>
+        sortState.value[col]
+            ? isNum
+                ? b[col] - a[col]
+                : b[col].localeCompare(a[col])
+            : isNum
+                ? a[col] - b[col]
+                : a[col].localeCompare(b[col]),
+    )
+}
 
 const filteredCereals = computed(() => {
     return cereals.value.filter((cereal) => {
@@ -137,15 +101,21 @@ const filteredCereals = computed(() => {
     })
 })
 
-watch(search, (newSearch) => search.value = newSearch)
-watch(selectedNs, (newSelectedNs) => selectedNs.value = newSelectedNs)
-watch(selectedCat, (newSelectedCat) => selectedCat.value = newSelectedCat)
+const saveData = () => {  
+    localStorage.setItem('savedCereals', JSON.stringify(cereals.value))
+}
 
-onMounted(getCereals)
+onMounted(() => {
+    const savedCereals = localStorage.getItem('savedCereals')
+    if (savedCereals) {
+        cereals.value = JSON.parse(savedCereals)
+    } else {
+        getCereals()
+    }
+})
 </script>
 
 <style scoped>
-
 table {
     border-collapse: collapse;
 }
@@ -209,4 +179,3 @@ td:not(td:nth-child(2)) {
     background: var(--A);
 }
 </style>
-
