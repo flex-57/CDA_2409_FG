@@ -8,8 +8,12 @@
         @update:selectedCat="selectedCat = $event"
     />
     <div id="save-box">
-        <button @click="saveData">Enregistrer les infos</button>
-        <button @click="resetData">Reset</button>
+        <div id="save-btns">
+            <a @click="exportData(cereals)" :href="url" :download="'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'" target="_blank">Exporter les données</a>
+            <button @click="saveData">Enregistrer les données</button>
+            <button v-if="isSavedCereals" @click="resetData">Reset</button>
+        </div>
+        <div id="message-flash">{{ messageFlash }}</div>
     </div>
     <TableComponent
         :cereals="filteredCereals"
@@ -17,7 +21,12 @@
         @deleteCereal="deleteCereal"
         @sortCereals="sortCereals"
     />
-    <ModalComponent :isVisible="showModal" @confirm="confirmSave" @cancel="cancelSave" />
+    <ModalComponent :isVisible="showModalSave" @confirm="confirmSave" @cancel="cancelAction">
+        <p>Des données sont déjà enregistrées. Voulez-vous vraiment les écraser ?</p>
+    </ModalComponent>
+    <ModalComponent :isVisible="showModalReset" @confirm="confirmReset" @cancel="cancelAction">
+        <p>Voulez-vous vraiment effacer les données enregistrées ?</p>
+    </ModalComponent>
 </template>
 
 <script setup>
@@ -31,7 +40,10 @@ const cereals = ref([])
 const search = ref('')
 const selectedNs = ref([])
 const selectedCat = ref('Tous')
-const showModal = ref(false)
+const showModalSave = ref(false)
+const showModalReset = ref(false)
+const isSavedCereals = ref(false)
+const messageFlash = ref('')
 const sortState = ref({
     id: false,
     name: false,
@@ -45,6 +57,7 @@ const sortState = ref({
     vitamins: false,
     rating: false,
 })
+const url = ref('')
 
 const ns = (rating) => {
     if (rating < 35) return 'E'
@@ -108,25 +121,50 @@ const filteredCereals = computed(() => {
 const saveData = () => {
     const savedCereals = localStorage.getItem('savedCereals')
     if (savedCereals) {
-        showModal.value = true
+        showModalSave.value = true
     } else {
         confirmSave()
     }
 }
 
-const confirmSave = () => {
-    localStorage.setItem('savedCereals', JSON.stringify(cereals.value))
-    showModal.value = false 
+const resetData = () => {
+    const savedCereals = localStorage.getItem('savedCereals')
+    if (savedCereals) {
+        showModalReset.value = true
+    } else {
+        confirmReset()
+    }
 }
 
-const cancelSave = () => {
-    showModal.value = false
+const exportData = (data) => {
+    url.value = window.URL.createObjectURL(new Blob([JSON.stringify(data)]))
+}
+
+const confirmSave = () => {
+    localStorage.setItem('savedCereals', JSON.stringify(cereals.value))
+    showModalSave.value = false
+    isSavedCereals.value = true
+    messageFlash.value = 'Les informations ont été enregistrées.'
+}
+
+const confirmReset = () => {
+    localStorage.setItem('savedCereals', '')
+    showModalReset.value = false
+    isSavedCereals.value = false
+    messageFlash.value = 'Les informations ont été effacées.'
+    getCereals()
+}
+
+const cancelAction = () => {
+    showModalSave.value = false
+    showModalReset.value = false
 }
 
 onMounted(() => {
     const savedCereals = localStorage.getItem('savedCereals')
     if (savedCereals) {
         cereals.value = JSON.parse(savedCereals)
+        isSavedCereals.value = true
     } else {
         getCereals()
     }
@@ -134,4 +172,35 @@ onMounted(() => {
 </script>
 
 <style scoped>
+#save-box {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#save-btns {
+    display: flex;
+    gap: .5rem;
+}
+
+#message-flash {
+    background: var(--A);
+    padding: .5rem;
+    border-radius: var(--border-radius);
+}
+
+button, a {
+    text-decoration: none;
+    background: var(--th);
+    color: var(--title);
+    padding: .5rem .6rem;
+    border: none;
+    border-radius: var(--border-radius);
+    transition: all .3s;
+}
+
+button:hover, a:hover  {
+    background: var(--bg-td-id_del);
+}
 </style>

@@ -2,10 +2,10 @@
     <div v-if="isVisible" class="modal-overlay">
         <div class="modal">
             <h2>Confirmation</h2>
-            <p>Les données sont déjà enregistrées. Voulez-vous vraiment les écraser ?</p>
+            <slot></slot>
             <div class="modal-actions">
-                <button @click="confirmSave">Oui, écraser</button>
-                <button @click="cancelSave">Annuler</button>
+                <button @click="confirm">Oui</button>
+                <button @click="cancel">Annuler</button>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue'
 
-const props = defineProps({
+defineProps({
     isVisible: {
         type: Boolean,
         default: false,
@@ -23,11 +23,11 @@ const props = defineProps({
 
 const emit = defineEmits(['confirm', 'cancel'])
 
-const confirmSave = () => {
+const confirm = () => {
     emit('confirm')
 }
 
-const cancelSave = () => {
+const cancel = () => {
     emit('cancel')
 }
 </script>
@@ -46,17 +46,20 @@ const cancelSave = () => {
 }
 
 .modal {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
+    background: var(--fieldset);
+    padding: 1.5rem;
+    border-radius: .5rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     width: 300px;
 }
 
 .modal-actions {
     display: flex;
     justify-content: space-around;
-    margin-top: 1rem;
+
 }
 
 button {
@@ -64,8 +67,9 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: .3rem;
     cursor: pointer;
+    transition: all .3s;
 }
 
 button:hover {

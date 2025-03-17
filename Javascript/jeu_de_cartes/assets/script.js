@@ -109,7 +109,7 @@ getCards().then(cards => {
     labelBest.innerText = 'Meilleur ratio de victoire'
 
     spanMax.innerHTML = `<b>${maxPlayedCard.name} avec ${maxPlayedCard.victory} victoires pour ${maxPlayedCard.played} parties</b>`
-    spanBest.innerHTML = `<b>${bestRatioCard.name} avec ${bestRatioCard.victory} victoires pour ${bestRatioCard.played} parties (${(bestRatioCard.victory / bestRatioCard.played * 100).toFixed(2)}%)</b>`
+    spanBest.innerHTML = `<b>${bestRatioCard.name} avec ${bestRatioCard.victory} victoires pour ${bestRatioCard.played} parties (${(bestRatioCard.victory / (bestRatioCard.played - bestRatioCard.draw) * 100).toFixed(2)}%)</b>`
 
     tdMax.append(labelMax, spanMax)
     tdBest.append(labelBest, spanBest)
