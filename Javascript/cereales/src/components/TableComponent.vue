@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
     cereals: {
         type: Array,
         required: true,

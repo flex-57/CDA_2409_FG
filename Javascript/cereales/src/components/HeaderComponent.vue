@@ -110,7 +110,7 @@ h1 {
 
 fieldset {
     background: var(--fieldset);
-    border-radius: 0.3rem;
+    border-radius: var(--border-radius);
 }
 
 #search-box {
