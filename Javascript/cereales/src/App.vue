@@ -19,7 +19,7 @@
             <button @click="saveData">Enregistrer les données</button>
             <button v-if="isSavedCereals" @click="resetData">Reset</button>
         </div>
-        <div id="message-flash">{{ messageFlash }}</div>
+        <div id="message-flash"><p>{{ messageFlash }}</p></div>
     </div>
     <TableComponent
         :cereals="filteredCereals"
@@ -192,10 +192,11 @@ onMounted(() => {
     gap: 0.5rem;
 }
 
-#message-flash {
+#message-flash p {
     background: var(--A);
-    padding: 0.5rem;
     border-radius: var(--border-radius);
+    padding: .5rem;
+    margin: 0;
 }
 
 button,
