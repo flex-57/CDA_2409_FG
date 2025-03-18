@@ -6,13 +6,21 @@ const result = document.getElementById('result')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    return collectionCars.filter((c) => {
-        c.car_name.toLowerCase().includes(inputCarName.value.toLowerCase())
-    })
+    
+    const filteredCars = collectionCars.filter((c) =>
+        c.car_name.toLowerCase().includes(inputCarName.value.toLowerCase()) ||
+        c.car_origin.toLowerCase().includes(inputCarName.value.toLowerCase()) ||
+        String(c.car_model).includes(inputCarName.value)
+    )
+
+    result.textContent = ''
+    filteredCars.forEach(displayCar)
 })
 
-collectionCars.forEach((c) => {
+const displayCar = (c) => {
     const div = document.createElement('div')
+    div.classList.add('car-card') 
+
     const div_id = document.createElement('div')
     const div_name = document.createElement('div')
     const div_model = document.createElement('div')
@@ -45,4 +53,5 @@ collectionCars.forEach((c) => {
 
     div.append(div_id, div_name, div_model, div_origin)
     result.append(div)
-})
+}
+
