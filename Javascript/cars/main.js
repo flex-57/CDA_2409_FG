@@ -41,10 +41,10 @@ const displayCar = (c) => {
     label_model.textContent = 'Model'
     label_origin.textContent = 'Origin'
 
-    p_id.textContent = c.car_id
-    p_name.textContent = c.car_name
-    p_model.textContent = c.car_model
-    p_origin.textContent = c.car_origin
+    p_id.innerHTML = `<b>${c.car_id}</b>`
+    p_name.innerHTML = `<b>${c.car_name}</b>`
+    p_model.innerHTML = `<b>${c.car_model}</b>`
+    p_origin.innerHTML = `<b>${c.car_origin}</b>`
 
     div_id.append(label_id, p_id)
     div_name.append(label_name, p_name)
