@@ -1,4 +1,4 @@
-import { collectionCars } from './data/cars.js'
+import { collectionCars } from "./data/cars.js"
 
 const form = document.querySelector('form')
 const inputCarName = document.getElementById('carName')
@@ -8,9 +8,10 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
     
     const filteredCars = collectionCars.filter((c) =>
-        c.car_name.toLowerCase().includes(inputCarName.value.toLowerCase()) ||
-        c.car_origin.toLowerCase().includes(inputCarName.value.toLowerCase()) ||
-        String(c.car_model).includes(inputCarName.value)
+        c.car_name.toLowerCase().includes(inputCarName.value.toLowerCase()) 
+        // || c.car_origin.toLowerCase().includes(inputCarName.value.toLowerCase()) 
+        // || String(c.car_model).includes(inputCarName.value) 
+        // || String(c.car_id).includes(inputCarName.value)
     )
 
     result.textContent = ''
@@ -19,7 +20,6 @@ form.addEventListener('submit', (e) => {
 
 const displayCar = (c) => {
     const div = document.createElement('div')
-    div.classList.add('car-card') 
 
     const div_id = document.createElement('div')
     const div_name = document.createElement('div')
