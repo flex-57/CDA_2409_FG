@@ -29,6 +29,10 @@ body {
     gap: 2rem;
 }
 
+main {
+    width: 400px;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -70,7 +74,7 @@ button:hover {
 
 #result label {
     display: inline-block;
-    width: 30%;
+    width: 20%;
 }
 
 #result p {
