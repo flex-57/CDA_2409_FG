@@ -9,7 +9,13 @@
     />
     <div id="save-box">
         <div id="save-btns">
-            <a @click="exportData(cereals)" :href="url" :download="'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json'" target="_blank">Exporter les données</a>
+            <a
+                @click="exportData(cereals)"
+                :href="url"
+                :download="`cereals-${Date.now()}.json`"
+                target="_blank"
+                >Exporter les données</a
+            >
             <button @click="saveData">Enregistrer les données</button>
             <button v-if="isSavedCereals" @click="resetData">Reset</button>
         </div>
@@ -137,7 +143,9 @@ const resetData = () => {
 }
 
 const exportData = (data) => {
-    url.value = window.URL.createObjectURL(new Blob([JSON.stringify(data)]))
+    url.value = window.URL.createObjectURL(
+        new Blob([JSON.stringify(data.sort((a, b) => a.id - b.id))]),
+    )
 }
 
 const confirmSave = () => {
@@ -181,26 +189,28 @@ onMounted(() => {
 
 #save-btns {
     display: flex;
-    gap: .5rem;
+    gap: 0.5rem;
 }
 
 #message-flash {
     background: var(--A);
-    padding: .5rem;
+    padding: 0.5rem;
     border-radius: var(--border-radius);
 }
 
-button, a {
+button,
+a {
     text-decoration: none;
     background: var(--th);
     color: var(--title);
-    padding: .5rem .6rem;
+    padding: 0.5rem 0.6rem;
     border: none;
     border-radius: var(--border-radius);
-    transition: all .3s;
+    transition: all 0.3s;
 }
 
-button:hover, a:hover  {
+button:hover,
+a:hover {
     background: var(--bg-td-id_del);
 }
 </style>

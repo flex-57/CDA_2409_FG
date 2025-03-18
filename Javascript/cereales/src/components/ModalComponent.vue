@@ -39,7 +39,7 @@ const cancel = () => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: #000000dd;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +48,7 @@ const cancel = () => {
 .modal {
     background: var(--fieldset);
     padding: 1.5rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -59,7 +59,6 @@ const cancel = () => {
 .modal-actions {
     display: flex;
     justify-content: space-around;
-
 }
 
 button {
@@ -67,9 +66,9 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: .3rem;
+    border-radius: 0.3rem;
     cursor: pointer;
-    transition: all .3s;
+    transition: all 0.3s;
 }
 
 button:hover {
