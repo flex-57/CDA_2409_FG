@@ -2,7 +2,9 @@
     --color1: darkblue;
     --color4: lightcyan;
     --color5: darkgrey; 
-    --color6: #ffffff33; 
+    --color6: #ffffff33;
+    --color-hover: #e4e4e4;
+    --border-radius: .4rem;
 }
 
 * {
@@ -49,6 +51,10 @@ input, button {
     border: 1px solid var(--color5);
 }
 
+button:hover {
+    background: var(--color-hover);
+}
+
 #result div {
     border: 1px solid var(--color5);
     background: var(--color6);
@@ -70,4 +76,8 @@ input, button {
 #result p {
     display: inline-block;
     margin: 0 0 0 2rem;
+}
+
+input, button, div {
+    border-radius: var(--border-radius);
 }
