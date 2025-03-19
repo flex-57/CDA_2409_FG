@@ -1,0 +1,64 @@
+:root {
+    --color-h1: #000;
+    --bg-nav: #0d8a5a;
+    --color-th: #ffff01;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 5px solid var(--color-h1);
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background-image: url('./legumos.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+nav {
+    background: var(--bg-nav);
+}
+
+nav .container {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 3rem;
+
+        a {
+            color: white;
+            text-transform: uppercase;
+            padding: 0.8rem;
+        }
+    }
+}
+
+main {
+    padding: 2rem;
+}
+
+h1 {
+    margin: 0 0 1rem;
+}
+
+table {
+    margin: auto;
+}
+
+th {
+    background: var(--bg-nav);
+    color: var(--color-th);
+    padding: 0.3rem 2rem;
+}
