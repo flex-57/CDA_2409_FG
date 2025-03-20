@@ -3,6 +3,7 @@
     <table>
         <thead>
             <tr>
+                <th>Id</th>
                 <th @click="sortVegetables('Name', false)">Nom</th>
                 <th @click="sortVegetables('Variety', false)">Variété</th>
                 <th @click="sortVegetables('PrimaryColor', false)">Couleur</th>
@@ -13,6 +14,7 @@
         </thead>
         <tbody>
             <tr v-for="vegetable in vegetables" :key="vegetable.Id">
+                <td>{{ vegetable.Id }}</td>
                 <td>{{ capitalizeName(vegetable.Name) }}</td>
                 <td>{{ capitalizeName(vegetable.Variety) }}</td>
                 <td>{{ vegetable.PrimaryColor }}</td>
