@@ -1,6 +1,7 @@
 :root {
     --color-h1: #000;
     --bg-nav: #0d8a5a;
+    --bg-input: #0d8a5a33;
     --color-th: #ffff01;
     --bg-tr-hover: #aaaaaa50;
 }
@@ -95,3 +96,46 @@ td {
         }
     }
 }
+
+form {
+    width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+label:not(.label-radio) {
+    display: inline-block;
+    width: 40%;
+}
+
+#box-radio {
+    display: inline-block;
+    margin: .3rem 0 .3rem;
+}
+
+input, .label-radio {
+    background: var(--bg-input);
+}
+
+input {
+    border: 1px solid;
+    padding: .3rem 1rem;
+    line-height: 1.2rem;
+}
+
+.label-radio {
+    padding: .26rem .8rem .3rem;
+    margin-right: .5rem;
+    border: 1px dotted;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio]:checked + label {
+    border: 1px solid;
+}
+

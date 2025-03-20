@@ -7,6 +7,8 @@ const btnSortName = document.querySelector('.btn-sort-name')
 const btnSortSalary = document.querySelector('.btn-sort-salary')
 const btnSortBirthdate = document.querySelector('.btn-sort-birthdate')
 
+console.log(btnSortEid);
+
 let resultsData = []
 
 const getResults = async () => {
@@ -28,45 +30,57 @@ const display = (result) => {
     tbody.innerText = ''
     tfoot.innerText = ''
 
-    result.forEach((r, indexResult) => {
-        const trBody = tbody.insertRow()
-        const tdEid = trBody.insertCell()
-        const tdName = trBody.insertCell()
-        const tdEmail = trBody.insertCell()
-        const tdSalary = trBody.insertCell()
-        const tdBirth = trBody.insertCell()
-        const tdActions = trBody.insertCell()
-
-        const btnDuplicate = document.createElement('button')
-        const btnDelete = document.createElement('button')
-
-        btnDuplicate.className = 'btn btn-duplicate'
-        btnDelete.className = 'btn btn-delete'
-
-        btnDuplicate.innerText = 'Duplicate'
-        btnDelete.innerText = 'Delete'
-
-        tdEid.innerText = r.id
-        tdName.innerText = r.employee_name
-        tdEmail.innerText = `${(r.employee_name.split(' ')[0]).charAt(0).toLowerCase()}.${(r.employee_name.split(' ')[1]).toLowerCase()}@email.fr`
-        tdSalary.innerText = `${parseFloat((r.employee_salary / 12).toFixed(2)).toLocaleString('en')} €`
-        tdBirth.innerText = new Date().getFullYear() - r.employee_age
-        tdActions.append(btnDuplicate, btnDelete)
-
-        btnDuplicate.addEventListener('click', () => {
-            const dup = {
-                ...r, 
-                id: Math.max(...result.map(r => r.id)) + 1
-            }
-            result.splice(indexResult + 1, 0, dup)
-            display(result)
+    if(result.length > 0) {
+        result.forEach((r, indexResult) => {
+            const trBody = tbody.insertRow()
+            const tdEid = trBody.insertCell()
+            const tdName = trBody.insertCell()
+            const tdEmail = trBody.insertCell()
+            const tdSalary = trBody.insertCell()
+            const tdBirth = trBody.insertCell()
+            const tdActions = trBody.insertCell()
+    
+            const btnDuplicate = document.createElement('button')
+            const btnDelete = document.createElement('button')
+    
+            btnDuplicate.className = 'btn btn-duplicate'
+            btnDelete.className = 'btn btn-delete'
+    
+            btnDuplicate.innerText = 'Duplicate'
+            btnDelete.innerText = 'Delete'
+    
+            tdEid.innerText = r.id
+            tdName.innerText = r.employee_name
+            tdEmail.innerText = `${(r.employee_name.split(' ')[0])[0].toLowerCase()}.${(r.employee_name.split(' ')[1]).toLowerCase()}@email.fr`
+            tdSalary.innerText = `${parseFloat((r.employee_salary / 12).toFixed(2)).toLocaleString('en')} €`
+            tdBirth.innerText = new Date().getFullYear() - r.employee_age
+            tdActions.append(btnDuplicate, btnDelete)
+    
+            btnDuplicate.addEventListener('click', () => {
+                const dup = {
+                    ...r, 
+                    id: Math.max(...result.map(r => r.id)) + 1
+                }
+                result.splice(indexResult + 1, 0, dup)
+                display(result)
+            })
+    
+            btnDelete.addEventListener('click', () => {
+                result.splice(indexResult, 1)
+                display(result)
+            })
         })
+    }
+    else {
+        document.querySelector('table').innerText = ''
 
-        btnDelete.addEventListener('click', () => {
-            result.splice(indexResult, 1)
-            display(result)
-        })
-    })
+        const divMessage = document.createElement('div')
+        const pMessage = document.createElement('p')
+
+        pMessage.innerText = `There is no employee in the table !`
+        divMessage.append(pMessage)
+        document.querySelector('main').append(divMessage)
+    }
 
     const trFoot = tfoot.insertRow()
     const tdCount = trFoot.insertCell()
