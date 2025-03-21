@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="vegetable in vegetables" :key="vegetable.Id">
+            <tr v-for="vegetable in getAllVegetables" :key="vegetable.Id">
                 <td>{{ capitalizeName(vegetable.Name) }}</td>
                 <td>{{ capitalizeName(vegetable.Variety) }}</td>
                 <td>{{ vegetable.PrimaryColor }}</td>
@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { capitalizeName } from '@/utils/stringUtils'
 import { fetchVegetables } from '@/utils/fetchVegetables'
 
@@ -47,16 +47,17 @@ const sortState = ref({
 
 const storage = ref(localStorage.getItem('vegetables'))
 
-const getVegetables = async () => {
-    let fetchedVegetables = []
+const getFetchedVegetables = async () => {
     try {
-        fetchedVegetables = await fetchVegetables()
+        vegetables.value = await fetchVegetables()
     } catch (e) {
         console.error('Erreur lors du chargement des légumes :', e)
     }
-    const storedVegetables = localStorage.getItem('vegetables')
-    vegetables.value = [...fetchedVegetables, ...storedVegetables]
 }
+
+const getAllVegetables = computed(() => {
+    return [...vegetables.value, ...localStorage.getItem('vegetables')]
+})
 
 const sortVegetables = (col, isNum = true) => {
     sortState.value[col] = !sortState.value[col]
@@ -72,6 +73,6 @@ const sortVegetables = (col, isNum = true) => {
 }
 
 onMounted(() => {
-     getVegetables()
+     getFetchedVegetables()
 })
 </script>

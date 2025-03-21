@@ -28,8 +28,8 @@
                 <td>{{ cereal.potass }}</td>
                 <td>{{ cereal.vitamins }}</td>
                 <td>{{ cereal.rating }}</td>
-                <td :class="ns(cereal.rating)">{{ ns(cereal.rating) }}</td>
-                <td @click="deleteCereal(cereal.id)" class="delete">X</td>
+                <td :class="'color-' + getNs(cereal.rating)">{{ getNs(cereal.rating) }}</td>
+                <td @click="deleteCereal(cereal.id)">X</td>
             </tr>
         </tbody>
         <tfoot>
@@ -55,7 +55,7 @@ defineProps({
     },
 })
 
-const ns = (rating) => {
+const getNs = (rating) => {
     if (rating < 35) return 'E'
     if (rating < 55) return 'D'
     if (rating < 70) return 'C'
@@ -86,8 +86,11 @@ th {
     padding: 0.4rem;
 }
 
-th:not(th:nth-child(12)),
-th:not(th:last-child) {
+th:nth-child(2) {
+    text-align: left;
+}
+
+th:not(th:nth-child(12), th:last-child) {
     cursor: pointer;
 }
 
@@ -108,6 +111,7 @@ td:first-child {
     color: yellow;
 }
 
+th:nth-child(2),
 td:nth-child(2) {
     padding-left: 0.5rem;
 }
@@ -116,30 +120,30 @@ td:not(td:nth-child(2)) {
     text-align: center;
 }
 
-.delete {
+td:last-child {
     cursor: pointer;
     color: var(--E);
     font-weight: bold;
     text-shadow: 0 1px 1px #000;
 }
 
-.E {
+.color-E {
     background: var(--E);
 }
 
-.D {
+.color-D {
     background: var(--D);
 }
 
-.C {
+.color-C {
     background: var(--C);
 }
 
-.B {
+.color-B {
     background: var(--B);
 }
 
-.A {
+.color-A {
     background: var(--A);
 }
 </style>
