@@ -1,5 +1,5 @@
 <template>
-    <h1>Ajouter un légume {{ vegetablesLength }}</h1>
+    <h1>Ajouter un légume {{ vegetableId }}</h1>
     <form @submit.prevent="saveVegetable">
         <div v-if="message">{{ message }}</div>
         <div class="form-grp">
@@ -19,16 +19,16 @@
 
         <div class="form-grp">
             <label for="input-lifetime">Durée de conservation (jours)</label>
-            <input type="number" id="input-lifetime" v-model.number="vegetable.Lifetime" />
+            <input type="number" id="input-lifetime" v-model.number="vegetable.LifeTime" />
         </div>
 
         <div class="form-grp">
             <label id="label-box-radio">Frais</label>
             <div id="box-radio">
-                <input type="radio" id="input-fresh" :value="true" v-model="vegetable.Fresh" />
+                <input type="radio" id="input-fresh" :value="1" v-model="vegetable.Fresh" />
                 <label for="input-fresh" class="label-radio">Oui</label>
 
-                <input type="radio" id="input-not-fresh" :value="false" v-model="vegetable.Fresh" />
+                <input type="radio" id="input-not-fresh" :value="0" v-model="vegetable.Fresh" />
                 <label for="input-not-fresh" class="label-radio">Non</label>
             </div>
         </div>
@@ -58,37 +58,38 @@ import router from '@/router'
 
 const vegetables = ref([])
 const vegetable = ref({
+    Id: 0,
     Name: '',
     Variety: '',
     PrimaryColor: '',
-    Lifetime: 0,
-    Fresh: true,
+    LifeTime: 0,
+    Fresh: 1,
     Price: 0,
 })
 
 const message = ref('')
-
-const vegetablesLength = computed(() => {
-    return Math.max(...vegetables.value.map(v => v.Id)) + 1
-})
+const storage = ref(localStorage.getItem('vegetables') ? JSON.parse(localStorage.getItem('vegetables')) : [])
 
 const getVegetables = async () => {
     try {
-        vegetables.value = await fetchVegetables()
-
+        vegetables.value = await fetchVegetables() 
     } catch (e) {
         console.error('Erreur lors du chargement des légumes :', e)
     }
 }
+
+const vegetableId = computed(() => {
+    return Math.max(...[...vegetables.value, ...storage.value].map(v => v.Id)) + 1
+})
 
 const saveVegetable = () => {
     if (!vegetable.value.Name || !vegetable.value.Variety) {
         message.value = 'veuillez remplir ..........................'
     }
     else {
-        vegetable.value.Id = vegetablesLength
-        vegetables.value.push({ ...vegetable.value })
-        localStorage.setItem('vegetables', JSON.stringify(vegetables.value));
+        vegetable.value.Id = vegetableId 
+        storage.value.push({ ...vegetable.value })
+        localStorage.setItem('vegetables', JSON.stringify(storage.value));
         router.push('/legumes')
     }
 

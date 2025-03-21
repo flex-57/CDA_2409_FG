@@ -1,6 +1,7 @@
 <template>
-    <h1>Liste des légumes</h1>
     {{ storage }}
+    <h1>Liste des légumes</h1>
+    <button @click="resetStorage">Reset</button>
     <table>
         <thead>
             <tr>
@@ -14,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="vegetable in getAllVegetables" :key="vegetable.Id">
+            <tr v-for="vegetable in vegetables" :key="vegetable.Id">
                 <td>{{ capitalizeName(vegetable.Name) }}</td>
                 <td>{{ capitalizeName(vegetable.Variety) }}</td>
                 <td>{{ vegetable.PrimaryColor }}</td>
@@ -31,7 +32,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { capitalizeName } from '@/utils/stringUtils'
 import { fetchVegetables } from '@/utils/fetchVegetables'
 
@@ -45,19 +46,16 @@ const sortState = ref({
     Fresh: false,
 })
 
-const storage = ref(localStorage.getItem('vegetables'))
+const storage = ref(localStorage.getItem('vegetables') ? JSON.parse(localStorage.getItem('vegetables')) : [])
 
-const getFetchedVegetables = async () => {
+const getVegetables = async () => {
     try {
-        vegetables.value = await fetchVegetables()
+        const veg = await fetchVegetables()
+        vegetables.value = [...veg, ...storage.value]
     } catch (e) {
         console.error('Erreur lors du chargement des légumes :', e)
     }
 }
-
-const getAllVegetables = computed(() => {
-    return [...vegetables.value, ...localStorage.getItem('vegetables')]
-})
 
 const sortVegetables = (col, isNum = true) => {
     sortState.value[col] = !sortState.value[col]
@@ -72,7 +70,11 @@ const sortVegetables = (col, isNum = true) => {
     )
 }
 
+const resetStorage = () => {
+    localStorage.setItem('vegetables', '')
+}
+
 onMounted(() => {
-     getFetchedVegetables()
+     getVegetables()
 })
 </script>
