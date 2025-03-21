@@ -1,7 +1,7 @@
 <template>
-    <h1>Ajouter un légume</h1>
+    <h1>Ajouter un légume {{ vegetablesLength }}</h1>
     <form @submit.prevent="saveVegetable">
-        <div v-if="errorMessage">{{ errorMessage }}</div>
+        <div v-if="message">{{ message }}</div>
         <div class="form-grp">
             <label for="input-name">Nom</label>
             <input type="text" id="input-name" v-model="vegetable.Name" />
@@ -38,7 +38,7 @@
             <input
                 type="number"
                 id="input-price"
-                v-model.number="vegetable.price"
+                v-model.number="vegetable.Price"
                 step=".01"
                 min="0"
             />
@@ -52,29 +52,30 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { fetchVegetables } from '@/utils/fetchVegetables'
 import router from '@/router'
 
-const vegetablesLength = ref(0)
+const vegetables = ref([])
 const vegetable = ref({
-    Id: 0,
     Name: '',
     Variety: '',
     PrimaryColor: '',
     Lifetime: 0,
-    Fresh: null,
+    Fresh: true,
     Price: 0,
 })
-const vegetables = ref([])
-const errorMessage = ref('')
+
+const message = ref('')
+
+const vegetablesLength = computed(() => {
+    return Math.max(...vegetables.value.map(v => v.Id)) + 1
+})
 
 const getVegetables = async () => {
     try {
-        const storedVegetables = JSON.parse(localStorage.getItem('vegetables'))
-        vegetablesLength.value = (await fetchVegetables()).length + storedVegetables.length + 1
+        vegetables.value = await fetchVegetables()
 
-        errorMessage.value = vegetablesLength
     } catch (e) {
         console.error('Erreur lors du chargement des légumes :', e)
     }
@@ -82,10 +83,10 @@ const getVegetables = async () => {
 
 const saveVegetable = () => {
     if (!vegetable.value.Name || !vegetable.value.Variety) {
-        errorMessage.value = 'veuillez remplir ..........................'
+        message.value = 'veuillez remplir ..........................'
     }
     else {
-        vegetable.value.Id = vegetablesLength.value
+        vegetable.value.Id = vegetablesLength
         vegetables.value.push({ ...vegetable.value })
         localStorage.setItem('vegetables', JSON.stringify(vegetables.value));
         router.push('/legumes')
