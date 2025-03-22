@@ -2,6 +2,7 @@
     <h1>Ajouter un légume {{ vegetableId }}</h1>
     <form @submit.prevent="saveVegetable">
         <div v-if="message">{{ message }}</div>
+        <FormField :name="vegetable.Name" :type="'text'" :id="'input-name'" :label="'Nom'" v-model="vegetable.Name" />
         <div class="form-grp">
             <label for="input-name">Nom</label>
             <input type="text" id="input-name" v-model="vegetable.Name" />
@@ -55,6 +56,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { fetchVegetables } from '@/utils/fetchVegetables'
 import router from '@/router'
+import FormField from '@/components/FormField.vue'
 
 const vegetables = ref([])
 const vegetable = ref({
@@ -68,31 +70,31 @@ const vegetable = ref({
 })
 
 const message = ref('')
-const storage = ref(localStorage.getItem('vegetables') ? JSON.parse(localStorage.getItem('vegetables')) : [])
+const storage = ref(
+    localStorage.getItem('vegetables') ? JSON.parse(localStorage.getItem('vegetables')) : [],
+)
 
 const getVegetables = async () => {
     try {
-        vegetables.value = await fetchVegetables() 
+        vegetables.value = await fetchVegetables()
     } catch (e) {
         console.error('Erreur lors du chargement des légumes :', e)
     }
 }
 
 const vegetableId = computed(() => {
-    return Math.max(...[...vegetables.value, ...storage.value].map(v => v.Id)) + 1
+    return Math.max(...[...vegetables.value, ...storage.value].map((v) => v.Id)) + 1
 })
 
 const saveVegetable = () => {
     if (!vegetable.value.Name || !vegetable.value.Variety) {
         message.value = 'veuillez remplir ..........................'
-    }
-    else {
-        vegetable.value.Id = vegetableId 
+    } else {
+        vegetable.value.Id = vegetableId
         storage.value.push({ ...vegetable.value })
-        localStorage.setItem('vegetables', JSON.stringify(storage.value));
+        localStorage.setItem('vegetables', JSON.stringify(storage.value))
         router.push('/legumes')
     }
-
 }
 
 onMounted(getVegetables)

@@ -32,12 +32,14 @@ form.addEventListener('submit', (e) => {
        
         tbody.innerText = ''
        
+        const reg = /[\u0300-\u036f]/g
+
         getUsers().then(users => {
             if(users.some(e =>
-                e.firstname.toLowerCase() == firstname && e.lastname.toLowerCase() == lastname && e.password == password
+                e.firstname.toLowerCase().normalize("NFD").replace(reg, "") == firstname && e.lastname.toLowerCase().normalize("NFD").replace(reg, "") == lastname && e.password == password
             )) {
-                const firstnameToUpper = String(firstname).charAt(0).toUpperCase() + firstname.slice(1)
-                const lastnameToUpper = String(lastname).charAt(0).toUpperCase() + lastname.slice(1)    
+                const firstnameToUpper = String(firstname)[0].toUpperCase() + firstname.slice(1)
+                const lastnameToUpper = String(lastname)[0].toUpperCase() + lastname.slice(1)    
            
                 message.style.display = 'none'
                 form.style.display = 'none'
@@ -46,6 +48,7 @@ form.addEventListener('submit', (e) => {
    
                 users.forEach(e => {
                     const trBody = document.createElement('tr')
+                    
                     const tdLastname = document.createElement('td')
                     const tdFirstname = document.createElement('td')
                     const tdBirthdate = document.createElement('td')
@@ -55,7 +58,8 @@ form.addEventListener('submit', (e) => {
                     tdLastname.innerText = e.lastname
                     tdFirstname.innerText = e.firstname
                     tdBirthdate.innerText = e.birthday
-                    tdEmail.innerText = `${e.firstname.toLowerCase()}.${e.lastname.toLowerCase()}@example.com`
+
+                    tdEmail.innerText = `${e.firstname.toLowerCase().normalize("NFD").replace(reg, "")}.${e.lastname.toLowerCase().normalize("NFD").replace(reg, "")}@example.com`
                     tdSalary.innerText = `${e.salary} €`
    
                     tbody.append(trBody)
@@ -65,7 +69,7 @@ form.addEventListener('submit', (e) => {
                     trBody.append(tdEmail)
                     trBody.append(tdSalary)
                
-                    if(e.lastname.toLowerCase() == lastname && e.firstname.toLowerCase() == firstname) {
+                    if(e.lastname.toLowerCase().normalize("NFD").replace(reg, "") == lastname && e.firstname.toLowerCase().normalize("NFD").replace(reg, "") == firstname) {
                         trBody.className = 'selected'
                     }
                 })
