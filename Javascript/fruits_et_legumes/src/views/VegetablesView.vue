@@ -1,7 +1,7 @@
 <template>
     {{ storage }}
     <h1>Liste des légumes</h1>
-    <button @click="resetStorage">Reset</button>
+    <button @click="resetStorage" type="submit">Reset</button>
     <table>
         <thead>
             <tr>
@@ -46,12 +46,14 @@ const sortState = ref({
     Fresh: false,
 })
 
-const storage = ref(localStorage.getItem('vegetables') ? JSON.parse(localStorage.getItem('vegetables')) : [])
+const storage = ref(
+    localStorage.getItem('vegetables') ? JSON.parse(localStorage.getItem('vegetables')) : [],
+)
 
 const getVegetables = async () => {
     try {
         const veg = await fetchVegetables()
-        vegetables.value = [...veg, ...storage.value]
+        vegetables.value = [...veg, ...storage.value].sort((a, b) => a.Name.localeCompare(b.Name))
     } catch (e) {
         console.error('Erreur lors du chargement des légumes :', e)
     }
@@ -62,19 +64,18 @@ const sortVegetables = (col, isNum = true) => {
     vegetables.value.sort((a, b) =>
         sortState.value[col]
             ? isNum
-                ? b[col] - a[col]
-                : b[col].localeCompare(a[col])
+                ? a[col] - b[col]
+                : a[col].localeCompare(b[col])
             : isNum
-              ? a[col] - b[col]
-              : a[col].localeCompare(b[col]),
+              ? b[col] - a[col]
+              : b[col].localeCompare(a[col]),
     )
 }
 
 const resetStorage = () => {
     localStorage.setItem('vegetables', '')
+    getVegetables()
 }
 
-onMounted(() => {
-     getVegetables()
-})
+onMounted(getVegetables)
 </script>
