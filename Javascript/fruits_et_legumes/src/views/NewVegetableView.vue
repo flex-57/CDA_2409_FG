@@ -2,7 +2,43 @@
     <h1>Ajouter un légume {{ vegetableId }}</h1>
     <form @submit.prevent="saveVegetable">
         <div v-if="message">{{ message }}</div>
-        <FormField :name="vegetable.Name" :type="'text'" :id="'input-name'" :label="'Nom'" v-model="vegetable.Name" />
+        <FormField label="Nom" id="input-name" name="name" v-model="vegetable.Name" />
+        <FormField label="Variété" id="input-variety" name="variety" v-model="vegetable.Variety" />
+        <FormField
+            label="Couleur"
+            id="input-primary-color"
+            name="primaryColor"
+            v-model="vegetable.PrimaryColor"
+        />
+        <FormField
+            label="Durée de conservation (jours)"
+            id="input-lifetime"
+            name="lifetime"
+            type="number"
+            mon="0"
+            v-model.number="vegetable.LifeTime"
+        />
+        <FormField
+            label="Frais"
+            id="input-fresh"
+            name="fresh"
+            type="radio"
+            v-model.number="vegetable.LifeTime"
+            :options="[
+                { value: 1, label: 'Oui' },
+                { value: 0, label: 'Non' },
+            ]"
+        />
+        <FormField
+            label="Prix (€)"
+            id="input-price"
+            name="price"
+            type="number"
+            min="0"
+            step=".01"
+            v-model.number="vegetable.Price"
+        />
+<!--
         <div class="form-grp">
             <label for="input-name">Nom</label>
             <input type="text" id="input-name" v-model="vegetable.Name" />
@@ -44,7 +80,7 @@
                 min="0"
             />
         </div>
-
+-->
         <div class="form-grp">
             <label></label>
             <input type="submit" id="btn-submit" value="Ajouter" />

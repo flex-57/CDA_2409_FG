@@ -1,33 +1,41 @@
 <template>
     <div class="form-grp">
         <label :for="id">{{ label }}</label>
-        <input :type="type" :id="id" :value="name" v-model="inputValue"  />
+
+        <template v-if="type === 'radio'">
+            <div v-for="option in options" :key="option.value" class="radio-group">
+                <input
+                    :id="`${id}-${option.value}`"
+                    :name="name"
+                    :type="type"
+                    :value="option.value"
+                    v-model="modelValue"
+                />
+                <label :for="`${id}-${option.value}`">{{ option.label }}</label>
+            </div>
+        </template>
+
+        <input
+            v-else
+            :id="id"
+            :type="type"
+            v-model="modelValue"
+            :step="type === 'number' ? step : undefined"
+            :min="type === 'number' ? min : undefined"
+        />
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-
-const props = defineProps({
-    name: {
-        type: String,
-        default: ''
-    },
-    label: {
-        type: String,
-        default: ''
-    },
-    id: {
-        type: String,
-        default: ''
-    },
-    type: {
-        type: String,
-        default: 'text'
-    }
-    
+defineProps({
+    label: String,
+    id: String,
+    name: String,
+    type: String,
+    step: Number,
+    min: Number,
+    options: Array, // Pour les radios : [{ value: 1, label: 'Oui' }, { value: 0, label: 'Non' }]
 })
 
-const inputValue = ref(props.name)
+const modelValue = defineModel()
 </script>
