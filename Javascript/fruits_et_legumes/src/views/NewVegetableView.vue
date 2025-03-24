@@ -2,7 +2,7 @@
     <h1>Ajouter un légume {{ vegetableId }}</h1>
     <form @submit.prevent="saveVegetable">
         <div v-if="message">{{ message }}</div>
-        <FormField label="Nom" id="input-name" name="name" v-model="vegetable.Name" />
+<!--        <FormField label="Nom" id="input-name" name="name" v-model="vegetable.Name" />
         <FormField label="Variété" id="input-variety" name="variety" v-model="vegetable.Variety" />
         <FormField
             label="Couleur"
@@ -38,7 +38,7 @@
             step=".01"
             v-model.number="vegetable.Price"
         />
-<!--
+-->
         <div class="form-grp">
             <label for="input-name">Nom</label>
             <input type="text" id="input-name" v-model="vegetable.Name" />
@@ -80,7 +80,7 @@
                 min="0"
             />
         </div>
--->
+
         <div class="form-grp">
             <label></label>
             <input type="submit" id="btn-submit" value="Ajouter" />
@@ -92,7 +92,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { fetchVegetables } from '@/utils/fetchVegetables'
 import router from '@/router'
-import FormField from '@/components/FormField.vue'
+//import FormField from '@/components/FormField.vue'
 
 const vegetables = ref([])
 const vegetable = ref({
