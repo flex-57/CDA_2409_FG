@@ -1,5 +1,5 @@
 export const ucFirst = (str) => {
-    return str[0].toUpperCase() + str.slice(1).toLowerCase()
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 }
 
 export const capitalizeName = (str) => {
