@@ -46,13 +46,15 @@ matrix.forEach((row, x) => {
                 matrix[parseInt(availableCell.dataset.x)][parseInt(availableCell.dataset.y)] = currentPlayer
 
                 //console.log(availableCell);
-                console.table(matrix);
+                console.table(matrix)
 
                 if (checkVictory(parseInt(availableCell.dataset.x), parseInt(availableCell.dataset.y))) {
                     board.style.display = 'none'
                     btnRestart.style.display = 'block'
-                }
 
+                    currentPlayer = currentPlayer === player1 ? player2 : player1
+                    addBorderCurrentPlayerBox()
+                }
                 currentPlayer = currentPlayer === player1 ? player2 : player1
                 addBorderCurrentPlayerBox()
             }
@@ -60,12 +62,10 @@ matrix.forEach((row, x) => {
     })
 })
 
-
 const checkDirection = (x, y, dx, dy, player) => {
-    let count = 1;
+    let count = 1
     for (let direction of [1, -1]) {
         for (let i = 1; i < 4; i++) {
-
             const nx = x + dx * i * direction
             const ny = y + dy * i * direction
 
@@ -80,12 +80,13 @@ const checkDirection = (x, y, dx, dy, player) => {
 
 const checkVictory = (x, y) => {
     const player = matrix[x][y]
-    return checkDirection(x, y, 1, 0, player) || // Horizontal
+    return (
+        checkDirection(x, y, 1, 0, player) || // Horizontal
         checkDirection(x, y, 0, 1, player) || // Vertical
         checkDirection(x, y, 1, 1, player) || // Diagonale \
-        checkDirection(x, y, 1, -1, player)  // Diagonale /
+        checkDirection(x, y, 1, -1, player) // Diagonale /
+    ) 
 }
-
 
 const addBorderCurrentPlayerBox = () => {
     player1Box.style.boxShadow = currentPlayer === player1 ? `0 5px 12px ${player1}` : '0 5px 12px #313158'
@@ -93,9 +94,6 @@ const addBorderCurrentPlayerBox = () => {
 }
 
 addBorderCurrentPlayerBox()
-
-
-
 
 btnRestart.addEventListener('click', () => {
     location.reload()
