@@ -1,0 +1,91 @@
+:root {
+    --color1: #0300b1;
+    --color2: #6562e9;
+    --color3: #313158;
+    --color4: #3a3a3a;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: #000;
+    color: var(--color1);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: .3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+h1 {
+    text-shadow: 0 2px 5px var(--color2);
+    font-size: 5rem;
+    text-wrap: nowrap;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+section {
+    display: flex;
+    gap: 2rem;
+}
+
+.player-box {
+    width: 25vh;
+    padding: 1rem;
+    text-align: center;
+    border-radius: .6rem;
+    text-shadow: 0 2px 5px var(--color3);
+    transition: all .5s;
+}
+
+#player1-box {
+    color: red;
+}
+
+#player2-box {
+    color: yellow;
+}
+
+#board {
+    height: 80vh;
+    width: calc(80vh / 6 * 7);
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color1);
+    border-radius: .6rem;
+    box-shadow: 0 5px 12px var(--color3);
+}
+
+.cell {
+    border: 3px solid #000;
+    border-radius: 50%;
+    background: #000;
+    box-shadow: 0 4px 5px var(--color2);
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s;
+}
+
+button {
+    display: none;
+    padding: .6rem 1rem;
+    border: none;
+    border-radius: .4rem;
+    background: var(--color4);
+    box-shadow: 0 1px 3px var(--color3);
+    color: #fff;
+}
