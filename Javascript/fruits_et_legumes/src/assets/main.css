@@ -25,6 +25,7 @@ header {
     background-image: url('./legumos.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     height: 300px;
 }
 
@@ -65,6 +66,7 @@ h1 {
 
 table {
     margin: auto;
+    color: blue;
 }
 
 th {
@@ -73,7 +75,7 @@ th {
     padding: 0.3rem 1.8rem;
 }
 
-th:not(th:last-child) {
+th:not(th:last-child), td:last-child span {
     cursor: pointer;
 }
 

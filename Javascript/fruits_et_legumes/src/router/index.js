@@ -3,10 +3,16 @@ import VegatablesView from '@/views/VegetablesView.vue'
 import NewVegetableView from '@/views/NewVegetableView.vue'
 import SalesView from '@/views/SalesView.vue'
 import NewSaleView from '@/views/NewSaleView.vue'
+import HomeView from '@/views/HomeView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: HomeView,
+        },
         {
             path: '/legumes',
             name: 'vegetables',

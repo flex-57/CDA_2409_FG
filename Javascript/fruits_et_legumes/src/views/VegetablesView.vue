@@ -23,8 +23,8 @@
                 <td>{{ vegetable.Fresh === 0 ? 'Non' : 'Oui' }}</td>
                 <td>{{ vegetable.Price.toFixed(2) }} $</td>
                 <td>
-                    <a href="">Éditer</a> -
-                    <a href="">Supprimer</a>
+                    <span>Éditer</span> -
+                    <span @click="deleteItem(vegetable.Id)">Supprimer</span>
                 </td>
             </tr>
         </tbody>
@@ -70,6 +70,10 @@ const sortVegetables = (col, isNum = true) => {
               ? b[col] - a[col]
               : b[col].localeCompare(a[col]),
     )
+}
+
+const deleteItem = (id) => {
+    vegetables.value = vegetables.value.filter(v => v.Id != id)
 }
 
 const resetStorage = () => {
