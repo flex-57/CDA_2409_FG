@@ -1,7 +1,10 @@
 const h1 = document.querySelector('h1')
 const board = document.querySelector('#board')
+const playerBox = document.querySelector('.player-box')
 const player1Box = document.querySelector('#player1-box')
 const player2Box = document.querySelector('#player2-box')
+const player1Score = document.querySelector('#player1-box .score')
+const player2Score = document.querySelector('#player2-box .score')
 const btnRestart = document.querySelector('button')
 
 const player1 = 'red'
@@ -17,12 +20,14 @@ letters.forEach((letter, i) => {
     h1.append(span)
 })
 
-let matrix = []
+let scoreStorage = localStorage.getItem('score')
 
-board.style.display = 'grid'
-btnRestart.style.display = 'none'
+const score = {
+    player1: 0,
+    player2: 0,
+}
 
-matrix = [...Array(6)].map(() => Array(7).fill(''))
+let matrix = [...Array(6)].map(() => Array(7).fill(''))
 let currentPlayer = player1
 
 matrix.forEach((row, x) => {
@@ -52,8 +57,20 @@ matrix.forEach((row, x) => {
                     board.style.display = 'none'
                     btnRestart.style.display = 'block'
 
+                    if(currentPlayer === player1) {
+                        score.player1++
+                        player1Score.textContent = score.player1
+                        player1Box.style.scale = 1.2
+                        player2Box.style.scale = .8
+                    }
+                    else {
+                        score.player2++
+                        player2Score.textContent = score.player2
+                        player1Box.style.scale = .8
+                        player2Box.style.scale = 1.2
+                    }
+                    localStorage.setItem('score', JSON.stringify(score))
                     currentPlayer = currentPlayer === player1 ? player2 : player1
-                    addBorderCurrentPlayerBox()
                 }
                 currentPlayer = currentPlayer === player1 ? player2 : player1
                 addBorderCurrentPlayerBox()
@@ -71,11 +88,11 @@ const checkDirection = (x, y, dx, dy, player) => {
 
             if (nx >= 0 && nx < 6 && ny >= 0 && ny < 7 && matrix[nx][ny] === player) {
                 count++
-                if (count >= 4) return true
             }
+            else i = 4
         }
     }
-    return false
+    return count >= 4
 }
 
 const checkVictory = (x, y) => {
@@ -96,5 +113,19 @@ const addBorderCurrentPlayerBox = () => {
 addBorderCurrentPlayerBox()
 
 btnRestart.addEventListener('click', () => {
-    location.reload()
+    
+    matrix = [...Array(6)].map(() => Array(7).fill(''))
+    
+    document.querySelectorAll('.cell').forEach(cell => {
+        cell.style.background = 'black'
+    })
+    
+    board.style.display = 'grid'
+    btnRestart.style.display = 'none'
+    
+    player1Box.style.scale = 1
+    player2Box.style.scale = 1
+    
+    currentPlayer = player1
+    addBorderCurrentPlayerBox()
 })
