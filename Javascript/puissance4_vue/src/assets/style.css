@@ -1,0 +1,37 @@
+:root {
+    --bg-main: black;
+    --color1: #0300b1;
+    --color2: #6562e9;
+    --color3: #313158;
+    --color4: #272727;
+    --radius: .6rem;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: var(--bg-main);
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 5rem;
+    letter-spacing: 0.2rem;
+
+    span:nth-child(odd) {
+        color: red;
+    }
+    span:nth-child(even) {
+        color: yellow;
+    }
+}
