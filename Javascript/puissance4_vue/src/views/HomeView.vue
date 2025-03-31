@@ -1,113 +1,74 @@
 <template>
-    <section>
-        <PlayerBoxComponent
-            :id="'player1-box'"
-            :player="player1"
-            :currentPlayer="currentPlayer"
-            :winner="winner"
-            :gameOver="gameOver"
-        />
-        <div v-if="!gameOver" id="board">
-            <template v-for="(row, x) in matrix" :key="x">
-                <div
-                    v-for="(cell, y) in row"
-                    :key="y"
-                    class="cell"
-                    :style="{ background: cell }"
-                    @click="play(y)"
-                ></div>
-            </template>
+    <form action="" @submit.prevent="start">
+        <div id="form">
+            <div>
+                <fieldset>
+                    <h3>Joueur 1</h3>
+                    <div>
+                        <label for="player1-name">Nom</label>
+                        <input type="text" id="player1-name" v-model="player1.name" />
+                    </div>
+                    <div>
+                        <label for="player1-color">Couleur</label>
+                        <select id="player1-color" v-model="player1.color">
+                            <option v-for="color in colors" :key="color" :value="color">
+                                {{ color.charAt(0).toUpperCase() + color.slice(1).toLowerCase() }}
+                            </option>
+                        </select>
+                    </div>
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <h3>Joueur 2</h3>
+                    <div>
+                        <label for="player2-name">Nom</label>
+                        <input type="text" id="player2-name" v-model="player2.name" />
+                    </div>
+                    <div>
+                        <label for="player2-color">Couleur</label>
+                        <select id="player2-color" v-model="player2.color">
+                            <option v-for="color in colors" :key="color" :value="color">
+                                {{ color.charAt(0).toUpperCase() + color.slice(1).toLowerCase() }}
+                            </option>
+                        </select>
+                    </div>
+                </fieldset>
+            </div>
         </div>
-        <PlayerBoxComponent
-            :id="'player2-box'"
-            :player="player2"
-            :currentPlayer="currentPlayer"
-            :winner="winner"
-            :gameOver="gameOver"
-        />
-    </section>
-    <button v-if="gameOver" @click="resetGame">Rejouer</button>
+        <div v-show="errors != ''">{{ errors }}</div>
+        <input type="submit" value="Commencer" :disabled="errors != ''" :class="{ disabled: errors.length }" />
+    </form>
 </template>
 
 <script setup>
-import PlayerBoxComponent from '@/components/PlayerBoxComponent.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import router from '@/router'
+
+const colors = ['red', 'yellow', 'green', 'orange', 'purple', 'white']
 
 const player1 = ref({
-    name: 'rouge',
-    color: 'red',
+    name: '',
+    color: colors[0],
     score: 0,
 })
 
 const player2 = ref({
-    name: 'jaune',
-    color: 'yellow',
+    name: '',
+    color: colors[1],
     score: 0,
 })
 
-const matrix = ref([...Array(6)].map(() => Array(7).fill('')))
-const currentPlayer = ref(player1.value)
-const winner = ref(null)
-const gameOver = ref(false)
+const errors = computed(() => {
+    if (!player1.value.name || !player2.value.name) return 'Veuillez entrer un nom pour chaque joueur!'
+    if (!colors.includes(player1.value.color) || !colors.includes(player2.value.color)) return 'Veuillez choisir une couleur valide!'
+    if (player1.value.color === player2.value.color) return 'Les deux joueurs ne peuvent pas avoir la même couleur!'
+    return ''
+})
 
-const play = (y) => {
-    const columnCells = matrix.value.map((row) => row[y])
-    const availableCellX = columnCells.lastIndexOf('')
-    console.table(columnCells)
 
-    if (availableCellX !== -1) {
-        matrix.value[availableCellX][y] = currentPlayer.value.color
-        console.table(matrix.value)
-        if (checkVictory(availableCellX, y)) {
-            gameOver.value = true
-            currentPlayer.value.color === player1.value.color
-                ? player1.value.score++
-                : player2.value.score++
-            winner.value = currentPlayer.value
-            currentPlayer.value =
-                currentPlayer.value.color === player1.value.color ? player2.value : player1.value
-        }
-        if (checkDraw()) {
-            gameOver.value = true
-        }
-        currentPlayer.value =
-            currentPlayer.value.color === player1.value.color ? player2.value : player1.value
-    }
-}
-
-const checkDirection = (x, y, dx, dy, player) => {
-    let count = 1
-    for (let direction of [1, -1]) {
-        for (let i = 1; i < 4; i++) {
-            const nx = x + dx * i * direction
-            const ny = y + dy * i * direction
-
-            if (nx >= 0 && nx < 6 && ny >= 0 && ny < 7 && matrix.value[nx][ny] === player) {
-                count++
-            } else i = 4
-        }
-    }
-    return count >= 4
-}
-
-const checkVictory = (x, y) => {
-    const player = matrix.value[x][y]
-    return (
-        checkDirection(x, y, 1, 0, player) || // Horizontal
-        checkDirection(x, y, 0, 1, player) || // Vertical
-        checkDirection(x, y, 1, 1, player) || // Diagonale \
-        checkDirection(x, y, 1, -1, player) // Diagonale /
-    )
-}
-
-const checkDraw = () => {
-    return matrix.value.every((row) => row.every((cell) => cell !== ''))
-}
-
-const resetGame = () => {
-    matrix.value = [...Array(6)].map(() => Array(7).fill(''))
-    currentPlayer.value = player1.value
-    gameOver.value = false
-    winner.value = null
+const start = () => {
+    if(!errors.value.length)
+    router.push('/game')
 }
 </script>
