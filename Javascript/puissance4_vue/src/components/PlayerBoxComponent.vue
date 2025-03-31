@@ -9,12 +9,7 @@
                     : currentPlayer.color === player.color
                       ? `0 6px 12px ${player.color}`
                       : '0 6px 12px #313158',
-            scale:
-                winner && winner.color === player.color
-                    ? '1.2'
-                    : winner
-                      ? '.8'
-                      : '1',
+            scale: winner && winner.color === player.color ? '1.2' : winner ? '.8' : '1',
         }"
     >
         <h2>
