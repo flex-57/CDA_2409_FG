@@ -1,12 +1,14 @@
 <template>
-    <header>
-        <h1>
-            <span v-for="letter in titleGame" :key="letter">{{ letter }}</span>
-        </h1>
-    </header>
-    <main>
-        <RouterView />
-    </main>
+    <h1>
+        <span
+            v-for="(letter, i) in titleGame"
+            :key="i"
+            :style="{ color: i % 2 === 0 ? 'red' : 'yellow' }"
+        >
+            {{ letter }}
+        </span>
+    </h1>
+    <RouterView />
 </template>
 
 <script setup>

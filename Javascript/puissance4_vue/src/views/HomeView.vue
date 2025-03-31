@@ -1,53 +1,78 @@
 <template>
-    <div v-if="!isOver" id="board">
-        <template v-for="(row, x) in matrix" :key="row">
-            <div v-for="(cell, y) in row" :key="cell" class="cell" :style="'background: black'" :data-x="x" :data-y="y" @click="setBg">{{ x }};{{ y }}</div>
-        </template>
-    </div>
+    <section>
+        <PlayerBoxComponent
+            :id="'player1-box'"
+            :player="player1"
+            :currentPlayer="currentPlayer"
+            :winner="winner"
+            :gameOver="gameOver"
+        />
+        <div v-if="!gameOver" id="board">
+            <template v-for="(row, x) in matrix" :key="x">
+                <div
+                    v-for="(cell, y) in row"
+                    :key="y"
+                    class="cell"
+                    :style="{ background: cell }"
+                    @click="play(y)"
+                ></div>
+            </template>
+        </div>
+        <PlayerBoxComponent
+            :id="'player2-box'"
+            :player="player2"
+            :currentPlayer="currentPlayer"
+            :winner="winner"
+            :gameOver="gameOver"
+        />
+    </section>
+    <button v-if="gameOver" @click="resetGame">Rejouer</button>
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import PlayerBoxComponent from '@/components/PlayerBoxComponent.vue'
+import { ref } from 'vue'
 
-const player1 = reactive({
-    name: '',
+const player1 = ref({
+    name: 'rouge',
     color: 'red',
-    score: 0
+    score: 0,
 })
-const player2 = reactive({
-    name: '',
+
+const player2 = ref({
+    name: 'jaune',
     color: 'yellow',
-    score: 0
+    score: 0,
 })
 
+const matrix = ref([...Array(6)].map(() => Array(7).fill('')))
+const currentPlayer = ref(player1.value)
+const winner = ref(null)
+const gameOver = ref(false)
 
-let currentPlayer = reactive(player1)
+const play = (y) => {
+    const columnCells = matrix.value.map((row) => row[y])
+    const availableCellX = columnCells.lastIndexOf('')
+    console.table(columnCells)
 
-const matrix = reactive([...Array(6)].map(() => Array(7).fill('')))
-
-const isOver = ref(false)
-
-const setBg = (cell) => {
-
-    if(availableCell(cell)) {
-        availableCell(cell).style.background = currentPlayer.color
-        matrix[parseInt(availableCell(cell).dataset.x)][parseInt(availableCell(cell).dataset.y)] = currentPlayer
-
-        console.log(availableCell(cell));
-        console.table(matrix);
-
-        if(checkVictory(parseInt(availableCell(cell).dataset.x), parseInt(availableCell(cell).dataset.y))) {
-            isOver.value = true
+    if (availableCellX !== -1) {
+        matrix.value[availableCellX][y] = currentPlayer.value.color
+        console.table(matrix.value)
+        if (checkVictory(availableCellX, y)) {
+            gameOver.value = true
+            currentPlayer.value.color === player1.value.color
+                ? player1.value.score++
+                : player2.value.score++
+            winner.value = currentPlayer.value
+            currentPlayer.value =
+                currentPlayer.value.color === player1.value.color ? player2.value : player1.value
         }
-
-        currentPlayer = currentPlayer === player1 ? player2 : player1
+        if (checkDraw()) {
+            gameOver.value = true
+        }
+        currentPlayer.value =
+            currentPlayer.value.color === player1.value.color ? player2.value : player1.value
     }
-}
-
-const availableCell = (cell) => {
-    const columnCells = [...document.querySelectorAll(`.cell[data-y="${cell.target.dataset.y}"]`)]
-
-    return columnCells.reverse().find(s => s.style.background === 'black')
 }
 
 const checkDirection = (x, y, dx, dy, player) => {
@@ -57,17 +82,16 @@ const checkDirection = (x, y, dx, dy, player) => {
             const nx = x + dx * i * direction
             const ny = y + dy * i * direction
 
-            if (nx >= 0 && nx < 6 && ny >= 0 && ny < 7 && matrix[nx][ny] === player) {
+            if (nx >= 0 && nx < 6 && ny >= 0 && ny < 7 && matrix.value[nx][ny] === player) {
                 count++
-            }
-            else i = 4
+            } else i = 4
         }
     }
     return count >= 4
 }
 
 const checkVictory = (x, y) => {
-    const player = matrix[x][y]
+    const player = matrix.value[x][y]
     return (
         checkDirection(x, y, 1, 0, player) || // Horizontal
         checkDirection(x, y, 0, 1, player) || // Vertical
@@ -76,34 +100,14 @@ const checkVictory = (x, y) => {
     )
 }
 
+const checkDraw = () => {
+    return matrix.value.every((row) => row.every((cell) => cell !== ''))
+}
 
+const resetGame = () => {
+    matrix.value = [...Array(6)].map(() => Array(7).fill(''))
+    currentPlayer.value = player1.value
+    gameOver.value = false
+    winner.value = null
+}
 </script>
-
-<style scoped>
-#board {
-    height: 80vh;
-    width: calc(80vh / 6 * 7);
-    display: grid;
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1rem;
-    padding: 1rem;
-    background: var(--color1);
-    border-radius: var(--radius);
-    box-shadow: 0 5px 12px var(--color3);
-}
-
-.cell {
-    border: 3px solid #000;
-    border-radius: 50%;
-    background: #000;
-    box-shadow: 0 4px 5px var(--color2);
-    padding: .5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .5s;
-    color:red;
-}
-
-</style>
