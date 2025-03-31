@@ -1,10 +1,9 @@
 :root {
-    --bg-main: black;
-    --color1: #0300b1;
-    --color2: #6562e9;
+    --color1: #0300a1;
+    --color2: #6462e9;
     --color3: #313158;
     --color4: #272727;
-    --radius: .6rem;
+    --radius: 0.6rem;
 }
 
 * {
@@ -14,24 +13,102 @@
 }
 
 body {
+    height: 100vh;
+    background: #000000;
+    color: var(--color1);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background: var(--bg-main);
 }
 
 #app {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
 }
 
 h1 {
+    text-shadow: 0 2px 5px var(--color2);
     font-size: 5rem;
-    letter-spacing: 0.2rem;
+    text-wrap: nowrap;
+}
 
-    span:nth-child(odd) {
-        color: red;
+h2 {
+    font-size: 2rem;
+}
+
+section {
+    display: flex;
+    gap: 2rem;
+}
+
+.player-box {
+    width: 25vh;
+    margin: 2rem 0;
+    padding: 2rem;
+    text-align: center;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.5s;
+
+    h2 {
+        padding-bottom: 1rem;
     }
-    span:nth-child(even) {
-        color: yellow;
+
+    h3 {
+        padding-bottom: 1rem;
     }
+}
+
+#player1-box {
+    color: red;
+
+    h2 {
+        border-bottom: 2px solid red;
+    }
+}
+
+#player2-box {
+    color: yellow;
+
+    h2 {
+        border-bottom: 2px solid yellow;
+    }
+}
+
+.score {
+    font-size: 2rem;
+}
+
+#board {
+    height: 50vw;
+    width: calc(50vw / 6 * 7);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color1);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 12px var(--color3);
+}
+
+.cell {
+    border: 3px solid #000;
+    border-radius: 50%;
+    background: #000;
+    box-shadow: 0 4px 5px var(--color2);
+    transition: all 0.5s;
+}
+
+button {
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--color4);
+    box-shadow: 0 1px 3px var(--color3);
+    color: #fff;
+    margin-top: 1.5rem;
+    scale: 1.2;
 }
