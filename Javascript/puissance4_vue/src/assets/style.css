@@ -32,7 +32,7 @@ h1 {
     text-shadow: 0 2px 5px var(--color2);
     font-size: 5rem;
     text-wrap: nowrap;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
 }
 
 h2 {
@@ -102,16 +102,65 @@ section {
     border-radius: 50%;
     background: #000;
     box-shadow: 0 4px 5px var(--color2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all 0.5s;
 }
 
-button {
+button,
+input,
+select {
     padding: 0.6rem 1rem;
     border: none;
     border-radius: var(--radius);
     background: var(--color4);
     box-shadow: 0 1px 3px var(--color3);
     color: #fff;
+    width: 100%;
+}
+
+button, input[type=submit] {
     margin-top: 1.5rem;
-    scale: 1.2;
+    max-width: 300px;
+}
+
+input[type=submit]:disabled {
+    color: rgb(114, 114, 114);
+    background: #242424;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+#form {
+    display: flex;
+    gap: 3rem;
+}
+
+fieldset {
+    border-radius: var(--radius);
+
+    h3 {
+        color: #000;
+        background: white;
+        padding: 0.6rem 1rem;
+        text-align: center;
+    }
+
+    div {
+        margin: 0.5rem 0;
+        padding: 0.2rem 0.5rem;
+    }
+}
+
+label {
+    display: inline-block;
+    width: 100%;
+    color: white;
+    padding: 0 0 .2rem .8rem;
 }
