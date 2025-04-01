@@ -1,6 +1,6 @@
 <template>
     <div
-        :id="id"
+        :id="`${prefix}-box`"
         class="player-box"
         :style="{
             color: player.color,
@@ -13,7 +13,7 @@
             scale: winner && winner.color === player.color ? '1.2' : winner ? '.8' : '1',
         }"
     >
-        <h2 :style="{borderBottom: `2px solid ${player.color}`}">
+        <h2 :style="{ borderBottom: `2px solid ${player.color}` }">
             Joueur {{ player.name.charAt(0).toUpperCase() }}{{ player.name.slice(1).toLowerCase() }}
         </h2>
         <div>
@@ -25,10 +25,25 @@
 
 <script setup>
 defineProps({
-    id: String,
-    player: Object,
-    currentPlayer: Object,
-    winner: Object,
-    gameOver: Boolean,
+    id: {
+        type: String,
+        required: true,
+    },
+    player: {
+        type: Object,
+        required: true,
+    },
+    currentPlayer: {
+        type: Object,
+        required: true,
+    },
+    winner: {
+        type: Object,
+        required: true,
+    },
+    gameOver: {
+        type: Boolean,
+        required: true,
+    },
 })
 </script>

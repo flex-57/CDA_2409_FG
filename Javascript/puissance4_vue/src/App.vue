@@ -12,9 +12,9 @@
 </template>
 
 <script setup>
-import { usePlayerStore } from '@/stores/playerStore';
+import { usePlayerStore } from '@/stores/playerStore'
 
-const playerStore = usePlayerStore();
+const playerStore = usePlayerStore()
 
 const titleGame = [...'Puissance 4']
 </script>

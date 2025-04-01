@@ -10,11 +10,11 @@
         </h2>
         <div>
             <label :for="`${prefix}-name`" :style="{ color: player.color }">Nom</label>
-            <input type="text" :id="`${prefix}-name`" v-model.trim="player.name" />
+            <input type="text" :id="`${prefix}-name`" v-model="player.name" />
         </div>
         <div>
             <label :for="`${prefix}-color`" :style="{ color: player.color }">Couleur</label>
-            <select :id="`${prefix}-color`" v-model.trim="player.color">
+            <select :id="`${prefix}-color`" v-model="player.color">
                 <option v-for="(color, k) in colors" :key="k" :value="k">
                     {{ color.charAt(0).toUpperCase() + color.slice(1).toLowerCase() }}
                 </option>

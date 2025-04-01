@@ -1,7 +1,7 @@
 <template>
     <section>
         <PlayerBoxComponent
-            :id="'player1-box'"
+            :prefix="'player1'"
             :player="playerStore.player1"
             :currentPlayer="currentPlayer"
             :winner="winner"
@@ -19,7 +19,7 @@
             </template>
         </div>
         <PlayerBoxComponent
-            :id="'player2-box'"
+            :prefix="'player2'"
             :player="playerStore.player2"
             :currentPlayer="currentPlayer"
             :winner="winner"
@@ -32,11 +32,11 @@
 
 <script setup>
 import PlayerBoxComponent from '@/components/PlayerBoxComponent.vue'
-import { usePlayerStore } from '@/stores/playerStore';
+import { usePlayerStore } from '@/stores/playerStore'
 import { ref } from 'vue'
 import router from '@/router'
 
-const playerStore = usePlayerStore();
+const playerStore = usePlayerStore()
 const matrix = ref([...Array(6)].map(() => Array(7).fill('')))
 const currentPlayer = ref(playerStore.player1)
 const winner = ref(null)
@@ -58,7 +58,9 @@ const play = (y) => {
             gameOver.value = true
         } else {
             currentPlayer.value =
-                currentPlayer.value.color === playerStore.player1.color ? playerStore.player2 : playerStore.player1
+                currentPlayer.value.color === playerStore.player1.color
+                    ? playerStore.player2
+                    : playerStore.player1
         }
     }
 }
@@ -70,7 +72,13 @@ const checkDirection = (x, y, dx, dy) => {
             const nx = x + dx * i * direction
             const ny = y + dy * i * direction
 
-            if (nx >= 0 && nx < 6 && ny >= 0 && ny < 7 && matrix.value[nx][ny] === currentPlayer.value.color) {
+            if (
+                nx >= 0 &&
+                nx < 6 &&
+                ny >= 0 &&
+                ny < 7 &&
+                matrix.value[nx][ny] === currentPlayer.value.color
+            ) {
                 count++
             } else i = 4
         }
@@ -97,5 +105,4 @@ const resetGame = () => {
 }
 
 const homePage = () => router.replace('/')
-
 </script>
