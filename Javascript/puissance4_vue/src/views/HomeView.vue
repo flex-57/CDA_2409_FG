@@ -27,11 +27,11 @@
 
 <script setup>
 import PlayerFormComponent from '@/components/PlayerFormComponent.vue'
-import { usePlayerStore } from '@/stores/playerStore';
+import { usePlayerStore } from '@/stores/playerStore'
 import { ref } from 'vue'
 import router from '@/router'
 
-const playerStore = usePlayerStore();
+const playerStore = usePlayerStore()
 
 const colors = {
     red: 'Rouge',
@@ -66,11 +66,11 @@ const start = () => {
     errors.value = [
         ...playerStore.player1.validate(Object.keys(colors)),
         ...playerStore.player2.validate(Object.keys(colors)),
-    ];
+    ]
 
     if (errors.value.length === 0) {
-        playerStore.savePlayers();
-        router.replace('/game');
+        playerStore.savePlayers()
+        router.replace('/game')
     }
 }
 </script>
