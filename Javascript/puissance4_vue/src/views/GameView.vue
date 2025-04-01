@@ -15,8 +15,7 @@
                     class="cell"
                     :style="{ background: cell }"
                     @click="play(y)"
-                >
-                </div>
+                ></div>
             </template>
         </div>
         <PlayerBoxComponent
@@ -28,10 +27,12 @@
         />
     </section>
     <button v-if="gameOver" @click="resetGame">Rejouer</button>
+    <button v-if="gameOver" @click="homePage">Accueil</button>
 </template>
 
 <script setup>
 import PlayerBoxComponent from '@/components/PlayerBoxComponent.vue'
+import router from '@/router'
 import { ref } from 'vue'
 
 const player1 = ref({
@@ -107,5 +108,9 @@ const resetGame = () => {
     currentPlayer.value = player1.value
     gameOver.value = false
     winner.value = null
+}
+
+const homePage = () => {
+    router.replace('/')
 }
 </script>

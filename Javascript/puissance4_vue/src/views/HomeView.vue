@@ -36,13 +36,17 @@
                 </fieldset>
             </div>
         </div>
-        <div v-show="errors != ''">{{ errors }}</div>
-        <input type="submit" value="Commencer" :disabled="errors != ''" :class="{ disabled: errors.length }" />
+        <div v-show="errors.length" v-for="(error, i) of errors" :key="i">{{ error }}</div>
+        <input
+            type="submit"
+            value="Commencer"
+            :disabled="!checkErrors()"
+        />
     </form>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import router from '@/router'
 
 const colors = ['red', 'yellow', 'green', 'orange', 'purple', 'white']
@@ -59,16 +63,22 @@ const player2 = ref({
     score: 0,
 })
 
-const errors = computed(() => {
-    if (!player1.value.name || !player2.value.name) return 'Veuillez entrer un nom pour chaque joueur!'
-    if (!colors.includes(player1.value.color) || !colors.includes(player2.value.color)) return 'Veuillez choisir une couleur valide!'
-    if (player1.value.color === player2.value.color) return 'Les deux joueurs ne peuvent pas avoir la même couleur!'
-    return ''
-})
+const errors = ref([])
 
+const checkErrors = () => {
+    errors.value = []
+
+    if (!player1.value.name || !player2.value.name)
+        errors.value.push('Veuillez entrer un nom pour chaque joueur!')
+    if (!colors.includes(player1.value.color) || !colors.includes(player2.value.color))
+        errors.value.push('Veuillez choisir une couleur valide!')
+    if (player1.value.color === player2.value.color)
+        errors.value.push('Les deux joueurs ne peuvent pas avoir la même couleur!')
+
+    return errors.value.length === 0
+}
 
 const start = () => {
-    if(!errors.value.length)
-    router.push('/game')
+    if (errors.value.length) router.push('/game')
 }
 </script>
