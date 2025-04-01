@@ -3,6 +3,7 @@
         :id="id"
         class="player-box"
         :style="{
+            color: player.color,
             boxShadow:
                 gameOver && !winner
                     ? '0 6px 12px #313158'
@@ -12,7 +13,7 @@
             scale: winner && winner.color === player.color ? '1.2' : winner ? '.8' : '1',
         }"
     >
-        <h2>
+        <h2 :style="{borderBottom: `2px solid ${player.color}`}">
             Joueur {{ player.name.charAt(0).toUpperCase() }}{{ player.name.slice(1).toLowerCase() }}
         </h2>
         <div>
