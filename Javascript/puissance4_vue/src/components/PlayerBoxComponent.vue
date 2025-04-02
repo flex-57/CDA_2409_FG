@@ -25,7 +25,7 @@
 
 <script setup>
 defineProps({
-    id: {
+    prefix: {
         type: String,
         required: true,
     },
@@ -38,7 +38,7 @@ defineProps({
         required: true,
     },
     winner: {
-        type: Object,
+        type: [Object, null,],
         required: true,
     },
     gameOver: {

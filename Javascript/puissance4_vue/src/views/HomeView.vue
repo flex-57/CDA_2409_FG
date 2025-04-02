@@ -32,6 +32,7 @@ import { ref } from 'vue'
 import router from '@/router'
 
 const playerStore = usePlayerStore()
+playerStore.loadPlayers()
 
 const colors = {
     red: 'Rouge',
@@ -43,31 +44,27 @@ const colors = {
 }
 
 const errors = ref([])
-/*
+
 const checkErrors = () => {
     errors.value = []
 
-    if (!player1.value.name || !player2.value.name)
+    if (!playerStore.player1.name || !playerStore.player2.name)
         addError('Veuillez entrer un nom pour chaque joueur!')
     if (
-        !Object.keys(colors).includes(player1.value.color) ||
-        !Object.keys(colors).includes(player2.value.color)
+        !Object.keys(colors).includes(playerStore.player1.color) ||
+        !Object.keys(colors).includes(playerStore.player2.color)
     )
         addError('Veuillez choisir une couleur valide!')
-    if (player1.value.color === player2.value.color)
+    if (playerStore.player1.color === playerStore.player2.color)
         addError('Les deux joueurs ne peuvent pas avoir la même couleur!')
 }
 
 const addError = (msg) => {
     errors.value.push(msg)
 }
-*/
-const start = () => {
-    errors.value = [
-        ...playerStore.player1.validate(Object.keys(colors)),
-        ...playerStore.player2.validate(Object.keys(colors)),
-    ]
 
+const start = () => {
+    checkErrors()
     if (errors.value.length === 0) {
         playerStore.savePlayers()
         router.replace('/game')
