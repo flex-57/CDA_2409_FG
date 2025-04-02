@@ -1,7 +1,7 @@
 <template>
     <section>
         <PlayerBoxComponent
-            :prefix="'player1'"
+            prefix="player1"
             :player="playerStore.player1"
             :currentPlayer="currentPlayer"
             :winner="winner"
@@ -19,14 +19,14 @@
             </template>
         </div>
         <PlayerBoxComponent
-            :prefix="'player2'"
+            prefix="player2"
             :player="playerStore.player2"
             :currentPlayer="currentPlayer"
             :winner="winner"
             :gameOver="gameOver"
         />
     </section>
-    <button v-if="gameOver" @click="resetGame">Rejouer</button>
+    <button v-if="gameOver" @click="restartGame">Rejouer</button>
     <button v-if="gameOver" @click="homePage">Accueil</button>
 </template>
 
@@ -37,6 +37,7 @@ import { ref } from 'vue'
 import router from '@/router'
 
 const playerStore = usePlayerStore()
+playerStore.loadPlayers()
 const matrix = ref([...Array(6)].map(() => Array(7).fill('')))
 const currentPlayer = ref(playerStore.player1)
 const winner = ref(null)
@@ -54,6 +55,7 @@ const play = (y) => {
             gameOver.value = true
             winner.value = currentPlayer.value
             winner.value.score++
+            playerStore.savePlayers()
         } else if (checkDraw()) {
             gameOver.value = true
         } else {
@@ -97,7 +99,7 @@ const checkVictory = (x, y) => {
 
 const checkDraw = () => matrix.value.every((row) => row.every((cell) => cell !== ''))
 
-const resetGame = () => {
+const restartGame = () => {
     matrix.value = [...Array(6)].map(() => Array(7).fill(''))
     currentPlayer.value = playerStore.player1
     gameOver.value = false
