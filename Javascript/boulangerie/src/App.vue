@@ -3,10 +3,12 @@
         <h1>Le Boulanger</h1>
         <table>
             <thead>
-                <th>Or gagné</th>
-                <th>Or dépensé</th>
-                <th>Farine produite</th>
-                <th>Baguettes produites</th>
+                <tr>
+                    <th>Or gagné</th>
+                    <th>Or dépensé</th>
+                    <th>Farine produite</th>
+                    <th>Baguettes produites</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -26,36 +28,38 @@
         <div class="boulangerie">
             <img src="./assets/boulangerie.jpg" alt="Dessin d'une boulangerie" />
             <table>
-                <tr>
-                    <td>Niveau</td>
-                    <td>1</td>
-                    <td><button>+</button></td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <td>Moulins</td>
-                    <td>1</td>
-                    <td><button>+</button></td>
-                    <td>80</td>
-                </tr>
-                <tr>
-                    <td>Or</td>
-                    <td>51.5</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Farine</td>
-                    <td>488</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Baguettes</td>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>Niveau</td>
+                        <td>1</td>
+                        <td><button>&#43;</button></td>
+                        <td>100 &#128176;</td>
+                    </tr>
+                    <tr>
+                        <td>Moulins</td>
+                        <td>1</td>
+                        <td><button>&#43;</button></td>
+                        <td>80 &#128176;</td>
+                    </tr>
+                    <tr>
+                        <td>Or</td>
+                        <td>51.5 &#128176;</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Farine</td>
+                        <td>488</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Baguettes</td>
+                        <td>2 &#129366;</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </section>
@@ -66,12 +70,12 @@
         <table id="table-commande">
             <thead>
                 <tr>
-                    <th>f</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>&#128343;</th>
-                    <th></th>
+                    <th>&#128242;</th>
+                    <th>&#129366;</th>
+                    <th>&#128176;/&#129366;</th>
+                    <th>&#128176;&#128176;&#128176;</th>
+                    <th>&#8986;</th>
+                    <th>&#128483;</th>
                 </tr>
             </thead>
             <tbody>
