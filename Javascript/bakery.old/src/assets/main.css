@@ -6,6 +6,7 @@
     --bg-color-title-box: #33373e;
     --bg-color-thead: #293539;
     --bg-color-tr-dark: #374046;
+    --bg-color-btn-hover: #55575e;
     --font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -20,6 +21,7 @@ body {
     background: var(--bg-color-main);
     color: var(--color-base);
     padding: 0.2rem;
+    min-width: fit-content;
 }
 
 #app {
@@ -31,7 +33,9 @@ body {
 header {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 0 2.5rem;
+    gap: 1rem;
 }
 
 section {
@@ -47,6 +51,19 @@ section {
     padding: 0.2rem;
     padding-left: 0.6rem;
     border-bottom: 2px solid var(--border-color);
+}
+
+button {
+    background: var(--bg-color-title-box);
+    color: var(--color-base);
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    background: var(--bg-color-btn-hover);
 }
 
 table,
@@ -67,63 +84,76 @@ tbody {
 
 th,
 td {
-    padding: 0.6rem;
-}
-
-#table-commande {
-    width: 100%;
-}
-
-#table-commande td:not(:last-child) {
+    padding: 0.4rem;
     text-align: center;
+    text-wrap: nowrap;
 }
 
-#table-commande tbody tr:nth-child(odd) {
-    background: var(--bg-color-main);
+#table-order {
+    width: 100%;
+
+    tbody tr:nth-child(odd) {
+        background: var(--bg-color-main);
+    }
+    th:not(:last-child),
+    td:not(:last-child) {
+        text-align: center;
+        width: calc(100% / 8);
+    }
+    th:last-child,
+    td:last-child {
+        text-align: left;
+    }
+    button {
+        padding: 0.3rem;
+    }
 }
 
-button {
-    background: var(--bg-color-title-box);
-    color: var(--color-base);
-    padding: 0.6rem 0.8rem;
-    border: 1px solid var(--border-color);
-    cursor: pointer;
-}
-
-.boulangerie {
+.bakery {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     img {
-        width: 220px;
-        height: 200px;
+        width: 180px;
+        height: 165px;
         transform: scaleX(-1);
-        margin: .2rem;
+        margin: 0.1rem;
     }
-    table {
-        width: 400px;
+    tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        background: var(--bg-color-main);
     }
     tr {
-        background: var(--bg-color-main);
+        display: grid;
+        grid-template-columns: 100px 200px 40px 200px;
+    }
+    td {
+        text-wrap: nowrap;
+        padding: 0.35rem;
     }
     td:not(:first-child) {
         text-align: right;
     }
-    td:first-child{
-        width: 200px;
+    td:first-child {
         color: var(--color-info);
-    }
-    td:nth-child(2) {
-        width: 100px;
-    }
-    td:nth-child(3) {
-        width: 20px;
-    }
-    td:last-child{
-        width: 80px;
+        text-align: left;
     }
     button {
         border-radius: 50%;
-        padding: .2rem .4rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+.log {
+    width: 100%;
+    padding: 0.5rem;
+
+    p {
+        padding: 0.2rem 0;
+        font-family:
+            'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
 }
