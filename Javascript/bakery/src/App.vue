@@ -2,13 +2,12 @@
     <HeaderView :state="stateBakery" />
     <BakeryView
         :state="stateBakery"
-        @bakeryLvlUp="bakeryLvlUp"
-        @millsLvlUp="millsLvlUp"
-        @openCloseBakery="openCloseBakery"
+        @bakery-lvl-up="bakeryLvlUp"
+        @mills-Lvl-up="millsLvlUp"
+        @open-close-bakery="openCloseBakery"
     />
     <OrdersView
-        :orders="stateOrders.orders"
-        :sortState="stateOrders.sortState"
+        :state="stateOrders"
         @validateOrder="validateOrder"
         @cancelOrder="cancelOrder"
         @sortOrders="sortOrders"

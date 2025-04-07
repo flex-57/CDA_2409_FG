@@ -6,49 +6,49 @@
         <table id="table-order">
             <thead>
                 <tr>
-                    <th @click="() => emit('sortOrders', 'id')">
+                    <th @click="() => emit('sort-orders', 'id')">
                         📲
-                        <span v-if="sortState.col === 'id'">{{
-                            sortState.direction ? '🔽' : '🔼'
+                        <span v-if="state.sortState.col === 'id'">{{
+                            state.sortState.direction ? '🔽' : '🔼'
                         }}</span>
                     </th>
-                    <th @click="() => emit('sortOrders', 'nbBaguettes')">
+                    <th @click="() => emit('sort-orders', 'nbBaguettes')">
                         🥖
-                        <span v-if="sortState.col === 'nbBaguettes'">{{
-                            sortState.direction ? '🔽' : '🔼'
+                        <span v-if="state.sortState.col === 'nbBaguettes'">{{
+                            state.sortState.direction ? '🔽' : '🔼'
                         }}</span>
                     </th>
-                    <th @click="() => emit('sortOrders', 'baguetteUnitPrice')">
+                    <th @click="() => emit('sort-orders', 'baguetteUnitPrice')">
                         💰/🥖
-                        <span v-if="sortState.col === 'baguetteUnitPrice'">{{
-                            sortState.direction ? '🔽' : '🔼'
+                        <span v-if="state.sortState.col === 'baguetteUnitPrice'">{{
+                            state.sortState.direction ? '🔽' : '🔼'
                         }}</span>
                     </th>
-                    <th @click="() => emit('sortOrders', 'totalPrice')">
+                    <th @click="() => emit('sort-orders', 'totalPrice')">
                         💰💰💰
-                        <span v-if="sortState.col === 'totalPrice'">{{
-                            sortState.direction ? '🔽' : '🔼'
+                        <span v-if="state.sortState.col === 'totalPrice'">{{
+                            state.sortState.direction ? '🔽' : '🔼'
                         }}</span>
                     </th>
-                    <th @click="() => emit('sortOrders', 'time')">
+                    <th @click="() => emit('sort-orders', 'time')">
                         ⌚
-                        <span v-if="sortState.col === 'time'">{{
-                            sortState.direction ? '🔽' : '🔼'
+                        <span v-if="state.sortState.col === 'time'">{{
+                            state.sortState.direction ? '🔽' : '🔼'
                         }}</span>
                     </th>
                     <th>🗣</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="order in orders" :key="order.id">
+                <tr v-for="order in state.orders" :key="order.id">
                     <td>{{ order.id }}</td>
                     <td>{{ order.nbBaguettes }}</td>
                     <td>{{ order.baguetteUnitPrice }}</td>
                     <td>{{ order.totalPrice.toFixed(2) }}</td>
                     <td>{{ order.time }}</td>
                     <td>
-                        <button @click="() => emit('validateOrder', order.id)">✅</button>
-                        <button @click="() => emit('cancelOrder', order.id)">❌</button>
+                        <button @click="() => emit('validate-order', order.id)">✅</button>
+                        <button @click="() => emit('cancel-order', order.id)">❌</button>
                     </td>
                 </tr>
             </tbody>
@@ -58,15 +58,11 @@
 
 <script setup>
 defineProps({
-    orders: {
-        type: Array,
-        required: true,
-    },
-    sortState: {
+    state: {
         type: Object,
         required: true,
     },
 })
 
-const emit = defineEmits(['validateOrder', 'cancelOrder', 'sortOrders'])
+const emit = defineEmits(['validate-order', 'cancel-order', 'sort-orders'])
 </script>

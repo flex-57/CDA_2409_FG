@@ -64,12 +64,14 @@ export const useBakeryStore = (addLogs) => {
             if (flourNet.value > 0) {
                 stateBakery.flourCollected += flourNet.value
             }
-            if(stateBakery.flourStock > stateBakery.bakeryLvl ) {
+            else if(stateBakery.flourStock > stateBakery.bakeryLvl ) {
                 stateBakery.flourStock += flourNet.value
                 stateBakery.baguettesCollected += stateBakery.bakeryLvl
                 stateBakery.baguettesStock += stateBakery.bakeryLvl
             }
         }
+        console.log(flourNet.value);
+
     }
 
     watch(

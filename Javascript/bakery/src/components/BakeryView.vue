@@ -2,7 +2,7 @@
     <section>
         <div class="title-box">
             <h2>Boulangerie</h2>
-            <button @click="emit('openCloseBakery')">
+            <button @click="emit('open-close-bakery')">
                 {{ state.isOpen ? 'Fermer la boulangerie' : 'Ouvrir la boulangerie' }}
             </button>
         </div>
@@ -13,13 +13,13 @@
                     <tr>
                         <td>Niveau</td>
                         <td>{{ state.bakeryLvl }} ⚡</td>
-                        <td><button @click="emit('bakeryLvlUp')">+</button></td>
+                        <td><button @click="emit('bakery-lvl-up')">+</button></td>
                         <td>{{ state.bakeryImprovementPrice.toFixed(2) }} 💰</td>
                     </tr>
                     <tr>
                         <td>Moulins</td>
                         <td>{{ state.millsLvl }} ⚙️</td>
-                        <td><button @click="emit('millsLvlUp')">+</button></td>
+                        <td><button @click="emit('mills-Lvl-up')">+</button></td>
                         <td>{{ state.millsImprovementPrice.toFixed(2) }} 💰</td>
                     </tr>
                     <tr>
@@ -54,5 +54,5 @@ defineProps({
     },
 })
 
-const emit = defineEmits(['bakeryLvlUp', 'millsLvlUp', 'openCloseBakery'])
+const emit = defineEmits(['bakery-Lvl-up', 'mills-Lvl-up', 'open-close-bakery'])
 </script>
