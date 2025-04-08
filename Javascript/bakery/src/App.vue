@@ -2,9 +2,9 @@
     <HeaderView :state="stateBakery" />
     <BakeryView
         :state="stateBakery"
-        @bakery-lvl-up="bakeryLvlUp"
-        @mills-Lvl-up="millsLvlUp"
-        @open-close-bakery="openCloseBakery"
+        @bakeryLvlUp="bakeryLvlUp"
+        @millsLvlUp="millsLvlUp"
+        @openCloseBakery="openCloseBakery"
     />
     <OrdersView
         :state="stateOrders"

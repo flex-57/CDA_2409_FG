@@ -9,7 +9,7 @@ export const useLogsStore = () => {
         const now = new Date()
         const time = now.toLocaleTimeString()
 
-        if (stateLogs.logs.length >= 20) {
+        if (stateLogs.logs.length >= 10) {
             stateLogs.logs.shift()
         }
         stateLogs.logs.push(`[ ${time} ]  ${log}`)
