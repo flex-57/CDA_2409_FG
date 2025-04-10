@@ -7,10 +7,10 @@ export const useBakeryStore = (addLogs) => {
         millsLvl: 1,
         goldCollected: 0,
         goldSpent: 0,
-        goldStock: 5000000,
         flourCollected: 0,
-        flourStock: 250,
         baguettesCollected: 0,
+        goldStock: 50000,
+        flourStock: 25,
         baguettesStock: 100,
         bakeryImprovementPrice: 100,
         millsImprovementPrice: 80,
@@ -61,15 +61,18 @@ export const useBakeryStore = (addLogs) => {
                 stateBakery.goldSpent += maintenanceCost.value
             } else stateBakery.goldStock = 0
 
-            if (flourNet.value > 0) {
+            stateBakery.flourStock += flourNet.value
+            if (stateBakery.flourStock > 0 ) {
                 stateBakery.flourCollected += flourNet.value
             }
+
             if(stateBakery.flourStock > stateBakery.bakeryLvl ) {
-                stateBakery.flourStock += flourNet.value
                 stateBakery.baguettesCollected += stateBakery.bakeryLvl
                 stateBakery.baguettesStock += stateBakery.bakeryLvl
             }
         }
+        console.log(flourNet.value);
+
     }
 
     watch(

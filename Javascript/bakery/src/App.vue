@@ -7,8 +7,7 @@
         @openCloseBakery="openCloseBakery"
     />
     <OrdersView
-        :orders="stateOrders.orders"
-        :sortState="stateOrders.sortState"
+        :state="stateOrders"
         @validateOrder="validateOrder"
         @cancelOrder="cancelOrder"
         @sortOrders="sortOrders"
