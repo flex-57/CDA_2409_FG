@@ -8,13 +8,13 @@
                 <th>EID</th>
                 <th>Full Name</th>
                 <th>Email</th>
-                <th @click="sortSalary">Monthly salary {{ sortState ? '▼' : '▲' }}</th>
+                <th @click="sortSalary">Monthly salary <span v-if="sortState !== null">{{ sortState ? '▼' : '▲' }}</span></th>
                 <th>Year of birth</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(employee, i) in employeesData" :key="i">
+            <tr v-for="(employee, i) in employeesData" :key="employee.id">
                 <td>{{ employee.id }}</td>
                 <td>{{ employee.employee_name }}</td>
                 <td>{{ employee.employee_email }}</td>
@@ -48,7 +48,7 @@
 import { computed, onMounted, ref } from 'vue'
 
 const employeesData = ref([])
-const sortState = ref(false)
+const sortState = ref(null)
 
 const salarySum = computed(
     () => `${employeesData.value.reduce((a, b) => a + b.employee_salary / 12, 0).toFixed(2)} €`,
@@ -66,7 +66,7 @@ const deleteEmp = (i) => {
 }
 
 const sortSalary = () => {
-    sortState.value = !sortState.value
+    sortState.value = sortState.value === null ? true : !sortState.value
     return employeesData.value.sort((a, b) =>
         sortState.value
             ? a.employee_salary - b.employee_salary

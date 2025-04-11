@@ -51,6 +51,10 @@ tbody tr:hover {
     background: var(--hover-table);
 }
 
+th {
+    height: 50px;
+}
+
 th,
 td {
     text-wrap: nowrap;
