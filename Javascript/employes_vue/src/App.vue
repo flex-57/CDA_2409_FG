@@ -2,19 +2,19 @@
     <h1>Employees</h1>
     <h2>This is the current list of employees</h2>
 
-    <table>
+    <table v-if="employeesData.length">
         <thead>
             <tr>
                 <th>EID</th>
                 <th>Full Name</th>
                 <th>Email</th>
-                <th @click="sortSalary">Monthly salary {{ sortState ? '▼' : '▲' }}</th>
+                <th @click="sortSalary">Monthly salary <span v-if="sortState !== null">{{ sortState ? '▼' : '▲' }}</span></th>
                 <th>Year of birth</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(employee, i) in employeesData" :key="i">
+            <tr v-for="(employee, i) in employeesData" :key="employee.id">
                 <td>{{ employee.id }}</td>
                 <td>{{ employee.employee_name }}</td>
                 <td>{{ employee.employee_email }}</td>
@@ -25,6 +25,8 @@
                     <button @click="deleteEmp(i)" id="delete">Delete</button>
                 </td>
             </tr>
+        </tbody>
+        <tfoot>
             <tr>
                 <td>
                     <b>{{ employeesData.length }}</b>
@@ -35,15 +37,18 @@
                 </td>
                 <td colspan="2"></td>
             </tr>
-        </tbody>
+        </tfoot>
     </table>
+    <div v-else id="message">
+        <p>There is no employee in this list !</p>
+    </div>
 </template>
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 
 const employeesData = ref([])
-const sortState = ref(false)
+const sortState = ref(null)
 
 const salarySum = computed(
     () => `${employeesData.value.reduce((a, b) => a + b.employee_salary / 12, 0).toFixed(2)} €`,
@@ -61,8 +66,12 @@ const deleteEmp = (i) => {
 }
 
 const sortSalary = () => {
-    sortState.value = !sortState.value
-    return employeesData.value.sort((a, b) => sortState.value ? a.employee_salary - b.employee_salary : b.employee_salary - a.employee_salary)
+    sortState.value = sortState.value === null ? true : !sortState.value
+    return employeesData.value.sort((a, b) =>
+        sortState.value
+            ? a.employee_salary - b.employee_salary
+            : b.employee_salary - a.employee_salary,
+    )
 }
 
 const load = async () => {

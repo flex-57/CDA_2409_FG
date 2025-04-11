@@ -20,6 +20,8 @@ body {
     color: var(--color-light);
     font-size: 14px;
     padding: 0.6rem;
+    width: 80%;
+    margin: 0 auto;
 }
 
 h2 {
@@ -41,12 +43,16 @@ td {
     color: var(--color-dark);
 }
 
-tr:nth-child(even) {
+tbody tr:nth-child(even) {
     background: var(--highlight-table);
 }
 
 tbody tr:hover {
     background: var(--hover-table);
+}
+
+th {
+    height: 50px;
 }
 
 th,
@@ -76,4 +82,10 @@ button {
 
 #delete {
     background: var(--btn-delete);
+}
+
+#message {
+    color: var(--btn-delete);
+    font-style: italic;
+    margin: 2rem;
 }
