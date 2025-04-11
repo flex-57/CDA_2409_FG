@@ -2,7 +2,7 @@
     <h1>Employees</h1>
     <h2>This is the current list of employees</h2>
 
-    <table>
+    <table v-if="employeesData.length">
         <thead>
             <tr>
                 <th>EID</th>
@@ -25,6 +25,8 @@
                     <button @click="deleteEmp(i)" id="delete">Delete</button>
                 </td>
             </tr>
+        </tbody>
+        <tfoot>
             <tr>
                 <td>
                     <b>{{ employeesData.length }}</b>
@@ -35,8 +37,11 @@
                 </td>
                 <td colspan="2"></td>
             </tr>
-        </tbody>
+        </tfoot>
     </table>
+    <div v-else id="message">
+        <p>There is no employee in this list !</p>
+    </div>
 </template>
 
 <script setup>
@@ -62,7 +67,11 @@ const deleteEmp = (i) => {
 
 const sortSalary = () => {
     sortState.value = !sortState.value
-    return employeesData.value.sort((a, b) => sortState.value ? a.employee_salary - b.employee_salary : b.employee_salary - a.employee_salary)
+    return employeesData.value.sort((a, b) =>
+        sortState.value
+            ? a.employee_salary - b.employee_salary
+            : b.employee_salary - a.employee_salary,
+    )
 }
 
 const load = async () => {
