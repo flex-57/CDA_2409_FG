@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { formatTimeInMinutesSeconds } from './utils/time'
+import { formatTimeInMinutesSeconds } from '@/utils/time'
 
 defineProps({
     data: {

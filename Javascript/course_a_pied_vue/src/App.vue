@@ -10,7 +10,7 @@
 import { computed, onMounted, ref } from 'vue'
 import InfoComponent from './components/InfoComponent.vue'
 import FilterComponent from './components/FilterComponent.vue'
-import TableComponent from './TableComponent.vue'
+import TableComponent from './components/TableComponent.vue'
 
 const resultsData = ref([])
 const selectedCountries = ref([])
