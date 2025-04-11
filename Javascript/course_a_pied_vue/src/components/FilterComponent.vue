@@ -34,7 +34,9 @@ const emit = defineEmits(['update:selected'])
 
 const selectedCountries = ref([])
 
-const countries = computed(() => [...new Set(props.data.map((result) => result.pays))].sort((a,b) => a.localeCompare(b)))
+const countries = computed(() =>
+    [...new Set(props.data.map((result) => result.pays))].sort((a, b) => a.localeCompare(b)),
+)
 
 const selectCountry = (country) => {
     if (selectedCountries.value.includes(country)) {
