@@ -23,7 +23,7 @@
             <p>Un utilisateur portant le nom de {{ capitalize(firstname) }} {{ capitalize(lastname) }} existe déjà !</p>
         </div>
     </section>
-    <section v-if="people.length" id="listUsers">
+    <section v-if="people.length">
         <ul>
             <li v-for="(p, i) in people" :key="i">{{ capitalize(p.split(' ')[0]) }} {{ capitalize(p.split(' ')[1]) }}</li>
         </ul>
@@ -42,7 +42,7 @@
                     <td>{{ capitalize(p.split(' ')[1]) }}</td>
                     <td>{{ capitalize(p.split(' ')[0]) }}</td>
                     <td>{{ formatEmail(p) }}</td>
-                    <td @click="() => {people.splice(i, 1), userAdded = false, userExists = false}">X</td>
+                    <td @click="people.splice(i, 1), userAdded = false, userExists = false">X</td>
                 </tr>
             </tbody>
         </table>
