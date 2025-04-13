@@ -24,8 +24,8 @@ const renderChart = () => {
         chartInstance.destroy()
     }
 
-    const labels = props.data.map((entry) => entry.annee)
-    const population = props.data.map((entry) => entry.population)
+    const labels = props.data.map((d) => d.annee)
+    const population = props.data.map((d) => d.population)
 
     chartInstance = new Chart(chartRef.value, {
         data: {
@@ -35,6 +35,9 @@ const renderChart = () => {
                     type: 'bar',
                     label: 'Population',
                     data: population,
+                    borderWidth: 1,
+                    borderRadius: 3,
+                    hoverBorderWidth: 2,
                 },
                 {
                     type: 'line',

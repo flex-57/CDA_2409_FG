@@ -95,6 +95,9 @@ const renderChart = () => {
                     type: 'bar',
                     label: 'Naissances',
                     data: naissances,
+                    borderWidth: 1,
+                    borderRadius: 3,
+                    hoverBorderWidth: 2,
                 },
                 {
                     type: 'line',
