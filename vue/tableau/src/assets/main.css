@@ -1,0 +1,107 @@
+:root {
+    --font-color1: #adcbe1;
+    --font-color2: #cce3ef;
+    --font-color-disabled: #adcbe188;
+    --bg-base: #536b78;
+    --bg-input-table: #637081;
+    --border-input-table: #7c98b3;
+    --border-disabled: #7c98b393;
+    --ok: green;
+    --error:#c00000;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: var(--bg-base);
+    color: var(--font-color2);
+    padding: 1rem;
+}
+
+h1,
+table,
+input[type='submit'] {
+    color: var(--font-color1);
+}
+
+#app {
+    border: 1px solid var(--font-color2);
+    padding: 1rem;
+}
+
+#form {
+    border: 1px dashed var(--font-color1);
+    padding: 0.3rem 1rem 1rem;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+h3 {
+    font-weight: normal;
+}
+
+form {
+    display: flex;
+    gap: 1.5rem;
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+ul {
+    padding: 1.5rem 3rem;
+}
+
+input,
+table,
+tr,
+th,
+td {
+    background: var(--bg-input-table);
+    color: var(--font-color1);
+    border: 2px solid var(--border-input-table);
+    border-collapse: collapse;
+    padding: 0.3rem 0.6rem;
+}
+
+table {
+    width: 600px;
+}
+
+td:last-child {
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    color: var(--error)
+}
+
+div:not(.message) > p {
+    padding: 2rem 0 0;
+}
+
+input[type='submit']:disabled {
+    color: var(--font-color-disabled);
+    border: 2px solid var(--border-disabled);
+}
+
+.ok {
+    background: var(--ok);
+}
+
+.error {
+    background: var(--error);
+}
+
+.ok, .error {
+    padding: .3rem .6rem;
+}
