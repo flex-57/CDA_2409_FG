@@ -20,7 +20,7 @@
             <ChartPopulation :data="data2012" />
             <ChartNaissances
                 :data="data2012"
-                :previousPopulation="data.filter((entry) => entry.annee < 2012).at(-1).population"
+                :previousPopulation="data.filter((d) => d.annee < 2012).at(-1).population"
                 :showStats="true"
             />
         </section>
@@ -43,7 +43,7 @@ onMounted(async () => {
     )
     data.value = await res.json()
 
-    data1950.value = data.value.filter((entry) => entry.annee <= 2000)
-    data2012.value = data.value.filter((entry) => entry.annee >= 2012)
+    data1950.value = data.value.filter((d) => d.annee <= 2000)
+    data2012.value = data.value.filter((d) => d.annee >= 2012)
 })
 </script>
