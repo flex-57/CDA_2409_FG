@@ -1,98 +1,57 @@
 <template>
-    <h1>Ajouter un légume {{ vegetableId }}</h1>
-    <form @submit.prevent="saveVegetable">
-        <div v-if="message">{{ message }}</div>
-<!--        <FormField label="Nom" id="input-name" name="name" v-model="vegetable.Name" />
-        <FormField label="Variété" id="input-variety" name="variety" v-model="vegetable.Variety" />
-        <FormField
-            label="Couleur"
-            id="input-primary-color"
-            name="primaryColor"
-            v-model="vegetable.PrimaryColor"
-        />
-        <FormField
-            label="Durée de conservation (jours)"
-            id="input-lifetime"
-            name="lifetime"
-            type="number"
-            mon="0"
-            v-model.number="vegetable.LifeTime"
-        />
-        <FormField
-            label="Frais"
-            id="input-fresh"
-            name="fresh"
-            type="radio"
-            v-model.number="vegetable.LifeTime"
-            :options="[
-                { value: 1, label: 'Oui' },
-                { value: 0, label: 'Non' },
-            ]"
-        />
-        <FormField
-            label="Prix (€)"
-            id="input-price"
-            name="price"
-            type="number"
-            min="0"
-            step=".01"
-            v-model.number="vegetable.Price"
-        />
--->
+    <div id="title">
+        <h1>Ajouter un légume</h1>
+    </div>
+    <form @submit.prevent="save">
+        <div v-if="message" id="error-form">{{ message }}</div>
+
         <div class="form-grp">
-            <label for="input-name">Nom</label>
-            <input type="text" id="input-name" v-model="vegetable.Name" />
+            <label for="name">Nom</label>
+            <input type="text" id="name" v-model.trim="vegetable.Name" />
         </div>
 
         <div class="form-grp">
-            <label for="input-variety">Variété</label>
-            <input type="text" id="input-variety" v-model="vegetable.Variety" />
+            <label for="variety">Variété</label>
+            <input type="text" id="variety" v-model.trim="vegetable.Variety" />
         </div>
 
         <div class="form-grp">
-            <label for="input-primary-color">Couleur</label>
-            <input type="text" id="input-primary-color" v-model="vegetable.PrimaryColor" />
+            <label for="primary-color">Couleur</label>
+            <input type="text" id="primary-color" v-model.trim="vegetable.PrimaryColor" />
         </div>
 
         <div class="form-grp">
-            <label for="input-lifetime">Durée de conservation (jours)</label>
-            <input type="number" id="input-lifetime" v-model.number="vegetable.LifeTime" />
+            <label for="lifetime">Durée de conservation (jours)</label>
+            <input type="number" id="lifetime" v-model.number="vegetable.LifeTime" min="0" />
         </div>
 
         <div class="form-grp">
             <label id="label-box-radio">Frais</label>
             <div id="box-radio">
-                <input type="radio" id="input-fresh" :value="1" v-model="vegetable.Fresh" />
-                <label for="input-fresh" class="label-radio">Oui</label>
+                <input type="radio" id="fresh" :value="1" v-model="vegetable.Fresh" />
+                <label for="fresh" class="label-radio">Oui</label>
 
-                <input type="radio" id="input-not-fresh" :value="0" v-model="vegetable.Fresh" />
-                <label for="input-not-fresh" class="label-radio">Non</label>
+                <input type="radio" id="not-fresh" :value="0" v-model="vegetable.Fresh" />
+                <label for="not-fresh" class="label-radio">Non</label>
             </div>
         </div>
 
         <div class="form-grp">
-            <label for="input-price">Prix (€)</label>
-            <input
-                type="number"
-                id="input-price"
-                v-model.number="vegetable.Price"
-                step=".01"
-                min="0"
-            />
+            <label for="price">Prix ($)</label>
+            <input type="number" id="price" v-model.number="vegetable.Price" step=".01" min="0" />
         </div>
 
         <div class="form-grp">
             <label></label>
-            <input type="submit" id="btn-submit" value="Ajouter" />
+            <input type="submit" id="btn-submit" value="Ajouter" :disabled="!isFormOk" />
         </div>
     </form>
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref, watchEffect } from 'vue'
 import { fetchVegetables } from '@/utils/fetchVegetables'
 import router from '@/router'
-//import FormField from '@/components/FormField.vue'
 
 const vegetables = ref([])
 const vegetable = ref({
@@ -101,37 +60,50 @@ const vegetable = ref({
     Variety: '',
     PrimaryColor: '',
     LifeTime: 0,
-    Fresh: 1,
+    Fresh: null,
     Price: 0,
 })
 
+const isFormOk = ref(false)
+
 const message = ref('')
-const storage = ref(
-    localStorage.getItem('vegetables') ? JSON.parse(localStorage.getItem('vegetables')) : [],
-)
 
 const getVegetables = async () => {
     try {
-        vegetables.value = await fetchVegetables()
+        const data = await fetchVegetables()
+        const storage = localStorage.getItem('vegetables')
+            ? JSON.parse(localStorage.getItem('vegetables'))
+            : []
+        vegetables.value = storage.length ? storage : data
     } catch (e) {
         console.error('Erreur lors du chargement des légumes :', e)
     }
 }
 
-const vegetableId = computed(() => {
-    return Math.max(...[...vegetables.value, ...storage.value].map((v) => v.Id)) + 1
-})
-
-const saveVegetable = () => {
-    if (!vegetable.value.Name || !vegetable.value.Variety) {
-        message.value = 'veuillez remplir ..........................'
+const save = () => {
+    if (!isFormOk.value) {
+        message.value = 'Veuillez remplir tous les champs !'
     } else {
-        vegetable.value.Id = vegetableId
-        storage.value.push({ ...vegetable.value })
-        localStorage.setItem('vegetables', JSON.stringify(storage.value))
+        vegetable.value.Id = Math.max(...vegetables.value.map((v) => v.Id)) + 1
+        vegetables.value.push({ ...vegetable.value })
+        localStorage.setItem(
+            'vegetables',
+            JSON.stringify(vegetables.value.sort((a, b) => a.Name.localeCompare(b.Name))),
+        )
         router.push('/legumes')
     }
 }
+
+watchEffect(
+    () =>
+        (isFormOk.value =
+            vegetable.value.Name &&
+            vegetable.value.Variety &&
+            vegetable.value.PrimaryColor &&
+            vegetable.value.LifeTime > 0 &&
+            vegetable.value.Fresh !== null &&
+            vegetable.value.Price > 0),
+)
 
 onMounted(getVegetables)
 </script>
