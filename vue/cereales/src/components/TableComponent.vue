@@ -1,19 +1,21 @@
 <template>
     <table>
         <thead>
-            <th @click="sortCereals('id')">id</th>
-            <th @click="sortCereals('name', false)">nom</th>
-            <th @click="sortCereals('calories')">calories</th>
-            <th @click="sortCereals('protein')">proteïnes</th>
-            <th @click="sortCereals('sodium')">sel</th>
-            <th @click="sortCereals('fiber')">fibres</th>
-            <th @click="sortCereals('carbo')">glucides</th>
-            <th @click="sortCereals('sugars')">sucre</th>
-            <th @click="sortCereals('potass')">potassium</th>
-            <th @click="sortCereals('vitamins')">vitamines</th>
-            <th @click="sortCereals('rating')">évaluation</th>
-            <th>ns</th>
-            <th>del</th>
+            <tr>
+                <th @click="sortCereals('id')">id</th>
+                <th @click="sortCereals('name', false)">nom</th>
+                <th @click="sortCereals('calories')">calories</th>
+                <th @click="sortCereals('protein')">proteïnes</th>
+                <th @click="sortCereals('sodium')">sel</th>
+                <th @click="sortCereals('fiber')">fibres</th>
+                <th @click="sortCereals('carbo')">glucides</th>
+                <th @click="sortCereals('sugars')">sucre</th>
+                <th @click="sortCereals('potass')">potassium</th>
+                <th @click="sortCereals('vitamins')">vitamines</th>
+                <th @click="sortCereals('rating')">évaluation</th>
+                <th>ns</th>
+                <th>del</th>
+            </tr>
         </thead>
         <tbody>
             <tr v-for="cereal in cereals" :key="cereal.id">
