@@ -1,12 +1,15 @@
 :root {
     --color-h1: #000;
     --bg-nav: #0d8a5a;
-    --bg-input: #0d8a5a33;
+    --bg-input: #0d8a5a30;
+    --bg-input-hover: #0d8a5a50;
     --color-th: #ffff01;
     --bg-tr-hover: #aaaaaa50;
 }
 
 * {
+    padding: 0;
+    margin: 0;
     box-sizing: content-box;
 }
 
@@ -15,6 +18,7 @@ body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: 5px solid var(--color-h1);
+    min-width: 480px;
 }
 
 a {
@@ -37,13 +41,13 @@ nav .container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 0 1.5rem;
 
     ul {
         list-style: none;
-        padding: 0;
+        padding: 0.8rem 0;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: space-evenly;
         gap: 3rem;
 
@@ -54,14 +58,24 @@ nav .container {
             text-wrap: nowrap;
         }
     }
+    .router-link-active {
+        text-decoration: underline;
+    }
 }
 
 main {
-    padding: 2rem;
+    padding: 1rem 3rem 2rem;
 }
 
-h1 {
-    margin: 0 0 1rem;
+#title {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        padding: 0;
+    }
 }
 
 table {
@@ -72,10 +86,11 @@ table {
 th {
     background: var(--bg-nav);
     color: var(--color-th);
-    padding: 0.3rem 1.8rem;
+    padding: 0.4rem 1.8rem;
 }
 
-th:not(th:last-child), td:last-child span {
+th:not(th:last-child),
+td:last-child span {
     cursor: pointer;
 }
 
@@ -84,7 +99,11 @@ tbody tr:hover {
 }
 
 td {
-    padding: 0.1rem 0.5rem;
+    padding: 0.2rem 0.5rem;
+}
+
+#empty-table {
+    text-align: center;
 }
 
 #sales-box {
@@ -92,12 +111,12 @@ td {
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 1rem;
+    transition: all 0.3s;
 
     div {
-        width: 260px;
-        padding: 1rem;
-        background: var(--bg-nav);
         color: #fff;
+        min-width: 300px;
+        padding: 1rem;
         text-align: center;
         text-transform: uppercase;
         display: flex;
@@ -105,47 +124,84 @@ td {
         gap: 1rem;
 
         h4 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin: 0;
+            text-wrap: nowrap;
         }
+    }
+    div:hover {
+        scale: 1.05;
+    }
+    .sale-active {
+        background: var(--bg-nav);
+    }
+    .sale-inactive {
+        background: var(--bg-input-hover);
+    }
+}
+
+#pagination {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    span {
+        width: 80px;
+        text-align: center;
     }
 }
 
 form {
-    width: 500px;
+    max-width: 460px;
+    min-width: 390px;
     margin: auto;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+
+    .form-grp {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 }
 
 label:not(.label-radio) {
-    display: inline-block;
-    width: 50%;
+    width: 55%;
 }
 
 #box-radio {
-    display: inline-block;
-    margin: 0.3rem 0 0.3rem;
+    margin: 0.3rem 0 0.4rem;
 }
 
 input,
-.label-radio {
+.label-radio,
+select,
+button {
     background: var(--bg-input);
+    border: 1px solid;
+    transition: all 0.3s ease-in-out;
 }
 
-input {
-    border: 1px solid;
+input,
+select,
+button {
     padding: 0.3rem 0.5rem;
     line-height: 1.2rem;
 }
 
+input:not(input[type='submit']),
+select {
+    width: 35%;
+}
+
 .label-radio {
-    padding: 0.4rem 0.8rem 0.4rem;
+    padding: 0.4rem 0.5rem;
     margin-right: 0.6rem;
     border: 1px dotted;
-    font-size: 0.9rem;
-    line-height: 1.2rem;
+    font-size: 0.8rem;
 }
 
 input[type='radio'] {
@@ -154,4 +210,26 @@ input[type='radio'] {
 
 input[type='radio']:checked + label {
     border: 1px solid;
+}
+
+input[type='submit'],
+select,
+.label-radio {
+    cursor: pointer;
+}
+
+input:hover,
+input:focus,
+.label-radio:hover,
+select:hover,
+select:focus,
+button:hover {
+    background: var(--bg-input-hover);
+    outline: none;
+}
+
+#error-form {
+    color: red;
+    text-align: center;
+    margin-bottom: 1rem;
 }

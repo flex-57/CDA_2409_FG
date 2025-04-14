@@ -1,23 +1,59 @@
 <template>
-    {{ storage }}
-    <h1>Liste des légumes</h1>
-    <button @click="resetStorage" type="submit">Reset</button>
-    <table>
+    <div id="title">
+        <h1>Liste des légumes</h1>
+        <button @click="resetStorage">Réinitialiser les données</button>
+    </div>
+    <table v-if="vegetables.length">
         <thead>
             <tr>
-                <th @click="sortVegetables('Name', false)">Nom</th>
-                <th @click="sortVegetables('Variety', false)">Variété</th>
-                <th @click="sortVegetables('PrimaryColor', false)">Couleur</th>
-                <th @click="sortVegetables('LifeTime')">Durée conservation</th>
-                <th @click="sortVegetables('Fresh')">Frais</th>
-                <th @click="sortVegetables('Price')">Price</th>
+                <th @click="sortVegetables('Id')">
+                    Id
+                    <span v-if="sortState.col === 'Id'">{{ sortState.direction ? '▼' : '▲' }}</span>
+                </th>
+                <th @click="sortVegetables('Name')">
+                    Nom
+                    <span v-if="sortState.col === 'Name'">{{
+                        sortState.direction ? '▼' : '▲'
+                    }}</span>
+                </th>
+                <th @click="sortVegetables('Variety')">
+                    Variété
+                    <span v-if="sortState.col === 'Variety'">{{
+                        sortState.direction ? '▼' : '▲'
+                    }}</span>
+                </th>
+                <th @click="sortVegetables('PrimaryColor')">
+                    Couleur
+                    <span v-if="sortState.col === 'PrimaryColor'">{{
+                        sortState.direction ? '▼' : '▲'
+                    }}</span>
+                </th>
+                <th @click="sortVegetables('LifeTime')">
+                    Durée conservation
+                    <span v-if="sortState.col === 'LifeTime'">{{
+                        sortState.direction ? '▼' : '▲'
+                    }}</span>
+                </th>
+                <th @click="sortVegetables('Fresh')">
+                    Frais
+                    <span v-if="sortState.col === 'Fresh'">{{
+                        sortState.direction ? '▼' : '▲'
+                    }}</span>
+                </th>
+                <th @click="sortVegetables('Price')">
+                    Price
+                    <span v-if="sortState.col === 'Price'">{{
+                        sortState.direction ? '▼' : '▲'
+                    }}</span>
+                </th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="vegetable in vegetables" :key="vegetable.Id">
-                <td>{{ capitalizeName(vegetable.Name) }}</td>
-                <td>{{ capitalizeName(vegetable.Variety) }}</td>
+                <td>{{ vegetable.Id }}</td>
+                <td>{{ capitalize(vegetable.Name) }}</td>
+                <td>{{ capitalize(vegetable.Variety) }}</td>
                 <td>{{ vegetable.PrimaryColor }}</td>
                 <td>{{ vegetable.LifeTime }} day{{ vegetable.LifeTime > 1 ? 's' : '' }}</td>
                 <td>{{ vegetable.Fresh === 0 ? 'Non' : 'Oui' }}</td>
@@ -29,57 +65,75 @@
             </tr>
         </tbody>
     </table>
+    <div v-else id="empty-table">
+        <p>Aucun légumes à afficher...</p>
+    </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { capitalizeName } from '@/utils/stringUtils'
+import { ref, onMounted, watch } from 'vue'
+import { capitalize } from '@/utils/stringUtils'
 import { fetchVegetables } from '@/utils/fetchVegetables'
 
 const vegetables = ref([])
 
-const sortState = ref({
-    Name: false,
-    Variety: false,
-    PrimaryColor: false,
-    LifeTime: false,
-    Fresh: false,
-})
-
-const storage = ref(
-    localStorage.getItem('vegetables') ? JSON.parse(localStorage.getItem('vegetables')) : [],
-)
-
 const getVegetables = async () => {
     try {
-        const veg = await fetchVegetables()
-        vegetables.value = [...veg, ...storage.value].sort((a, b) => a.Name.localeCompare(b.Name))
+        const data = await fetchVegetables()
+        const storage = localStorage.getItem('vegetables')
+            ? JSON.parse(localStorage.getItem('vegetables'))
+            : []
+        vegetables.value = storage.length ? storage : data
+        sortState.value.direction = false
+        sortVegetables('Name')
     } catch (e) {
         console.error('Erreur lors du chargement des légumes :', e)
     }
 }
 
-const sortVegetables = (col, isNum = true) => {
-    sortState.value[col] = !sortState.value[col]
-    vegetables.value.sort((a, b) =>
-        sortState.value[col]
-            ? isNum
-                ? a[col] - b[col]
-                : a[col].localeCompare(b[col])
-            : isNum
-              ? b[col] - a[col]
-              : b[col].localeCompare(a[col]),
-    )
+const sortState = ref({
+    col: 'Name',
+    direction: true,
+})
+
+const sortVegetables = (col) => {
+    if (sortState.value.col === col) {
+        sortState.value.direction = !sortState.value.direction
+    } else {
+        sortState.value.col = col
+        sortState.value.direction = true
+    }
+    vegetables.value.sort((a, b) => {
+        if (typeof a[col] === 'string' && typeof b[col] === 'string') {
+            return sortState.value.direction
+                ? a[col].localeCompare(b[col])
+                : b[col].localeCompare(a[col])
+        } else {
+            return sortState.value.direction ? a[col] - b[col] : b[col] - a[col]
+        }
+    })
 }
 
 const deleteItem = (id) => {
-    vegetables.value = vegetables.value.filter(v => v.Id != id)
+    vegetables.value = vegetables.value.filter((v) => v.Id != id)
 }
 
 const resetStorage = () => {
-    localStorage.setItem('vegetables', '')
+    localStorage.removeItem('vegetables')
+    sortState.value = {
+        col: 'Name',
+        direction: true,
+    }
     getVegetables()
 }
+
+watch(
+    vegetables,
+    (newVal) => {
+        localStorage.setItem('vegetables', JSON.stringify(newVal))
+    },
+    { deep: true },
+)
 
 onMounted(getVegetables)
 </script>
