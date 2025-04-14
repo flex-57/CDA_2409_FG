@@ -1,11 +1,21 @@
 <template>
-    <HeaderComponent :search="search" :selectedNs="selectedNs" :selectedCat="selectedCat"
-        @update:search="search = $event" @update:selectedNs="selectedNs = $event"
-        @update:selectedCat="selectedCat = $event" />
+    <HeaderComponent
+        :search="search"
+        :selectedNs="selectedNs"
+        :selectedCat="selectedCat"
+        @update:search="search = $event"
+        @update:selectedNs="selectedNs = $event"
+        @update:selectedCat="selectedCat = $event"
+    />
     <div id="save-box">
         <div id="save-btns">
-            <a @click="exportData()" :href="url" :download="`cereals-${Date.now()}.json`" target="_blank">Exporter les
-                données</a>
+            <a
+                @click="exportData()"
+                :href="url"
+                :download="`cereals-${Date.now()}.json`"
+                target="_blank"
+                >Exporter les données</a
+            >
             <button @click="saveData">Enregistrer les données</button>
             <button v-if="isSavedCereals" @click="resetData">Reset</button>
         </div>
@@ -13,8 +23,12 @@
             <p>{{ messageFlash }}</p>
         </div>
     </div>
-    <TableComponent :cereals="filteredCereals" :avgCalories="avgCalories" @deleteCereal="deleteCereal"
-        @sortCereals="sortCereals" />
+    <TableComponent
+        :cereals="filteredCereals"
+        :avgCalories="avgCalories"
+        @deleteCereal="deleteCereal"
+        @sortCereals="sortCereals"
+    />
     <ModalComponent :isVisible="showModalSave" @confirm="confirmSave" @cancel="cancelAction">
         <p>Des données sont déjà enregistrées. Voulez-vous vraiment les écraser ?</p>
     </ModalComponent>
@@ -72,9 +86,9 @@ const getCereals = async () => {
 const avgCalories = computed(() => {
     return filteredCereals.value.length > 0
         ? Math.floor(
-            filteredCereals.value.reduce((sum, c) => sum + c.calories, 0) /
-            filteredCereals.value.length,
-        )
+              filteredCereals.value.reduce((sum, c) => sum + c.calories, 0) /
+                  filteredCereals.value.length,
+          )
         : 0
 })
 
@@ -90,8 +104,8 @@ const sortCereals = (col, isNum = true) => {
                 ? b[col] - a[col]
                 : b[col].localeCompare(a[col])
             : isNum
-                ? a[col] - b[col]
-                : a[col].localeCompare(b[col]),
+              ? a[col] - b[col]
+              : a[col].localeCompare(b[col]),
     )
 }
 
@@ -131,9 +145,7 @@ const resetData = () => {
 }
 
 const exportData = () => {
-    url.value = window.URL.createObjectURL(
-        new Blob([JSON.stringify(cereals.value)]),
-    )
+    url.value = window.URL.createObjectURL(new Blob([JSON.stringify(cereals.value)]))
 }
 
 const confirmSave = () => {

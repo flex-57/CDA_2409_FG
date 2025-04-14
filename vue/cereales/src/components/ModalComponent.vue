@@ -12,8 +12,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
-
 defineProps({
     isVisible: {
         type: Boolean,
