@@ -58,9 +58,12 @@ section {
         text-align: center;
         border-bottom: 1px solid;
         padding: .5rem;
+        background: #333;
+        color: #dedede;
     }
     div {
         padding: .5rem;
+        background: #dedede;
     }
     label {
         display: inline-block;
