@@ -1,0 +1,135 @@
+:root {
+    --bg: #111111;
+    --titles-color: #9ce783;
+    --titles-bg: #414141;
+    --input-color: #fff525;
+    --input-bg: #333333;
+    --percent: #6664d2;
+    --formule-color: #ccc;
+    --radius: 0.3rem;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Courier, monospace;
+    background: var(--bg);
+    color: white;
+    padding: 0.5rem;
+    min-width: 800px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    padding: 0 0 0.5rem;
+}
+
+h2 {
+    padding: 0.2rem;
+}
+
+section {
+    border: 1px solid var(--titles-color);
+    color: var(--titles-color);
+    margin-bottom: 0.8rem;
+}
+
+section h2 {
+    font-weight: 100;
+    background: var(--titles-bg);
+    padding: 0.4rem 0.3rem;
+}
+
+.container {
+    padding: 0.8rem 0.5rem 0.6rem;
+}
+
+.formule {
+    color: white;
+    background: var(--titles-bg);
+    color: var(--formule-color);
+    padding: 0.2rem;
+    margin-right: 1rem;
+    border-radius: var(--radius);
+}
+
+.true {
+    text-decoration: underline  green;
+
+}
+
+.false {
+    text-decoration: line-through red;
+
+}
+
+section form {
+    margin-top: 1.2rem;
+    display: grid;
+    grid-template-columns: 10% repeat(3, 14%) 18% 1fr;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+input,
+select {
+    border: 1px solid white;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.4rem;
+    background: var(--input-bg);
+    color: var(--input-color);
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+}
+
+select {
+    width: 45px;
+    padding: 0.4rem 0.4rem;
+    justify-self: center;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+}
+
+.percent-box {
+    display: flex;
+    align-items: stretch;
+}
+
+.input-percent {
+    border: 1px solid white;
+    border-right: 0;
+    border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.percent {
+    color: var(--percent);
+    background: var(--input-bg);
+    font-weight: bold;
+    font-size: 1.25rem;
+    border: 1px solid white;
+    border-left: 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    display: inline-block;
+    padding: 0.15rem;
+}
+
+p {
+    color: white;
+    text-align: center;
+    padding: .5rem;
+}
