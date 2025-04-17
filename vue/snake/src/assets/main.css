@@ -1,0 +1,107 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    font-size: 22px;
+    background: #4e6c67;
+    color: #f7f7f7;
+}
+
+#app {
+    padding: 1rem;
+}
+
+button {
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px #383838;
+    transition: all 0.3s ease-in-out;
+}
+
+#home {
+    height: calc(100vh - 2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+
+    h1 {
+        color: #b3cf12;
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 -3px 5px #383838;
+    }
+    p {
+        line-height: 2.5rem;
+    }
+    button {
+        color: #f7f7f7;
+        background: #2e8f3e;
+        &:hover {
+            background: #1a802b;
+        }
+    }
+}
+
+#game {
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+        color: #ccc;
+        margin-bottom: 2rem;
+        text-shadow: 0 3px 8px #000;
+    }
+    article {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #container-canvas {
+        border-top: 15px solid #222;
+        border-bottom: 15px solid #222;
+        border-right: 15px solid #222;
+        border-left: 15px solid #222;
+        box-shadow: 0 10px 25px #000000;
+        border-radius: 1.5rem;
+        display: flex;
+    }
+    #board {
+        background-color: #333333;
+        border-top: 15px solid #222;
+        border-bottom: 15px solid #666;
+        border-right: 15px solid #444;
+        border-left: 15px solid #444;
+        box-shadow: 0 -10px 30px #949494;
+        border-radius: 0.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;
+
+        h2 {
+            font-size: 6rem;
+
+            color: #bb0000;
+            text-shadow: 0 3px 10px #000;
+        }
+        button {
+            color: #f7f7f7;
+            background: #2e8f3e;
+            &:hover {
+                background: #1a802b;
+            }
+        }
+    }
+}
