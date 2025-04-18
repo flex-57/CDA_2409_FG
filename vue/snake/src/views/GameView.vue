@@ -114,7 +114,7 @@ const createFood = () => {
     emptyCells.value = []
     for (let x = 0; x < config.width; x++) {
         for (let y = 0; y < config.height; y++) {
-            if (!snake.value.some((seg) => seg.x === x && seg.y === y)) {
+            if (!snake.value.some((cell) => cell.x === x && cell.y === y)) {
                 emptyCells.value.push({ x, y })
             }
         }
@@ -164,7 +164,7 @@ const start = () => {
                 head.y < 0 ||
                 head.x >= config.width ||
                 head.y >= config.height ||
-                snake.value.some((seg) => seg.x === head.x && seg.y === head.y)
+                snake.value.some((cell) => cell.x === head.x && cell.y === head.y)
             ) {
                 isOver.value = true
             }
