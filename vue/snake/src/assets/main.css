@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     width: 100vw;
     height: 100vh;
     font-size: 22px;
@@ -54,12 +54,21 @@ button {
 }
 
 #game {
-    h1 {
-        text-align: center;
-        font-size: 3rem;
+    header {
         color: #ccc;
-        margin-bottom: 2rem;
-        text-shadow: 0 3px 8px #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+
+        h1 {
+            text-shadow: 0 3px 5px #000;
+            font-size: 2.5rem;
+        }
+        p {
+            text-shadow: 0 2px 3px #000;
+        }
     }
     article {
         display: flex;
@@ -67,22 +76,22 @@ button {
         align-items: center;
     }
     #container-canvas {
-        border-top: 15px solid #222;
-        border-bottom: 15px solid #222;
-        border-right: 15px solid #222;
-        border-left: 15px solid #222;
-        box-shadow: 0 10px 25px #000000;
-        border-radius: 1.5rem;
+        border-top: 20px solid #222;
+        border-bottom: 20px solid #222;
+        border-right: 20px solid #222;
+        border-left: 20px solid #222;
+        box-shadow: 0 10px 30px #000000;
+        border-radius: 2rem;
         display: flex;
     }
     #board {
-        background-color: #333333;
+        background: linear-gradient(180deg, #2c2c2c, #424242 100%);
         border-top: 15px solid #222;
         border-bottom: 15px solid #666;
         border-right: 15px solid #444;
         border-left: 15px solid #444;
         box-shadow: 0 -10px 30px #949494;
-        border-radius: 0.5rem;
+        border-radius: 0.7rem;
 
         display: flex;
         flex-direction: column;
@@ -91,7 +100,7 @@ button {
         gap: 5rem;
 
         h2 {
-            font-size: 6rem;
+            font-size: 4.5rem;
 
             color: #bb0000;
             text-shadow: 0 3px 10px #000;
