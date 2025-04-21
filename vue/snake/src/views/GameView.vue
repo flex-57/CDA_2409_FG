@@ -1,26 +1,14 @@
 <template>
     <section id="game">
         <header>
-            <h1>Level: {{ level }} | Score: {{ score }} / {{ nextLevel }}</h1>
-            <p>(Pause on/off: Échap)</p>
+            <h1>
+                Level: <b>{{ level }}</b> | Score: <b>{{ score }}</b> / <b>{{ nextLevel }}</b>
+            </h1>
+            <p>Pause on/off: <b>Esc</b></p>
         </header>
         <article>
             <div id="container-canvas">
-                <canvas
-                    v-if="!isOver"
-                    id="board"
-                    ref="canvasRef"
-                    :width="gameWidth"
-                    :height="gameHeight"
-                ></canvas>
-                <div
-                    v-else
-                    id="board"
-                    :style="{ width: gameWidth + 30 + 'px', height: gameHeight + 30 + 'px' }"
-                >
-                    <h2>GAME OVER</h2>
-                    <button @click="restart">Réessayer</button>
-                </div>
+                <canvas id="board" ref="canvasRef" :width="gameWidth" :height="gameHeight"></canvas>
             </div>
         </article>
     </section>
@@ -39,6 +27,12 @@ const directions = [
 const baseLevel = 5
 const baseSpeed = 250
 const factorSpeed = 0.95
+
+const tickSound = new Audio('./src/assets/sounds/tick.mp3')
+const eatSound = new Audio('./src/assets/sounds/eat.mp3')
+const levelUpSound = new Audio('./src/assets/sounds/level_up.mp3')
+const playPauseSound = new Audio('./src/assets/sounds/play_pause.mp3')
+const deathSound = new Audio('./src/assets/sounds/death.mp3')
 
 const canvasRef = ref(null)
 const direction = ref({
@@ -61,6 +55,12 @@ const gameWidth = computed(() => config.width * config.cellSize)
 const gameHeight = computed(() => config.height * config.cellSize)
 const centerCellSize = computed(() => (config.cellSize / 5) * 4)
 const nextLevel = computed(() => Math.ceil((baseLevel * level.value) / 2))
+
+const playSounds = (audio, vol = 0.5) => {
+    audio.currentTime = 0
+    audio.volume = vol
+    audio.play()
+}
 
 const draw = () => {
     ctx.clearRect(0, 0, gameWidth.value, gameHeight.value)
@@ -86,6 +86,7 @@ const draw = () => {
             centerCellSize.value / (isHead ? 2 : 2.6),
         )
     })
+
     const fx = food.value.x * config.cellSize
     const fy = food.value.y * config.cellSize
 
@@ -99,23 +100,40 @@ const draw = () => {
     )
 
     if (isPaused.value) {
+        ctx.beginPath()
         ctx.fillStyle = '#00000050'
         ctx.fillRect(0, 0, gameWidth.value, gameHeight.value)
 
-        ctx.fillStyle = 'white'
+        ctx.fillStyle = '#ccc'
         ctx.font = 'bold 40px Arial'
         ctx.textAlign = 'center'
         ctx.textBaseline = 'middle'
         ctx.fillText('PAUSE', gameWidth.value / 2, gameHeight.value / 2)
     }
+
+    if (isOver.value) {
+        ctx.beginPath()
+        ctx.fillStyle = '#00000050'
+        ctx.fillRect(0, 0, gameWidth.value, gameHeight.value)
+
+        ctx.fillStyle = '#c0392b'
+        ctx.font = 'bold 90px Arial'
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.fillText('GAME OVER', gameWidth.value / 2, gameHeight.value / 2 - 50)
+
+        ctx.fillStyle = '#ccc'
+        ctx.font = '28px Arial'
+        ctx.fillText('Push Enter to play again', gameWidth.value / 2, gameHeight.value / 2 + 50)
+    }
 }
 
 const drawCell = (x, y, size, color, radius) => {
     ctx.beginPath()
+    ctx.fillStyle = color
     ctx.roundRect(x, y, size, size, [radius])
     ctx.shadowColor = '#222'
     ctx.shadowBlur = 12
-    ctx.fillStyle = color
     ctx.fill()
 }
 
@@ -181,6 +199,9 @@ const start = () => {
                 head.y >= config.height ||
                 snake.value.some((cell) => cell.x === head.x && cell.y === head.y)
             ) {
+                playSounds(deathSound, 0.2)
+                if (interval) clearInterval(interval)
+                interval = null
                 isOver.value = true
             }
             snake.value.unshift(head)
@@ -191,8 +212,10 @@ const start = () => {
                 snake.value.pop()
             } else {
                 food.value = createFood()
+                playSounds(eatSound, 0.4)
                 score.value++
             }
+            playSounds(tickSound, 0.6)
             draw()
         }
     }, speed.value)
@@ -200,9 +223,10 @@ const start = () => {
 
 const pause = () => {
     if (isStarted.value && !isOver.value) {
+        playSounds(playPauseSound, 0.2)
         isPaused.value = !isPaused.value
         if (isPaused.value) {
-            clearInterval(interval)
+            if (interval) clearInterval(interval)
             interval = null
             draw()
         } else {
@@ -212,15 +236,21 @@ const pause = () => {
 }
 
 const onKeydown = (e) => {
-    const dir = directions.find((d) => d.key === e.key)
-    if (dir && !isPaused.value) {
-        if (!direction.value.current) {
-            direction.value.current = dir
-            direction.value.next = dir
-            start()
-        } else if (dir.key !== direction.value.current.forbidenKey) {
-            direction.value.next = dir
+    if (!isPaused.value) {
+        const dir = directions.find((d) => d.key === e.key)
+        if (dir) {
+            if (!isStarted.value) {
+                direction.value.current = dir
+                direction.value.next = dir
+                start()
+            } else if (dir.key !== direction.value.current.forbidenKey) {
+                direction.value.next = dir
+            }
         }
+    }
+
+    if (isOver.value && e.key === 'Enter') {
+        restart()
     }
 
     if (e.key === 'Escape') {
@@ -230,6 +260,7 @@ const onKeydown = (e) => {
 
 watch(score, (newScore) => {
     if (newScore === nextLevel.value) {
+        playSounds(levelUpSound)
         level.value++
         speed.value = Math.ceil(speed.value * factorSpeed)
         isStarted.value = false
@@ -245,6 +276,7 @@ onMounted(() => {
     window.addEventListener('keydown', onKeydown)
 })
 onUnmounted(() => {
+    if (interval) clearInterval(interval)
     window.removeEventListener('keydown', onKeydown)
 })
 </script>
