@@ -64,10 +64,11 @@ button {
 
         h1 {
             text-shadow: 0 3px 5px #000;
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
         p {
             text-shadow: 0 2px 3px #000;
+            font-size: 1.8rem;
         }
     }
     article {
@@ -76,21 +77,18 @@ button {
         align-items: center;
     }
     #container-canvas {
-        border-top: 20px solid #222;
-        border-bottom: 20px solid #222;
-        border-right: 20px solid #222;
-        border-left: 20px solid #222;
+        border: 25px solid #252525;
         box-shadow: 0 10px 30px #000000;
-        border-radius: 2rem;
+        border-radius: 2.2rem;
         display: flex;
     }
     #board {
         background: linear-gradient(180deg, #2c2c2c, #424242 100%);
         border-top: 15px solid #222;
         border-bottom: 15px solid #666;
-        border-right: 15px solid #444;
-        border-left: 15px solid #444;
-        box-shadow: 0 -10px 30px #949494;
+        border-right: 15px solid #474747;
+        border-left: 15px solid #474747;
+        box-shadow: 0 -12px 35px #8a8a8a;
         border-radius: 0.7rem;
 
         display: flex;
@@ -98,19 +96,5 @@ button {
         justify-content: center;
         align-items: center;
         gap: 5rem;
-
-        h2 {
-            font-size: 4.5rem;
-
-            color: #bb0000;
-            text-shadow: 0 3px 10px #000;
-        }
-        button {
-            color: #f7f7f7;
-            background: #2e8f3e;
-            &:hover {
-                background: #1a802b;
-            }
-        }
     }
 }
