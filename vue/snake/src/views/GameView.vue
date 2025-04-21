@@ -16,8 +16,9 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { drawCanvas } from '@/utils/draw'
 
-const config = { width: 30, height: 30, cellSize: 25 }
+const config = { width: 30, height: 20, cellSize: 25 }
 const directions = [
     { key: 'ArrowUp', forbidenKey: 'ArrowDown', x: 0, y: -1 },
     { key: 'ArrowRight', forbidenKey: 'ArrowLeft', x: 1, y: 0 },
@@ -35,6 +36,9 @@ const playPauseSound = new Audio('./src/assets/sounds/play_pause.mp3')
 const deathSound = new Audio('./src/assets/sounds/death.mp3')
 
 const canvasRef = ref(null)
+
+const { drawCell, drawText, drawBg } = drawCanvas()
+
 const direction = ref({
     current: null,
     next: null,
@@ -42,9 +46,11 @@ const direction = ref({
 const snake = ref([])
 const food = ref([])
 const emptyCells = ref([])
+
 const score = ref(0)
 const level = ref(1)
 const speed = ref(baseSpeed)
+
 const isOver = ref(false)
 const isStarted = ref(false)
 const isPaused = ref(false)
@@ -53,7 +59,6 @@ let ctx
 
 const gameWidth = computed(() => config.width * config.cellSize)
 const gameHeight = computed(() => config.height * config.cellSize)
-const centerCellSize = computed(() => (config.cellSize / 5) * 4)
 const nextLevel = computed(() => Math.ceil((baseLevel * level.value) / 2))
 
 const playSounds = (audio, vol = 0.5) => {
@@ -65,76 +70,107 @@ const playSounds = (audio, vol = 0.5) => {
 const draw = () => {
     ctx.clearRect(0, 0, gameWidth.value, gameHeight.value)
 
+    const cellSize = config.cellSize
+    const innerCellSize = cellSize * 0.8
+
     snake.value.forEach((elem, index) => {
-        const px = elem.x * config.cellSize
-        const py = elem.y * config.cellSize
+        const px = elem.x * cellSize
+        const py = elem.y * cellSize
         const isHead = index === 0
 
+        /** Shadow */
         drawCell(
-            px - (isHead ? 3 : 0),
-            py - (isHead ? 3 : 0),
-            config.cellSize + (isHead ? 6 : 0),
-            'black',
-            config.cellSize / (isHead ? 2 : 2.6),
+            ctx,
+            px - (isHead ? 1 : -1),
+            py - (isHead ? 1 : -1),
+            cellSize + (isHead ? 2 : -2),
+            '#000',
+            cellSize / (isHead ? 2.4 : 2.8),
+        )
+        /** Colored parts */
+        drawCell(
+            ctx,
+            px - (isHead ? -1 : -3),
+            py - (isHead ? -1 : -3),
+            innerCellSize + (isHead ? 1.4 : -2.2),
+            index % 2 === 0 ? '#2e8f3e' : '#34a347',
+            innerCellSize / (isHead ? 2.6 : 3),
         )
 
-        drawCell(
-            px - (centerCellSize.value - config.cellSize + (isHead ? 7 : 0)) / 2.2,
-            py - (centerCellSize.value - config.cellSize + (isHead ? 7 : 0)) / 3,
-            centerCellSize.value + (isHead ? 5.5 : 0),
-            '#2e8f3e',
-            centerCellSize.value / (isHead ? 2 : 2.6),
-        )
+        if (isHead) {
+            if (direction.value.current) {
+                if (direction.value.current.key === 'ArrowUp') {
+                    drawCell(ctx, px, py, 8, '#000', 5)
+                    drawCell(ctx, px + 1, py + 1, 6, '#c0392b', 5)
+
+                    drawCell(ctx, px + innerCellSize - 4, py, 8, '#000', 5)
+                    drawCell(ctx, px + innerCellSize - 3, py + 1, 6, '#c0392b', 5)
+                }
+
+                if (direction.value.current.key === 'ArrowDown') {
+                    drawCell(ctx, px, py + innerCellSize - 5, 8, '#000', 5)
+                    drawCell(ctx, px + 1, py + innerCellSize - 4, 6, '#c0392b', 5)
+
+                    drawCell(ctx, px + innerCellSize - 4, py + innerCellSize - 5, 8, '#000', 5)
+                    drawCell(ctx, px + innerCellSize - 3, py + innerCellSize - 4, 6, '#c0392b', 5)
+                }
+                if (direction.value.current.key === 'ArrowRight') {
+                    drawCell(ctx, px + innerCellSize - 4, py, 8, '#000', 5)
+                    drawCell(ctx, px + innerCellSize - 3, py + 1, 6, '#c0392b', 5)
+
+                    drawCell(ctx, px + innerCellSize - 4, py + innerCellSize - 5, 8, '#000', 5)
+                    drawCell(ctx, px + innerCellSize - 3, py + innerCellSize - 4, 6, '#c0392b', 5)
+                }
+
+                if (direction.value.current.key === 'ArrowLeft') {
+                    drawCell(ctx, px, py, 8, '#000', 5)
+                    drawCell(ctx, px + 1, py + 1, 6, '#c0392b', 5)
+
+                    drawCell(ctx, px, py + innerCellSize - 5, 8, '#000', 5)
+                    drawCell(ctx, px + 1, py + innerCellSize - 4, 6, '#c0392b', 5)
+                }
+            } else {
+                drawCell(ctx, px, py, 8, '#000', 5)
+                drawCell(ctx, px + 1, py + 1, 6, '#c0392b', 5)
+
+                drawCell(ctx, px + innerCellSize - 4, py, 8, '#000', 5)
+                drawCell(ctx, px + innerCellSize - 3, py + 1, 6, '#c0392b', 5)
+            }
+        }
     })
 
-    const fx = food.value.x * config.cellSize
-    const fy = food.value.y * config.cellSize
+    /** Piece of fruit */
+    const fx = food.value.x * cellSize
+    const fy = food.value.y * cellSize
 
-    drawCell(fx, fy, config.cellSize, 'black', config.cellSize / 2)
-    drawCell(
-        fx - (centerCellSize.value - config.cellSize) / 2.2,
-        fy - (centerCellSize.value - config.cellSize) / 3,
-        centerCellSize.value,
-        '#c0392b',
-        centerCellSize.value,
-    )
+    drawCell(ctx, fx, fy, cellSize, '#000', cellSize / 2)
+    drawCell(ctx, fx + 2, fy + 2, innerCellSize, '#c0392b', innerCellSize)
 
+    /** StatePages */
     if (isPaused.value) {
-        ctx.beginPath()
-        ctx.fillStyle = '#00000050'
-        ctx.fillRect(0, 0, gameWidth.value, gameHeight.value)
-
-        ctx.fillStyle = '#ccc'
-        ctx.font = 'bold 40px Arial'
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'middle'
-        ctx.fillText('PAUSE', gameWidth.value / 2, gameHeight.value / 2)
+        drawBg(ctx, gameWidth.value, gameHeight.value)
+        drawText(ctx, gameWidth.value / 2, gameHeight.value / 2, 'PAUSE', '#ccc', 'bold 40px Arial')
     }
 
     if (isOver.value) {
-        ctx.beginPath()
-        ctx.fillStyle = '#00000050'
-        ctx.fillRect(0, 0, gameWidth.value, gameHeight.value)
-
-        ctx.fillStyle = '#c0392b'
-        ctx.font = 'bold 90px Arial'
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'middle'
-        ctx.fillText('GAME OVER', gameWidth.value / 2, gameHeight.value / 2 - 50)
-
-        ctx.fillStyle = '#ccc'
-        ctx.font = '28px Arial'
-        ctx.fillText('Push Enter to play again', gameWidth.value / 2, gameHeight.value / 2 + 50)
+        drawBg(ctx, gameWidth.value, gameHeight.value)
+        drawText(
+            ctx,
+            gameWidth.value / 2,
+            gameHeight.value / 2 - 50,
+            'GAME OVER',
+            '#c0392b',
+            'bold 90px Arial',
+        )
+        drawText(
+            ctx,
+            gameWidth.value / 2,
+            gameHeight.value / 2 + 50,
+            'Push Enter to play again',
+            '#ccc',
+            '28px Arial',
+        )
     }
-}
-
-const drawCell = (x, y, size, color, radius) => {
-    ctx.beginPath()
-    ctx.fillStyle = color
-    ctx.roundRect(x, y, size, size, [radius])
-    ctx.shadowColor = '#222'
-    ctx.shadowBlur = 12
-    ctx.fill()
 }
 
 const createFood = () => {
@@ -147,36 +183,6 @@ const createFood = () => {
         }
     }
     return emptyCells.value[Math.floor(Math.random() * emptyCells.value.length)]
-}
-
-const reset = () => {
-    if (isOver.value) {
-        level.value = 1
-        speed.value = 250
-        isOver.value = false
-    }
-    score.value = 0
-    isStarted.value = false
-    direction.value.current = null
-    direction.value.next = null
-    emptyCells.value = []
-    snake.value = [
-        {
-            x: Math.floor(config.width / 2),
-            y: Math.floor(config.height / 2),
-        },
-    ]
-    food.value = createFood()
-    draw()
-}
-
-const restart = async () => {
-    if (interval) clearInterval(interval)
-    interval = null
-    reset()
-    await nextTick()
-    ctx = canvasRef.value.getContext('2d')
-    draw()
 }
 
 let interval = null
@@ -219,6 +225,36 @@ const start = () => {
             draw()
         }
     }, speed.value)
+}
+
+const reset = () => {
+    if (isOver.value) {
+        level.value = 1
+        speed.value = 250
+        isOver.value = false
+    }
+    score.value = 0
+    isStarted.value = false
+    direction.value.current = null
+    direction.value.next = null
+    emptyCells.value = []
+    snake.value = [
+        {
+            x: Math.floor(config.width / 2),
+            y: Math.floor(config.height / 2),
+        },
+    ]
+    food.value = createFood()
+    draw()
+}
+
+const restart = async () => {
+    if (interval) clearInterval(interval)
+    interval = null
+    reset()
+    await nextTick()
+    ctx = canvasRef.value.getContext('2d')
+    draw()
 }
 
 const pause = () => {
