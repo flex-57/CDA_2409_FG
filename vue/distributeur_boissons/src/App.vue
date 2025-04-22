@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>Distributeur</h1>
-        <span v-if="isPaid"
+        <span v-if="isPaid && caddie.refund > 0"
             ><b>Remboursé : {{ caddie.refund.toFixed(2) }} €</b></span
         >
     </header>
