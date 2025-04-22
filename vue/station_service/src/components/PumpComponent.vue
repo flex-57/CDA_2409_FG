@@ -1,7 +1,7 @@
 <template>
     <div id="gas-pump1">
         <h2>Pompe n°{{ id }}</h2>
-        <select id="" :disabled="isStarted" v-model="selectedFuel">
+        <select class="disabled" :disabled="isStarted" v-model="selectedFuel">
             <option v-for="(f, i) in fuels" :key="i" :value="f">{{ f.name }}</option>
         </select>
         <form>
@@ -10,6 +10,7 @@
                     <label :for="`limit${id}`">Limite</label>
                     <input
                         type="number"
+                        class="disabled"
                         min="0"
                         step=".1"
                         :id="`limit${id}`"
@@ -20,6 +21,7 @@
                 <div class="form-grp limit-radios">
                     <input
                         type="radio"
+                        class="disabled"
                         :id="`radio-liters${id}`"
                         :name="`unit${id}`"
                         :disabled="!selectedFuel || isStarted"
@@ -29,6 +31,7 @@
                     <label :for="`radio-liters${id}`">litres</label>
                     <input
                         type="radio"
+                        class="disabled"
                         :id="`radio-euros${id}`"
                         :name="`unit${id}`"
                         :disabled="!selectedFuel || isStarted"
@@ -73,8 +76,8 @@
             <div class="form-grp">
                 <button
                     @click="start"
-                    type="button"
-                    :disabled="!selectedFuel || limit === 0 || isStarted"
+                    type="button" class="disabled"
+                    :disabled="!selectedFuel || limit === 0 || isStarted || isWaiting"
                 >
                     Lancer la distribution
                 </button>
@@ -92,6 +95,7 @@ const limit = ref(0)
 const progressQuantity = ref(0)
 const progressTopay = ref(0)
 const isStarted = ref(false)
+const isWaiting = ref(false)
 
 const props = defineProps({
     fuels: {
@@ -139,6 +143,12 @@ const start = () => {
                     topay: toPay.value,
                     date: new Date(),
                 })
+                isWaiting.value = true
+                setTimeout(() => {
+                    isWaiting.value = false
+                    progressQuantity.value = 0
+                    progressTopay.value = 0
+                }, 2000)
             }
         }, speed)
     }

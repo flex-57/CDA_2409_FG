@@ -64,15 +64,19 @@ import PumpComponent from './components/PumpComponent.vue'
 
 const billsList = ref([])
 
-const totalPaid = computed(() => (billsList.value.reduce((a, b) => a + Number(b.topay), 0)).toFixed(3) || Number(0).toFixed(1))
-const totalQuantity = computed(() => (billsList.value.reduce((a, b) => a + Number(b.quantity), 0)).toFixed(1))
+const totalPaid = computed(
+    () =>
+        billsList.value.reduce((a, b) => a + Number(b.topay), 0).toFixed(3) || Number(0).toFixed(1),
+)
+const totalQuantity = computed(() =>
+    billsList.value.reduce((a, b) => a + Number(b.quantity), 0).toFixed(1),
+)
 
 const addbill = (bill) => {
-    const fuel = fuels.find(f => f.name === bill.fuel.name)
+    const fuel = fuels.find((f) => f.name === bill.fuel.name)
     if (fuel) {
         fuel.content -= bill.quantity
     }
     billsList.value.push(bill)
 }
-
 </script>
