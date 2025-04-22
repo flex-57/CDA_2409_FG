@@ -26,7 +26,7 @@ const directions = [
     { key: 'ArrowLeft', forbidenKey: 'ArrowRight', x: -1, y: 0 },
 ]
 const baseLevel = 5
-const baseSpeed = 250
+const baseSpeed = 200
 const factorSpeed = 0.95
 
 const tickSound = new Audio('./src/assets/sounds/tick.mp3')

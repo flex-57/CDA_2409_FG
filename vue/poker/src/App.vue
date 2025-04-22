@@ -15,9 +15,9 @@
         </h2>
         <h2 v-else-if="currentState === 'river'">
             River
-            <button type="button" @click="over">Next</button>
+            <button type="button" @click="showdown">Next</button>
         </h2>
-        <h2 v-else-if="currentState === 'over'">
+        <h2 v-else-if="currentState === 'showdown'">
             Joueur x gagne 100 $
             <button type="button" @click="start">Restart</button>
         </h2>
@@ -28,6 +28,7 @@
     </section>
     <section id="players">
         <div v-for="player in players" :key="player.position">
+            {{ result }}
             <div class="player" :class="{ current: player.isCurrent }">
                 <h2>
                     Joueur {{ player.position }}
@@ -47,15 +48,18 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { getDeck } from './utils/deck'
+import { combinations } from './utils/combinations'
 import { Player } from './utils/player'
 import CardComponent from './components/CardComponent.vue'
 
+const {check, result } = combinations()
 const deck = ref(getDeck().shuffle())
 
-const nbPlayer = ref(3)
+const nbPlayer = ref(4)
 const baseStack = ref(1000)
 const table = ref([])
 const players = ref([])
+const combi = ref([])
 const dealerIndex = ref(0)
 const pot = ref(0)
 const currentState = ref('river')
@@ -102,13 +106,14 @@ const river = () => {
     currentState.value = 'river'
 }
 
-const over = () => {
-    currentState.value = 'over'
+const showdown = () => {
+    currentState.value = 'showdown'
 }
 
 const burnAndDeal = (nbCards) => {
     deck.value.splice(0, 1)
     table.value.push(...deck.value.splice(0, nbCards))
+    players.value.forEach(player => combi.value.push(check([...player.cards, ...table.value])))
 }
 
 const start = () => {
@@ -156,6 +161,7 @@ const start = () => {
     currentState.value = 'preflop'
 
     console.log(players.value)
+    console.log(table.value)
 }
 
 onMounted(start)
@@ -204,11 +210,11 @@ h1 {
         border: 3px solid #633211;
         border-radius: 3.2rem;
         background: linear-gradient(#70707044);
-        width: 320px;
+        width: 280px;
         margin-bottom: 0.5rem;
 
         &.current {
-            scale: 1.03;
+            scale: 1.04;
         }
     }
     h2 {

@@ -17,7 +17,7 @@ export const drawCanvas = () => {
     const drawCell = (ctx, x, y, size, color, radius) => {
         ctx.beginPath()
         ctx.roundRect(x, y, size, size, [radius])
-        ctx.shadowColor = '#222'
+        ctx.shadowColor = '#111'
         ctx.shadowBlur = 12
         ctx.fillStyle = color
         ctx.fill()
