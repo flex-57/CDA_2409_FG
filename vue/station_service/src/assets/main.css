@@ -54,6 +54,9 @@ input:focus {
 button {
     cursor: pointer;
 }
+.disabled:disabled {
+    cursor: not-allowed;
+}
 
 progress {
     height: 15px;
@@ -175,7 +178,7 @@ form {
 }
 
 table {
-    margin: .5rem 1rem;
+    margin: 0.5rem 1rem;
     width: calc(100% - 2rem);
 }
 
