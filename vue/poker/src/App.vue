@@ -24,7 +24,10 @@
         <div id="cards-location">
             <CardComponent :cards="table" />
         </div>
-        <span>Pot: {{ pot }} $</span>
+        <div>
+            <p>(SB: {{ smallBlind }}$ | BB: {{ bigBlind }}$)</p>
+            <span>Pot: {{ pot }}$</span>
+        </div>
     </section>
     <section id="players">
         <div v-for="player in players" :key="player.position">
@@ -32,11 +35,26 @@
             <div class="player" :class="{ current: player.isCurrent }">
                 <h2>
                     Joueur {{ player.position }}
-                    <span class="dealer" :class="{ actif: player.isDealer }">{{
-                        player.isDealer ? 'Deal' : ''
-                    }}</span>
+                    <span
+                        v-if="player.isDealer"
+                        class="dealer"
+                        :class="{ actif: player.isDealer }"
+                        >{{ player.isDealer ? 'Deal' : '' }}</span
+                    >
+                    <span
+                        v-if="player.isSmallblind"
+                        class="blinds"
+                        :class="{ actif: player.isSmallblind }"
+                        >{{ player.isSmallblind ? 'SB' : '' }}</span
+                    >
+                    <span
+                        v-if="player.isBigBlind"
+                        class="blinds"
+                        :class="{ actif: player.isBigBlind }"
+                        >{{ player.isBigBlind ? 'BB' : '' }}</span
+                    >
                 </h2>
-                <CardComponent :cards="player.cards" />
+                <CardComponent :cards="player.hand" />
                 <span>{{ player.stack }} $</span>
                 <span>Mise : {{ player.currentBet }} $</span>
             </div>
@@ -52,7 +70,7 @@ import { combinations } from './utils/combinations'
 import { Player } from './utils/player'
 import CardComponent from './components/CardComponent.vue'
 
-const {check, result } = combinations()
+const { check, result } = combinations()
 const deck = ref(getDeck().shuffle())
 
 const nbPlayer = ref(4)
@@ -113,7 +131,7 @@ const showdown = () => {
 const burnAndDeal = (nbCards) => {
     deck.value.splice(0, 1)
     table.value.push(...deck.value.splice(0, nbCards))
-    players.value.forEach(player => combi.value.push(check([...player.cards, ...table.value])))
+    players.value.forEach((player) => combi.value.push(check([...player.hand, ...table.value])))
 }
 
 const start = () => {
@@ -121,14 +139,14 @@ const start = () => {
     table.value = []
     dealerIndex.value = (dealerIndex.value + 1) % nbPlayer.value
 
-    for (let c = 0; c < nbPlayer.value; c++) {
+    for (let n = 1; n <= nbPlayer.value; n++) {
         if (newGame.value) {
             players.value.push(
                 new Player(
                     deck.value.splice(0, 2),
-                    c + 1 ,
+                    n,
                     baseStack.value,
-                    c === dealerIndex.value,
+                    n - 1 === dealerIndex.value,
                 ),
             )
         } else {
@@ -147,6 +165,9 @@ const start = () => {
     const smallBlindIndex = (dealerIndex.value + 1) % nbPlayer.value
     const bigBlindIndex = (dealerIndex.value + 2) % nbPlayer.value
 
+    players.value[smallBlindIndex].isSmallblind = true
+    players.value[bigBlindIndex].isBigBlind = true
+
     players.value[smallBlindIndex].stack -= smallBlind.value
     players.value[smallBlindIndex].currentBet = smallBlind.value
 
@@ -159,9 +180,11 @@ const start = () => {
     players.value[playerToBetIndex].isCurrent = true
 
     currentState.value = 'preflop'
-
+    players.value.forEach((player) => combi.value.push(check([...player.hand, ...table.value])))
+    /*
     console.log(players.value)
     console.log(table.value)
+    */
 }
 
 onMounted(start)
@@ -199,6 +222,7 @@ h1 {
 #players {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row-reverse;
     margin-bottom: 2rem;
 
     .player {
@@ -232,19 +256,22 @@ h2 {
     justify-content: space-between;
 
     .dealer {
+        background: #eeaa44;
+    }
+    .blinds {
+        background: #d1d1d1;
+    }
+    .actif {
         width: 45px;
         height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-    .actif {
         border: 3px solid black;
         border-radius: 50%;
         font-size: 0.85rem;
         padding: 0.5rem;
         box-shadow: 0 3px 2px black;
-        background: #eeaa44;
     }
 }
 

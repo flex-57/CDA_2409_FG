@@ -20,7 +20,60 @@ export const getDeck = () => {
         },
     ]
 
-    const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    const ranks = [
+        {
+            value: 2,
+            fig: '2',
+        },
+        {
+            value: 3,
+            fig: '3',
+        },
+        {
+            value: 4,
+            fig: '4',
+        },
+        {
+            value: 5,
+            fig: '5',
+        },
+        {
+            value: 6,
+            fig: '6',
+        },
+        {
+            value: 7,
+            fig: '7',
+        },
+        {
+            value: 8,
+            fig: '8',
+        },
+        {
+            value: 9,
+            fig: '9',
+        },
+        {
+            value: 10,
+            fig: '10',
+        },
+        {
+            value: 11,
+            fig: 'J',
+        },
+        {
+            value: 12,
+            fig: 'Q',
+        },
+        {
+            value: 13,
+            fig: 'K',
+        },
+        {
+            value: 14,
+            fig: 'A',
+        },
+    ]
 
     const deck = ref([])
 
