@@ -24,3 +24,12 @@ body {
     border-radius: 20%;
     padding: 2rem 0;
 }
+
+h1 {
+    color: #000000be;
+    text-shadow: 1px 01px 0px #b3b3b38e;
+}
+h2 {
+    color: #000000cb;
+    text-shadow: 1px 01px 0px #b3b3b39d;
+}

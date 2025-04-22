@@ -24,7 +24,7 @@ defineProps({
     background: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: .4rem;
     font-weight: bold;
     box-shadow: 1px 2px 3px #585858;
     transition: opacity 0.3s ease-in-out;
@@ -38,14 +38,14 @@ defineProps({
 }
 
 .card-top {
-    text-align: left;
+    text-align: right;
     font-size: 4.2rem;
-    line-height: 3rem;
+    line-height: 2.5rem;
 }
 .card-bottom {
     font-family: sans-serif;
-    text-align: right;
+    text-align: left;
     font-size: 3.5rem;
-    line-height: 2.5rem;
+    line-height: 2.7rem;
 }
 </style>

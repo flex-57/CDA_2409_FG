@@ -52,7 +52,7 @@ import CardComponent from './components/CardComponent.vue'
 
 const deck = ref(getDeck().shuffle())
 
-const nbPlayer = ref(2)
+const nbPlayer = ref(3)
 const baseStack = ref(1000)
 const table = ref([])
 const players = ref([])
@@ -82,8 +82,8 @@ const nextPlayer = () => {
     players.value[nextIndex].isCurrent = true
 }
 
-const resetBet =() => {
-    players.value.forEach(p => p.currentBet = 0)
+const resetBet = () => {
+    players.value.forEach((p) => (p.currentBet = 0))
 }
 
 const flop = () => {
@@ -121,7 +121,7 @@ const start = () => {
             players.value.push(
                 new Player(
                     deck.value.splice(0, 2),
-                    c + 1,
+                    c + 1 ,
                     baseStack.value,
                     c === dealerIndex.value,
                 ),
@@ -169,7 +169,6 @@ h1 {
 #table {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 2rem;
     border: 3px solid #633211;
     border-radius: 3rem;
@@ -180,10 +179,10 @@ h1 {
 
     #cards-location {
         display: flex;
-        justify-content: left;
         align-items: center;
         gap: 0.3rem;
         height: calc(80px * (21 / 29.7));
+        margin: 0 calc(750px - (80px * (29.7 / 21) * 5 + 1.4rem));
     }
     h2 {
         padding: 0.2rem 2rem 0.3rem;
