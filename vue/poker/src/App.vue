@@ -67,7 +67,7 @@
 import { onMounted, ref } from 'vue'
 import { getDeck } from './utils/deck'
 import { combinations } from './utils/combinations'
-import { Player } from './utils/player'
+import { Player } from './utils/Player'
 import CardComponent from './components/CardComponent.vue'
 
 const { check, result } = combinations()
@@ -180,7 +180,11 @@ const start = () => {
     players.value[playerToBetIndex].isCurrent = true
 
     currentState.value = 'preflop'
-    players.value.forEach((player) => combi.value.push(check([...player.hand, ...table.value])))
+    combi.value.push(players.value.forEach((player) => check([...player.hand, ...table.value])))
+
+    console.log(combi.value);
+
+
     /*
     console.log(players.value)
     console.log(table.value)

@@ -3,9 +3,17 @@ export const combinations = () => {
 
         const count = {}
         cards.forEach((card) => {
-            count[card.rank.value] = count[card.rank.value] + 1 || 0 + 1
+            count[card.rank.value] = (count[card.rank.value] || 0) + 1
+
+
+            if (count[card.rank.value] === 2) {
+                return { result: 'Paire'}
+            }
         })
-        console.log(count)
+
+
+        console.log(count);
+
 
     }
 
