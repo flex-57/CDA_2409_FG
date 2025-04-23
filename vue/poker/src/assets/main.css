@@ -31,4 +31,11 @@ h1 {
 h2 {
     color: #000000cb;
     text-shadow: 1px 01px 0px #b3b3b39d;
+    font-size: 2.2rem;
+    width: 100%;
+    border-bottom: 3px solid #633211;
+    border-radius: 3rem 3rem 0 0;
+    background: #ffffff1c;
+    display: flex;
+    justify-content: space-between;
 }
