@@ -5,6 +5,7 @@
         :table="table"
         :smallBlind="smallBlind"
         :bigBlind="bigBlind"
+        :winner="winner"
         :pot="pot"
         @flop="flop"
         @turn="turn"
@@ -16,7 +17,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { getDeck } from './utils/deck'
 import { combinations } from './utils/combinations'
 import { Player } from './utils/Player'
@@ -32,11 +33,25 @@ const smallBlind = ref(10)
 const bigBlind = ref(20)
 const table = ref([])
 const players = ref([])
-const combo = ref([])
 const dealerIndex = ref(0)
 const pot = ref(0)
 const currentState = ref('')
 const newGame = ref(true)
+
+const combo = computed(() => players.value.map((player) => check([...player.hand, ...table.value])))
+const winner = computed(() => {
+    let best = combo.value[0]
+    let index = 0
+    for (let i = 1; i < combo.value.length; i++) {
+        if (combo.value[i].score > best.score) {
+            best = combo.value[i]
+            index = i
+        }
+    }
+    console.log(combo.value)
+
+    return players.value[index]
+})
 
 const bet = (val) => {
     const player = players.value.find((p) => p.isCurrent)
@@ -84,8 +99,6 @@ const showdown = () => {
 const burnAndDeal = (nbCards) => {
     deck.value.splice(0, 1)
     table.value.push(...deck.value.splice(0, nbCards))
-    combo.value = players.value.map((player) => check([...player.hand, ...table.value]))
-    console.log(combo.value)
 }
 
 const start = () => {
@@ -118,6 +131,8 @@ const start = () => {
     }
     newGame.value = false
 
+    currentState.value = 'preflop'
+
     const smallBlindIndex = (dealerIndex.value + 1) % nbPlayer.value
     const bigBlindIndex = (dealerIndex.value + 2) % nbPlayer.value
 
@@ -134,16 +149,6 @@ const start = () => {
 
     const playerToBetIndex = (bigBlindIndex + 1) % nbPlayer.value
     players.value[playerToBetIndex].isCurrent = true
-
-    currentState.value = 'preflop'
-    combo.value = players.value.map((player) => check([...player.hand, ...table.value]))
-
-    console.log(combo.value)
-
-    /*
-    console.log(players.value)
-    console.log(table.value)
-    */
 }
 
 onMounted(start)

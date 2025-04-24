@@ -4,73 +4,77 @@ export const getDeck = () => {
     const families = [
         {
             symbol: '♠',
+            name: 'spades',
             color: 'black',
         },
         {
             symbol: '♣',
+            name: 'clubs',
             color: 'black',
         },
         {
             symbol: '♥',
+            name: 'hearts',
             color: 'red',
         },
         {
             symbol: '♦',
+            name: 'diamonds',
             color: 'red',
         },
     ]
 
     const ranks = [
         {
-            value: 2,
+            strength: 2,
             fig: '2',
         },
         {
-            value: 3,
+            strength: 3,
             fig: '3',
         },
         {
-            value: 4,
+            strength: 4,
             fig: '4',
         },
         {
-            value: 5,
+            strength: 5,
             fig: '5',
         },
         {
-            value: 6,
+            strength: 6,
             fig: '6',
         },
         {
-            value: 7,
+            strength: 7,
             fig: '7',
         },
         {
-            value: 8,
+            strength: 8,
             fig: '8',
         },
         {
-            value: 9,
+            strength: 9,
             fig: '9',
         },
         {
-            value: 10,
+            strength: 10,
             fig: '10',
         },
         {
-            value: 11,
+            strength: 11,
             fig: 'J',
         },
         {
-            value: 12,
+            strength: 12,
             fig: 'Q',
         },
         {
-            value: 13,
+            strength: 13,
             fig: 'K',
         },
         {
-            value: 14,
+            strength: 14,
             fig: 'A',
         },
     ]
