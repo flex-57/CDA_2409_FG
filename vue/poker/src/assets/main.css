@@ -6,9 +6,8 @@
 
 body {
     font-family: sans-serif;
-    padding: 2rem;
+    padding: 1rem;
     background: #000;
-    scale: 0.9;
 }
 
 #app {
@@ -17,25 +16,67 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    min-width: 750px;
+    width: 1000px;
     margin: auto;
-    border: 5px solid #633211;
+    border: 10px solid #633211;
     border-radius: 20%;
     padding: 2rem 0;
+    box-shadow: inset 1px 1px 5px #b3b3b38e;
 }
 
 h1 {
     color: #000000be;
-    text-shadow: 1px 01px 0px #b3b3b38e;
+    text-shadow: 1px 1px 0px #b3b3b38e;
 }
 h2 {
     color: #000000cb;
-    text-shadow: 1px 01px 0px #b3b3b39d;
-    font-size: 2.2rem;
+    text-shadow: 1px 1px 0px #b3b3b38e;
+    font-size: 1.5rem;
     width: 100%;
+    height: 45px;
     border-bottom: 3px solid #633211;
-    border-radius: 3rem 3rem 0 0;
+    border-radius: 2.5rem 2.5rem 0 0;
     background: #ffffff1c;
     display: flex;
     justify-content: space-between;
+    align-items: end;
+    padding: 0 1rem;
+}
+
+.container {
+    border: 3px solid #633211;
+    border-radius: 2.5rem;
+    box-shadow: 1px 1px 3px #dddddd50;
+    background: #ffffff10;
+
+    &.current {
+        box-shadow: inset 1px 1px 3px #dddddd60;
+    }
+}
+
+.cards-location {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    height: calc(60px * 29.7 / 21);
+    margin: 0.3rem auto;
+}
+
+button {
+    background: #633211;
+    padding: 0.4rem;
+    width: 80px;
+    border-radius: 35%;
+    border: 2px solid black;
+    font-size: 0.9rem;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    box-shadow: 1px 2px 3px black;
+    transition: all 0.1s ease-in-out;
+    text-align: center;
+    cursor: pointer;
+
+    &:focus {
+        box-shadow: 1px 1px 1px black;
+    }
 }

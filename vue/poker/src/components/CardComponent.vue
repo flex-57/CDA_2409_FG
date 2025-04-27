@@ -1,5 +1,5 @@
 <template>
-    <div v-for="(card, i) in cards" :key="i" :class="`card color-${card.family.color}`">
+    <div v-for="(card, i) in cards" :key="i" :class="`card color-${card.family.name}`">
         <div class="card-top">{{ card.rank.fig }}</div>
         <div class="card-bottom">{{ card.family.symbol }}</div>
     </div>
@@ -16,36 +16,44 @@ defineProps({
 
 <style scoped>
 .card {
-    border-radius: 0.5rem;
-    width: 80px;
-    height: calc(80px / 21 * 28);
-    padding: 0.2rem;
     background: white;
-    font-weight: bold;
-    box-shadow: 1px 2px 3px #585858;
-    transition: opacity 0.3s ease-in-out;
+    border-radius: 0.5rem;
+    width: 60px;
+    height: calc(60px * 29.7 / 21);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.card.color-red {
+.card.color-hearts,
+.card.color-diamonds {
     color: red;
     border: 2px solid red;
 }
 
-.card.color-black {
+.card.color-spades,
+.card.color-clubs {
     color: black;
-    border: 2px solid black;
+    border: 3px solid black;
 }
 
 .card-top {
+    height: 40%;
     text-align: left;
-    font-size: 2.6rem;
-    border-bottom: none;
-    line-height: 2.2rem;
+    padding: 0 0.2rem;
+    font-size: 2.2rem;
+    line-height: 2rem;
+    font-weight: bold;
 }
 .card-bottom {
-    font-family: sans-serif;
+    height: 60%;
     text-align: right;
-    font-size: 5.8rem;
-    border-top: none;
-    line-height: 3.4rem;
+    padding: 0 0.2rem;
+    font-size: 5rem;
+    line-height: 2rem;
+    font-weight: bold;
+}
+
+.card.color-clubs .card-bottom,
+.card.color-hearts .card-bottom {
+    font-size: 4.6rem;
+    line-height: 2.3rem;
 }
 </style>
