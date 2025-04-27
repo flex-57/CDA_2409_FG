@@ -17,7 +17,13 @@
             <button type="button" @click="$emit('showdown')">Next</button>
         </h2>
         <h2 v-else-if="currentState === 'showdown'">
-            Joueur {{ winner.position }} gagne {{ pot }}$
+            <span v-if="winners.length === 1"
+                >Joueur {{ winners[0].position }} gagne {{ pot }}$</span
+            >
+            <span v-else>
+                <span v-for="(winner, i) in winners" :key="i">Joueur {{ winner.position }}</span>
+                <span> partagent le pot et gagnent {{ Math.round(pot / winners.length) }}</span>
+            </span>
             <button type="button" @click="$emit('start')">Restart</button>
         </h2>
         <div class="cards-location">
@@ -38,7 +44,7 @@ defineProps({
     table: Array,
     smallBlind: Number,
     bigBlind: Number,
-    winner: Object,
+    winners: Object,
     pot: Number,
 })
 

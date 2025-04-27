@@ -5,7 +5,7 @@
         :table="table"
         :smallBlind="smallBlind"
         :bigBlind="bigBlind"
-        :winner="winner"
+        :winners="winners"
         :pot="pot"
         @flop="flop"
         @turn="turn"
@@ -39,18 +39,24 @@ const currentState = ref('')
 const newGame = ref(true)
 
 const combo = computed(() => players.value.map((player) => check([...player.hand, ...table.value])))
-const winner = computed(() => {
-    let best = combo.value[0]
-    let index = 0
+
+const winners = computed(() => {
+    if (currentState.value !== 'showdown') {
+        return null
+    }
+    let bestScore = combo.value[0].score
+    let winners = [players.value[0]]
+
     for (let i = 1; i < combo.value.length; i++) {
-        if (combo.value[i].score > best.score) {
-            best = combo.value[i]
-            index = i
+        if (combo.value[i].score > bestScore) {
+            bestScore = combo.value[i].score
+            winners = [players.value[i]]
+        } else if (combo.value[i].score === bestScore) {
+            winners.push(players.value[i])
         }
     }
-    console.log(combo.value)
 
-    return players.value[index]
+    return winners
 })
 
 const bet = (val) => {
@@ -94,6 +100,10 @@ const river = () => {
 
 const showdown = () => {
     currentState.value = 'showdown'
+    winners.value.map(winner => ({
+        ...winner,
+        ...winner.stack += pot.value
+    }))
 }
 
 const burnAndDeal = (nbCards) => {

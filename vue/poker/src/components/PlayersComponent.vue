@@ -3,6 +3,8 @@
         <div v-for="(player, i) in players" :key="player.position">
             <div class="combo">
                 <p>{{ combo[i].result }}</p>
+                <br />
+                <p>{{ combo[i].score }}</p>
             </div>
             <div class="player container" :class="{ current: player.isCurrent }">
                 <h2>
@@ -63,7 +65,7 @@ defineEmits(['bet'])
 
 .player {
     width: 200px;
-    margin-bottom: .4rem;
+    margin-bottom: 0.4rem;
 }
 
 .cards-location {
@@ -91,6 +93,7 @@ defineEmits(['bet'])
 
 .combo {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -100,7 +103,8 @@ p {
     font-weight: bold;
 }
 
-.stack, .bet {
+.stack,
+.bet {
     width: 100%;
     font-weight: bold;
     font-size: 1.2rem;
